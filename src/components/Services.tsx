@@ -23,6 +23,7 @@ const categories = [
       'Star rating showcase',
     ],
     demoHref: '/projects/restaurant',
+    demoLabel: 'Demo',
     backBg: '#160800',
     accent: '#f97316',
     gradient: 'from-orange-500 to-red-600',
@@ -44,6 +45,7 @@ const categories = [
       'Google Reviews integration',
     ],
     demoHref: '/projects/salon',
+    demoLabel: 'Demo',
     backBg: '#0f0212',
     accent: '#a855f7',
     gradient: 'from-purple-500 to-pink-600',
@@ -65,6 +67,7 @@ const categories = [
       'Detailed service descriptions',
     ],
     demoHref: '/projects/plumbing',
+    demoLabel: 'Demo',
     backBg: '#010c18',
     accent: '#3b82f6',
     gradient: 'from-blue-500 to-cyan-600',
@@ -86,6 +89,7 @@ const categories = [
       'Pet care tips & blog',
     ],
     demoHref: '/projects/pet',
+    demoLabel: 'Demo',
     backBg: '#011410',
     accent: '#10b981',
     gradient: 'from-emerald-500 to-teal-600',
@@ -107,6 +111,7 @@ const categories = [
       'Nutrition & wellness blog',
     ],
     demoHref: '/projects/fitness',
+    demoLabel: 'Demo',
     backBg: '#150900',
     accent: '#f59e0b',
     gradient: 'from-yellow-500 to-orange-600',
@@ -128,9 +133,54 @@ const categories = [
       'FAQ for parents',
     ],
     demoHref: '/contact',
+    demoLabel: 'Demo',
     backBg: '#02041a',
     accent: '#6366f1',
     gradient: 'from-indigo-500 to-blue-600',
+  },
+  {
+    emoji: '🏷️',
+    title: 'E-Commerce & Deals',
+    desc: 'Online stores, marketplaces, and deal platforms — we\'ve shipped a live one you can visit right now.',
+    img: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80',
+    color: 'from-amber-500 to-orange-500',
+    tags: ['Shopping', 'Deals', 'Payments'],
+    features: [
+      'Product catalog & search',
+      'Coupon & deals engine',
+      'Checkout & payment flow',
+      'User accounts & saved items',
+      'Seller / vendor portal',
+      'Mobile-first responsive design',
+      'SEO-optimized category pages',
+    ],
+    demoHref: 'https://couponcompanions.com',
+    demoLabel: 'Live Site',
+    backBg: '#120800',
+    accent: '#f59e0b',
+    gradient: 'from-amber-500 to-orange-600',
+  },
+  {
+    emoji: '🏠',
+    title: 'Home Services Platforms',
+    desc: 'Multi-role platforms for homeowners, renters, and pros — we built HappyHomesHub from scratch.',
+    img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80',
+    color: 'from-sky-500 to-blue-500',
+    tags: ['Multi-role', 'Marketplace', 'Web App'],
+    features: [
+      'Homeowner & renter dashboards',
+      'Handyman / pro profiles',
+      'Job posting & bidding system',
+      'Booking & scheduling',
+      'In-app messaging',
+      'Reviews & ratings',
+      'Geo-based search & matching',
+    ],
+    demoHref: 'https://happyhomeshub.com',
+    demoLabel: 'Live Site',
+    backBg: '#010d18',
+    accent: '#0ea5e9',
+    gradient: 'from-sky-500 to-blue-600',
   },
 ]
 
@@ -221,7 +271,7 @@ function FlipCard({ cat, index }: { cat: typeof categories[0]; index: number }) 
               className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1.5 rounded-full border transition-colors"
               style={{ borderColor: cat.accent + '60', color: cat.accent }}
             >
-              Demo <ArrowUpRight className="w-3 h-3" />
+              {cat.demoLabel} <ArrowUpRight className="w-3 h-3" />
             </a>
           </div>
 

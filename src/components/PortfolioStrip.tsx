@@ -6,46 +6,76 @@ import { ArrowRight } from 'lucide-react'
 
 const studies = [
   {
+    slug: 'couponcompanions',
+    href: 'https://couponcompanions.com',
+    business: 'Coupon Companions',
+    emoji: '🏷️',
+    img: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80',
+    tag: 'E-Commerce',
+    isLive: true,
+  },
+  {
+    slug: 'happyhomeshub',
+    href: 'https://happyhomeshub.com',
+    business: 'Happy Homes Hub',
+    emoji: '🏠',
+    img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80',
+    tag: 'Marketplace',
+    isLive: true,
+  },
+  {
     slug: 'pet',
+    href: '/projects/pet',
     business: 'Happy Paws Vet',
     emoji: '🐾',
     img: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80',
     tag: 'Pet Care',
+    isLive: false,
   },
   {
     slug: 'restaurant',
+    href: '/projects/restaurant',
     business: 'Trattoria Albany',
     emoji: '🍽️',
     img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80',
     tag: 'Restaurant',
+    isLive: false,
   },
   {
     slug: 'salon',
+    href: '/projects/salon',
     business: 'The Cut Collective',
     emoji: '✂️',
     img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80',
     tag: 'Salon',
+    isLive: false,
   },
   {
     slug: 'barbershop',
+    href: '/projects/barbershop',
     business: 'Capital Cuts',
     emoji: '💈',
     img: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80',
     tag: 'Barbershop',
+    isLive: false,
   },
   {
     slug: 'plumbing',
+    href: '/projects/plumbing',
     business: 'Albany Pro Plumbing',
     emoji: '🔧',
     img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80',
     tag: 'Contractor',
+    isLive: false,
   },
   {
     slug: 'fitness',
+    href: '/projects/fitness',
     business: 'Albany Iron Fitness',
     emoji: '💪',
     img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80',
     tag: 'Fitness',
+    isLive: false,
   },
 ]
 
@@ -65,10 +95,10 @@ export default function PortfolioStrip() {
               Real Work
             </span>
             <h2 className="text-4xl lg:text-5xl font-black text-white leading-tight">
-              Sites we built for
+              Work we've shipped.
               <br />
               <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                Albany businesses.
+                Live and in the wild.
               </span>
             </h2>
           </div>
@@ -76,7 +106,7 @@ export default function PortfolioStrip() {
             href="/our-work"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm font-semibold rounded-full transition-all shrink-0"
           >
-            View all 6 demos <ArrowRight className="w-4 h-4" />
+            View all projects <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 
@@ -85,12 +115,14 @@ export default function PortfolioStrip() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3"
+          className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3"
         >
           {studies.map((s) => (
             <motion.a
               key={s.slug}
-              href={`/projects/${s.slug}`}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
               variants={card}
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 300, damping: 22 }}
@@ -102,10 +134,17 @@ export default function PortfolioStrip() {
                 alt={s.business}
                 fill
                 className="object-cover brightness-60 group-hover:brightness-75 group-hover:scale-105 transition-all duration-500"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 25vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute top-3 left-3 text-lg">{s.emoji}</div>
+              {s.isLive && (
+                <div className="absolute top-3 right-3">
+                  <span className="text-[9px] font-bold text-white bg-green-500/80 backdrop-blur-sm px-1.5 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-white animate-pulse" /> Live
+                  </span>
+                </div>
+              )}
               <div className="absolute bottom-0 left-0 right-0 p-3">
                 <p className="text-[10px] font-bold text-white/50 uppercase tracking-wide mb-0.5">{s.tag}</p>
                 <p className="text-xs font-black text-white leading-tight">{s.business}</p>
@@ -121,7 +160,7 @@ export default function PortfolioStrip() {
           transition={{ delay: 0.5 }}
           className="text-center text-sm text-gray-500 mt-8"
         >
-          These are interactive demos — click any card to explore the full site.
+          2 live platforms + 6 interactive demos — click any card to explore.
         </motion.p>
       </div>
     </section>

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
-const IDLE_SECONDS = 10
+const IDLE_SECONDS = 30
 const COUNTDOWN_SECONDS = 10
 
 type PageConfig = {

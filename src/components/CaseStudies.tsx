@@ -7,6 +7,28 @@ import { ExternalLink } from 'lucide-react'
 
 const studies = [
   {
+    slug: 'couponcompanions',
+    href: 'https://couponcompanions.com',
+    business: 'Coupon Companions',
+    category: 'E-Commerce · Live',
+    emoji: '🏷️',
+    desc: 'A live e-commerce platform connecting shoppers with deals and coupons — built for scale with real users transacting daily.',
+    img: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&q=80',
+    color: 'from-amber-500/20 to-orange-500/20',
+    isLive: true,
+  },
+  {
+    slug: 'happyhomeshub',
+    href: 'https://happyhomeshub.com',
+    business: 'Happy Homes Hub',
+    category: 'Web Application · Live',
+    emoji: '🏠',
+    desc: 'A full web application connecting homeowners, inhabitants, and handymen — multi-role platform with real users across all three sides.',
+    img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&q=80',
+    color: 'from-sky-500/20 to-blue-500/20',
+    isLive: true,
+  },
+  {
     slug: 'pet',
     href: '/projects/pet',
     business: 'Happy Paws Vet & Grooming',
@@ -15,6 +37,7 @@ const studies = [
     desc: 'A full vet clinic site with online booking, services, and team profiles — built to show what a modern pet care business looks like online.',
     img: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500&q=80',
     color: 'from-emerald-500/20 to-teal-500/20',
+    isLive: false,
   },
   {
     slug: 'restaurant',
@@ -25,6 +48,7 @@ const studies = [
     desc: 'A restaurant demo with an online menu, reservation system, and photo gallery — so customers decide before they even walk in.',
     img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&q=80',
     color: 'from-orange-500/20 to-red-500/20',
+    isLive: false,
   },
   {
     slug: 'salon',
@@ -35,6 +59,7 @@ const studies = [
     desc: 'A salon site where clients book appointments online, browse stylists, and see pricing — no more back-and-forth phone calls.',
     img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&q=80',
     color: 'from-pink-500/20 to-rose-500/20',
+    isLive: false,
   },
   {
     slug: 'barbershop',
@@ -45,6 +70,7 @@ const studies = [
     desc: 'A sharp, minimal barbershop site built for local SEO — shows hours, services, and makes it dead simple to walk in or book.',
     img: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500&q=80',
     color: 'from-violet-500/20 to-purple-500/20',
+    isLive: false,
   },
   {
     slug: 'plumbing',
@@ -55,6 +81,7 @@ const studies = [
     desc: 'A contractor site that builds trust before the first call — with services, emergency contact, and a clear call-to-action above the fold.',
     img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&q=80',
     color: 'from-blue-500/20 to-cyan-500/20',
+    isLive: false,
   },
   {
     slug: 'fitness',
@@ -65,6 +92,7 @@ const studies = [
     desc: 'A gym site with class schedules, membership tiers, and trainer profiles — so new members can sign up without ever picking up the phone.',
     img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80',
     color: 'from-yellow-500/20 to-orange-500/20',
+    isLive: false,
   },
 ]
 
@@ -108,9 +136,15 @@ function DemoColumn({
                     <span className="text-lg">{s.emoji}</span>
                   </div>
                   <div className="absolute top-3 right-3">
-                    <span className="text-[10px] font-bold text-white bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center gap-1">
-                      <ExternalLink className="w-2.5 h-2.5" /> Demo
-                    </span>
+                    {s.isLive ? (
+                      <span className="text-[10px] font-bold text-white bg-green-500/80 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Live
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-bold text-white bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <ExternalLink className="w-2.5 h-2.5" /> Demo
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -133,9 +167,9 @@ function DemoColumn({
 }
 
 export default function CaseStudies() {
-  const col1 = studies.slice(0, 2)
-  const col2 = studies.slice(2, 4)
-  const col3 = studies.slice(4, 6)
+  const col1 = studies.slice(0, 3)
+  const col2 = studies.slice(3, 6)
+  const col3 = studies.slice(6, 8)
 
   return (
     <section id="case-studies" className="py-24 lg:py-32 bg-gray-950 overflow-hidden">
@@ -150,19 +184,18 @@ export default function CaseStudies() {
           className="text-center mb-14"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">
-            Demo Portfolio
+            Our Portfolio
           </span>
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
-            We're a startup. So we
+            Real work. Real sites.
             <br />
             <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              built the proof ourselves.
+              Real results.
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            We don't have 50 clients yet — so we built 6 full demo sites across different
-            Albany business types to show you exactly what we're capable of.
-            Click any to explore a fully-built, live website.
+            Two live platforms already in market — plus 6 full demo sites across Albany business types
+            to show exactly what we build. Click any card to explore.
           </p>
         </motion.div>
 

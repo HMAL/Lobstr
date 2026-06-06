@@ -14,6 +14,8 @@ const projects = [
     rating: '4.9',
     color: 'from-rose-400 to-pink-500',
     accent: '#FF6B6B',
+    href: '/projects/pet',
+    isLive: false,
     mockScreen: (
       <div className="w-full h-full bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-4 space-y-3">
         <div className="flex items-center gap-2">
@@ -40,67 +42,72 @@ const projects = [
     ),
   },
   {
-    name: 'Fluffy Cuts Grooming',
-    category: 'Pet Groomer',
-    emoji: '✂️',
-    description: 'Colorful grooming salon site with gallery, pricing packages, and instant booking widget.',
-    tags: ['Gallery', 'Stripe', 'Booking'],
+    name: 'Coupon Companions',
+    category: 'E-Commerce',
+    emoji: '🏷️',
+    description: 'Live e-commerce platform connecting shoppers with deals and coupons — real users, real transactions, built to scale.',
+    tags: ['E-Commerce', 'Deals', 'SEO'],
     rating: '5.0',
-    color: 'from-violet-400 to-purple-500',
-    accent: '#A855F7',
+    color: 'from-amber-400 to-orange-500',
+    accent: '#F59E0B',
+    href: 'https://couponcompanions.com',
+    isLive: true,
     mockScreen: (
-      <div className="w-full h-full bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-4 space-y-3">
+      <div className="w-full h-full bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-4 space-y-3">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-violet-500 flex items-center justify-center text-white text-sm">✂️</div>
+          <div className="w-8 h-8 rounded-xl bg-amber-500 flex items-center justify-center text-white text-sm">🏷️</div>
           <div className="space-y-1">
-            <div className="w-20 h-2 bg-violet-300 rounded-full" />
-            <div className="w-14 h-1.5 bg-violet-200 rounded-full" />
+            <div className="w-28 h-2 bg-amber-300 rounded-full" />
+            <div className="w-16 h-1.5 bg-amber-200 rounded-full" />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2">
-          {['🐶', '🐱', '🐰', '🦮'].map((e, i) => (
-            <div key={i} className="bg-gradient-to-br from-violet-100 to-purple-100 rounded-xl h-16 flex items-center justify-center text-2xl">
-              {e}
+          {['20% OFF', 'BOGO', '$5 OFF', 'FREE SHIP'].map((t) => (
+            <div key={t} className="bg-gradient-to-br from-amber-400 to-orange-400 rounded-xl h-14 flex items-center justify-center text-white text-xs font-black">
+              {t}
             </div>
           ))}
         </div>
-        <div className="bg-violet-500 rounded-xl p-2 text-center text-white text-xs font-bold">Book Appointment</div>
+        <div className="bg-amber-500 rounded-xl p-2 text-center text-white text-xs font-bold">Browse All Deals</div>
         <div className="space-y-1.5">
-          <div className="w-full h-2 bg-violet-100 rounded-full" />
-          <div className="w-3/4 h-2 bg-violet-100 rounded-full" />
+          <div className="w-full h-2 bg-amber-100 rounded-full" />
+          <div className="w-3/4 h-2 bg-amber-100 rounded-full" />
         </div>
       </div>
     ),
   },
   {
-    name: 'Coastal Animal Clinic',
-    category: 'Vet Hospital',
-    emoji: '🌊',
-    description: '24/7 emergency vet site with live chat, emergency line button, and location finder.',
-    tags: ['Emergency', 'Live Chat', 'Maps'],
-    rating: '4.8',
-    color: 'from-teal-400 to-cyan-500',
-    accent: '#4ECDC4',
+    name: 'Happy Homes Hub',
+    category: 'Web Application',
+    emoji: '🏠',
+    description: 'Multi-role web platform connecting homeowners, inhabitants, and handymen — all three sides under one roof.',
+    tags: ['Marketplace', 'Multi-role', 'Web App'],
+    rating: '4.9',
+    color: 'from-sky-400 to-blue-500',
+    accent: '#0EA5E9',
+    href: 'https://happyhomeshub.com',
+    isLive: true,
     mockScreen: (
-      <div className="w-full h-full bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-4 space-y-3">
+      <div className="w-full h-full bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-4 space-y-3">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-teal-500 flex items-center justify-center text-white text-sm">🌊</div>
+          <div className="w-8 h-8 rounded-xl bg-sky-500 flex items-center justify-center text-white text-sm">🏠</div>
           <div className="space-y-1">
-            <div className="w-28 h-2 bg-teal-300 rounded-full" />
-            <div className="w-18 h-1.5 bg-teal-200 rounded-full" />
+            <div className="w-24 h-2 bg-sky-300 rounded-full" />
+            <div className="w-16 h-1.5 bg-sky-200 rounded-full" />
           </div>
         </div>
-        <div className="bg-red-500 rounded-xl p-2 text-white text-xs font-bold text-center flex items-center justify-center gap-1">
-          🚨 24/7 Emergency Line
+        <div className="grid grid-cols-3 gap-2">
+          {['🏠 Owner', '🏘️ Renter', '🔧 Pro'].map(t => (
+            <div key={t} className="bg-white rounded-lg p-2 text-center border border-sky-100">
+              <div className="text-xs font-bold text-sky-600">{t}</div>
+            </div>
+          ))}
         </div>
-        <div className="w-full h-20 bg-teal-200 rounded-xl flex items-center justify-center text-teal-600 text-xs font-bold">📍 Interactive Map</div>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="bg-white rounded-lg p-2 border border-teal-100">
-            <div className="text-xs font-bold text-teal-600">Book Visit</div>
-          </div>
-          <div className="bg-white rounded-lg p-2 border border-teal-100">
-            <div className="text-xs font-bold text-teal-600">Live Chat</div>
-          </div>
+        <div className="w-full h-16 bg-gradient-to-r from-sky-400 to-blue-400 rounded-xl flex items-center justify-center text-white text-xs font-bold">Find a Handyman Near You</div>
+        <div className="space-y-1.5">
+          <div className="w-full h-2 bg-sky-100 rounded-full" />
+          <div className="w-4/5 h-2 bg-sky-100 rounded-full" />
+          <div className="w-3/5 h-2 bg-sky-100 rounded-full" />
         </div>
       </div>
     ),
@@ -125,12 +132,12 @@ export default function Portfolio() {
             ✨ Our Work
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-black tracking-tight mb-4">
-            Sites That Make Pet Owners
+            Work That Gets
             <br />
-            <span className="text-gradient-coral">Stop and Stare</span>
+            <span className="text-gradient-coral">Real Results</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Every project is custom-crafted with love for the business and the pets they serve.
+            From live e-commerce platforms to multi-role web apps — built to perform, not just to look good.
           </p>
         </motion.div>
 
@@ -177,6 +184,11 @@ export default function Portfolio() {
                         >
                           {project.category}
                         </Badge>
+                        {project.isLive && (
+                          <span className="text-[10px] font-bold text-white bg-green-500 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Live
+                          </span>
+                        )}
                       </div>
                       <h3 className="font-bold text-lg text-foreground">{project.name}</h3>
                     </div>
@@ -198,12 +210,15 @@ export default function Portfolio() {
                     ))}
                   </div>
 
-                  <button
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold border-2 group-hover:border-transparent transition-all"
                     style={{ borderColor: `${project.accent}40`, color: project.accent }}
                   >
-                    View Case Study <ExternalLink className="w-3.5 h-3.5" />
-                  </button>
+                    {project.isLive ? 'Visit Live Site' : 'View Case Study'} <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
             </motion.div>
