@@ -232,13 +232,13 @@ export default function RestaurantPage() {
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <p className="demo-fade-up text-amber-400 text-sm font-bold tracking-widest uppercase mb-3">Ristorante Italiano · Albany, NY</p>
-          <h1 className="demo-fade-up demo-fade-up-1 text-6xl lg:text-8xl font-black leading-[0.95] mb-6">
+          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-black leading-[0.95] mb-6">
             Cucina Italiana<br /><span className="text-amber-400">Autentica.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-white/70 text-lg max-w-lg mb-8">
             Handmade pasta, wood-fired flavors, and recipes passed down through three generations — right here in downtown Albany.
           </p>
-          <div className="demo-fade-up demo-fade-up-3 flex gap-3">
+          <div className="demo-fade-up demo-fade-up-3 flex flex-wrap gap-3">
             <GlowBtn href="#reserve" className="px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-black font-black rounded-2xl text-base transition-all hover:scale-105">
               Reserve Online
             </GlowBtn>

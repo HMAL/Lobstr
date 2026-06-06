@@ -244,7 +244,7 @@ export default function SalonPage() {
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-white">
           <p className="demo-fade-up text-rose-300 font-bold tracking-widest text-sm uppercase mb-4">✦ Troy&apos;s Premier Hair Studio ✦</p>
-          <h1 className="demo-fade-up demo-fade-up-1 text-6xl lg:text-8xl font-black leading-[0.9] mb-6">
+          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-black leading-[0.9] mb-6">
             Your hair.<br /><span className="text-rose-400">Your story.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-white/75 text-lg max-w-md mb-8">

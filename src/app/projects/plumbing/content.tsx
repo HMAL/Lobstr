@@ -238,7 +238,7 @@ export default function PlumbingPage() {
             <div className="demo-fade-up inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400/20 border border-yellow-400/30 rounded-full text-yellow-300 text-sm font-semibold">
               <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse" /> 24/7 Emergency Service Available
             </div>
-            <h1 className="demo-fade-up demo-fade-up-1 text-5xl lg:text-6xl font-black leading-tight">
+            <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-4xl lg:text-6xl font-black leading-tight">
               Albany&apos;s Most<br /><span className="text-yellow-400">Trusted Plumber.</span>
             </h1>
             <p className="demo-fade-up demo-fade-up-2 text-blue-200 text-lg">

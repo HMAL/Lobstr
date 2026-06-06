@@ -59,7 +59,7 @@ export default function Navbar() {
   const [position, setPosition] = useState<Position>({ left: 0, width: 0, opacity: 0 })
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm md:bg-transparent md:backdrop-blur-none md:shadow-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
 
@@ -90,7 +90,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
               href="/contact"
-              className="inline-flex items-center px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 text-sm font-semibold rounded-full transition-all hover:scale-105 shadow-sm border border-gray-[...]
+              className="inline-flex items-center px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 text-sm font-semibold rounded-full transition-all hover:scale-105 shadow-sm border border-gray-200"
             >
               Get a Free Quote
             </a>

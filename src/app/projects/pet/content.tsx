@@ -248,13 +248,13 @@ export default function PetPage() {
           <div className="demo-fade-up inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/30 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-200 text-sm font-medium">
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" /> Albany, NY · Open Now
           </div>
-          <h1 className="demo-fade-up demo-fade-up-1 text-5xl lg:text-7xl font-black leading-[1.05]">
+          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-4xl lg:text-7xl font-black leading-[1.05]">
             Your Pet&apos;s<br /><span className="text-emerald-400">Second Home.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-lg text-white/80 max-w-xl">
             Full-service veterinary care and grooming in Albany, NY. Board-certified vets, gentle groomers, and online booking — because your pet deserves the best.
           </p>
-          <div className="demo-fade-up demo-fade-up-3 flex flex-wrap gap-3">
+          <div className="demo-fade-up demo-fade-up-3 flex flex-wrap gap-3 max-w-md">
             <GlowBtn href="/contact" className="px-7 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-bold rounded-2xl text-base transition-all hover:scale-105">
               Book an Appointment
             </GlowBtn>
@@ -267,7 +267,7 @@ export default function PetPage() {
 
       {/* Stats */}
       <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="bg-emerald-600 text-white py-8">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 text-center">
           {[['2,500+', 'Pets Cared For'], ['12yr', 'In Business'], ['4.9★', 'Google Rating'], ['Same-Day', 'Urgent Appts']].map(([val, label]) => (
             <motion.div key={label} variants={fadeUp}>
               <p className="text-2xl font-black">{val}</p>

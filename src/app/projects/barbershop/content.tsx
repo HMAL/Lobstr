@@ -244,13 +244,13 @@ export default function BarbershopPage() {
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4">
           <p className="demo-fade-up text-white/40 font-bold tracking-widest text-xs uppercase mb-4">Est. 2018 · Schenectady, NY</p>
-          <h1 className="demo-fade-up demo-fade-up-1 text-7xl lg:text-9xl font-black leading-[0.85] mb-6">
+          <h1 className="demo-fade-up demo-fade-up-1 text-4xl sm:text-5xl lg:text-9xl font-black leading-[0.85] mb-6">
             CAPITAL<br /><span className="text-white/20">CUTS</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-white/60 text-lg max-w-md mb-8">
             Precision fades. Clean lineups. Good vibes. Schenectady&apos;s most respected barbershop — now with online booking.
           </p>
-          <div className="demo-fade-up demo-fade-up-3 flex gap-3">
+          <div className="demo-fade-up demo-fade-up-3 flex flex-wrap gap-3">
             <GlowBtn href="#book" className="px-7 py-4 bg-white text-black font-black rounded-2xl text-base hover:bg-gray-100 transition-all hover:scale-105">
               Book Your Cut
             </GlowBtn>

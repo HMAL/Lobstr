@@ -18,14 +18,14 @@ export default function Hero() {
     <div className="relative w-full min-h-screen bg-white overflow-hidden grain">
       {/* Aurora animated background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="aurora-1 absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full bg-blue-300/20 blur-3xl" />
-        <div className="aurora-2 absolute top-1/4 -right-32 w-[600px] h-[600px] rounded-full bg-indigo-400/15 blur-3xl" />
-        <div className="aurora-3 absolute -bottom-20 left-1/3 w-[500px] h-[500px] rounded-full bg-violet-300/12 blur-3xl" />
-        <div className="aurora-4 absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-sky-300/10 blur-3xl" />
+        <div className="aurora-1 absolute -top-40 -left-40 w-[300px] h-[300px] md:w-[700px] md:h-[700px] rounded-full bg-blue-300/20 blur-3xl" />
+        <div className="aurora-2 absolute top-1/4 -right-32 w-[250px] h-[250px] md:w-[600px] md:h-[600px] rounded-full bg-indigo-400/15 blur-3xl" />
+        <div className="aurora-3 absolute -bottom-20 left-1/3 w-[200px] h-[200px] md:w-[500px] md:h-[500px] rounded-full bg-violet-300/12 blur-3xl" />
+        <div className="aurora-4 absolute top-1/2 left-1/4 w-[150px] h-[150px] md:w-[400px] md:h-[400px] rounded-full bg-sky-300/10 blur-3xl" />
       </div>
       <div className="flex min-h-screen">
         {/* ── Left: text ── */}
-        <div className="flex flex-col justify-center px-8 md:px-14 lg:px-20 relative z-10 w-full md:w-1/2 py-28">
+        <div className="flex flex-col justify-center px-5 sm:px-8 md:px-14 lg:px-20 relative z-10 w-full md:w-1/2 py-24 md:py-28">
 
           {/* Urgency pill */}
           <motion.div
@@ -53,7 +53,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] text-gray-900 mb-6"
           >
             Someone in Albany<br />
             just searched<br />
@@ -122,7 +122,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.65 }}
-            className="flex gap-8 mb-10 pb-10 border-b border-gray-100"
+            className="flex gap-5 md:gap-8 mb-10 pb-10 border-b border-gray-100"
           >
             {[
               { val: '5', label: 'Founding Spots', sub: '3 still open' },

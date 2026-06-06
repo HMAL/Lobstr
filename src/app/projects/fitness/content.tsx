@@ -244,13 +244,13 @@ export default function FitnessPage() {
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4">
           <p className="demo-fade-up text-orange-400 font-bold tracking-widest text-xs uppercase mb-4">Albany, NY — No Judgment Zone</p>
-          <h1 className="demo-fade-up demo-fade-up-1 text-7xl lg:text-9xl font-black leading-[0.85] mb-6 uppercase">
+          <h1 className="demo-fade-up demo-fade-up-1 text-4xl sm:text-6xl lg:text-9xl font-black leading-[0.85] mb-6 uppercase">
             SHOW<br /><span className="text-orange-400">UP.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-white/60 text-lg max-w-md mb-8">
             Albany&apos;s community-first gym. Flexible classes, no contracts, real results. Whether you&apos;re a beginner or a seasoned athlete — you belong here.
           </p>
-          <div className="demo-fade-up demo-fade-up-3 flex gap-3">
+          <div className="demo-fade-up demo-fade-up-3 flex flex-wrap gap-3">
             <GlowBtn href="#join" className="px-7 py-4 bg-orange-500 hover:bg-orange-400 text-white font-black rounded-2xl text-base transition-all hover:scale-105">
               <Zap className="w-4 h-4" /> Join for $49/mo
             </GlowBtn>
