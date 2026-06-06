@@ -52,7 +52,7 @@ export default function Contact() {
         body: JSON.stringify(form),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.detail || data.error || 'Send failed')
+      if (!res.ok) throw new Error(data.debug || data.detail || data.error || 'Send failed')
       setSubmitted(true)
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error'
