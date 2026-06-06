@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils'
 const PAGE_VALUES = Array.from({ length: 50 }, (_, i) => i + 1)
 
 function getOngoingPrice(pages: number): { monthly: number; display: string; tier: 'starter' | 'growth' } {
-  if (pages <= 10) return { monthly: 10, display: '$10', tier: 'starter' }
-  const extra = pages - 10
+  if (pages <= 4) return { monthly: 10, display: '$10', tier: 'starter' }
+  const extra = pages - 4
   const total = 10 + extra * 0.25
   return { monthly: total, display: `$${total.toFixed(2)}`, tier: 'growth' }
 }
@@ -301,9 +301,9 @@ export default function Pricing() {
                 </div>
               </div>
 
-              {pages > 10 && (
+              {pages > 4 && (
                 <p className="text-xs text-gray-400 bg-gray-50 rounded-xl px-3 py-2 border border-gray-100">
-                  💡 First 10 pages: $10/mo · Each extra page: +$0.25/mo
+                  💡 First 4 pages: $10/mo · Page 5+: +$0.25/mo each
                 </p>
               )}
 

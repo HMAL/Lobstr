@@ -3,14 +3,14 @@
 import { motion } from 'framer-motion'
 import { Globe, Heart, Mail, MapPin } from 'lucide-react'
 
-const links: Record<string, { label: string; href: string }[]> = {
+const links: Record<string, { label: string; href: string; newTab?: boolean }[]> = {
   'Our Work': [
-    { label: 'Happy Paws Vet', href: '/projects/pet' },
-    { label: 'Trattoria Albany', href: '/projects/restaurant' },
-    { label: 'The Cut Collective', href: '/projects/salon' },
-    { label: 'Capital Cuts', href: '/projects/barbershop' },
-    { label: 'Albany Pro Plumbing', href: '/projects/plumbing' },
-    { label: 'Albany Iron Fitness', href: '/projects/fitness' },
+    { label: 'Happy Paws Vet', href: '/projects/pet', newTab: true },
+    { label: 'Trattoria Albany', href: '/projects/restaurant', newTab: true },
+    { label: 'The Cut Collective', href: '/projects/salon', newTab: true },
+    { label: 'Capital Cuts', href: '/projects/barbershop', newTab: true },
+    { label: 'Albany Pro Plumbing', href: '/projects/plumbing', newTab: true },
+    { label: 'Albany Iron Fitness', href: '/projects/fitness', newTab: true },
   ],
   'Company': [
     { label: 'About Us', href: '/about' },
@@ -99,7 +99,11 @@ export default function Footer() {
               <ul className="space-y-2">
                 {items.map((item) => (
                   <li key={item.label}>
-                    <a href={item.href} className="text-sm text-white/40 hover:text-white transition-colors">
+                    <a
+                      href={item.href}
+                      {...(item.newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className="text-sm text-white/40 hover:text-white transition-colors"
+                    >
                       {item.label}
                     </a>
                   </li>

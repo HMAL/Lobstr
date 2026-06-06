@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Mylobstr — Web Design for Local Businesses'
+export const alt = "MyLobstr - Albany's Local Designer for Albany Metro"
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 

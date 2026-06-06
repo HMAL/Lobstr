@@ -101,6 +101,8 @@ export default function OurWorkGrid() {
           <motion.a
             key={s.slug}
             href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
             variants={card}
             whileHover={{ y: -6, scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}

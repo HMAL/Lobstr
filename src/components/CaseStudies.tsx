@@ -90,6 +90,8 @@ function DemoColumn({
               <a
                 key={`${s.slug}-${repeat}`}
                 href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group block rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 hover:border-gray-600 transition-all duration-300 w-72 shrink-0"
               >
                 {/* Image */}

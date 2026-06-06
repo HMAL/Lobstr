@@ -215,6 +215,8 @@ function FlipCard({ cat, index }: { cat: typeof categories[0]; index: number }) 
             </div>
             <a
               href={cat.demoHref}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1.5 rounded-full border transition-colors"
               style={{ borderColor: cat.accent + '60', color: cat.accent }}

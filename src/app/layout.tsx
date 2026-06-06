@@ -25,11 +25,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mylobstr.com"),
   title: {
-    default: "Mylobstr — Web Design for Local Businesses",
-    template: "%s | Mylobstr",
+    default: "MyLobstr - Albany's Local Designer for Albany Metro",
+    template: "%s | MyLobstr",
   },
   description:
-    "Mylobstr builds beautiful, high-converting websites for local businesses — restaurants, pet clinics, salons, barbershops, plumbers, and gyms. Launch in 48 hours starting at $100.",
+    "MyLobstr builds beautiful, high-converting websites for local businesses — restaurants, pet clinics, salons, barbershops, plumbers, and gyms. Launch in 48 hours starting at $100.",
   keywords: [
     "local business website design",
     "small business website",
@@ -44,26 +44,26 @@ export const metadata: Metadata = {
     "website with online booking",
   ],
   openGraph: {
-    title: "Mylobstr — Web Design for Local Businesses",
+    title: "MyLobstr - Albany's Local Designer for Albany Metro",
     description:
-      "Beautiful, animated websites for local businesses. Pet clinics, restaurants, salons, barbershops, plumbers, and gyms. Launch in 48 hours starting at $100.",
+      "Beautiful, animated websites for local businesses in Albany, NY. Pet clinics, restaurants, salons, barbershops, plumbers, and gyms. Launch in 48 hours starting at $100.",
     type: "website",
     url: "https://mylobstr.com",
-    siteName: "Mylobstr",
+    siteName: "MyLobstr",
     images: [
       {
         url: "https://mylobstr.com/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Mylobstr — Web Design for Local Businesses",
+        alt: "MyLobstr - Albany's Local Designer for Albany Metro",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mylobstr — Web Design for Local Businesses",
+    title: "MyLobstr - Albany's Local Designer for Albany Metro",
     description:
-      "Beautiful websites for local businesses. Launch in 48 hours starting at $100.",
+      "Beautiful websites for Albany local businesses. Launch in 48 hours starting at $100.",
     images: ["https://mylobstr.com/opengraph-image"],
   },
   robots: {
