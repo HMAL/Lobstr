@@ -1,17 +1,20 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const runtime = 'edge'
 
 // Switch to a verified domain sender once mylobstr.com is set up in Resend.
 // Until then: from = onboarding@resend.dev, to = the Resend account email.
 const TO_EMAIL = 'homemadeappsllc@gmail.com'
 
 export async function POST(req: Request) {
-  if (!process.env.RESEND_API_KEY) {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
     console.error('RESEND_API_KEY is not set')
     return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
   }
+
+  const resend = new Resend(apiKey)
 
   try {
     const { name, email, business, type, message } = await req.json()
