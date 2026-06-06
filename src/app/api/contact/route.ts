@@ -7,12 +7,8 @@ const TO_EMAIL = 'homemadeappsllc@gmail.com'
 export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
-    const keys = Object.keys(process.env).filter(k => k.includes('RESEND') || k.includes('resend'))
-    console.error('RESEND_API_KEY is not set. Env keys found:', keys)
-    return NextResponse.json({
-      error: 'Email service not configured',
-      debug: `No RESEND_API_KEY. Env has ${Object.keys(process.env).length} keys. RESEND-related: ${keys.join(',') || 'none'}`,
-    }, { status: 500 })
+    console.error('RESEND_API_KEY is not set')
+    return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
   }
 
   try {
