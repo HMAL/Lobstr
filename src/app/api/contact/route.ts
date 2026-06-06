@@ -1,7 +1,7 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
-export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 // Switch to a verified domain sender once mylobstr.com is set up in Resend.
 // Until then: from = onboarding@resend.dev, to = the Resend account email.
