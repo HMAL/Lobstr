@@ -50,12 +50,21 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://mylobstr.com",
     siteName: "Mylobstr",
+    images: [
+      {
+        url: "https://mylobstr.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Mylobstr — Web Design for Local Businesses",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mylobstr — Web Design for Local Businesses",
     description:
       "Beautiful websites for local businesses. Launch in 48 hours starting at $100.",
+    images: ["https://mylobstr.com/opengraph-image"],
   },
   robots: {
     index: true,
