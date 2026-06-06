@@ -10,7 +10,7 @@ const SUBDOMAIN_MAP: Record<string, string> = {
   fitness: '/projects/fitness',
 }
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const host = request.headers.get('host') ?? ''
   const subdomain = host.split('.')[0]
 
