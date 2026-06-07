@@ -71,7 +71,7 @@ export default function HowItWorks() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto"
         >
           {steps.map((step, i) => {
             const Icon = step.icon
@@ -79,18 +79,17 @@ export default function HowItWorks() {
               <motion.div
                 key={step.num}
                 variants={item}
-                className="relative bg-white rounded-3xl p-7 border-2 border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300"
+                className="relative bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all duration-300"
               >
-                {/* Connector line between cards on desktop */}
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 -right-3 w-6 h-px bg-gray-200 z-10" />
-                )}
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${step.color}`}>
-                  <Icon className="w-5 h-5" />
+                {/* Step number badge */}
+                <span className="inline-block text-4xl font-black text-gray-100 mb-4 leading-none">{step.num}</span>
+
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-5 ${step.color}`}>
+                  <Icon className="w-8 h-8" />
                 </div>
-                <span className="text-xs font-black text-gray-300 tracking-widest mb-2 block">{step.num}</span>
-                <h3 className="font-black text-gray-900 text-base mb-2 leading-snug">{step.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+
+                <h3 className="font-black text-gray-900 text-2xl mb-3 leading-snug">{step.title}</h3>
+                <p className="text-base text-gray-500 leading-relaxed">{step.desc}</p>
               </motion.div>
             )
           })}
@@ -101,11 +100,11 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-center mt-10"
+          className="text-center mt-12"
         >
           <a
             href="/contact"
-            className="shimmer inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white font-bold rounded-full text-sm hover:bg-gray-700 transition-all hover:scale-105"
+            className="shimmer inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white font-bold rounded-full text-base hover:bg-gray-700 transition-all hover:scale-105"
           >
             Start the process — free mockup first
           </a>

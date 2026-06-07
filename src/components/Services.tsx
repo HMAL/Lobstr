@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
-import { Check, ArrowUpRight } from 'lucide-react'
+import { Check, ArrowUpRight, RefreshCw } from 'lucide-react'
 
 const categories = [
   {
@@ -194,7 +194,7 @@ function FlipCard({ cat, index }: { cat: typeof categories[0]; index: number }) 
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
       className="cursor-pointer"
-      style={{ perspective: '1200px', height: '360px' }}
+      style={{ perspective: '1200px', height: '400px' }}
       onClick={() => setFlipped((f) => !f)}
     >
       <motion.div
@@ -218,24 +218,27 @@ function FlipCard({ cat, index }: { cat: typeof categories[0]; index: number }) 
             />
             <div className={`absolute inset-0 bg-gradient-to-t ${cat.color} opacity-40 group-hover:opacity-30 transition-opacity`} />
             <div className="absolute top-3 left-3 text-2xl">{cat.emoji}</div>
-            {/* Flip hint */}
-            <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="text-[10px] font-bold text-white bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full">
-                Tap to see features
-              </span>
-            </div>
           </div>
 
           {/* Content */}
           <div className="p-5">
             <h3 className="font-bold text-gray-900 text-base mb-1.5">{cat.title}</h3>
             <p className="text-sm text-gray-500 leading-relaxed mb-3">{cat.desc}</p>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 mb-4">
               {cat.tags.map((tag) => (
                 <span key={tag} className="text-xs font-medium px-2.5 py-1 bg-gray-50 text-gray-600 rounded-lg border border-gray-100">
                   {tag}
                 </span>
               ))}
+            </div>
+
+            {/* Permanent flip CTA */}
+            <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+              <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">See what&apos;s included</span>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-xs font-bold rounded-full group-hover:bg-gray-700 transition-colors">
+                <RefreshCw className="w-3 h-3" />
+                Flip
+              </div>
             </div>
           </div>
         </div>
@@ -336,18 +339,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Bottom note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-sm text-gray-400 mt-10"
-        >
-          Don't see your business type?{' '}
-          <a href="/contact" className="text-blue-600 font-semibold hover:underline">
-            Ask us — we've built for dozens of industries.
-          </a>
-        </motion.p>
       </div>
     </section>
   )

@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Star, Megaphone } from 'lucide-react'
+import { ArrowRight, Megaphone } from 'lucide-react'
 
 const perks = [
   {
     emoji: '💰',
-    title: 'Founding price. Locked forever.',
-    desc: "Whatever you pay as a founding client is what you pay forever. When we raise prices as we grow, you won't see it.",
+    title: 'Real results, not promises.',
+    desc: "We show you a free mockup of your actual site before you pay a cent. You see exactly what you're getting — no guesswork, no surprises.",
   },
   {
     emoji: '🎨',
@@ -17,21 +17,13 @@ const perks = [
   {
     emoji: '🔧',
     title: 'You shape the product.',
-    desc: "Founding clients get to tell us what's missing, what's confusing, and what they wish existed. We actually build it.",
+    desc: "Early clients get to tell us what's missing, what's confusing, and what they wish existed. We actually build it.",
   },
   {
     emoji: '📣',
     title: "You become our story.",
     desc: "We'll feature your business prominently. Your real results become the proof that helps the next Albany business say yes.",
   },
-]
-
-const spots = [
-  { taken: true, label: 'Spot 1 — Taken' },
-  { taken: true, label: 'Spot 2 — Taken' },
-  { taken: false, label: 'Spot 3 — Open' },
-  { taken: false, label: 'Spot 4 — Open' },
-  { taken: false, label: 'Spot 5 — Open' },
 ]
 
 export default function Testimonials() {
@@ -48,19 +40,19 @@ export default function Testimonials() {
           className="text-center mb-4"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">
-            Founding Client Program
+            Work With Us
           </span>
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
             We're just getting started.
             <br />
             <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              Be one of the first 5.
+              Be one of our first.
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             We won't pretend we have 50 happy clients yet. We don't.
             What we have is sharp skills, a genuine love for Albany businesses,
-            and 5 spots for people who want to get in early — and get a lot more for it.
+            and a real deal for the people who want to get in early — and get a lot more for it.
           </p>
         </motion.div>
 
@@ -78,29 +70,6 @@ export default function Testimonials() {
             Now we want real Albany businesses to work with — and we're willing to earn your trust
             by overdelivering on the first few. That's the deal.
           </p>
-        </motion.div>
-
-        {/* Spots tracker */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex justify-center gap-3 mb-12"
-        >
-          {spots.map((spot) => (
-            <div
-              key={spot.label}
-              className={`flex flex-col items-center gap-1.5 px-4 py-3 rounded-xl border text-xs font-semibold transition-all ${
-                spot.taken
-                  ? 'border-gray-700 bg-gray-800 text-gray-500'
-                  : 'border-blue-500/40 bg-blue-500/10 text-blue-300'
-              }`}
-            >
-              <span className={`w-2.5 h-2.5 rounded-full ${spot.taken ? 'bg-gray-600' : 'bg-green-400 animate-pulse'}`} />
-              {spot.label}
-            </div>
-          ))}
         </motion.div>
 
         {/* Perks grid */}
@@ -123,28 +92,6 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* What founding clients will say — aspirational but honest */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="rounded-2xl border border-white/10 p-6 mb-10 text-center"
-        >
-          <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">
-            What we're aiming for you to say — genuinely, not fabricated
-          </p>
-          <div className="flex justify-center gap-0.5 mb-3">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-            ))}
-          </div>
-          <p className="text-lg text-white font-medium italic max-w-lg mx-auto leading-relaxed">
-            "I was one of their first clients. Best business decision I made this year."
-          </p>
-          <p className="text-sm text-gray-500 mt-2">— That could be you. For real this time.</p>
-        </motion.div>
-
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -157,7 +104,7 @@ export default function Testimonials() {
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl text-sm hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
           >
-            Claim a Founding Spot <ArrowRight className="w-4 h-4" />
+            Get a Free Mockup <ArrowRight className="w-4 h-4" />
           </a>
           <p className="text-xs text-gray-500 mt-3">
             Free mockup first. No credit card. No obligation. Just an honest conversation.

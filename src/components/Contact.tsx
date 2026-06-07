@@ -175,22 +175,14 @@ export default function Contact() {
 
                   <div className="space-y-1.5">
                     <label className="text-sm font-semibold text-gray-700">Type of Business *</label>
-                    <select
+                    <input
+                      type="text"
                       required
+                      placeholder="e.g. Restaurant, Barbershop, Plumber..."
                       value={form.type}
                       onChange={(e) => setForm({ ...form, type: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50"
-                    >
-                      <option value="">Select your business type...</option>
-                      <option value="restaurant">🍽️ Restaurant / Café / Food</option>
-                      <option value="salon">✂️ Salon / Barbershop / Spa</option>
-                      <option value="contractor">🔧 Contractor / Home Services</option>
-                      <option value="pet">🐾 Pet Care / Vet</option>
-                      <option value="fitness">💪 Gym / Fitness / Wellness</option>
-                      <option value="education">🎓 Tutor / School / Education</option>
-                      <option value="retail">🛍️ Retail / Shop</option>
-                      <option value="other">🏪 Other Local Business</option>
-                    </select>
+                    />
                   </div>
 
                   <div className="space-y-1.5">

@@ -26,7 +26,7 @@ export default function PricingPage() {
           </span>
         </h1>
         <p className="text-gray-400 max-w-xl mx-auto text-lg">
-          Three phases. No setup fees. No surprises. Your entire first year online costs less than a single agency meeting.
+          A custom site live in <span className="text-white font-semibold">48 hours</span>. No setup fees, no contracts — your entire first year online costs less than a single agency meeting.
         </p>
       </section>
 

@@ -186,21 +186,8 @@ function WorkCard({ s, isLive }: { s: (typeof liveWork)[0] | (typeof demoWork)[0
 export default function OurWorkGrid() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-      {/* Live Work */}
-      <SectionLabel label="Live Work" live />
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
-      >
-        {liveWork.map((s) => (
-          <WorkCard key={s.slug} s={s} isLive />
-        ))}
-      </motion.div>
-
       {/* Demo Work */}
-      <SectionLabel label="Demo Work" />
+      <SectionLabel label="Demo Builds" />
       <motion.div
         variants={container}
         initial="hidden"

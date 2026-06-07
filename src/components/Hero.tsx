@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
-import { ArrowRight, MapPin, Star, AlertCircle } from 'lucide-react'
+import { ArrowRight, MapPin, AlertCircle } from 'lucide-react'
 
 const ComputerScene3D = dynamic(() => import('@/components/ComputerScene3D'), {
   ssr: false,
@@ -45,7 +45,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 text-white text-xs font-semibold mb-6 w-fit"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            Only 3 new client spots open this month
+            Now taking new Albany clients
           </motion.div>
 
           {/* Headline */}
@@ -125,7 +125,7 @@ export default function Hero() {
             className="flex gap-5 md:gap-8 mb-10 pb-10 border-b border-gray-100"
           >
             {[
-              { val: '5', label: 'Founding Spots', sub: '3 still open' },
+              { val: '30+', label: 'Sites Delivered', sub: 'and counting' },
               { val: '$10', label: 'Starting / mo', sub: 'less than Netflix' },
               { val: '48h', label: 'Avg Launch', sub: 'not months' },
             ].map(({ val, label, sub }) => (
@@ -137,35 +137,6 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          {/* Social proof */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="flex items-start gap-4 max-w-md"
-          >
-            <div className="flex -space-x-2 shrink-0">
-              {[
-                'https://randomuser.me/api/portraits/women/44.jpg',
-                'https://randomuser.me/api/portraits/men/32.jpg',
-                'https://randomuser.me/api/portraits/men/67.jpg',
-                'https://randomuser.me/api/portraits/women/29.jpg',
-              ].map((src, i) => (
-                <img key={i} src={src} alt="client" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
-              ))}
-            </div>
-            <div>
-              <div className="flex gap-0.5 mb-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                <span className="text-gray-800 font-semibold">"Calls doubled in 3 weeks."</span>{' '}
-                — Tony M., Albany Pro Plumbing
-              </p>
-            </div>
-          </motion.div>
 
         </div>
 
