@@ -41,7 +41,7 @@ const categories: Category[] = [
       },
       {
         q: 'Do you offer refunds?',
-        a: 'Yes — 30-day satisfaction guarantee. If you\'re not happy within the first 30 days, we refund your first payment in full, no questions asked.',
+        a: 'Yes — 14-day satisfaction guarantee. If you\'re not happy within the first 14 days, we refund your first payment in full, no questions asked.',
       },
     ],
   },
@@ -201,7 +201,7 @@ const categories: Category[] = [
       },
       {
         q: 'Do you offer any kind of guarantee?',
-        a: '30-day money-back guarantee, no questions asked. And ongoing, if your site ever has downtime that\'s our fault for more than 4 hours, we credit that month\'s fee automatically.',
+        a: '14-day money-back guarantee, no questions asked. And ongoing, if your site ever has downtime that\'s our fault for more than 4 hours, we credit that month\'s fee automatically.',
       },
     ],
   },

@@ -4,8 +4,10 @@ import Footer from '@/components/Footer'
 import Pricing from '@/components/Pricing'
 
 export const metadata: Metadata = {
-  title: 'Pricing — Simple, Transparent Website Pricing',
-  description: 'Build your website for $100, then just $10/month. No contracts, no surprises. See exactly what you pay and when.',
+  title: 'Affordable Website Design Pricing Albany NY | Plans from $75 | Mylobstr',
+  description: 'Transparent website design pricing for Albany NY small businesses. Starter $75, Growing Business $150, Scale $250 — then low monthly hosting. No contracts, no surprises.',
+  keywords: ['affordable website design Albany NY', 'website design cost small business', 'how much does a website cost', 'website design packages Albany', 'small business website pricing'],
+  alternates: { canonical: 'https://mylobstr.com/pricing' },
 }
 
 export default function PricingPage() {

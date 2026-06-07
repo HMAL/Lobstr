@@ -15,7 +15,7 @@ const included = [
   'Online booking widget',
   'SSL + hosting included',
   'Local SEO setup',
-  '30-day money-back guarantee',
+  '14-day money-back guarantee',
 ]
 
 export default function PricingTeaser() {
@@ -100,7 +100,7 @@ export default function PricingTeaser() {
               >
                 See full pricing breakdown <ArrowRight className="w-4 h-4" />
               </a>
-              <p className="text-xs text-gray-400">🔒 30-day guarantee · No contracts · Cancel anytime</p>
+              <p className="text-xs text-gray-400">🔒 14-day guarantee · No contracts · Cancel anytime</p>
             </div>
           </motion.div>
         </div>

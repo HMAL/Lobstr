@@ -84,7 +84,7 @@ export default function TermsPage() {
 
         <h2>6. Satisfaction Guarantee & Refunds</h2>
         <p>
-          We offer a 30-day satisfaction guarantee on all new projects. If you are not satisfied with your website within the first 30 days of launch, contact us and we will issue a full refund of your first month's payment. See our <a href="/refund" className="text-blue-600">Refund Policy</a> for full details.
+          We offer a 14-day satisfaction guarantee on all new projects. If you are not satisfied with your website within the first 14 days of launch, contact us and we will issue a full refund of your first month's payment. See our <a href="/refund" className="text-blue-600">Refund Policy</a> for full details.
         </p>
 
         <h2>7. Uptime & Service Level</h2>

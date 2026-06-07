@@ -4,8 +4,10 @@ import Footer from '@/components/Footer'
 import Contact from '@/components/Contact'
 
 export const metadata: Metadata = {
-  title: 'Contact — Get a Free Website Proposal',
-  description: 'Tell us about your Albany business and get a free custom proposal within 24 hours. No pressure, no sales pitch.',
+  title: 'Contact a Web Designer in Albany NY | Free Quote | Mylobstr',
+  description: 'Get a free website design quote from Mylobstr — Albany NY\'s small business web designer. Response within 24 hours. Serving Albany, Troy, Schenectady, and the Capital Region.',
+  keywords: ['web designer Albany NY contact', 'free website quote Albany', 'hire web developer Albany NY', 'website design quote near me'],
+  alternates: { canonical: 'https://mylobstr.com/contact' },
 }
 
 export default function ContactPage() {

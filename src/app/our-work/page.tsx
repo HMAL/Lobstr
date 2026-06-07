@@ -5,8 +5,10 @@ import LiveSiteSlider from './LiveSiteSlider'
 import OurWorkGrid from './OurWorkGrid'
 
 export const metadata: Metadata = {
-  title: 'Our Work — Live Sites & Demo Portfolio',
-  description: "Live sites we've shipped and demo builds across Albany's most common business types. See exactly what we're capable of.",
+  title: 'Website Design Portfolio Albany NY | Web Design Examples | Mylobstr',
+  description: "See Mylobstr's website design work for Albany NY small businesses — live sites and demos for restaurants, salons, barbershops, contractors, gyms, and more.",
+  keywords: ['website design portfolio Albany NY', 'web design examples Albany', 'small business website examples', 'website designer portfolio New York'],
+  alternates: { canonical: 'https://mylobstr.com/our-work' },
 }
 
 export default function OurWorkPage() {

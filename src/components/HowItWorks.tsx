@@ -103,10 +103,10 @@ export default function HowItWorks() {
           className="text-center mt-12"
         >
           <a
-            href="/contact"
+            href="/pricing"
             className="shimmer inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white font-bold rounded-full text-base hover:bg-gray-700 transition-all hover:scale-105"
           >
-            Start the process — free mockup first
+            See plans &amp; get a quote
           </a>
         </motion.div>
       </div>

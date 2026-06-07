@@ -101,10 +101,10 @@ export default function Testimonials() {
           className="text-center"
         >
           <a
-            href="/contact"
+            href="/pricing"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl text-sm hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
           >
-            Get a Free Mockup <ArrowRight className="w-4 h-4" />
+            See plans &amp; get a quote <ArrowRight className="w-4 h-4" />
           </a>
           <p className="text-xs text-gray-500 mt-3">
             Free mockup first. No credit card. No obligation. Just an honest conversation.

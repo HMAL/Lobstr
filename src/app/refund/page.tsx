@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Refund Policy',
-  description: "Mylobstr's 30-day satisfaction guarantee and refund process.",
+  description: "Mylobstr's 14-day satisfaction guarantee and refund process.",
 }
 
 export default function RefundPage() {
@@ -25,22 +25,22 @@ export default function RefundPage() {
           We stand behind our work. If you're not happy, we make it right — or we refund you.
         </p>
 
-        <h2>30-Day Satisfaction Guarantee</h2>
+        <h2>14-Day Satisfaction Guarantee</h2>
         <p>
-          Every new website project comes with a 30-day satisfaction guarantee. If your website launches and you are not satisfied with the result within the first 30 days, contact us and we will issue a full refund of your first month's payment ($100).
+          Every new website project comes with a 14-day satisfaction guarantee. If your website launches and you are not satisfied with the result within the first 14 days, contact us and we will issue a full refund of your first month's payment ($100).
         </p>
         <p>No hoops. No lengthy back-and-forth. We'll ask what went wrong (so we can improve), process your refund, and part on good terms.</p>
 
         <h2>What's Eligible for a Refund</h2>
         <ul>
-          <li>The initial build fee ($100) within 30 days of your site going live</li>
+          <li>The initial build fee ($100) within 14 days of your site going live</li>
           <li>Monthly subscription fees charged in error</li>
           <li>Duplicate charges</li>
         </ul>
 
         <h2>What's Not Eligible</h2>
         <ul>
-          <li>Refund requests made after 30 days of the site launch date</li>
+          <li>Refund requests made after 14 days of the site launch date</li>
           <li>Monthly fees for services already rendered (hosting, maintenance, support)</li>
           <li>Domain registration fees (paid to the domain registrar, not to us)</li>
           <li>Third-party service fees (Stripe processing fees, etc.)</li>

@@ -2,7 +2,8 @@
 
 import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const links = [
   { label: 'Our Work', href: '/our-work' },
@@ -64,14 +65,22 @@ export default function Navbar() {
         <div className="flex items-center justify-between py-4">
 
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 group shrink-0 bg-gray-900 border-2 border-gray-900 rounded-full px-3 py-1.5 hover:bg-gray-800 transition-colors">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
-              <Globe className="w-[14px] h-[14px] text-white" />
-            </div>
+          <a
+            href="/"
+            className="group shrink-0 flex items-center gap-2.5 bg-white/90 backdrop-blur-sm rounded-2xl px-3 py-1.5 shadow-sm border border-gray-100 hover:shadow-md transition-all"
+          >
+            <Image
+              src="/logo-icon.png"
+              alt="Mylobstr"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+              priority
+            />
             <div className="leading-none">
-              <span className="text-[1rem] font-black tracking-tight text-white">mylobstr</span>
-              <span className="text-[1rem] font-black tracking-tight text-blue-400">.</span>
-              <span className="text-[1rem] font-black tracking-tight text-white">com</span>
+              <span className="text-[1rem] font-black tracking-tight text-gray-900">mylobstr</span>
+              <span className="text-[1rem] font-black tracking-tight text-blue-600">.</span>
+              <span className="text-[1rem] font-black tracking-tight text-gray-900">com</span>
             </div>
           </a>
 
@@ -89,7 +98,7 @@ export default function Navbar() {
           {/* CTA — desktop */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
-              href="/contact"
+              href="/pricing"
               className="inline-flex items-center px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 text-sm font-semibold rounded-full transition-all hover:scale-105 shadow-sm border border-gray-200"
             >
               Get a Free Quote
@@ -128,7 +137,7 @@ export default function Navbar() {
               ))}
               <div className="mt-2 pt-2 border-t border-gray-100">
                 <a
-                  href="/contact"
+                  href="/pricing"
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-center px-4 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl"
                 >

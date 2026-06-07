@@ -25,47 +25,64 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mylobstr.com"),
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+    shortcut: '/favicon.png',
+  },
   title: {
-    default: "MyLobstr - Albany's Local Designer for Albany Metro",
-    template: "%s | MyLobstr",
+    default: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
+    template: "%s | Mylobstr",
   },
   description:
-    "MyLobstr builds beautiful, high-converting websites for local businesses — restaurants, pet clinics, salons, barbershops, plumbers, and gyms. Launch in 48 hours starting at $100.",
+    "Mylobstr builds custom websites for small businesses in Albany, NY — starting at $75. Professional website design, web development, SEO, and hosting. Launch in 48 hours. Serving Albany, Troy, Schenectady, and the Capital Region.",
   keywords: [
+    "website design Albany NY",
+    "web designer Albany NY",
+    "small business website design",
+    "website developer Albany NY",
+    "affordable website design Albany",
+    "custom website design",
+    "web design company Albany NY",
+    "website designer near me",
+    "professional web design Albany",
+    "small business web developer",
     "local business website design",
-    "small business website",
-    "restaurant website design",
-    "pet clinic website",
-    "salon website design",
-    "barbershop website",
-    "plumber website",
-    "gym website design",
-    "web design agency Albany NY",
-    "affordable web design",
-    "website with online booking",
+    "website design Troy NY",
+    "website design Schenectady NY",
+    "Capital Region web design",
+    "cheap website design small business",
+    "restaurant website design Albany",
+    "salon website design Albany",
+    "contractor website design Albany",
+    "website with SEO Albany NY",
+    "affordable web design New York",
   ],
   openGraph: {
-    title: "MyLobstr - Albany's Local Designer for Albany Metro",
+    title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
     description:
-      "Beautiful, animated websites for local businesses in Albany, NY. Pet clinics, restaurants, salons, barbershops, plumbers, and gyms. Launch in 48 hours starting at $100.",
+      "Custom websites for Albany NY small businesses — restaurants, salons, barbershops, contractors, gyms. Starting at $75. Launch in 48 hours.",
     type: "website",
     url: "https://mylobstr.com",
-    siteName: "MyLobstr",
+    siteName: "Mylobstr",
     images: [
       {
         url: "https://mylobstr.com/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "MyLobstr - Albany's Local Designer for Albany Metro",
+        alt: "Mylobstr — Website Design for Albany NY Small Businesses",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MyLobstr - Albany's Local Designer for Albany Metro",
+    title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
     description:
-      "Beautiful websites for Albany local businesses. Launch in 48 hours starting at $100.",
+      "Custom websites for Albany NY small businesses starting at $75. Launch in 48 hours.",
     images: ["https://mylobstr.com/opengraph-image"],
+  },
+  alternates: {
+    canonical: "https://mylobstr.com",
   },
   robots: {
     index: true,
@@ -95,6 +112,89 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <IdleModal />
         {children}
+
+        {/* ── Structured Data ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Mylobstr",
+              "alternateName": "MyLobstr Web Design",
+              "description": "Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $75.",
+              "url": "https://mylobstr.com",
+              "email": "info@mylobstr.com",
+              "logo": "https://mylobstr.com/logo.png",
+              "image": "https://mylobstr.com/opengraph-image",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Albany",
+                "addressRegion": "NY",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "42.6526",
+                "longitude": "-73.7562"
+              },
+              "areaServed": [
+                { "@type": "City", "name": "Albany, NY" },
+                { "@type": "City", "name": "Troy, NY" },
+                { "@type": "City", "name": "Schenectady, NY" },
+                { "@type": "City", "name": "Saratoga Springs, NY" },
+                { "@type": "AdministrativeArea", "name": "Capital Region, NY" }
+              ],
+              "serviceType": [
+                "Website Design",
+                "Web Development",
+                "Small Business Website",
+                "SEO Services",
+                "Web Hosting",
+                "Logo Design"
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Website Design Packages",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": { "@type": "Service", "name": "Starter Website", "description": "5-page custom website for new businesses" },
+                    "price": "75", "priceCurrency": "USD"
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": { "@type": "Service", "name": "Growing Business Website", "description": "10-page custom website with logo, SEO, and booking" },
+                    "price": "150", "priceCurrency": "USD"
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": { "@type": "Service", "name": "Scale Website", "description": "20-page custom website with admin panel and multi-location support" },
+                    "price": "250", "priceCurrency": "USD"
+                  }
+                ]
+              },
+              "priceRange": "$",
+              "openingHours": "Mo-Su 00:00-23:59",
+              "sameAs": [
+                "https://mylobstr.com"
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Mylobstr",
+              "url": "https://mylobstr.com",
+              "description": "Website design and web development for small businesses in Albany, NY"
+            })
+          }}
+        />
+
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"

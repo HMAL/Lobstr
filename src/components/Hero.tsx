@@ -94,10 +94,10 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-3 mb-10"
           >
             <a
-              href="/contact"
+              href="/pricing"
               className="shimmer inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gray-900 text-white font-bold rounded-xl text-sm hover:bg-gray-700 transition-all hover:scale-105 shadow-lg shadow-black/10"
             >
-              Get a Free Mockup <ArrowRight className="w-4 h-4" />
+              Get a Free Quote <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="/our-work"

@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Globe, Heart, Mail, MapPin } from 'lucide-react'
+import { Heart, Mail, MapPin } from 'lucide-react'
+import Image from 'next/image'
 
 const links: Record<string, { label: string; href: string; newTab?: boolean }[]> = {
   'Our Work': [
@@ -49,7 +50,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-wrap gap-3 justify-center shrink-0">
               <a
-                href="/contact"
+                href="/pricing"
                 className="px-6 py-3 bg-white text-gray-900 font-bold rounded-xl text-sm hover:bg-gray-100 transition-colors hover:scale-105 transform"
               >
                 Get a Free Quote →
@@ -71,9 +72,15 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1 space-y-4">
-            <a href="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center">
-                <Globe className="w-[18px] h-[18px] text-white" />
+            <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden shrink-0">
+                <Image
+                  src="/logo-icon.png"
+                  alt="Mylobstr"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="font-black text-base text-white">
                 mylobstr<span className="text-blue-400">.</span>com

@@ -101,7 +101,7 @@ export default function About() {
 
             {/* Floating card */}
             <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
-              <p className="text-2xl font-black text-gray-900">50+</p>
+              <p className="text-2xl font-black text-gray-900">Making</p>
               <p className="text-xs text-gray-500 font-medium">Albany businesses<br />with a web presence</p>
             </div>
           </motion.div>
