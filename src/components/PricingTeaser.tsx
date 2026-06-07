@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Check } from 'lucide-react'
 
 const phases = [
-  { val: '$100', label: 'Month 1', sub: 'Full site designed & launched' },
-  { val: '$40', label: 'Months 2–3', sub: 'Per month — tuning & monitoring' },
+  { val: '$75', label: 'Month 1', sub: 'Full site designed & launched' },
+  { val: '$30', label: 'Months 2–3', sub: 'Per month — tuning & monitoring' },
   { val: '$10', label: 'Month 4 onward', sub: 'Per month, forever. No contracts.' },
 ]
 
@@ -40,7 +40,7 @@ export default function PricingTeaser() {
             </span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            A freelancer charges $1,500+ for design alone. Your entire first year with us costs less than $300.
+            A freelancer charges $1,500+ for design alone. Your entire first year with us starts at $225.
           </p>
         </motion.div>
 
@@ -66,10 +66,10 @@ export default function PricingTeaser() {
               </div>
             ))}
             <div className="flex items-center justify-between p-4 bg-gray-900 rounded-2xl text-white">
-              <span className="text-sm text-gray-400">Full year 1 total</span>
+              <span className="text-sm text-gray-400">Starter — year 1 total</span>
               <div className="flex items-center gap-3">
                 <span className="text-sm text-gray-500 line-through">$5,000+ agency</span>
-                <span className="text-2xl font-black">~$270</span>
+                <span className="text-2xl font-black">$225</span>
               </div>
             </div>
           </motion.div>
