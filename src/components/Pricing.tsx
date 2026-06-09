@@ -17,7 +17,7 @@ const tiers = [
     name: 'Starter',
     tagline: 'New businesses',
     price: 100,
-    phase2: 20,
+    phase2: 25,
     monthly: 0,
     hasPhase3: false,
     rushAddon: true,
@@ -49,7 +49,7 @@ const tiers = [
     name: 'Growing Business',
     tagline: 'Growing businesses',
     price: 150,
-    phase2: 25,
+    phase2: 30,
     monthly: 0,
     hasPhase3: false,
     rushAddon: true,
@@ -85,8 +85,8 @@ const tiers = [
     name: 'Scale',
     tagline: 'Multi-level businesses',
     price: 250,
-    phase2: 30,
-    monthly: 20,
+    phase2: 50,
+    monthly: 50,
     hasPhase3: true,
     rushAddon: false,
     visits: '50,000',
@@ -217,7 +217,7 @@ const phases = [
       'Cancel anytime — no contracts',
       'Less than a Netflix subscription',
     ],
-    sub: '$20/month. Forever. No surprises.',
+    sub: '$50/month. Forever. No surprises.',
   },
 ]
 
@@ -338,12 +338,12 @@ const comparisonSections: Array<{ category: string; rows: Array<{ label: string;
 ]
 
 export default function Pricing() {
-  const [activePhase, setActivePhase] = useState(0)
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const [activeTier, setActiveTier] = useState(1)
   const [rushDelivery, setRushDelivery] = useState(false)
 
   const selectedTier = tiers[activeTier]
+  const journeyPhases = phases.filter((_, index) => index < 2 || selectedTier.hasPhase3)
   const tierYearTotal = selectedTier.hasPhase3
     ? selectedTier.price + selectedTier.phase2 * 2 + selectedTier.monthly * 9
     : selectedTier.price + selectedTier.phase2 * 11
@@ -514,14 +514,12 @@ export default function Pricing() {
                 </span>
               </div>
               <div className="divide-y divide-gray-100">
-                {phases.filter((_, i) => i < 2 || selectedTier.hasPhase3).map((phase, i) => {
+                {journeyPhases.map((phase) => {
                   const Icon = phase.icon
-                  const isActive = activePhase === i
                   return (
-                    <button
+                    <div
                       key={phase.num}
-                      onClick={() => setActivePhase(i)}
-                      className={cn('w-full px-4 py-4 text-left transition-all', isActive ? phase.bgColor : 'bg-white')}
+                      className={cn('w-full px-4 py-4 text-left', phase.bgColor)}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -544,20 +542,18 @@ export default function Pricing() {
                           </p>
                         </div>
                       </div>
-                      {isActive && (
-                        <div className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
-                          {phase.bullets.map((b) => (
-                            <div key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
-                              <div className={cn('w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-gradient-to-br text-white', phase.color)}>
-                                <Check className="w-2 h-2" />
-                              </div>
-                              {b}
+                      <div className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
+                        {phase.bullets.map((b) => (
+                          <div key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
+                            <div className={cn('w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-gradient-to-br text-white', phase.color)}>
+                              <Check className="w-2 h-2" />
                             </div>
-                          ))}
-                          <p className="text-[11px] text-gray-400 italic pt-1.5 border-t border-gray-100">{phase.sub}</p>
-                        </div>
-                      )}
-                    </button>
+                            {b}
+                          </div>
+                        ))}
+                        <p className="text-[11px] text-gray-400 italic pt-1.5 border-t border-gray-100">{phase.sub}</p>
+                      </div>
+                    </div>
                   )
                 })}
               </div>
@@ -643,20 +639,18 @@ export default function Pricing() {
                   </span>
                 </div>
                 <div className={cn('grid divide-x divide-gray-100', selectedTier.hasPhase3 ? 'grid-cols-3' : 'grid-cols-2')}>
-                  {phases.filter((_, i) => i < 2 || selectedTier.hasPhase3).map((phase, i) => {
+                  {journeyPhases.map((phase) => {
                     const Icon = phase.icon
-                    const isActive = activePhase === i
                     return (
-                      <button
+                      <div
                         key={phase.num}
-                        onClick={() => setActivePhase(i)}
-                        className={cn('p-5 text-left w-full transition-all duration-200', isActive ? phase.bgColor : 'bg-white hover:bg-gray-50')}
+                        className={cn('p-5 text-left w-full h-full', phase.bgColor)}
                       >
                         <div className="flex items-center gap-2 mb-2">
                           <div className={cn('w-7 h-7 rounded-lg flex items-center justify-center bg-gradient-to-br text-white shrink-0', phase.color)}>
                             <Icon className="w-3.5 h-3.5" />
                           </div>
-                          <span className={cn('text-xs font-bold uppercase tracking-wider', isActive ? phase.textColor : 'text-gray-400')}>
+                          <span className={cn('text-xs font-bold uppercase tracking-wider', phase.textColor)}>
                             Phase {phase.num} · {phase.num === 2 && !selectedTier.hasPhase3 ? 'Month 2 onward' : phase.duration}
                           </span>
                         </div>
@@ -671,20 +665,18 @@ export default function Pricing() {
                         </div>
                         <p className="font-bold text-gray-900 text-sm mb-0.5">{phase.label}</p>
                         <p className="text-xs text-gray-500">{phase.tagline}</p>
-                        {isActive && (
-                          <div className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
-                            {phase.bullets.map((b) => (
-                              <div key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
-                                <div className={cn('w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-gradient-to-br text-white', phase.color)}>
-                                  <Check className="w-2 h-2" />
-                                </div>
-                                {b}
+                        <div className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
+                          {phase.bullets.map((b) => (
+                            <div key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
+                              <div className={cn('w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-gradient-to-br text-white', phase.color)}>
+                                <Check className="w-2 h-2" />
                               </div>
-                            ))}
-                            <p className="text-[11px] text-gray-400 italic pt-1.5 border-t border-gray-100">{phase.sub}</p>
-                          </div>
-                        )}
-                      </button>
+                              {b}
+                            </div>
+                          ))}
+                          <p className="text-[11px] text-gray-400 italic pt-1.5 border-t border-gray-100">{phase.sub}</p>
+                        </div>
+                      </div>
                     )
                   })}
                 </div>
