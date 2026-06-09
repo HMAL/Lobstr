@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Mylobstr",
   },
   description:
-    "Mylobstr builds custom websites for small businesses in Albany, NY — starting at $75. Professional website design, web development, SEO, and hosting. Launch in 48 hours. Serving Albany, Troy, Schenectady, and the Capital Region.",
+    "Mylobstr builds custom websites for small businesses in Albany, NY — starting at $100. Professional website design, web development, SEO, and hosting. Live in 7 days. Serving Albany, Troy, Schenectady, and the Capital Region.",
   keywords: [
     "website design Albany NY",
     "web designer Albany NY",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
     description:
-      "Custom websites for Albany NY small businesses — restaurants, salons, barbershops, contractors, gyms. Starting at $75. Launch in 48 hours.",
+      "Custom websites for Albany NY small businesses — restaurants, salons, barbershops, contractors, gyms. Starting at $100. Live in 7 days.",
     type: "website",
     url: "https://mylobstr.com",
     siteName: "Mylobstr",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
     description:
-      "Custom websites for Albany NY small businesses starting at $75. Launch in 48 hours.",
+      "Custom websites for Albany NY small businesses starting at $100. Live in 7 days.",
     images: ["https://mylobstr.com/opengraph-image"],
   },
   alternates: {
@@ -160,7 +160,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     "itemOffered": { "@type": "Service", "name": "Starter Website", "description": "5-page custom website for new businesses" },
-                    "price": "75", "priceCurrency": "USD"
+                    "price": "100", "priceCurrency": "USD"
                   },
                   {
                     "@type": "Offer",

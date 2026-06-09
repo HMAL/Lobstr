@@ -94,7 +94,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-3 mb-10"
           >
             <a
-              href="/pricing"
+              href="/contact"
               className="shimmer inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gray-900 text-white font-bold rounded-xl text-sm hover:bg-gray-700 transition-all hover:scale-105 shadow-lg shadow-black/10"
             >
               Get a Free Quote <ArrowRight className="w-4 h-4" />
@@ -126,8 +126,8 @@ export default function Hero() {
           >
             {[
               { val: '30+', label: 'Sites Delivered', sub: 'and counting' },
-              { val: '$10', label: 'Starting / mo', sub: 'less than Netflix' },
-              { val: '48h', label: 'Avg Launch', sub: 'not months' },
+              { val: '$20', label: 'Starting / mo', sub: 'less than Netflix' },
+              { val: '7 days', label: 'Avg Launch', sub: 'not months' },
             ].map(({ val, label, sub }) => (
               <div key={label}>
                 <div className="text-2xl font-black text-gray-900">{val}</div>

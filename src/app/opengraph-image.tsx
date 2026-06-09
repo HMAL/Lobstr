@@ -104,7 +104,7 @@ export default function OGImage() {
             lineHeight: '1.5',
           }}
         >
-          Launch in 48 hours · Starting at $100
+          Live in 7 days · Starting at $100
         </div>
 
         {/* Bottom badges */}

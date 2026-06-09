@@ -15,7 +15,7 @@ const steps = [
     icon: Hammer,
     num: '02',
     title: 'We design & build',
-    desc: 'Your custom site is built from scratch — no templates. You get a private preview link within 48 hours of us starting.',
+    desc: 'Your custom site is built from scratch — no templates. You get a private preview link within 7 days of us starting.',
     color: 'bg-blue-100 text-blue-600',
   },
   {

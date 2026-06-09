@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import Pricing from '@/components/Pricing'
 
 export const metadata: Metadata = {
-  title: 'Affordable Website Design Pricing Albany NY | Plans from $75 | Mylobstr',
-  description: 'Transparent website design pricing for Albany NY small businesses. Starter $75, Growing Business $150, Scale $250 — then low monthly hosting. No contracts, no surprises.',
+  title: 'Affordable Website Design Pricing Albany NY | Plans from $100 | Mylobstr',
+  description: 'Transparent website design pricing for Albany NY small businesses. Starter $100, Growing Business $150, Scale $250 — then low monthly rate. No contracts, no surprises.',
   keywords: ['affordable website design Albany NY', 'website design cost small business', 'how much does a website cost', 'website design packages Albany', 'small business website pricing'],
   alternates: { canonical: 'https://mylobstr.com/pricing' },
 }
@@ -28,7 +28,7 @@ export default function PricingPage() {
           </span>
         </h1>
         <p className="text-gray-400 max-w-xl mx-auto text-lg">
-          A custom site live in <span className="text-white font-semibold">48 hours</span>. No setup fees, no contracts — your entire first year online costs less than a single agency meeting.
+          A custom site live in <span className="text-white font-semibold">7 days</span>. No setup fees, no contracts — your entire first year online costs less than a single agency meeting.
         </p>
       </section>
 

@@ -98,7 +98,7 @@ export default function Navbar() {
           {/* CTA — desktop */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
-              href="/pricing"
+              href="/contact"
               className="inline-flex items-center px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 text-sm font-semibold rounded-full transition-all hover:scale-105 shadow-sm border border-gray-200"
             >
               Get a Free Quote
@@ -137,7 +137,7 @@ export default function Navbar() {
               ))}
               <div className="mt-2 pt-2 border-t border-gray-100">
                 <a
-                  href="/pricing"
+                  href="/contact"
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-center px-4 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl"
                 >

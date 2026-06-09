@@ -16,12 +16,14 @@ const tiers = [
   {
     name: 'Starter',
     tagline: 'New businesses',
-    price: 75,
-    phase2: 30,
-    monthly: 10,
+    price: 100,
+    phase2: 20,
+    monthly: 0,
+    hasPhase3: false,
+    rushAddon: true,
     visits: '10,000',
     pages: 5,
-    delivery: '5 business days',
+    delivery: '7 business days',
     desc: "Your first professional presence online — everything a new business needs, nothing it doesn't.",
     badge: null as string | null,
     badgeColor: '',
@@ -47,11 +49,13 @@ const tiers = [
     name: 'Growing Business',
     tagline: 'Growing businesses',
     price: 150,
-    phase2: 40,
-    monthly: 15,
+    phase2: 25,
+    monthly: 0,
+    hasPhase3: false,
+    rushAddon: true,
     visits: '30,000',
     pages: 10,
-    delivery: '48 hours',
+    delivery: '7 business days',
     desc: 'The full package for an existing business ready to dominate Google Maps, local search, and convert more leads.',
     badge: 'Most Popular' as string | null,
     badgeColor: 'bg-blue-600',
@@ -81,11 +85,13 @@ const tiers = [
     name: 'Scale',
     tagline: 'Multi-level businesses',
     price: 250,
-    phase2: 50,
+    phase2: 30,
     monthly: 20,
+    hasPhase3: true,
+    rushAddon: false,
     visits: '50,000',
     pages: 20,
-    delivery: '5–7 business days',
+    delivery: '7 business days',
     desc: 'A full business platform — multiple locations, departments, and an admin panel you control.',
     badge: 'Enterprise' as string | null,
     badgeColor: 'bg-violet-600',
@@ -117,13 +123,13 @@ const tiers = [
 const wins = [
   {
     icon: Zap,
-    title: 'We build it in 48 hrs',
+    title: 'Live in 7 days — not weeks',
     desc: 'You do nothing. We design, build, and launch your site while you run your business.',
   },
   {
     icon: Heart,
-    title: 'From $10/mo after launch',
-    desc: "Website builders charge $27–$119/mo just for hosting. We start at $10/mo — all-in, forever.",
+    title: 'From $20/mo after launch',
+    desc: "Website builders charge $27–$119/mo just for hosting. We start at $20/mo — all-in, no hidden fees.",
   },
   {
     icon: Sparkles,
@@ -211,7 +217,7 @@ const phases = [
       'Cancel anytime — no contracts',
       'Less than a Netflix subscription',
     ],
-    sub: '$10–$20/month. Forever. No surprises.',
+    sub: '$20/month. Forever. No surprises.',
   },
 ]
 
@@ -271,7 +277,7 @@ const comparisonSections: Array<{ category: string; rows: Array<{ label: string;
     category: 'Pages & Speed',
     rows: [
       { label: 'Number of pages',          values: ['5 pages',        '10 pages',        '20 pages'] },
-      { label: 'Launch time',              values: ['5 business days','48 hours',        '5–7 business days'] },
+      { label: 'Launch time',              values: ['7 business days','7 business days',  '7 business days'] },
       { label: 'Monthly visitors included',values: ['10,000/mo',      '30,000/mo',       '50,000/mo'] },
     ],
   },
@@ -335,9 +341,12 @@ export default function Pricing() {
   const [activePhase, setActivePhase] = useState(0)
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const [activeTier, setActiveTier] = useState(1)
+  const [rushDelivery, setRushDelivery] = useState(false)
 
   const selectedTier = tiers[activeTier]
-  const tierYearTotal = selectedTier.price + selectedTier.phase2 * 2 + selectedTier.monthly * 9
+  const tierYearTotal = selectedTier.hasPhase3
+    ? selectedTier.price + selectedTier.phase2 * 2 + selectedTier.monthly * 9
+    : selectedTier.price + selectedTier.phase2 * 11
 
   return (
     <section id="pricing" className="py-24 lg:py-32 bg-white">
@@ -457,7 +466,7 @@ export default function Pricing() {
                 <span className="text-3xl font-black text-gray-900">${selectedTier.price}</span>
                 <span className="text-gray-400 text-sm">build</span>
                 <span className="text-gray-300">·</span>
-                <span className="font-bold text-gray-700">${selectedTier.monthly}/mo</span>
+                <span className="font-bold text-gray-700">${selectedTier.hasPhase3 ? selectedTier.monthly : selectedTier.phase2}/mo</span>
                 <span className="text-gray-400 text-xs">after launch</span>
               </div>
               <p className="text-xs text-gray-500 mt-1">{selectedTier.delivery} · {selectedTier.visits} visits/mo</p>
@@ -505,7 +514,7 @@ export default function Pricing() {
                 </span>
               </div>
               <div className="divide-y divide-gray-100">
-                {phases.map((phase, i) => {
+                {phases.filter((_, i) => i < 2 || selectedTier.hasPhase3).map((phase, i) => {
                   const Icon = phase.icon
                   const isActive = activePhase === i
                   return (
@@ -521,7 +530,9 @@ export default function Pricing() {
                           </div>
                           <div>
                             <p className="font-bold text-sm text-gray-900">{phase.label}</p>
-                            <p className="text-xs text-gray-400">{phase.duration}</p>
+                            <p className="text-xs text-gray-400">
+                              {phase.num === 2 && !selectedTier.hasPhase3 ? 'Month 2 onward' : phase.duration}
+                            </p>
                           </div>
                         </div>
                         <div className="text-right">
@@ -529,7 +540,7 @@ export default function Pricing() {
                             {phase.num === 1 ? `$${selectedTier.price}` : phase.num === 2 ? `$${selectedTier.phase2}` : `$${selectedTier.monthly}`}
                           </p>
                           <p className="text-[10px] text-gray-400">
-                            {phase.num === 1 ? 'one time' : phase.num === 2 ? '/mo × 2' : '/mo forever'}
+                            {phase.num === 1 ? 'one time' : phase.num === 2 ? (selectedTier.hasPhase3 ? '/mo × 2' : '/mo forever') : '/mo forever'}
                           </p>
                         </div>
                       </div>
@@ -578,7 +589,7 @@ export default function Pricing() {
                       )}
                       <p className="font-black text-gray-900 text-sm mb-1">{t.name}</p>
                       <p className="text-2xl font-black text-gray-900">${t.price}</p>
-                      <p className="text-xs text-gray-400">build · ${t.monthly}/mo after</p>
+                      <p className="text-xs text-gray-400">build · ${t.hasPhase3 ? t.monthly : t.phase2}/mo after</p>
                       {isSelected && (
                         <span className={cn('mt-2 inline-block text-[10px] font-black uppercase tracking-wide text-white px-2 py-0.5 rounded-full bg-gradient-to-r', t.color)}>
                           Selected ✓
@@ -631,8 +642,8 @@ export default function Pricing() {
                     {selectedTier.name}
                   </span>
                 </div>
-                <div className="grid grid-cols-3 divide-x divide-gray-100">
-                  {phases.map((phase, i) => {
+                <div className={cn('grid divide-x divide-gray-100', selectedTier.hasPhase3 ? 'grid-cols-3' : 'grid-cols-2')}>
+                  {phases.filter((_, i) => i < 2 || selectedTier.hasPhase3).map((phase, i) => {
                     const Icon = phase.icon
                     const isActive = activePhase === i
                     return (
@@ -646,14 +657,14 @@ export default function Pricing() {
                             <Icon className="w-3.5 h-3.5" />
                           </div>
                           <span className={cn('text-xs font-bold uppercase tracking-wider', isActive ? phase.textColor : 'text-gray-400')}>
-                            Phase {phase.num} · {phase.duration}
+                            Phase {phase.num} · {phase.num === 2 && !selectedTier.hasPhase3 ? 'Month 2 onward' : phase.duration}
                           </span>
                         </div>
                         <div className="mb-1">
                           {phase.num === 1 ? (
                             <><span className="text-2xl font-black text-gray-900">${selectedTier.price}</span><span className="text-gray-400 text-xs"> one time</span></>
                           ) : phase.num === 2 ? (
-                            <><span className="text-2xl font-black text-gray-900">${selectedTier.phase2}</span><span className="text-gray-400 text-xs">/mo × 2</span></>
+                            <><span className="text-2xl font-black text-gray-900">${selectedTier.phase2}</span><span className="text-gray-400 text-xs">{selectedTier.hasPhase3 ? '/mo × 2' : '/mo forever'}</span></>
                           ) : (
                             <><span className="text-2xl font-black text-gray-900">${selectedTier.monthly}</span><span className="text-gray-400 text-xs">/mo forever</span></>
                           )}
