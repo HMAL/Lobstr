@@ -215,7 +215,6 @@ const phases = [
       'Full hosting & uptime monitoring',
       'Security updates included',
       'Cancel anytime — no contracts',
-      'Less than a Netflix subscription',
     ],
     sub: '$50/month. Forever. No surprises.',
   },
