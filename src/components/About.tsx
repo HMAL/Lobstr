@@ -8,7 +8,7 @@ const team = [
     name: 'Likki.',
     role: 'Founder · Developer · Analyst · Sleep-Deprived Visionary',
     bio: "We built Mylobstr at 2am during a phase we call 'hyperfocus season.' we talks to the code. The code talks back. we analyzes everything — your website traffic, your bounce rate, why the checkout button is the wrong shade of blue, and whether our son's nap schedule can fit around a client call. Spoiler: it cannot. But the website always ships.",
-    avatar: '',
+    avatar: '/globe.svg',
     emoji: '💻',
     quirk: 'Audits competitor websites for fun at midnight.',
   },
@@ -52,7 +52,7 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg text-gray-500 leading-relaxed">
-              Mylobstr is Likki — a developer, a mom, and a small business believer — who got tired
+              Mylobstr is family — a developer, a mom, and a small business believer — who got tired
               of watching great Albany businesses lose customers to competitors with better-looking
               websites. A brilliant local restaurant shouldn't lose a booking because their site
               looks like 2008.
