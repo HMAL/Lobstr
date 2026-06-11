@@ -52,7 +52,7 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg text-gray-500 leading-relaxed">
-              Mylobstr is Likki — a developer, a mom, and a small business believer — who got tired
+              Mylobstr is family — a developer, a mom, and a small business believer — who got tired
               of watching great Albany businesses lose customers to competitors with better-looking
               websites. A brilliant local restaurant shouldn't lose a booking because their site
               looks like 2008.
