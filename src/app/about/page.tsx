@@ -5,7 +5,7 @@ import About from '@/components/About'
 
 export const metadata: Metadata = {
   title: 'About — The People Behind Mylobstr',
-  description: 'Mylobstr is Likki — a developer, a mom, and a small business believer building affordable websites for Albany, NY businesses.',
+  description: 'Mylobstr is a family — a developer, a mom, and a small business believer building affordable websites for Albany, NY businesses.',
 }
 
 export default function AboutPage() {
