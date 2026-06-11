@@ -7,13 +7,13 @@ const team = [
   {
     name: 'Likki.',
     role: 'Founder · Developer · Analyst · Sleep-Deprived Visionary',
-    bio: "Likki built Mylobstr at 2am during a phase she calls 'hyperfocus season.' She talks to her code. The code talks back. She analyzes everything — your website traffic, your bounce rate, why the checkout button is the wrong shade of blue, and whether her son's nap schedule can fit around a client call. Spoiler: it cannot. But the website always ships.",
-    avatar: '/team/likki.svg',
+    bio: "We built Mylobstr at 2am during a phase we call 'hyperfocus season.' we talks to the code. The code talks back. we analyzes everything — your website traffic, your bounce rate, why the checkout button is the wrong shade of blue, and whether our son's nap schedule can fit around a client call. Spoiler: it cannot. But the website always ships.",
+    avatar: '',
     emoji: '💻',
-    quirk: 'Cries at good UX. Audits competitor websites for fun at midnight.',
+    quirk: 'Audits competitor websites for fun at midnight.',
   },
   {
-    name: "Likki's Son.",
+    name: "Son.",
     role: 'Chief Motivation Officer · Diaper Department Head',
     bio: "He doesn't know what a website is. He doesn't know what SEO means. He doesn't care. But every time Likki thinks about quitting, he looks up and grins — and somehow that's the most compelling business case she's ever seen. He is the reason every small business deserves a fighting chance online. He is also the reason she bought stock in wet wipes.",
     avatar: '/team/son.svg',
