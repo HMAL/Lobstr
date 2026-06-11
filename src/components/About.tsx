@@ -8,7 +8,7 @@ const team = [
     name: 'Likki.',
     role: 'Founder · Developer · Analyst · Sleep-Deprived Visionary',
     bio: "We built Mylobstr at 2am during a phase we call 'hyperfocus season.' we talks to the code. The code talks back. we analyzes everything — your website traffic, your bounce rate, why the checkout button is the wrong shade of blue, and whether our son's nap schedule can fit around a client call. Spoiler: it cannot. But the website always ships.",
-    avatar: '',
+    avatar: '/team/likki.svg',
     emoji: '💻',
     quirk: 'Audits competitor websites for fun at midnight.',
   },
