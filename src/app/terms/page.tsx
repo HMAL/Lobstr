@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'The terms governing your use of Mylobstr website design and hosting services.',
+  alternates: { canonical: 'https://mylobstr.com/terms' },
 }
 
 export default function TermsPage() {
@@ -39,9 +40,8 @@ export default function TermsPage() {
         <h2>2. Pricing & Payment</h2>
         <p>Our standard pricing is:</p>
         <ul>
-          <li><strong>Month 1:</strong> $100 one-time build fee (design + development)</li>
-          <li><strong>Months 2–3:</strong> $40/month (monitoring, fine-tuning, support)</li>
-          <li><strong>Month 4 onward:</strong> $10/month (hosting + maintenance + support)</li>
+          <li><strong>Month 1:</strong> one-time build fee of $100 (Starter), $150 (Growing Business), or $250 (Scale) — design + development</li>
+          <li><strong>Month 2 onward:</strong> $25/month (Starter), $30/month (Growing Business), or $50/month (Scale) — hosting, maintenance, and support</li>
         </ul>
         <p>
           Payments are charged monthly via the payment method on file. Invoices are sent 3 days before each billing date. All prices are in USD. We reserve the right to update pricing with 30 days advance written notice.

@@ -126,7 +126,7 @@ export default function Hero() {
           >
             {[
               { val: '30+', label: 'Sites Delivered', sub: 'and counting' },
-              { val: '$20', label: 'Starting / mo', sub: 'less than Netflix' },
+              { val: '$25', label: 'Starting / mo', sub: 'hosting & support included' },
               { val: '7 days', label: 'Avg Launch', sub: 'not months' },
             ].map(({ val, label, sub }) => (
               <div key={label}>

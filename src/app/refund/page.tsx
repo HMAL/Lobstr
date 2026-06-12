@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Refund Policy',
   description: "Mylobstr's 14-day satisfaction guarantee and refund process.",
+  alternates: { canonical: 'https://mylobstr.com/refund' },
 }
 
 export default function RefundPage() {
@@ -27,13 +28,13 @@ export default function RefundPage() {
 
         <h2>14-Day Satisfaction Guarantee</h2>
         <p>
-          Every new website project comes with a 14-day satisfaction guarantee. If your website launches and you are not satisfied with the result within the first 14 days, contact us and we will issue a full refund of your first month's payment ($100).
+          Every new website project comes with a 14-day satisfaction guarantee. If your website launches and you are not satisfied with the result within the first 14 days, contact us and we will issue a full refund of your build fee ($100–$250 depending on plan).
         </p>
         <p>No hoops. No lengthy back-and-forth. We'll ask what went wrong (so we can improve), process your refund, and part on good terms.</p>
 
         <h2>What's Eligible for a Refund</h2>
         <ul>
-          <li>The initial build fee ($100) within 14 days of your site going live</li>
+          <li>The initial build fee ($100–$250 depending on plan) within 14 days of your site going live</li>
           <li>Monthly subscription fees charged in error</li>
           <li>Duplicate charges</li>
         </ul>

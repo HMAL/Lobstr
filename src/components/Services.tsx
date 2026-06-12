@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
-import { Check, ArrowUpRight, RefreshCw } from 'lucide-react'
+import { Check, ArrowUpRight, RefreshCw, MessageCircle } from 'lucide-react'
+import LiveSiteSlider from '@/components/LiveSiteSlider'
 
 const categories = [
   {
@@ -29,15 +30,15 @@ const categories = [
     gradient: 'from-orange-500 to-red-600',
   },
   {
-    emoji: '✂️',
-    title: 'Salons & Barbershops',
+    emoji: '💇‍♀️',
+    title: 'Hair Salons',
     desc: 'Appointment booking, service menus, and galleries that showcase your best work.',
-    img: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80',
-    color: 'from-purple-500 to-pink-500',
-    tags: ['Online Booking', 'Gallery', 'Staff Profiles'],
+    img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80',
+    color: 'from-pink-500 to-rose-500',
+    tags: ['Online Booking', 'Gallery', 'Stylist Profiles'],
     features: [
       'Online appointment booking',
-      'Stylist / barber profiles',
+      'Stylist profiles & specialties',
       'Service menu with pricing',
       'Before & after photo gallery',
       'Gift card sales page',
@@ -46,9 +47,31 @@ const categories = [
     ],
     demoHref: '/projects/salon',
     demoLabel: 'Demo',
+    backBg: '#12020c',
+    accent: '#ec4899',
+    gradient: 'from-pink-500 to-rose-600',
+  },
+  {
+    emoji: '💈',
+    title: 'Barbershops',
+    desc: 'Walk-ins, bookings, and a sharp online presence that matches your shop.',
+    img: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80',
+    color: 'from-purple-500 to-violet-500',
+    tags: ['Book a Cut', 'Walk-in Hours', 'Barber Profiles'],
+    features: [
+      'Book-a-cut online scheduling',
+      'Barber profiles & chair photos',
+      'Cut & beard service pricing',
+      'Walk-in hours front and center',
+      'Fade & style photo gallery',
+      'Click-to-call on mobile',
+      'Google Reviews integration',
+    ],
+    demoHref: '/projects/barbershop',
+    demoLabel: 'Demo',
     backBg: '#0f0212',
     accent: '#a855f7',
-    gradient: 'from-purple-500 to-pink-600',
+    gradient: 'from-purple-500 to-violet-600',
   },
   {
     emoji: '🔧',
@@ -132,55 +155,11 @@ const categories = [
       'Free consultation CTA',
       'FAQ for parents',
     ],
-    demoHref: '/contact',
+    demoHref: '/projects/tutoring',
     demoLabel: 'Demo',
     backBg: '#02041a',
     accent: '#6366f1',
     gradient: 'from-indigo-500 to-blue-600',
-  },
-  {
-    emoji: '🏷️',
-    title: 'E-Commerce & Deals',
-    desc: 'Online stores, marketplaces, and deal platforms — we\'ve shipped a live one you can visit right now.',
-    img: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80',
-    color: 'from-amber-500 to-orange-500',
-    tags: ['Shopping', 'Deals', 'Payments'],
-    features: [
-      'Product catalog & search',
-      'Coupon & deals engine',
-      'Checkout & payment flow',
-      'User accounts & saved items',
-      'Seller / vendor portal',
-      'Mobile-first responsive design',
-      'SEO-optimized category pages',
-    ],
-    demoHref: 'https://couponcompanions.com',
-    demoLabel: 'Live Site',
-    backBg: '#120800',
-    accent: '#f59e0b',
-    gradient: 'from-amber-500 to-orange-600',
-  },
-  {
-    emoji: '🏠',
-    title: 'Home Services Platforms',
-    desc: 'Multi-role platforms for homeowners, renters, and pros — we built HappyHomesHub from scratch.',
-    img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80',
-    color: 'from-sky-500 to-blue-500',
-    tags: ['Multi-role', 'Marketplace', 'Web App'],
-    features: [
-      'Homeowner & renter dashboards',
-      'Handyman / pro profiles',
-      'Job posting & bidding system',
-      'Booking & scheduling',
-      'In-app messaging',
-      'Reviews & ratings',
-      'Geo-based search & matching',
-    ],
-    demoHref: 'https://happyhomeshub.com',
-    demoLabel: 'Live Site',
-    backBg: '#010d18',
-    accent: '#0ea5e9',
-    gradient: 'from-sky-500 to-blue-600',
   },
 ]
 
@@ -232,12 +211,21 @@ function FlipCard({ cat, index }: { cat: typeof categories[0]; index: number }) 
               ))}
             </div>
 
-            {/* Permanent flip CTA */}
+            {/* Demo link + permanent flip CTA */}
             <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-              <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">See what&apos;s included</span>
+              <a
+                href={cat.demoHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full border transition-opacity hover:opacity-75"
+                style={{ borderColor: cat.accent + '60', color: cat.accent }}
+              >
+                {cat.demoLabel} <ArrowUpRight className="w-3 h-3" />
+              </a>
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-xs font-bold rounded-full group-hover:bg-gray-700 transition-colors">
                 <RefreshCw className="w-3 h-3" />
-                Flip
+                See what&apos;s included
               </div>
             </div>
           </div>
@@ -337,7 +325,49 @@ export default function Services() {
           {categories.map((cat, i) => (
             <FlipCard key={cat.title} cat={cat} index={i} />
           ))}
+
+          {/* Your-business CTA tile */}
+          <motion.a
+            href="/contact"
+            initial={{ opacity: 0, y: 40, scale: 0.96, filter: 'blur(4px)' }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: categories.length * 0.08, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+            className="group flex flex-col items-center justify-center text-center rounded-2xl border-2 border-dashed border-gray-200 hover:border-blue-300 bg-gray-50/50 hover:bg-blue-50/40 transition-colors p-8"
+            style={{ height: '400px' }}
+          >
+            <div className="w-14 h-14 rounded-2xl bg-gray-900 group-hover:bg-blue-600 transition-colors flex items-center justify-center mb-5">
+              <MessageCircle className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="font-bold text-gray-900 text-base mb-1.5">Don&apos;t see your industry?</h3>
+            <p className="text-sm text-gray-500 leading-relaxed mb-5 max-w-[220px]">
+              We build for every kind of local business. Tell us what you do — we&apos;ll show you what&apos;s possible.
+            </p>
+            <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-gray-900 group-hover:bg-blue-600 text-white text-xs font-bold rounded-full transition-colors">
+              Get a Free Quote <ArrowUpRight className="w-3 h-3" />
+            </span>
+          </motion.a>
         </div>
+
+        {/* Live sites showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          className="mt-20 rounded-[2.5rem] bg-gray-950 pt-12 pb-2 overflow-hidden"
+        >
+          <div className="text-center px-4 mb-10">
+            <h3 className="text-3xl lg:text-4xl font-black text-white leading-tight mb-3">
+              Not just demos.
+              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent"> Live in production.</span>
+            </h3>
+            <p className="text-gray-400 max-w-xl mx-auto">
+              Two platforms we built from scratch, serving real users right now. Click through the screenshots or visit them live.
+            </p>
+          </div>
+          <LiveSiteSlider />
+        </motion.div>
 
       </div>
     </section>

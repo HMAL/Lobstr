@@ -104,6 +104,18 @@ const demoWork = [
     border: 'hover:border-yellow-500/40',
     tag: 'Fitness',
   },
+  {
+    slug: 'tutoring',
+    href: '/projects/tutoring',
+    business: 'Bright Minds Tutoring',
+    category: 'Tutoring & Education · Albany, NY',
+    emoji: '🎓',
+    desc: 'A tutoring center site with programs, tutor profiles, parent reviews, and free assessment booking — built to earn parents\' trust at first glance.',
+    img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80',
+    accent: 'from-indigo-500/30 to-blue-500/20',
+    border: 'hover:border-indigo-500/40',
+    tag: 'Education',
+  },
 ]
 
 const container = {

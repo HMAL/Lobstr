@@ -39,6 +39,8 @@ const tiers = [
       'Basic SEO (meta tags, sitemap)',
       'Contact form',
       'Google Analytics',
+      'Google Search Console setup',
+      'Google Merchant Center setup',
       'Social media links',
       'Click-to-call button',
       'Google Business Profile — claimed & set up',
@@ -70,7 +72,6 @@ const tiers = [
       'Domain name (if under $20/yr)',
       'Google Business Profile — fully built (photos, services, categories, Q&A)',
       'Listed on Google, Yelp, Bing & Apple Maps',
-      'Google Search Console setup',
       'Full SEO suite',
       'Photo gallery',
       'Blog & news section',
@@ -128,8 +129,8 @@ const wins = [
   },
   {
     icon: Heart,
-    title: 'From $20/mo after launch',
-    desc: "Website builders charge $27–$119/mo just for hosting. We start at $20/mo — all-in, no hidden fees.",
+    title: 'From $25/mo after launch',
+    desc: "Website builders charge $27–$119/mo just for hosting. We start at $25/mo — all-in, no hidden fees.",
   },
   {
     icon: Sparkles,
@@ -231,8 +232,8 @@ const faqs = [
     a: "We're a lean Albany team, not a big agency with offices and account managers to pay for. We'd rather have 100 happy local businesses at a fair price than 5 paying agency rates. No catch — just lower overhead passed to you.",
   },
   {
-    q: "What's the catch with $10/month?",
-    a: "There isn't one. $10/mo covers hosting, security, uptime monitoring, and us being on call. There are no setup fees, no per-edit charges, and no surprise invoices. The price you see is the price you pay.",
+    q: "What's the catch with such a low monthly rate?",
+    a: "There isn't one. Your monthly rate ($25–$50 depending on plan) covers hosting, security, uptime monitoring, and us being on call. There are no setup fees, no per-edit charges, and no surprise invoices. The price you see is the price you pay.",
   },
   {
     q: 'Do I actually own my website?',
@@ -301,9 +302,10 @@ const comparisonSections: Array<{ category: string; rows: Array<{ label: string;
     category: 'Local Search & SEO',
     rows: [
       { label: 'Google Business Profile',                   values: ['Claimed & set up', 'Fully built', 'Multi-location'] },
+      { label: 'Google Search Console setup',               values: [true,  true,  true] },
+      { label: 'Google Merchant Center setup',              values: [true,  true,  true] },
       { label: 'Listed on Yelp, Bing & Apple Maps',         values: [false, true,  true] },
       { label: 'Full SEO — schema markup & local keywords', values: [false, true,  true] },
-      { label: 'Google Search Console setup',               values: [false, true,  true] },
     ],
   },
   {

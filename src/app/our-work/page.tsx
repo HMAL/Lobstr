@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import LiveSiteSlider from './LiveSiteSlider'
+import LiveSiteSlider from '@/components/LiveSiteSlider'
 import OurWorkGrid from './OurWorkGrid'
 
 export const metadata: Metadata = {

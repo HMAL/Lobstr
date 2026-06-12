@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How Mylobstr collects, uses, and protects your personal information.',
+  alternates: { canonical: 'https://mylobstr.com/privacy' },
 }
 
 export default function PrivacyPage() {

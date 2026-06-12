@@ -5,13 +5,14 @@ import { Heart, Mail, MapPin } from 'lucide-react'
 import Image from 'next/image'
 
 const links: Record<string, { label: string; href: string; newTab?: boolean }[]> = {
-  'Our Work': [
-    { label: 'Happy Paws Vet', href: '/projects/pet', newTab: true },
-    { label: 'Trattoria Albany', href: '/projects/restaurant', newTab: true },
-    { label: 'The Cut Collective', href: '/projects/salon', newTab: true },
-    { label: 'Capital Cuts', href: '/projects/barbershop', newTab: true },
-    { label: 'Albany Pro Plumbing', href: '/projects/plumbing', newTab: true },
-    { label: 'Albany Iron Fitness', href: '/projects/fitness', newTab: true },
+  'Demo Sites': [
+    { label: 'Pet Clinic — Happy Paws', href: '/projects/pet', newTab: true },
+    { label: 'Restaurant — Trattoria Albany', href: '/projects/restaurant', newTab: true },
+    { label: 'Salon — The Cut Collective', href: '/projects/salon', newTab: true },
+    { label: 'Barbershop — Capital Cuts', href: '/projects/barbershop', newTab: true },
+    { label: 'Plumbing — Albany Pro', href: '/projects/plumbing', newTab: true },
+    { label: 'Gym — Albany Iron Fitness', href: '/projects/fitness', newTab: true },
+    { label: 'Tutoring — Bright Minds', href: '/projects/tutoring', newTab: true },
   ],
   'Company': [
     { label: 'About Us', href: '/about' },
@@ -21,6 +22,12 @@ const links: Record<string, { label: string; href: string; newTab?: boolean }[]>
     { label: 'FAQ', href: '/faq' },
     { label: 'Blog', href: '/blog' },
     { label: 'Careers', href: '/careers' },
+  ],
+  'From the Blog': [
+    { label: 'What a Website Costs in Albany', href: '/blog/website-cost-small-business-albany-ny' },
+    { label: 'Local SEO for Albany Businesses', href: '/blog/local-seo-albany-small-business' },
+    { label: 'Restaurant Websites vs. DoorDash', href: '/blog/restaurant-website-design-albany' },
+    { label: 'Website vs. Facebook Page', href: '/blog/website-vs-facebook-page-albany' },
   ],
   'Legal': [
     { label: 'Privacy Policy', href: '/privacy' },
@@ -69,7 +76,7 @@ export default function Footer() {
 
       {/* Main */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1 space-y-4">
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">

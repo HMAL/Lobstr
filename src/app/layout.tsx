@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import IdleModal from "@/components/IdleModal";
+import AnalyticsPageView from "@/components/AnalyticsPageView";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -95,6 +97,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  // Google Search Console ownership verification. Set the token in .env.local
+  // (and the Cloudflare env) as GOOGLE_SITE_VERIFICATION to emit the meta tag.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? 'G-FC1Y3Z3VDH';
@@ -111,6 +118,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <IdleModal />
+        <Suspense fallback={null}>
+          <AnalyticsPageView />
+        </Suspense>
         {children}
 
         {/* ── Structured Data ── */}
@@ -122,7 +132,7 @@ export default function RootLayout({
               "@type": "ProfessionalService",
               "name": "Mylobstr",
               "alternateName": "MyLobstr Web Design",
-              "description": "Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $75.",
+              "description": "Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $100.",
               "url": "https://mylobstr.com",
               "email": "info@mylobstr.com",
               "logo": "https://mylobstr.com/logo.png",
@@ -175,10 +185,7 @@ export default function RootLayout({
                 ]
               },
               "priceRange": "$",
-              "openingHours": "Mo-Su 00:00-23:59",
-              "sameAs": [
-                "https://mylobstr.com"
-              ]
+              "openingHours": "Mo-Su 00:00-23:59"
             })
           }}
         />
@@ -200,7 +207,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}')`}
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}',{send_page_view:false})`}
         </Script>
       </body>
     </html>

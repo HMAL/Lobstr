@@ -423,3 +423,88 @@
 .legal-prose a:hover {
   color: #1d4ed8;
 }
+
+/* Blog post typography */
+.post-prose {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #374151;
+}
+.post-prose .lead {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+.post-prose h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.post-prose h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+.post-prose p {
+  margin-bottom: 1.25rem;
+}
+.post-prose ul,
+.post-prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.post-prose ul {
+  list-style: disc;
+}
+.post-prose ol {
+  list-style: decimal;
+}
+.post-prose ul li,
+.post-prose ol li {
+  margin-bottom: 0.5rem;
+}
+.post-prose strong {
+  font-weight: 700;
+  color: #111827;
+}
+.post-prose a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.post-prose a:hover {
+  color: #1d4ed8;
+}
+.post-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+}
+.post-prose th {
+  text-align: left;
+  font-weight: 700;
+  color: #111827;
+  background: #f9fafb;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+}
+.post-prose td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+.post-prose blockquote {
+  border-left: 4px solid #2563eb;
+  background: #eff6ff;
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  margin: 1.5rem 0;
+  color: #1e3a8a;
+  font-weight: 500;
+}

@@ -6,6 +6,12 @@ import About from '@/components/About'
 export const metadata: Metadata = {
   title: 'About — The People Behind Mylobstr',
   description: 'Mylobstr is a family — a developer, a mom, and a small business believer building affordable websites for Albany, NY businesses.',
+  keywords: ['web design team Albany NY', 'local web designer Albany', 'about Mylobstr', 'Albany web design studio'],
+  alternates: { canonical: 'https://mylobstr.com/about' },
+  openGraph: {
+    title: 'About Mylobstr — Albany NY Web Design Studio',
+    description: 'A local Albany team building affordable custom websites for small businesses across the Capital Region.',
+  },
 }
 
 export default function AboutPage() {
