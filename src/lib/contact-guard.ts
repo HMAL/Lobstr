@@ -26,7 +26,14 @@ export async function verifyTurnstile(
   ip: string | null,
   secret: string | undefined,
 ): Promise<boolean> {
-  if (!secret || !token) return false
+  if (!secret) {
+    console.error('Turnstile: TURNSTILE_SECRET_KEY is not set')
+    return false
+  }
+  if (!token) {
+    console.error('Turnstile: no token submitted by the client')
+    return false
+  }
   try {
     const body = new URLSearchParams({ secret, response: token })
     if (ip) body.set('remoteip', ip)
@@ -35,9 +42,13 @@ export async function verifyTurnstile(
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body,
     })
-    const data = (await res.json()) as { success?: boolean }
+    const data = (await res.json()) as { success?: boolean; 'error-codes'?: string[] }
+    if (data.success !== true) {
+      console.error('Turnstile verification failed:', data['error-codes'])
+    }
     return data.success === true
-  } catch {
+  } catch (err) {
+    console.error('Turnstile siteverify request error:', err)
     return false
   }
 }
