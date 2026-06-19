@@ -252,7 +252,7 @@ export default function FAQPage() {
               Send us a message <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="tel:+(518) 677-6688"
+              href="tel:+15186776688"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/15 hover:bg-white/25 border border-white/20 text-white font-bold rounded-2xl transition-all"
             >
               <Phone className="w-4 h-4" /> Call us

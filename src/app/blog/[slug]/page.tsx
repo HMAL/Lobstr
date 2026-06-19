@@ -116,13 +116,8 @@ export default async function BlogPostPage({
                   href={`/blog/${p.slug}`}
                   className="block p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50/30 transition-all"
                 >
-                  <div className="flex items-start gap-4">
-                    <span className="text-2xl">{p.emoji}</span>
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-base mb-1">{p.title}</h3>
-                      <p className="text-sm text-gray-500 leading-relaxed">{p.description}</p>
-                    </div>
-                  </div>
+                  <h3 className="font-bold text-gray-900 text-base mb-1">{p.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{p.description}</p>
                 </Link>
               ))}
             </div>

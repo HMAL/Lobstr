@@ -106,6 +106,117 @@ export const metadata: Metadata = {
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? 'G-FC1Y3Z3VDH';
 
+const SITE_URL = 'https://mylobstr.com';
+
+// Official profiles for brand-entity recognition (schema.org sameAs). This is the
+// signal that tells Google "Mylobstr" is a real brand, not a typo for "lobster".
+// Add Instagram / Facebook / LinkedIn / X URLs here as they go live.
+const SAME_AS = [
+  'https://maps.app.goo.gl/VSpNFM1BWebdBLvH7', // Google Business Profile
+];
+
+// One linked @graph so Google resolves a single entity (Knowledge Panel) instead
+// of separate, unrelated blocks. Organization carries sameAs; WebSite and the
+// ProfessionalService reference it by @id.
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Mylobstr',
+      alternateName: 'MyLobstr Web Design',
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+      image: `${SITE_URL}/opengraph-image`,
+      email: 'info@mylobstr.com',
+      telephone: '+1-518-677-6688',
+      description:
+        'Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $100.',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+1-518-677-6688',
+        email: 'info@mylobstr.com',
+        contactType: 'customer service',
+        areaServed: 'US',
+        availableLanguage: 'English',
+      },
+      sameAs: SAME_AS,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Mylobstr',
+      description: 'Website design and web development for small businesses in Albany, NY',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE_URL}/#business`,
+      name: 'Mylobstr',
+      alternateName: 'MyLobstr Web Design',
+      parentOrganization: { '@id': `${SITE_URL}/#organization` },
+      url: SITE_URL,
+      email: 'info@mylobstr.com',
+      telephone: '+1-518-677-6688',
+      logo: `${SITE_URL}/logo.png`,
+      image: `${SITE_URL}/opengraph-image`,
+      description:
+        'Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $100.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Albany',
+        addressRegion: 'NY',
+        addressCountry: 'US',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: '42.6526', longitude: '-73.7562' },
+      areaServed: [
+        { '@type': 'City', name: 'Albany, NY' },
+        { '@type': 'City', name: 'Troy, NY' },
+        { '@type': 'City', name: 'Schenectady, NY' },
+        { '@type': 'City', name: 'Saratoga Springs, NY' },
+        { '@type': 'AdministrativeArea', name: 'Capital Region, NY' },
+      ],
+      serviceType: [
+        'Website Design',
+        'Web Development',
+        'Small Business Website',
+        'SEO Services',
+        'Web Hosting',
+        'Logo Design',
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Website Design Packages',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: 'Starter Website', description: '5-page custom website for new businesses' },
+            price: '100',
+            priceCurrency: 'USD',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: 'Growing Business Website', description: '10-page custom website with logo, SEO, and booking' },
+            price: '150',
+            priceCurrency: 'USD',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: 'Scale Website', description: '20-page custom website with admin panel and multi-location support' },
+            price: '250',
+            priceCurrency: 'USD',
+          },
+        ],
+      },
+      sameAs: SAME_AS,
+      priceRange: '$',
+      openingHours: 'Mo-Su 00:00-23:59',
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -123,83 +234,10 @@ export default function RootLayout({
         </Suspense>
         {children}
 
-        {/* ── Structured Data ── */}
+        {/* ── Structured Data (linked entity graph) ── */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Mylobstr",
-              "alternateName": "MyLobstr Web Design",
-              "description": "Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $100.",
-              "url": "https://mylobstr.com",
-              "email": "info@mylobstr.com",
-              "logo": "https://mylobstr.com/logo.png",
-              "image": "https://mylobstr.com/opengraph-image",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Albany",
-                "addressRegion": "NY",
-                "addressCountry": "US"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "42.6526",
-                "longitude": "-73.7562"
-              },
-              "areaServed": [
-                { "@type": "City", "name": "Albany, NY" },
-                { "@type": "City", "name": "Troy, NY" },
-                { "@type": "City", "name": "Schenectady, NY" },
-                { "@type": "City", "name": "Saratoga Springs, NY" },
-                { "@type": "AdministrativeArea", "name": "Capital Region, NY" }
-              ],
-              "serviceType": [
-                "Website Design",
-                "Web Development",
-                "Small Business Website",
-                "SEO Services",
-                "Web Hosting",
-                "Logo Design"
-              ],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Website Design Packages",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": { "@type": "Service", "name": "Starter Website", "description": "5-page custom website for new businesses" },
-                    "price": "100", "priceCurrency": "USD"
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": { "@type": "Service", "name": "Growing Business Website", "description": "10-page custom website with logo, SEO, and booking" },
-                    "price": "150", "priceCurrency": "USD"
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": { "@type": "Service", "name": "Scale Website", "description": "20-page custom website with admin panel and multi-location support" },
-                    "price": "250", "priceCurrency": "USD"
-                  }
-                ]
-              },
-              "priceRange": "$",
-              "openingHours": "Mo-Su 00:00-23:59"
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Mylobstr",
-              "url": "https://mylobstr.com",
-              "description": "Website design and web development for small businesses in Albany, NY"
-            })
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
 
         <Script

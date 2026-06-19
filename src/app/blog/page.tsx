@@ -42,8 +42,8 @@ export default function BlogPage() {
       </section>
 
       {/* Posts */}
-      <section className="max-w-4xl mx-auto px-4 py-16">
-        <div className="space-y-6">
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <div className="grid gap-6 sm:grid-cols-2">
           {posts.map((post) => {
             const published = new Date(`${post.datePublished}T12:00:00`).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -54,19 +54,14 @@ export default function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block p-7 rounded-2xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50/30 transition-all"
+                className="flex h-full flex-col p-7 rounded-2xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50/30 transition-all"
               >
-                <div className="flex items-start gap-5">
-                  <span className="text-4xl">{post.emoji}</span>
-                  <div>
-                    <p className="text-xs font-semibold text-gray-400 mb-1.5">
-                      {published} · {post.readingMinutes} min read
-                    </p>
-                    <h2 className="font-black text-gray-900 text-xl mb-2 leading-snug">{post.title}</h2>
-                    <p className="text-sm text-gray-500 leading-relaxed mb-3">{post.description}</p>
-                    <span className="text-sm font-bold text-blue-600">Read the guide →</span>
-                  </div>
-                </div>
+                <p className="text-xs font-semibold text-gray-400 mb-2">
+                  {published} · {post.readingMinutes} min read
+                </p>
+                <h2 className="font-black text-gray-900 text-xl mb-2 leading-snug">{post.title}</h2>
+                <p className="text-sm text-gray-500 leading-relaxed mb-4">{post.description}</p>
+                <span className="mt-auto text-sm font-bold text-blue-600">Read the guide →</span>
               </Link>
             )
           })}

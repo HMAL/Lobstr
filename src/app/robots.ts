@@ -1,12 +1,31 @@
 import type { MetadataRoute } from 'next'
 
+// AI crawlers we explicitly welcome so Mylobstr can appear in AI assistants'
+// answers and recommendations (training + live-search bots). Same access as a
+// normal crawler: everything except the API.
+const AI_CRAWLERS = [
+  'GPTBot',
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'ClaudeBot',
+  'Claude-Web',
+  'anthropic-ai',
+  'PerplexityBot',
+  'Perplexity-User',
+  'Google-Extended',
+  'Applebot-Extended',
+  'Amazonbot',
+  'Meta-ExternalAgent',
+  'CCBot',
+]
+
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/api/',
-    },
+    rules: [
+      { userAgent: '*', allow: '/', disallow: '/api/' },
+      { userAgent: AI_CRAWLERS, allow: '/', disallow: '/api/' },
+    ],
     sitemap: 'https://mylobstr.com/sitemap.xml',
+    host: 'https://mylobstr.com',
   }
 }
