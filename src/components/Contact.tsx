@@ -14,8 +14,10 @@ interface TurnstileApi {
     callback: (token: string) => void
     'expired-callback'?: () => void
     'error-callback'?: () => void
+    appearance?: 'always' | 'execute' | 'interaction-only'
   }) => string
   reset: (id?: string) => void
+  remove: (id?: string) => void
 }
 declare global {
   interface Window {
@@ -94,10 +96,19 @@ function ContactForm() {
       callback: (t) => setToken(t),
       'expired-callback': () => setToken(''),
       'error-callback': () => setToken(''),
+      // Stay invisible for real users; only show a challenge if Cloudflare needs one.
+      appearance: 'interaction-only',
     })
   }
   useEffect(() => {
     renderTurnstile()
+    // Clean up the widget on unmount so React remounts (e.g. Strict Mode) don't orphan it.
+    return () => {
+      if (widgetIdRef.current) {
+        window.turnstile?.remove(widgetIdRef.current)
+        widgetIdRef.current = ''
+      }
+    }
   }, [])
 
   const turnstileRequired = Boolean(TURNSTILE_SITE_KEY)
@@ -322,6 +333,30 @@ function ContactForm() {
           <p className="text-center text-xs text-gray-400">
             📍 Albany-based team · 🔒 We never spam · ⚡ Reply within 24 hours
           </p>
+
+          {turnstileRequired && (
+            <p className="text-center text-[10px] text-gray-300 leading-relaxed">
+              Protected by Cloudflare Turnstile · its{' '}
+              <a
+                href="https://www.cloudflare.com/privacypolicy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-400"
+              >
+                Privacy Policy
+              </a>{' '}
+              and{' '}
+              <a
+                href="https://www.cloudflare.com/website-terms/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-400"
+              >
+                Terms
+              </a>{' '}
+              apply.
+            </p>
+          )}
         </form>
       )}
     </div>
