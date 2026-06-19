@@ -6,7 +6,7 @@ Windows-only `@vercel/og` wasm bundling bug that breaks `npm run cf:deploy` from
 ## One-time setup (Cloudflare dashboard)
 
 1. Dashboard → **Workers & Pages** → open the **`lobstr`** Worker → **Settings** → **Build**.
-2. **Connect** → authorize GitHub → select repo **`HMAL/Lobstr`**, branch **`master`**.
+2. **Connect** → authorize GitHub → select repo **`HMAL/Lobstr`**, branch **`master`**. 
 3. Set the commands:
    - **Build command:** `npm run cf:build`
    - **Deploy command:** `npx opennextjs-cloudflare deploy`
