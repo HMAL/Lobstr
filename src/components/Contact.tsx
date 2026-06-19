@@ -1,9 +1,27 @@
 'use client'
 
-import { useState, Suspense } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Script from 'next/script'
 import { motion } from 'framer-motion'
 import { Mail, Clock, Send, CheckCircle2, MapPin, Tag } from 'lucide-react'
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''
+
+interface TurnstileApi {
+  render: (el: HTMLElement, opts: {
+    sitekey: string
+    callback: (token: string) => void
+    'expired-callback'?: () => void
+    'error-callback'?: () => void
+  }) => string
+  reset: (id?: string) => void
+}
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi
+  }
+}
 
 const contactCards = [
   {
@@ -60,8 +78,29 @@ function ContactForm() {
   const [form, setForm] = useState({
     name: '', email: '', phone: '', business: '', address: '', type: '', message: '',
     plan: planParam,
+    company_website: '', // honeypot — must stay empty
   })
   const [error, setError] = useState('')
+  const [token, setToken] = useState('')
+  const widgetRef = useRef<HTMLDivElement>(null)
+  const widgetIdRef = useRef<string>('')
+
+  // Render the Turnstile widget once its script has loaded (only if configured).
+  const renderTurnstile = () => {
+    if (!TURNSTILE_SITE_KEY || !widgetRef.current || !window.turnstile) return
+    if (widgetIdRef.current) return
+    widgetIdRef.current = window.turnstile.render(widgetRef.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      callback: (t) => setToken(t),
+      'expired-callback': () => setToken(''),
+      'error-callback': () => setToken(''),
+    })
+  }
+  useEffect(() => {
+    renderTurnstile()
+  }, [])
+
+  const turnstileRequired = Boolean(TURNSTILE_SITE_KEY)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -71,14 +110,17 @@ function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, turnstileToken: token }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.detail || data.error || 'Send failed')
+      if (!res.ok) throw new Error(data.error || 'Send failed')
       setSubmitted(true)
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error'
-      setError(`Something went wrong: ${msg} — or email us at info@mylobstr.com`)
+      setError(`${msg} — or email us at info@mylobstr.com`)
+      // Tokens are single-use; reset so the user can retry.
+      setToken('')
+      window.turnstile?.reset(widgetIdRef.current)
     } finally {
       setLoading(false)
     }
@@ -109,6 +151,21 @@ function ContactForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="p-8 space-y-5">
+
+          {/* Honeypot — hidden from real users, bots fill it. Not type="hidden" so
+              browser autofill leaves it alone. */}
+          <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden">
+            <label>
+              Company Website
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.company_website}
+                onChange={(e) => setForm({ ...form, company_website: e.target.value })}
+              />
+            </label>
+          </div>
 
           {/* Selected plan quote */}
           {planInfo && yearTotal !== null && (
@@ -232,9 +289,21 @@ function ContactForm() {
             </p>
           )}
 
+          {/* Cloudflare Turnstile — bot verification */}
+          {turnstileRequired && (
+            <>
+              <Script
+                src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+                strategy="afterInteractive"
+                onLoad={renderTurnstile}
+              />
+              <div ref={widgetRef} className="flex justify-center" />
+            </>
+          )}
+
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || (turnstileRequired && !token)}
             className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-700 text-white font-bold rounded-2xl py-4 text-sm shadow-lg hover:scale-[1.01] transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
           >
             {loading ? (

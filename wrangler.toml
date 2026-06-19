@@ -6,3 +6,14 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
+
+[vars]
+# Max contact-form emails per day across all visitors (protects the Resend quota).
+CONTACT_GLOBAL_DAILY_CAP = "80"
+
+# Rate limiting + global daily send cap for the contact form (/api/contact).
+# Create the namespace once with:  npx wrangler kv namespace create RATE_LIMIT_KV
+# then paste the printed id below (and a preview_id for `wrangler dev` if you want).
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "205fe89133db4cdfb3abb446360e2a4c"
