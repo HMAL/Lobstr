@@ -1,8 +1,12 @@
 import type { ComponentType } from 'react'
 import BigCorporationWebsites from '@/content/posts/what-small-businesses-learn-from-big-corporation-websites'
 import CostVsFeatures from '@/content/posts/website-cost-vs-features-small-business'
+import WebsiteCostAlbany from '@/content/posts/website-cost-small-business-albany-ny'
 import FeaturesExplained from '@/content/posts/small-business-website-features-explained'
+import LocalSeoAlbany from '@/content/posts/local-seo-albany-small-business'
 import SupportComparison from '@/content/posts/real-support-vs-ticket-queue-website'
+import RestaurantWebsiteAlbany from '@/content/posts/restaurant-website-design-albany'
+import WebsiteVsFacebookAlbany from '@/content/posts/website-vs-facebook-page-albany'
 
 export interface Post {
   slug: string
@@ -51,6 +55,23 @@ export const posts: Post[] = [
     component: CostVsFeatures,
   },
   {
+    slug: 'website-cost-small-business-albany-ny',
+    title: 'How Much Does a Website Cost for a Small Business in Albany, NY? (2026 Guide)',
+    description:
+      'Real 2026 numbers for the Capital Region: DIY builders vs. freelancers vs. agencies vs. a local studio — what an Albany small business website should cost, what it must include, and the hidden fees to ask about.',
+    datePublished: '2026-06-09',
+    dateModified: '2026-06-09',
+    keywords: [
+      'website cost small business',
+      'how much does a website cost Albany NY',
+      'small business website price 2026',
+      'affordable website design Albany',
+      'website builder vs web designer cost',
+    ],
+    readingMinutes: 7,
+    component: WebsiteCostAlbany,
+  },
+  {
     slug: 'small-business-website-features-explained',
     title: 'Every Feature Your Small Business Website Needs — and Why',
     description:
@@ -68,6 +89,23 @@ export const posts: Post[] = [
     component: FeaturesExplained,
   },
   {
+    slug: 'local-seo-albany-small-business',
+    title: 'Local SEO for Albany Small Businesses: How to Show Up on Google Maps',
+    description:
+      'A plain-English local SEO playbook for Albany, Troy, and Schenectady: Google Business Profile setup, reviews, consistent listings, and the website signals that win the map pack.',
+    datePublished: '2026-06-02',
+    dateModified: '2026-06-02',
+    keywords: [
+      'local SEO Albany NY',
+      'show up on Google Maps small business',
+      'Google Business Profile setup Albany',
+      'rank in Google map pack',
+      'local search Capital Region',
+    ],
+    readingMinutes: 7,
+    component: LocalSeoAlbany,
+  },
+  {
     slug: 'real-support-vs-ticket-queue-website',
     title: 'Real 24/7 Support vs. a Ticket Queue: Why Website Support Matters',
     description:
@@ -83,6 +121,39 @@ export const posts: Post[] = [
     ],
     readingMinutes: 5,
     component: SupportComparison,
+  },
+  {
+    slug: 'restaurant-website-design-albany',
+    title: 'Restaurant Websites vs. DoorDash: Why Your Albany Restaurant Needs Its Own Site',
+    description:
+      'Delivery apps take 15–30% per order and own your customers. What a restaurant website needs — text menu, reservations, local SEO — why it beats relying on apps, and what it costs in Albany NY.',
+    datePublished: '2026-05-26',
+    dateModified: '2026-05-26',
+    keywords: [
+      'restaurant website design Albany NY',
+      'restaurant website vs DoorDash',
+      'online menu website restaurant',
+      'restaurant marketing Albany',
+    ],
+    readingMinutes: 6,
+    component: RestaurantWebsiteAlbany,
+  },
+  {
+    slug: 'website-vs-facebook-page-albany',
+    title: 'Website vs. Facebook Page: What Albany Small Businesses Actually Need',
+    description:
+      'Social media keeps customers; Google search creates them. Why a Facebook page cannot rank for "salon near me", and how Albany salons, barbershops, and gyms use a website and social together.',
+    datePublished: '2026-05-18',
+    dateModified: '2026-05-18',
+    keywords: [
+      'website vs Facebook page small business',
+      'salon website design Albany NY',
+      'barbershop website Albany',
+      'gym website design Albany',
+      'do I need a website if I have Facebook',
+    ],
+    readingMinutes: 6,
+    component: WebsiteVsFacebookAlbany,
   },
 ]
 

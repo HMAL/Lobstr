@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, Mail, MapPin } from 'lucide-react'
+import { Heart, Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 
 const links: Record<string, { label: string; href: string; newTab?: boolean }[]> = {
@@ -24,8 +24,12 @@ const links: Record<string, { label: string; href: string; newTab?: boolean }[]>
     { label: 'Careers', href: '/careers' },
   ],
   'From the Blog': [
+    { label: 'Learn from Big-Brand Websites', href: '/blog/what-small-businesses-learn-from-big-corporation-websites' },
+    { label: 'Website Cost vs. Features', href: '/blog/website-cost-vs-features-small-business' },
     { label: 'What a Website Costs in Albany', href: '/blog/website-cost-small-business-albany-ny' },
+    { label: 'Website Features Explained', href: '/blog/small-business-website-features-explained' },
     { label: 'Local SEO for Albany Businesses', href: '/blog/local-seo-albany-small-business' },
+    { label: 'Real 24/7 Support vs. Ticket Queues', href: '/blog/real-support-vs-ticket-queue-website' },
     { label: 'Restaurant Websites vs. DoorDash', href: '/blog/restaurant-website-design-albany' },
     { label: 'Website vs. Facebook Page', href: '/blog/website-vs-facebook-page-albany' },
   ],
@@ -69,6 +73,13 @@ export default function Footer() {
                 <Mail className="w-4 h-4" />
                 info@mylobstr.com
               </a>
+              <a
+                href="tel:+15186776688"
+                className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-sm transition-colors flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                (518) 677-6688
+              </a>
             </div>
           </div>
         </div>
@@ -100,6 +111,13 @@ export default function Footer() {
               <MapPin className="w-3.5 h-3.5 text-blue-400" />
               Albany, NY Metro Area
             </div>
+            <a
+              href="tel:+15186776688"
+              className="flex items-center gap-2 text-xs font-medium text-white/40 hover:text-white transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              (518) 677-6688
+            </a>
             <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
               <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
               Always here — 24/7
