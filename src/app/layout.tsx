@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     siteName: "Mylobstr",
     images: [
       {
-        url: "https://mylobstr.com/opengraph-image",
+        url: "https://mylobstr.com/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Mylobstr — Website Design for Albany NY Small Businesses",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
     description:
       "Custom websites for Albany NY small businesses starting at $100. Live in 7 days.",
-    images: ["https://mylobstr.com/opengraph-image"],
+    images: ["https://mylobstr.com/opengraph-image.png"],
   },
   alternates: {
     canonical: "https://mylobstr.com",
@@ -128,7 +128,7 @@ const structuredData = {
       alternateName: 'MyLobstr Web Design',
       url: SITE_URL,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-      image: `${SITE_URL}/opengraph-image`,
+      image: `${SITE_URL}/opengraph-image.png`,
       email: 'info@mylobstr.com',
       telephone: '+1-518-677-6688',
       description:
@@ -161,7 +161,7 @@ const structuredData = {
       email: 'info@mylobstr.com',
       telephone: '+1-518-677-6688',
       logo: `${SITE_URL}/logo.png`,
-      image: `${SITE_URL}/opengraph-image`,
+      image: `${SITE_URL}/opengraph-image.png`,
       description:
         'Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $100.',
       address: {

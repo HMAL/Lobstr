@@ -27,7 +27,7 @@ export function articleSchema(post: {
     description: post.description,
     datePublished: post.datePublished,
     dateModified: post.dateModified,
-    image: `${BASE}/blog/${post.slug}/opengraph-image`,
+    image: `${BASE}/opengraph-image.png`,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${post.slug}` },
     author: {
       '@type': 'Organization',

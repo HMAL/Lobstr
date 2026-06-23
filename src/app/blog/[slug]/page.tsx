@@ -35,6 +35,7 @@ export async function generateMetadata({
       siteName: 'Mylobstr',
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified,
+      images: ['https://mylobstr.com/opengraph-image.png'],
     },
   }
 }
