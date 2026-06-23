@@ -97,7 +97,7 @@ export default function Hero() {
               href="/contact"
               className="shimmer inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gray-900 text-white font-bold rounded-xl text-sm hover:bg-gray-700 transition-all hover:scale-105 shadow-lg shadow-black/10"
             >
-              Get a Free Quote <ArrowRight className="w-4 h-4" />
+              Free consultation <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="/our-work"

@@ -344,7 +344,7 @@ export default function Services() {
               We build for every kind of local business. Tell us what you do — we&apos;ll show you what&apos;s possible.
             </p>
             <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-gray-900 group-hover:bg-blue-600 text-white text-xs font-bold rounded-full transition-colors">
-              Get a Free Quote <ArrowUpRight className="w-3 h-3" />
+              Free consultation <ArrowUpRight className="w-3 h-3" />
             </span>
           </motion.a>
         </div>

@@ -64,7 +64,7 @@ export default function Footer() {
                 href="/pricing"
                 className="px-6 py-3 bg-white text-gray-900 font-bold rounded-xl text-sm hover:bg-gray-100 transition-colors hover:scale-105 transform"
               >
-                Get a Free Quote →
+                Free consultation →
               </a>
               <a
                 href="mailto:info@mylobstr.com"

@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Check, Heart, Zap, ArrowRight, Hammer, TrendingUp, Anchor, Sparkles,
   ShieldCheck, HelpCircle, Plus, Minus, ExternalLink, Clock,
@@ -10,6 +10,39 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+
+// ── Rotating service word ──────────────────────────────────────────────────────
+const ROTATING_SERVICES = [
+  'plumbers', 'vet', 'restaurants', 'cafes', 'tutors', 'salons', 'hair cut', 'ortho clinic',
+]
+
+function RotatingService() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % ROTATING_SERVICES.length)
+    }, 2000)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <span className="relative inline-grid">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3 }}
+          className="font-semibold text-blue-600"
+        >
+          {ROTATING_SERVICES[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  )
+}
 
 // ── 3-tier pricing ─────────────────────────────────────────────────────────────
 const tiers = [
@@ -321,7 +354,7 @@ const comparisonSections: Array<{ category: string; rows: Array<{ label: string;
   {
     category: 'Admin & Scale',
     rows: [
-      { label: 'Admin panel — edit content yourself', values: [false, false, true] },
+      { label: 'Admin panel — edit content yourself', values: [true, true, true] },
       { label: 'Multi-location pages',                values: [false, false, true] },
       { label: 'Team directory & staff profiles',     values: [false, false, true] },
       { label: 'Service / product catalog',           values: [false, false, true] },
@@ -380,7 +413,7 @@ export default function Pricing() {
           <p className="max-w-2xl text-center text-sm text-gray-500 leading-relaxed">
             <Clock className="inline w-4 h-4 text-amber-500 -mt-0.5 mr-1" />
             Every month you&apos;re not findable online, someone searching{' '}
-            <span className="font-semibold text-gray-700">&ldquo;[your service] near me&rdquo;</span> in Albany
+            <span className="font-semibold text-gray-700">&ldquo;<RotatingService /> near me&rdquo;</span> in Albany
             books a competitor instead.{' '}
             <span className="font-semibold text-gray-700">One missed customer a month costs more than a whole year of Mylobstr.</span>
           </p>

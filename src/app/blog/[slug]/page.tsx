@@ -101,7 +101,7 @@ export default async function BlogPostPage({
             href="/contact"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-black rounded-2xl hover:bg-blue-50 transition-all hover:scale-105 text-sm"
           >
-            Get a free quote →
+            Free consultation →
           </Link>
         </div>
 

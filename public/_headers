@@ -6,3 +6,19 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# Content-hashed build output — safe to cache forever (filename changes on rebuild).
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Next.js optimized images.
+/_next/image*
+  Cache-Control: public, max-age=2592000
+
+# Static images in /public. Long cache; bump the filename if an asset changes.
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.ico
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000

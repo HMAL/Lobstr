@@ -82,9 +82,10 @@ export default function FloatingSupport() {
                 />
                 <button
                   onClick={handleSend}
+                  aria-label="Send message"
                   className="w-9 h-9 gradient-coral-teal rounded-xl flex items-center justify-center text-white hover:scale-110 transition-transform shadow-sm"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>
               </div>
               <p className="text-center text-xs text-muted-foreground mt-2">
@@ -98,6 +99,8 @@ export default function FloatingSupport() {
       {/* Toggle button */}
       <motion.button
         onClick={() => setOpen(!open)}
+        aria-label={open ? 'Close support chat' : 'Open support chat'}
+        aria-expanded={open}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         className="w-14 h-14 gradient-coral-teal rounded-2xl flex items-center justify-center text-white shadow-xl shadow-[#FF6B6B]/30 relative"

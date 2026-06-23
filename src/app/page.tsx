@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://mylobstr.com' },
 }
 import Hero from '@/components/Hero'
-import HowItWorks from '@/components/HowItWorks'
-import Services from '@/components/Services'
-import PricingTeaser from '@/components/PricingTeaser'
-import Testimonials from '@/components/Testimonials'
+import ChooseWhereToBegin from '@/components/ChooseWhereToBegin'
+import ClientFeelings from '@/components/ClientFeelings'
+import TheWorkIsTheProof from '@/components/TheWorkIsTheProof'
+import ReadyWhenYouAre from '@/components/ReadyWhenYouAre'
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
 
@@ -19,10 +19,10 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <HowItWorks />
-      <Services />
-      <PricingTeaser />
-      <Testimonials />
+      <ChooseWhereToBegin />
+      <ClientFeelings />
+      <TheWorkIsTheProof />
+      <ReadyWhenYouAre />
       <Footer />
       <ScrollToTop />
     </main>
