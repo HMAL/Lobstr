@@ -1,19 +1,19 @@
-name = "lobstr"
-main = ".open-next/worker.js"
+# Cloudflare Pages configuration.
+# `pages_build_output_dir` marks this as a Pages project (output of `next build`
+# with `output: "export"`). Bindings below are available to the Pages Functions
+# in `functions/`. Secrets (RESEND_API_KEY, TURNSTILE_SECRET_KEY) are NOT stored
+# here — set them in the Pages project (dashboard or `wrangler pages secret put`).
+#
+# The Pages project must be named "mylobstr" to match `name` below, or update both.
+name = "mylobstr"
+pages_build_output_dir = "out"
 compatibility_date = "2025-04-01"
-compatibility_flags = ["nodejs_compat"]
 
-[assets]
-directory = ".open-next/assets"
-binding = "ASSETS"
-
+# Non-secret runtime var read by functions/api/contact.ts (global daily send cap).
 [vars]
-# Max contact-form emails per day across all visitors (protects the Resend quota).
 CONTACT_GLOBAL_DAILY_CAP = "80"
 
-# Rate limiting + global daily send cap for the contact form (/api/contact).
-# Create the namespace once with:  npx wrangler kv namespace create RATE_LIMIT_KV
-# then paste the printed id below (and a preview_id for `wrangler dev` if you want).
+# KV namespace backing per-IP rate limiting + the global daily send cap.
 [[kv_namespaces]]
 binding = "RATE_LIMIT_KV"
 id = "205fe89133db4cdfb3abb446360e2a4c"

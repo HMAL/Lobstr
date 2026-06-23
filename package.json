@@ -11,11 +11,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "eslint",
-    "cf:build": "opennextjs-cloudflare build && node scripts/minify-server.mjs && node scripts/analyze-server.mjs",
-    "cf:preview": "opennextjs-cloudflare build && node scripts/minify-server.mjs && wrangler dev",
-    "cf:deploy": "opennextjs-cloudflare build && node scripts/minify-server.mjs && opennextjs-cloudflare deploy"
+    "preview": "next build && wrangler pages dev",
+    "deploy": "next build && wrangler pages deploy"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -35,12 +33,10 @@
     "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "esbuild": "^0.25.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
     "tailwindcss": "^4",

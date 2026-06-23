@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { posts } from '@/lib/posts'
 
+// Required for `output: export` — emit this as a static file at build time.
+export const dynamic = 'force-static'
+
 const BASE = 'https://mylobstr.com'
 
 // Fixed dates: update when a page meaningfully changes. Regenerating lastmod on
