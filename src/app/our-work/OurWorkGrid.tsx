@@ -45,6 +45,18 @@ const demoWork = [
     tag: 'Restaurant',
   },
   {
+    slug: 'little-journeys',
+    href: 'https://daycare.mylobstr.com/',
+    business: 'Little Journeys Childcare',
+    category: 'In-Home Daycare · Albany, NY',
+    emoji: '🧸',
+    desc: 'A warm in-home daycare site — programs, daily routine, and a simple way for parents to inquire and enroll. A real live site earning families’ trust.',
+    img: 'https://images.unsplash.com/photo-1587616211892-f743fcca64f9?w=600&q=80',
+    accent: 'from-amber-500/30 to-yellow-500/20',
+    border: 'hover:border-amber-500/40',
+    tag: 'Childcare',
+  },
+  {
     slug: 'pet',
     href: '/projects/pet',
     business: 'Happy Paws Vet & Grooming',
