@@ -6,7 +6,12 @@ import Script from 'next/script'
 import { motion } from 'framer-motion'
 import { Mail, Clock, Send, CheckCircle2, MapPin, Tag } from 'lucide-react'
 
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''
+// Turnstile site keys are public (rendered in the browser). Hardcoded fallback so
+// the widget works even when NEXT_PUBLIC_TURNSTILE_SITE_KEY isn't set in the build
+// env (mirrors the GA_ID pattern). An env var still overrides it (e.g. a test key
+// locally: 1x00000000000000000000AA).
+const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '0x4AAAAAADla0GvFMaRGvmE3'
 
 interface TurnstileApi {
   render: (el: HTMLElement, opts: {
