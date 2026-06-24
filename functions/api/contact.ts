@@ -58,7 +58,9 @@ const json = (data: unknown, status = 200) =>
 export async function onRequestPost(context: PagesContext): Promise<Response> {
   const { request: req, env } = context
 
-  const apiKey = env.RESEND_API_KEY
+  // Trim in case the stored secret picked up trailing whitespace/newline (e.g. set
+  // via a shell pipe) — a stray newline in the Bearer header makes Resend reject it.
+  const apiKey = env.RESEND_API_KEY?.trim()
   if (!apiKey) {
     console.error('RESEND_API_KEY is not set')
     return json({ error: 'Email service not configured' }, 500)
@@ -123,7 +125,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     const ip = req.headers.get('cf-connecting-ip')
 
     // 3. Bot check.
-    const secret = env.TURNSTILE_SECRET_KEY
+    const secret = env.TURNSTILE_SECRET_KEY?.trim()
     if (!(await verifyTurnstile(turnstileToken, ip, secret))) {
       return json({ error: 'Verification failed. Please try again.' }, 403)
     }
@@ -213,9 +215,9 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
 
     if (!res.ok) {
       // Log full detail server-side; return a generic message to the client.
-      // Use 500 (not 502) so Cloudflare passes our JSON through instead of
-      // substituting its own HTML "Bad gateway" page.
-      console.error('Resend error:', data)
+      // Use 500 (not 502) so Cloudflare passes our JSON through instead of its own
+      // HTML "Bad gateway" page.
+      console.error('Resend error:', res.status, data)
       return json({ error: 'Failed to send email' }, 500)
     }
 
