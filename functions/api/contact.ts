@@ -128,24 +128,31 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       return json({ error: 'Verification failed. Please try again.' }, 403)
     }
 
-    // 4. Per-IP rate limit.
+    // 4 & 5. KV-backed per-IP rate limit + global daily cap. Best-effort: a KV
+    // hiccup must never block a legitimate send, and we avoid gateway-class status
+    // codes (502/503/504) because Cloudflare replaces those with an HTML error page
+    // that the client can't parse as JSON.
     if (kv) {
-      const limited = await checkRateLimit(kv, ip ?? 'unknown')
-      if (!limited.ok) {
-        return json(
-          { error: 'Too many requests. Please try again later, or email info@mylobstr.com.' },
-          429,
-        )
-      }
+      try {
+        const limited = await checkRateLimit(kv, ip ?? 'unknown')
+        if (!limited.ok) {
+          return json(
+            { error: 'Too many requests. Please try again later, or email info@mylobstr.com.' },
+            429,
+          )
+        }
 
-      // 5. Global daily cap — circuit breaker that protects the Resend quota.
-      const cap = Number(env.CONTACT_GLOBAL_DAILY_CAP ?? 80)
-      const within = await checkGlobalCap(kv, cap)
-      if (!within.ok) {
-        return json(
-          { error: "We're experiencing high volume. Please email info@mylobstr.com directly." },
-          503,
-        )
+        const cap = Number(env.CONTACT_GLOBAL_DAILY_CAP ?? 80)
+        const within = await checkGlobalCap(kv, cap)
+        if (!within.ok) {
+          return json(
+            { error: "We're experiencing high volume. Please email info@mylobstr.com directly." },
+            429,
+          )
+        }
+      } catch (kvErr) {
+        // Don't fail the request on a KV error — just log and continue to send.
+        console.error('Rate-limit KV error (continuing):', kvErr)
       }
     }
 
@@ -206,8 +213,10 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
 
     if (!res.ok) {
       // Log full detail server-side; return a generic message to the client.
+      // Use 500 (not 502) so Cloudflare passes our JSON through instead of
+      // substituting its own HTML "Bad gateway" page.
       console.error('Resend error:', data)
-      return json({ error: 'Failed to send email' }, 502)
+      return json({ error: 'Failed to send email' }, 500)
     }
 
     return json({ success: true, id: data.id })
