@@ -33,6 +33,18 @@ const liveWork = [
 
 const demoWork = [
   {
+    slug: 'tandoori-grill',
+    href: 'https://indianfood.mylobstr.com/',
+    business: 'Tandoori Grill',
+    category: 'Indian Restaurant · Live',
+    emoji: '🍛',
+    desc: 'A live Indian restaurant site — full menu, ordering, and atmosphere. A real build serving customers online, not just a mockup.',
+    img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80',
+    accent: 'from-orange-500/30 to-red-500/20',
+    border: 'hover:border-orange-500/40',
+    tag: 'Restaurant',
+  },
+  {
     slug: 'pet',
     href: '/projects/pet',
     business: 'Happy Paws Vet & Grooming',
@@ -207,7 +219,7 @@ export default function OurWorkGrid() {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {demoWork.map((s) => (
-          <WorkCard key={s.slug} s={s} isLive={false} />
+          <WorkCard key={s.slug} s={s} isLive={s.href.startsWith('http')} />
         ))}
       </motion.div>
     </section>
