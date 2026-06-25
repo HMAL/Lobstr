@@ -13,42 +13,16 @@ import { faqCategories, type Faq as FAQ } from './faq-data'
 interface Category { icon: React.ReactNode; color: string; bg: string; title: string; faqs: FAQ[] }
 
 // Presentation only — Q&A content lives in faq-data.ts (shared with the FAQPage schema)
+// One accent across all categories — the icon distinguishes them, not a rainbow of colors.
+const BLUE = { color: 'text-blue-600', bg: 'bg-blue-50 border-blue-200' }
 const styles: Record<string, { icon: React.ReactNode; color: string; bg: string }> = {
-  'Who We Work With': {
-    icon: <MapPin className="w-5 h-5" />,
-    color: 'text-cyan-600',
-    bg: 'bg-cyan-50 border-cyan-200',
-  },
-  'Cost & Pricing': {
-    icon: <DollarSign className="w-5 h-5" />,
-    color: 'text-emerald-600',
-    bg: 'bg-emerald-50 border-emerald-200',
-  },
-  'Timeline & Process': {
-    icon: <Clock className="w-5 h-5" />,
-    color: 'text-blue-600',
-    bg: 'bg-blue-50 border-blue-200',
-  },
-  'Design & Branding': {
-    icon: <Palette className="w-5 h-5" />,
-    color: 'text-violet-600',
-    bg: 'bg-violet-50 border-violet-200',
-  },
-  'Features & Functionality': {
-    icon: <Settings className="w-5 h-5" />,
-    color: 'text-orange-600',
-    bg: 'bg-orange-50 border-orange-200',
-  },
-  'Hosting, Domains & Tech': {
-    icon: <Server className="w-5 h-5" />,
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50 border-indigo-200',
-  },
-  'After Launch & Support': {
-    icon: <Headphones className="w-5 h-5" />,
-    color: 'text-rose-600',
-    bg: 'bg-rose-50 border-rose-200',
-  },
+  'Who We Work With': { icon: <MapPin className="w-5 h-5" />, ...BLUE },
+  'Cost & Pricing': { icon: <DollarSign className="w-5 h-5" />, ...BLUE },
+  'Timeline & Process': { icon: <Clock className="w-5 h-5" />, ...BLUE },
+  'Design & Branding': { icon: <Palette className="w-5 h-5" />, ...BLUE },
+  'Features & Functionality': { icon: <Settings className="w-5 h-5" />, ...BLUE },
+  'Hosting, Domains & Tech': { icon: <Server className="w-5 h-5" />, ...BLUE },
+  'After Launch & Support': { icon: <Headphones className="w-5 h-5" />, ...BLUE },
 }
 
 const categories: Category[] = faqCategories.map((cat) => ({
@@ -120,31 +94,25 @@ export default function FAQPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-blue-950 to-indigo-950 pt-32 pb-20">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl" />
-        </div>
+      <section className="relative overflow-hidden bg-gray-950 pt-32 pb-20">
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-sm font-semibold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/15 border border-blue-400/30 rounded-full text-blue-300 text-sm font-semibold mb-6"
           >
             <MessageCircle className="w-3.5 h-3.5" />
-            Frequently Asked Questions
+            Frequently asked questions
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.08 }}
-            className="text-4xl lg:text-6xl font-black text-white leading-tight mb-5"
+            className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-5"
           >
-            Everything you want to know<br />
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              before you get a website.
-            </span>
+            The questions owners ask<br />
+            <span className="text-blue-400">before getting a website</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -152,7 +120,7 @@ export default function FAQPage() {
             transition={{ duration: 0.5, delay: 0.16 }}
             className="text-white/60 text-lg max-w-xl mx-auto mb-8"
           >
-            {categories.reduce((acc, c) => acc + c.faqs.length, 0)} honest answers to the questions every small business owner asks before building their first website.
+            {categories.reduce((acc, c) => acc + c.faqs.length, 0)} straight answers on cost, timeline, hosting, SEO, and support — no jargon, no asterisks.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -206,7 +174,7 @@ export default function FAQPage() {
                 {cat.icon}
               </div>
               <div>
-                <h2 className="text-xl font-black text-gray-900">{cat.title}</h2>
+                <h2 className="text-xl font-bold text-gray-900">{cat.title}</h2>
                 <p className="text-xs text-gray-400">{cat.faqs.length} questions</p>
               </div>
             </div>
@@ -235,19 +203,19 @@ export default function FAQPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 p-10 text-center text-white"
+          className="rounded-3xl bg-blue-600 p-10 text-center text-white"
         >
           <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
             <Globe className="w-7 h-7 text-white" />
           </div>
-          <h2 className="text-3xl font-black mb-3">Still have a question?</h2>
-          <p className="text-white/70 text-base max-w-md mx-auto mb-8">
-            We're real people in Albany, NY. Call, text, or email — we usually respond within a few hours.
+          <h2 className="text-3xl font-bold mb-3">Still have a question?</h2>
+          <p className="text-white/80 text-base max-w-md mx-auto mb-8">
+            We&apos;re real people in Albany, NY. Call, text, or email — we usually get back to you within a few hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-black rounded-2xl hover:bg-blue-50 transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-semibold rounded-2xl hover:bg-blue-50 transition-colors"
             >
               Send us a message <ArrowRight className="w-4 h-4" />
             </a>

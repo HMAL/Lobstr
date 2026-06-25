@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import IdleModal from "@/components/IdleModal";
 import AnalyticsPageView from "@/components/AnalyticsPageView";
 import "./globals.css";
 
@@ -37,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | Mylobstr",
   },
   description:
-    "Mylobstr builds custom websites for small businesses in Albany, NY — starting at $100. Professional website design, web development, SEO, and hosting. Live in 7 days. Serving Albany, Troy, Schenectady, and the Capital Region.",
+    "Mylobstr builds custom websites for small businesses in Albany, NY — starting at $300. Professional website design, web development, SEO, and hosting. Live in 7 days. Serving Albany, Troy, Schenectady, and the Capital Region.",
   keywords: [
     "website design Albany NY",
     "web designer Albany NY",
@@ -63,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
     description:
-      "Custom websites for Albany NY small businesses — restaurants, salons, barbershops, contractors, gyms. Starting at $100. Live in 7 days.",
+      "Custom websites for Albany NY small businesses — restaurants, salons, barbershops, contractors, gyms. Starting at $300. Live in about a week.",
     type: "website",
     url: "https://mylobstr.com",
     siteName: "Mylobstr",
@@ -80,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
     description:
-      "Custom websites for Albany NY small businesses starting at $100. Live in 7 days.",
+      "Custom websites for Albany NY small businesses starting at $300. Live in 7 days.",
     images: ["https://mylobstr.com/opengraph-image.png"],
   },
   alternates: {
@@ -132,7 +131,7 @@ const structuredData = {
       email: 'info@mylobstr.com',
       telephone: '+1-518-677-6688',
       description:
-        'Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $100.',
+        'Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $300.',
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+1-518-677-6688',
@@ -163,7 +162,7 @@ const structuredData = {
       logo: `${SITE_URL}/logo.png`,
       image: `${SITE_URL}/opengraph-image.png`,
       description:
-        'Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $100.',
+        'Custom website design and web development for small businesses in Albany, NY and the Capital Region. Professional, affordable websites starting at $300.',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Albany',
@@ -192,8 +191,8 @@ const structuredData = {
         itemListElement: [
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Starter Website', description: '5-page custom website for new businesses' },
-            price: '100',
+            itemOffered: { '@type': 'Service', name: 'Starter Website', description: '5-page custom website for new businesses — flat one-time price, no monthly fee' },
+            price: '300',
             priceCurrency: 'USD',
           },
           {
@@ -228,7 +227,6 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <IdleModal />
         <Suspense fallback={null}>
           <AnalyticsPageView />
         </Suspense>

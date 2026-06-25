@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, Star, Utensils, ChefHat } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Star } from 'lucide-react'
 import BookingCalendar from '@/components/BookingCalendar'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -33,8 +33,7 @@ const bounceIn = { hidden: { opacity: 0, scale: 0.75 }, show: { opacity: 1, scal
 // ── Inline components ─────────────────────────────────────────────────────────
 function GlowBtn({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
   return (
-    <a href={href} className={`relative group inline-flex items-center gap-2 ${className}`}>
-      <span className="absolute -inset-1 -z-10 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md glow-hue-bg" />
+    <a href={href} className={`inline-flex items-center gap-2 ${className}`}>
       {children}
     </a>
   )
@@ -60,36 +59,6 @@ function SpotlightCard({ children, accent, bg, className = '' }: { children: Rea
     >
       {children}
     </div>
-  )
-}
-
-function CustomCursor({ icon: Icon, color }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number; style?: React.CSSProperties }>, color: string }) {
-  const [pos, setPos] = useState({ x: -200, y: -200 })
-  useEffect(() => {
-    const style = document.createElement('style')
-    style.textContent = '* { cursor: none !important; }'
-    document.head.appendChild(style)
-    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY })
-    window.addEventListener('mousemove', move)
-    return () => {
-      document.head.removeChild(style)
-      window.removeEventListener('mousemove', move)
-    }
-  }, [])
-  return (
-    <div className="fixed pointer-events-none z-[9999]" style={{ left: pos.x, top: pos.y, transform: 'translate(-50%, -50%)' }}>
-      <Icon className="w-7 h-7 drop-shadow-lg" style={{ color }} strokeWidth={1.8} />
-    </div>
-  )
-}
-
-function HeroBlobs() {
-  return (
-    <>
-      <div className="demo-blob w-72 h-72 rounded-full bg-amber-500/15 top-[8%] right-[5%]" />
-      <div className="demo-blob w-56 h-56 rounded-full bg-orange-400/10 bottom-[15%] right-[15%]" style={{ animationDelay: '4s, 2s' }} />
-      <div className="demo-blob w-44 h-44 rounded-full bg-yellow-400/10 top-[45%] left-[2%]" style={{ animationDelay: '7s, 5s' }} />
-    </>
   )
 }
 
@@ -140,7 +109,7 @@ function RestaurantScrollingReviews() {
           <div className="flex justify-center gap-1 mb-3">
             {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
           </div>
-          <h2 className="text-3xl font-black text-amber-400 mb-1">What Our Guests Say</h2>
+          <h2 className="text-3xl font-bold text-amber-400 mb-1">What Our Guests Say</h2>
           <p className="text-amber-200/40">4.9 / 5 · 420+ reviews</p>
         </div>
         <div className="flex justify-center gap-5 max-h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_85%,transparent_100%)]">
@@ -154,36 +123,6 @@ function RestaurantScrollingReviews() {
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
-function RestaurantMascot() {
-  return (
-    <div className="relative w-full h-full flex items-center justify-center select-none">
-      <motion.div className="absolute w-80 h-80 rounded-full bg-amber-400/10 blur-3xl"
-        animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="relative z-10"
-        animate={{ y: [0, -18, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}>
-        <div className="w-52 h-52 rounded-full bg-gradient-to-br from-amber-500/20 to-amber-700/10 border border-amber-400/30 shadow-[0_0_60px_rgba(251,191,36,0.15)] flex items-center justify-center">
-          <ChefHat className="w-24 h-24 text-amber-400" strokeWidth={1.5} />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-72 h-72" animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-amber-500/20 border border-amber-400/40 flex items-center justify-center">
-          <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-56 h-56" animate={{ rotate: -360 }} transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute top-0 right-0 w-9 h-9 rounded-full bg-amber-500/15 border border-amber-400/30 flex items-center justify-center">
-          <Utensils className="w-4 h-4 text-amber-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-96 h-96" animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute bottom-2 right-0 w-8 h-8 rounded-full bg-amber-500/10 border border-amber-400/20 flex items-center justify-center">
-          <Star className="w-4 h-4 text-amber-300 fill-amber-300/60" />
-        </div>
-      </motion.div>
-    </div>
-  )
-}
-
 export default function RestaurantPage() {
   const [navHidden, setNavHidden] = useState(false)
   const lastScrollY = useRef(0)
@@ -199,8 +138,7 @@ export default function RestaurantPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <div className="min-h-screen bg-[#1a0e08] font-sans text-white cursor-none">
-      <CustomCursor icon={ChefHat} color="#f59e0b" />
+    <div className="min-h-screen bg-[#1a0e08] font-sans text-white">
       {/* Nav */}
       <motion.nav
         initial={{ y: '-100%' }}
@@ -210,7 +148,7 @@ export default function RestaurantPage() {
       >
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
-            <p className="font-black text-xl text-amber-400 tracking-wider">TRATTORIA</p>
+            <p className="font-bold text-xl text-amber-400 tracking-wider">TRATTORIA</p>
             <p className="text-xs text-amber-200/60 tracking-widest uppercase">Albany</p>
           </motion.div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-amber-200/70">
@@ -218,28 +156,23 @@ export default function RestaurantPage() {
               <motion.a key={l} href={`#${l.toLowerCase().replace(' ', '-')}`} className="hover:text-amber-400 transition-colors" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + i * 0.07 }}>{l}</motion.a>
             ))}
           </div>
-          <motion.a href="#reserve" className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-black rounded-xl text-sm transition-all" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>Reserve Table</motion.a>
+          <motion.a href="#reserve" className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-xl text-sm transition-all" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>Reserve Table</motion.a>
         </div>
       </motion.nav>
 
       {/* Hero */}
       <section className="relative h-screen flex items-end pb-24 overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=85" alt="Trattoria Albany" fill className="object-cover brightness-40" priority sizes="100vw" />
-        <HeroBlobs />
-        {/* 3D waiter — replace URL: spline.design → Community → search "waiter" or "chef" → Export → Copy public URL */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 w-[40%] h-[70%] hidden lg:block" style={{ zIndex: 5 }}>
-          <RestaurantMascot />
-        </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <p className="demo-fade-up text-amber-400 text-sm font-bold tracking-widest uppercase mb-3">Ristorante Italiano · Albany, NY</p>
-          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-black leading-[0.95] mb-6">
+          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-bold leading-[0.95] mb-6">
             Cucina Italiana<br /><span className="text-amber-400">Autentica.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-white/70 text-lg max-w-lg mb-8">
             Handmade pasta, wood-fired flavors, and recipes passed down through three generations — right here in downtown Albany.
           </p>
           <div className="demo-fade-up demo-fade-up-3 flex flex-wrap gap-3">
-            <GlowBtn href="#reserve" className="px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-black font-black rounded-2xl text-base transition-all hover:scale-105">
+            <GlowBtn href="#reserve" className="px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-2xl text-base transition-all hover:scale-105">
               Reserve Online
             </GlowBtn>
             <a href="tel:+15188880002" className="px-7 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur text-white font-bold rounded-2xl text-base border border-white/20 transition-all">
@@ -256,7 +189,7 @@ export default function RestaurantPage() {
             <Image src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=700&q=85" alt="Chef cooking" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-4">
-            <motion.h2 variants={fadeUp} className="text-4xl font-black text-amber-400">La Nostra Storia</motion.h2>
+            <motion.h2 variants={fadeUp} className="text-4xl font-bold text-amber-400">La Nostra Storia</motion.h2>
             <motion.p variants={fadeUp} className="text-white/70 leading-relaxed">
               Marco DiSalvo opened Trattoria Albany in 2012 after spending five years cooking in Bologna. The menu reflects his childhood — simple, honest ingredients treated with respect.
             </motion.p>
@@ -266,7 +199,7 @@ export default function RestaurantPage() {
             <motion.div variants={stagger} className="grid grid-cols-3 gap-4 pt-4">
               {[['2012', 'Est.'], ['4.9★', '420+ reviews'], ['100%', 'Handmade pasta']].map(([val, lbl]) => (
                 <motion.div key={lbl} variants={bounceIn} className="text-center bg-amber-900/20 border border-amber-800/30 rounded-2xl p-3">
-                  <p className="text-2xl font-black text-amber-400">{val}</p>
+                  <p className="text-2xl font-bold text-amber-400">{val}</p>
                   <p className="text-xs text-white/50">{lbl}</p>
                 </motion.div>
               ))}
@@ -280,13 +213,13 @@ export default function RestaurantPage() {
         <div className="max-w-4xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-12">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-600 mb-3">La Cucina</span>
-            <h2 className="text-4xl font-black text-amber-400">Il Menù</h2>
+            <h2 className="text-4xl font-bold text-amber-400">Il Menù</h2>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-5">
             {menu.map((cat, ci) => (
               <motion.div key={cat.cat} variants={ci % 2 === 0 ? fadeLeft : fadeRight}>
                 <SpotlightCard accent="#f59e0b" bg="#1f1006" className="p-6">
-                  <h3 className="text-xs font-black uppercase tracking-widest text-amber-600 mb-5">{cat.cat}</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-amber-600 mb-5">{cat.cat}</h3>
                   <div className="space-y-5">
                     {cat.items.map(item => (
                       <motion.div key={item.name} whileHover={{ x: 6, transition: { type: 'spring', stiffness: 400 } }} className="flex items-baseline justify-between gap-4 cursor-pointer group/item">
@@ -294,7 +227,7 @@ export default function RestaurantPage() {
                           <p className="font-bold text-white group-hover/item:text-amber-200 transition-colors">{item.name}</p>
                           <p className="text-sm text-white/50 italic">{item.desc}</p>
                         </div>
-                        <p className="text-amber-400 font-black shrink-0">{item.price}</p>
+                        <p className="text-amber-400 font-bold shrink-0">{item.price}</p>
                       </motion.div>
                     ))}
                   </div>
@@ -324,7 +257,7 @@ export default function RestaurantPage() {
       {/* Reserve CTA */}
       <section id="reserve" className="py-20 bg-amber-500">
         <div className="max-w-2xl mx-auto px-4 text-center space-y-6">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-black text-black">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-bold text-black">
             Reserve Your Table
           </motion.h2>
           <p className="text-black/70">Book online in under a minute, or call us directly.</p>
@@ -343,7 +276,7 @@ export default function RestaurantPage() {
             <Clock className="w-4 h-4" /> Tue–Sun 5pm–10pm · Closed Mondays
           </div>
           <div className="flex justify-center">
-            <GlowBtn href="tel:+15188880002" className="px-8 py-4 bg-black text-amber-400 font-black rounded-2xl text-base hover:bg-gray-900 transition-colors">
+            <GlowBtn href="tel:+15188880002" className="px-8 py-4 bg-black text-amber-400 font-bold rounded-2xl text-base hover:bg-gray-900 transition-colors">
               <Phone className="w-4 h-4" /> Call for Reservation
             </GlowBtn>
           </div>

@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Star, Shield, Wrench, Droplets } from 'lucide-react'
+import { Phone, Mail, MapPin, Star, Wrench } from 'lucide-react'
 import BookingCalendar from '@/components/BookingCalendar'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -36,8 +36,7 @@ const bounceIn = { hidden: { opacity: 0, scale: 0.75 }, show: { opacity: 1, scal
 // ── Inline components ─────────────────────────────────────────────────────────
 function GlowBtn({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
   return (
-    <a href={href} className={`relative group inline-flex items-center gap-2 ${className}`}>
-      <span className="absolute -inset-1 -z-10 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md glow-hue-bg" />
+    <a href={href} className={`inline-flex items-center gap-2 ${className}`}>
       {children}
     </a>
   )
@@ -66,35 +65,9 @@ function SpotlightCard({ children, accent, bg, className = '' }: { children: Rea
   )
 }
 
-function CustomCursor({ icon: Icon, color }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number; style?: React.CSSProperties }>, color: string }) {
-  const [pos, setPos] = useState({ x: -200, y: -200 })
-  useEffect(() => {
-    const style = document.createElement('style')
-    style.textContent = '* { cursor: none !important; }'
-    document.head.appendChild(style)
-    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY })
-    window.addEventListener('mousemove', move)
-    return () => {
-      document.head.removeChild(style)
-      window.removeEventListener('mousemove', move)
-    }
-  }, [])
-  return (
-    <div className="fixed pointer-events-none z-[9999]" style={{ left: pos.x, top: pos.y, transform: 'translate(-50%, -50%)' }}>
-      <Icon className="w-7 h-7 drop-shadow-lg" style={{ color }} strokeWidth={1.8} />
-    </div>
-  )
-}
 
-function HeroBlobs() {
-  return (
-    <>
-      <div className="demo-blob w-72 h-72 rounded-full bg-blue-400/20 top-[6%] right-[6%]" />
-      <div className="demo-blob w-56 h-56 rounded-full bg-cyan-400/15 bottom-[12%] right-[18%]" style={{ animationDelay: '3s, 2s' }} />
-      <div className="demo-blob w-44 h-44 rounded-full bg-yellow-400/10 top-[42%] left-[2%]" style={{ animationDelay: '6s, 4s' }} />
-    </>
-  )
-}
+
+
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const tilt = index % 2 === 0 ? '-rotate-[0.5deg]' : 'rotate-[0.5deg]'
@@ -143,7 +116,7 @@ function PlumbingScrollingReviews() {
           <div className="flex justify-center gap-1 mb-3">
             {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />)}
           </div>
-          <h2 className="text-3xl font-black text-white mb-1">What Customers Say</h2>
+          <h2 className="text-3xl font-bold text-white mb-1">What Customers Say</h2>
           <p className="text-blue-300">5.0 / 5 · 210+ Google reviews</p>
         </div>
         <div className="flex justify-center gap-5 max-h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_85%,transparent_100%)]">
@@ -157,35 +130,7 @@ function PlumbingScrollingReviews() {
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
-function PlumbingMascot() {
-  return (
-    <div className="relative w-full h-full flex items-center justify-center select-none">
-      <motion.div className="absolute w-80 h-80 rounded-full bg-yellow-400/10 blur-3xl"
-        animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="relative z-10"
-        animate={{ y: [0, -18, 0], rotate: [0, 15, 0, -15, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
-        <div className="w-52 h-52 rounded-full bg-gradient-to-br from-yellow-400/25 to-blue-600/15 border border-yellow-400/30 shadow-[0_0_60px_rgba(250,204,21,0.15)] flex items-center justify-center">
-          <Wrench className="w-24 h-24 text-yellow-400" strokeWidth={1.5} />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-72 h-72" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center">
-          <Shield className="w-5 h-5 text-yellow-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-56 h-56" animate={{ rotate: -360 }} transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute top-0 right-0 w-9 h-9 rounded-full bg-blue-400/15 border border-blue-300/20 flex items-center justify-center">
-          <Droplets className="w-4 h-4 text-blue-300" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-96 h-96" animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute bottom-0 left-0 w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center">
-          <Wrench className="w-4 h-4 text-yellow-300" strokeWidth={1.5} />
-        </div>
-      </motion.div>
-    </div>
-  )
-}
+
 
 export default function PlumbingPage() {
   const [navHidden, setNavHidden] = useState(false)
@@ -202,8 +147,7 @@ export default function PlumbingPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <div className="min-h-screen bg-white font-sans cursor-none">
-      <CustomCursor icon={Wrench} color="#3b82f6" />
+    <div className="min-h-screen bg-white font-sans">
       {/* Nav */}
       <motion.nav
         initial={{ y: '-100%' }}
@@ -217,11 +161,11 @@ export default function PlumbingPage() {
               <Wrench className="w-5 h-5 text-blue-900" />
             </div>
             <div>
-              <p className="font-black text-sm leading-none">Albany Pro Plumbing</p>
+              <p className="font-bold text-sm leading-none">Albany Pro Plumbing</p>
               <p className="text-xs text-blue-200">Licensed &amp; Insured · Latham, NY</p>
             </div>
           </motion.div>
-          <motion.a href="tel:+15188880005" className="px-5 py-2.5 bg-yellow-400 text-blue-900 font-black rounded-xl text-sm hover:bg-yellow-300 transition-all flex items-center gap-2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}>
+          <motion.a href="tel:+15188880005" className="px-5 py-2.5 bg-yellow-400 text-blue-900 font-bold rounded-xl text-sm hover:bg-yellow-300 transition-all flex items-center gap-2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}>
             <Phone className="w-4 h-4" /> Emergency? Call Now
           </motion.a>
         </div>
@@ -232,20 +176,19 @@ export default function PlumbingPage() {
         <div className="absolute inset-0 opacity-10">
           <Image src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1400&q=70" alt="bg" fill className="object-cover" sizes="100vw" />
         </div>
-        <HeroBlobs />
         <div className="relative max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="demo-fade-up inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400/20 border border-yellow-400/30 rounded-full text-yellow-300 text-sm font-semibold">
               <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse" /> 24/7 Emergency Service Available
             </div>
-            <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-4xl lg:text-6xl font-black leading-tight">
+            <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
               Albany&apos;s Most<br /><span className="text-yellow-400">Trusted Plumber.</span>
             </h1>
             <p className="demo-fade-up demo-fade-up-2 text-blue-200 text-lg">
               Licensed, insured, and serving the Capital Region for 15+ years. We fix it right the first time — or it&apos;s free.
             </p>
             <div className="demo-fade-up demo-fade-up-3 flex flex-wrap gap-3">
-              <GlowBtn href="tel:+15188880005" className="px-7 py-4 bg-yellow-400 text-blue-900 font-black rounded-2xl text-base hover:bg-yellow-300 transition-all hover:scale-105 flex items-center gap-2">
+              <GlowBtn href="tel:+15188880005" className="px-7 py-4 bg-yellow-400 text-blue-900 font-bold rounded-2xl text-base hover:bg-yellow-300 transition-all hover:scale-105 flex items-center gap-2">
                 <Phone className="w-4 h-4" /> (518) 888-0005
               </GlowBtn>
               <a href="/contact" className="px-7 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl text-base border border-white/20 transition-all">
@@ -262,7 +205,6 @@ export default function PlumbingPage() {
           </div>
           <motion.div variants={fadeRight} initial="hidden" whileInView="show" viewport={{ once: true }} className="relative h-[480px] rounded-3xl overflow-hidden shadow-2xl border border-white/10">
             {/* 3D plumber — replace URL: spline.design → Community → search "plumber" → Export → Copy public URL */}
-            <PlumbingMascot />
           </motion.div>
         </div>
       </section>
@@ -271,7 +213,7 @@ export default function PlumbingPage() {
       <section id="team" className="py-20 bg-blue-800">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-10">
-            <h2 className="text-3xl font-black text-white mb-2">Our Licensed Team</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Our Licensed Team</h2>
             <p className="text-blue-200">Background-checked, licensed, and insured — every one of us.</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid md:grid-cols-3 gap-8">
@@ -282,7 +224,7 @@ export default function PlumbingPage() {
             ].map((m) => (
               <motion.div key={m.name} variants={m.variant} whileHover={{ scale: 1.04, y: -6, transition: { type: 'spring', stiffness: 300 } }} className="bg-white/10 border border-white/10 rounded-2xl p-6 text-center cursor-pointer hover:bg-white/15 transition-colors">
                 <img src={m.img} alt={m.name} className="w-20 h-20 rounded-full object-cover mx-auto mb-4 ring-2 ring-yellow-400/60" />
-                <p className="font-black text-white text-base mb-0.5">{m.name}</p>
+                <p className="font-bold text-white text-base mb-0.5">{m.name}</p>
                 <p className="text-blue-200 text-sm mb-3">{m.role}</p>
                 <p className="text-xs text-yellow-400/70 bg-yellow-400/10 rounded-lg px-3 py-1.5 border border-yellow-400/20">{m.cert}</p>
               </motion.div>
@@ -296,7 +238,7 @@ export default function PlumbingPage() {
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-10">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">What We Do</span>
-            <h2 className="text-4xl font-black text-white mb-2">What We Fix</h2>
+            <h2 className="text-4xl font-bold text-white mb-2">What We Fix</h2>
             <p className="text-white/40">Residential and light commercial plumbing.</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid md:grid-cols-3 gap-4">
@@ -333,7 +275,7 @@ export default function PlumbingPage() {
       {/* Contact */}
       <section id="contact" className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-black text-gray-900">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-bold text-gray-900">
             Get a Free Estimate
           </motion.h2>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid sm:grid-cols-3 gap-4">
@@ -350,7 +292,7 @@ export default function PlumbingPage() {
             ))}
           </motion.div>
           <div className="flex justify-center pt-2">
-            <GlowBtn href="tel:+15188880005" className="px-8 py-4 bg-blue-700 text-white font-black rounded-2xl text-base hover:bg-blue-600 transition-colors">
+            <GlowBtn href="tel:+15188880005" className="px-8 py-4 bg-blue-700 text-white font-bold rounded-2xl text-base hover:bg-blue-600 transition-colors">
               <Phone className="w-4 h-4" /> Call 24/7
             </GlowBtn>
           </div>

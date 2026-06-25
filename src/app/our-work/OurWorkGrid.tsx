@@ -185,9 +185,6 @@ function WorkCard({ s, isLive }: { s: (typeof liveWork)[0] | (typeof demoWork)[0
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div className={`absolute inset-0 bg-gradient-to-br ${s.accent}`} />
-        <div className="absolute top-4 left-4">
-          <span className="text-2xl">{s.emoji}</span>
-        </div>
         <div className="absolute top-4 right-4">
           {isLive ? (
             <span className="text-[10px] font-bold text-white bg-green-500/80 backdrop-blur-sm px-2.5 py-1 rounded-full flex items-center gap-1">
@@ -209,7 +206,7 @@ function WorkCard({ s, isLive }: { s: (typeof liveWork)[0] | (typeof demoWork)[0
       {/* Text */}
       <div className="p-5">
         <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mb-1">{s.category}</p>
-        <h3 className="font-black text-white text-base mb-2">{s.business}</h3>
+        <h3 className="font-bold text-white text-base mb-2">{s.business}</h3>
         <p className="text-sm text-gray-400 leading-relaxed">{s.desc}</p>
         <p className={`text-sm font-semibold mt-4 group-hover:underline flex items-center gap-1 ${isLive ? 'text-green-400' : 'text-blue-400'}`}>
           {isLive ? 'Visit live site' : 'Explore demo'} <ExternalLink className="w-3 h-3" />

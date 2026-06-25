@@ -15,9 +15,9 @@ export default function RefundPage() {
 
       {/* Hero */}
       <section className="bg-gray-950 pt-32 pb-14 text-center">
-        <p className="text-blue-400 text-sm font-bold tracking-widest uppercase mb-3">Legal</p>
-        <h1 className="text-4xl lg:text-5xl font-black text-white mb-3">Refund Policy</h1>
-        <p className="text-white/40 text-sm">Last updated: June 5, 2026</p>
+        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
+        <h1 className="text-4xl lg:text-5xl font-bold text-white mb-3">Refund Policy</h1>
+        <p className="text-white/40 text-sm">Last updated: June 25, 2026</p>
       </section>
 
       {/* Content */}
@@ -28,13 +28,13 @@ export default function RefundPage() {
 
         <h2>14-Day Satisfaction Guarantee</h2>
         <p>
-          Every new website project comes with a 14-day satisfaction guarantee. If your website launches and you are not satisfied with the result within the first 14 days, contact us and we will issue a full refund of your build fee ($100–$250 depending on plan).
+          Every new website project comes with a 14-day satisfaction guarantee. If your website launches and you are not satisfied with the result within the first 14 days, contact us and we will issue a full refund of your build fee ($150–$300 depending on plan).
         </p>
         <p>No hoops. No lengthy back-and-forth. We'll ask what went wrong (so we can improve), process your refund, and part on good terms.</p>
 
         <h2>What's Eligible for a Refund</h2>
         <ul>
-          <li>The initial build fee ($100–$250 depending on plan) within 14 days of your site going live</li>
+          <li>The initial build fee ($150–$300 depending on plan) within 14 days of your site going live</li>
           <li>Monthly subscription fees charged in error</li>
           <li>Duplicate charges</li>
         </ul>

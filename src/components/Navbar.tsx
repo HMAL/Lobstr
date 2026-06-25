@@ -79,16 +79,16 @@ export default function Navbar() {
               priority
             />
             <div className="leading-none">
-              <span className="text-[1rem] font-black tracking-tight text-gray-900">mylobstr</span>
-              <span className="text-[1rem] font-black tracking-tight text-blue-600">.</span>
-              <span className="text-[1rem] font-black tracking-tight text-gray-900">com</span>
+              <span className="text-[1rem] font-bold tracking-tight text-gray-900">mylobstr</span>
+              <span className="text-[1rem] font-bold tracking-tight text-blue-600">.</span>
+              <span className="text-[1rem] font-bold tracking-tight text-gray-900">com</span>
             </div>
           </a>
 
           {/* Sliding pill nav — desktop */}
           <nav aria-label="Primary" className="hidden md:block">
             <ul
-              className="relative flex w-fit rounded-full border-2 border-gray-900 bg-white p-1"
+              className="relative flex w-fit rounded-full border border-gray-200 bg-white p-1 shadow-sm"
               onMouseLeave={() => setPosition((pv) => ({ ...pv, opacity: 0 }))}
             >
               {links.map((link) => (
@@ -102,9 +102,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
               href="/contact"
-              className="inline-flex items-center px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 text-sm font-semibold rounded-full transition-all hover:scale-105 shadow-sm border border-gray-200"
+              className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-full transition-colors shadow-sm"
             >
-              Free consultation
+              Get a free quote
             </a>
           </div>
 
@@ -151,9 +151,9 @@ export default function Navbar() {
                 <a
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-center px-4 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl"
+                  className="flex items-center justify-center px-4 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl"
                 >
-                  Free consultation
+                  Get a free quote
                 </a>
               </div>
             </div>

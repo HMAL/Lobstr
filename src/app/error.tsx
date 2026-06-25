@@ -15,16 +15,16 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
       <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-orange-600/8 blur-3xl pointer-events-none" />
 
       <Link href="/" className="flex items-center gap-2 mb-12">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center">
+        <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center">
           <Globe className="w-[18px] h-[18px] text-white" />
         </div>
-        <span className="font-black text-base text-white">
+        <span className="font-bold text-base text-white">
           mylobstr<span className="text-blue-400">.</span>com
         </span>
       </Link>
 
-      <p className="text-8xl font-black text-white/10 leading-none mb-4 select-none">500</p>
-      <h1 className="text-3xl font-black text-white mb-3">Something went wrong.</h1>
+      <p className="text-8xl font-bold text-white/10 leading-none mb-4 select-none">500</p>
+      <h1 className="text-3xl font-bold text-white mb-3">Something went wrong</h1>
       <p className="text-white/50 text-base max-w-sm mb-10">
         An unexpected error occurred. Try refreshing — if the problem persists, reach out to us.
       </p>

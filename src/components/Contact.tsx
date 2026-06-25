@@ -33,37 +33,34 @@ declare global {
 const contactCards = [
   {
     icon: Clock,
-    emoji: '🕐',
-    title: '24/7 Real Support',
-    desc: 'We never close. Real humans answer every message, any time. No bots, ever.',
+    title: 'Real support, any time',
+    desc: 'A real person answers every message — not a bot or a ticket queue. We aim to reply within a day.',
     color: 'text-blue-600',
     bg: 'bg-blue-50',
     border: 'border-blue-100',
   },
   {
     icon: Mail,
-    emoji: '📧',
-    title: 'Email Us',
-    desc: 'info@mylobstr.com — for project inquiries and detailed questions.',
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50',
-    border: 'border-indigo-100',
+    title: 'Email us',
+    desc: 'info@mylobstr.com — good for detailed questions or sending over what you already have.',
+    color: 'text-blue-600',
+    bg: 'bg-blue-50',
+    border: 'border-blue-100',
   },
   {
     icon: MapPin,
-    emoji: '📍',
-    title: 'Albany Based',
-    desc: "We're local. We can meet for coffee — seriously, we love that.",
-    color: 'text-emerald-600',
-    bg: 'bg-emerald-50',
-    border: 'border-emerald-100',
+    title: 'Albany-based',
+    desc: "We're local, so if it's easier to talk it through over coffee, we're glad to.",
+    color: 'text-blue-600',
+    bg: 'bg-blue-50',
+    border: 'border-blue-100',
   },
 ]
 
-const planData: Record<string, { price: number; phase2: number; monthly: number; tagline: string }> = {
-  'Starter':          { price: 75,  phase2: 30, monthly: 10, tagline: 'New businesses' },
-  'Growing Business': { price: 150, phase2: 40, monthly: 15, tagline: 'Growing businesses' },
-  'Scale':            { price: 250, phase2: 50, monthly: 20, tagline: 'Multi-level businesses' },
+const planData: Record<string, { price: number; phase2: number; monthly: number; oneTime?: boolean; tagline: string }> = {
+  'Starter':          { price: 300, phase2: 0,  monthly: 0,  oneTime: true, tagline: 'New businesses' },
+  'Growing Business': { price: 150, phase2: 30, monthly: 30, tagline: 'Growing businesses' },
+  'Scale':            { price: 250, phase2: 50, monthly: 50, tagline: 'Multi-level businesses' },
 }
 
 function formatPhone(value: string) {
@@ -78,7 +75,11 @@ function ContactForm() {
   const searchParams = useSearchParams()
   const planParam = searchParams.get('plan') ?? ''
   const planInfo = planData[planParam] ?? null
-  const yearTotal = planInfo ? planInfo.price + planInfo.phase2 * 2 + planInfo.monthly * 9 : null
+  const yearTotal = planInfo
+    ? planInfo.oneTime
+      ? planInfo.price
+      : planInfo.price + planInfo.phase2 * 2 + planInfo.monthly * 9
+    : null
 
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -150,15 +151,15 @@ function ContactForm() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-            className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto"
+            className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto"
           >
             <CheckCircle2 className="w-10 h-10 text-white" />
           </motion.div>
-          <h3 className="text-2xl font-black text-gray-900">You&apos;re all set! 🎉</h3>
+          <h3 className="text-2xl font-bold text-gray-900">Thanks — we&apos;ve got it.</h3>
           <p className="text-gray-500">
-            We&apos;ll review your details and reach out within{' '}
-            <strong className="text-gray-900">24 hours</strong> with a free custom proposal.
-            Check your inbox — and maybe your spam just in case.
+            We&apos;ll look over your details and get back to you within about{' '}
+            <strong className="text-gray-900">a day</strong> with a free quote and a quick
+            plan. It&apos;s worth checking your spam folder just in case.
           </p>
           <p className="text-sm text-gray-400">
             Questions? Email us directly at{' '}
@@ -190,30 +191,33 @@ function ContactForm() {
                 <Tag className="w-4 h-4 text-blue-600" />
                 <p className="text-xs font-bold uppercase tracking-widest text-blue-600">Your selected plan</p>
               </div>
-              <p className="font-black text-gray-900 text-lg leading-none">{planParam}</p>
+              <p className="font-bold text-gray-900 text-lg leading-none">{planParam}</p>
               <p className="text-xs text-gray-500 mb-3">{planInfo.tagline}</p>
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="bg-white rounded-xl p-2.5 border border-blue-100">
-                  <p className="text-base font-black text-gray-900">${planInfo.price}</p>
-                  <p className="text-[10px] text-gray-400 leading-tight">Build<br />(Month 1)</p>
+              {planInfo.oneTime ? (
+                <div className="bg-white rounded-xl p-4 border border-blue-100 text-center">
+                  <p className="text-2xl font-bold text-gray-900">${planInfo.price}</p>
+                  <p className="text-xs text-gray-500 mt-1">One-time price · no monthly fee</p>
                 </div>
-                <div className="bg-white rounded-xl p-2.5 border border-blue-100">
-                  <p className="text-base font-black text-gray-900">
-                    ${planInfo.phase2}<span className="text-xs font-semibold text-gray-400">/mo</span>
-                  </p>
-                  <p className="text-[10px] text-gray-400 leading-tight">Optimize<br />(Months 2–3)</p>
-                </div>
-                <div className="bg-white rounded-xl p-2.5 border border-blue-100">
-                  <p className="text-base font-black text-gray-900">
-                    ${planInfo.monthly}<span className="text-xs font-semibold text-gray-400">/mo</span>
-                  </p>
-                  <p className="text-[10px] text-gray-400 leading-tight">Hosting<br />(Month 4+)</p>
-                </div>
-              </div>
-              <div className="mt-3 pt-3 border-t border-blue-200 flex items-center justify-between">
-                <span className="text-xs font-semibold text-blue-700">Estimated Year 1 Total</span>
-                <span className="text-xl font-black text-gray-900">${yearTotal}</span>
-              </div>
+              ) : (
+                <>
+                  <div className="grid grid-cols-2 gap-2 text-center">
+                    <div className="bg-white rounded-xl p-2.5 border border-blue-100">
+                      <p className="text-base font-bold text-gray-900">${planInfo.price}</p>
+                      <p className="text-[10px] text-gray-400 leading-tight">Build<br />(Month 1)</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-2.5 border border-blue-100">
+                      <p className="text-base font-bold text-gray-900">
+                        ${planInfo.monthly}<span className="text-xs font-semibold text-gray-400">/mo</span>
+                      </p>
+                      <p className="text-[10px] text-gray-400 leading-tight">Hosting &amp; support<br />(Month 2+)</p>
+                    </div>
+                  </div>
+                  <div className="mt-3 pt-3 border-t border-blue-200 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-blue-700">Estimated Year 1 Total</span>
+                    <span className="text-xl font-bold text-gray-900">${yearTotal}</span>
+                  </div>
+                </>
+              )}
             </div>
           )}
 
@@ -320,7 +324,7 @@ function ContactForm() {
           <button
             type="submit"
             disabled={loading || (turnstileRequired && !token)}
-            className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-700 text-white font-bold rounded-2xl py-4 text-sm shadow-lg hover:scale-[1.01] transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+            className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-2xl py-4 text-sm shadow-sm transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -330,13 +334,13 @@ function ContactForm() {
             ) : (
               <>
                 <Send className="w-4 h-4" />
-                Get My Free Proposal — No Obligation
+                Send my details — it&apos;s free
               </>
             )}
           </button>
 
           <p className="text-center text-xs text-gray-400">
-            📍 Albany-based team · 🔒 We never spam · ⚡ Reply within 24 hours
+            Albany-based · We never share your details · We reply within about a day
           </p>
 
           {turnstileRequired && (
@@ -382,13 +386,13 @@ export default function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`flex items-start gap-4 p-4 rounded-2xl bg-white border-2 ${card.border} shadow-sm`}
+                className={`flex items-start gap-4 p-4 rounded-2xl bg-white border ${card.border} shadow-sm`}
               >
-                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xl shrink-0 ${card.bg} border ${card.border}`}>
-                  {card.emoji}
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${card.bg} border ${card.border}`}>
+                  <card.icon className={`w-5 h-5 ${card.color}`} />
                 </div>
                 <div>
-                  <h3 className={`font-bold text-sm ${card.color} mb-0.5`}>{card.title}</h3>
+                  <h3 className="font-bold text-sm text-gray-900 mb-0.5">{card.title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
                 </div>
               </motion.div>
@@ -399,12 +403,12 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-5 text-white"
+              className="rounded-2xl bg-blue-600 p-5 text-white"
             >
               <p className="text-sm font-medium leading-relaxed">
-                💙 <strong>No pressure, no sales pitch.</strong> If your project isn&apos;t a good fit,
-                we&apos;ll tell you honestly and even point you in the right direction. Albany businesses
-                deserve straight talk.
+                <strong>No pressure, no sales pitch.</strong> If your project isn&apos;t the right fit
+                for us, we&apos;ll say so honestly and point you somewhere that is. You&apos;ll always
+                get a straight answer.
               </p>
             </motion.div>
           </div>

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Check, Heart, Zap, ArrowRight, Hammer, TrendingUp, Anchor, Sparkles,
-  ShieldCheck, HelpCircle, Plus, Minus, ExternalLink, Clock,
+  ShieldCheck, HelpCircle, Plus, Minus, ExternalLink,
   Globe, BarChart2, Search, Headphones, Layers,
   Code2, PenLine, Cloud, Lock, Smartphone, Mail, RotateCcw, MapPin,
 } from 'lucide-react'
@@ -49,17 +49,18 @@ const tiers = [
   {
     name: 'Starter',
     tagline: 'New businesses',
-    price: 100,
-    phase2: 25,
-    monthly: 20,
+    price: 300,
+    phase2: 0,
+    monthly: 0,
     hasPhase3: false,
+    oneTime: true,
     rushAddon: true,
     visits: '10,000',
     pages: 5,
     delivery: '7 business days',
-    desc: "Your first professional presence online — everything a new business needs, nothing it doesn't.",
-    badge: null as string | null,
-    badgeColor: '',
+    desc: "Your first professional presence online — one flat price, no monthly bill. Everything a new business needs to get found.",
+    badge: 'One-time price' as string | null,
+    badgeColor: 'bg-emerald-600',
     icon: Anchor,
     color: 'from-slate-500 to-gray-600',
     border: 'border-gray-200',
@@ -87,6 +88,7 @@ const tiers = [
     phase2: 30,
     monthly: 30,
     hasPhase3: false,
+    oneTime: false,
     rushAddon: true,
     visits: '30,000',
     pages: 10,
@@ -122,6 +124,7 @@ const tiers = [
     phase2: 50,
     monthly: 50,
     hasPhase3: true,
+    oneTime: false,
     rushAddon: false,
     visits: '50,000',
     pages: 20,
@@ -162,8 +165,8 @@ const wins = [
   },
   {
     icon: Heart,
-    title: 'From $25/mo after launch',
-    desc: "Website builders charge $27–$119/mo just for hosting. We start at $25/mo — all-in, no hidden fees.",
+    title: 'Starter has no monthly fee',
+    desc: "Starter is a flat $300, one time. Growing and Scale add a simple monthly ($30 / $50) for hosting and support — far less than the $27–$119/mo most builders charge.",
   },
   {
     icon: Sparkles,
@@ -265,8 +268,8 @@ const faqs = [
     a: "We're a lean Albany team, not a big agency with offices and account managers to pay for. We'd rather have 100 happy local businesses at a fair price than 5 paying agency rates. No catch — just lower overhead passed to you.",
   },
   {
-    q: "What's the catch with such a low monthly rate?",
-    a: "There isn't one. Your monthly rate ($25–$50 depending on plan) covers hosting, security, uptime monitoring, and us being on call. There are no setup fees, no per-edit charges, and no surprise invoices. The price you see is the price you pay.",
+    q: "What's the catch with the monthly rate?",
+    a: "There isn't one. Starter has no monthly fee at all — it's a flat one-time $300. On Growing ($30/mo) and Scale ($50/mo), that monthly covers hosting, security, uptime monitoring, and us being on call. No setup fees, no per-edit charges, no surprise invoices.",
   },
   {
     q: 'Do I actually own my website?',
@@ -377,10 +380,14 @@ export default function Pricing() {
   const [rushDelivery, setRushDelivery] = useState(false)
 
   const selectedTier = tiers[activeTier]
-  const journeyPhases = phases.filter((_, index) => index < 2 || selectedTier.hasPhase3)
-  const tierYearTotal = selectedTier.hasPhase3
-    ? selectedTier.price + selectedTier.phase2 * 2 + selectedTier.monthly * 9
-    : selectedTier.price + selectedTier.phase2 * 11
+  const journeyPhases = selectedTier.oneTime
+    ? phases.filter((_, index) => index < 1)
+    : phases.filter((_, index) => index < 2 || selectedTier.hasPhase3)
+  const tierYearTotal = selectedTier.oneTime
+    ? selectedTier.price
+    : selectedTier.hasPhase3
+      ? selectedTier.price + selectedTier.phase2 * 2 + selectedTier.monthly * 9
+      : selectedTier.price + selectedTier.phase2 * 11
 
   return (
     <section id="pricing" className="py-24 lg:py-32 bg-white">
@@ -394,11 +401,10 @@ export default function Pricing() {
           transition={{ delay: 0.12 }}
           className="flex justify-center mb-10"
         >
-          <div className="inline-flex items-center gap-3 bg-gray-900 text-white rounded-2xl px-6 py-3 shadow-lg">
-            <span className="text-gray-400 text-sm">{selectedTier.name} — year 1 total:</span>
-            <span className="text-2xl font-black text-white">${tierYearTotal}</span>
-            <span className="text-gray-400 text-sm line-through">$5,000+ agency</span>
-            <span className="bg-emerald-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">You save 98%</span>
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 bg-gray-900 text-white rounded-2xl px-6 py-3 shadow-sm">
+            <span className="text-gray-400 text-sm">{selectedTier.name} — {selectedTier.oneTime ? 'one-time total' : 'first year, all in'}:</span>
+            <span className="text-2xl font-bold text-white">${tierYearTotal}</span>
+            <span className="text-gray-400 text-sm">where an agency often starts around $5,000</span>
           </div>
         </motion.div>
 
@@ -411,11 +417,10 @@ export default function Pricing() {
           className="flex justify-center mb-14"
         >
           <p className="max-w-2xl text-center text-sm text-gray-500 leading-relaxed">
-            <Clock className="inline w-4 h-4 text-amber-500 -mt-0.5 mr-1" />
-            Every month you&apos;re not findable online, someone searching{' '}
-            <span className="font-semibold text-gray-700">&ldquo;<RotatingService /> near me&rdquo;</span> in Albany
-            books a competitor instead.{' '}
-            <span className="font-semibold text-gray-700">One missed customer a month costs more than a whole year of Mylobstr.</span>
+            When someone nearby searches{' '}
+            <span className="font-semibold text-gray-700">&ldquo;<RotatingService /> near me&rdquo;</span> in Albany,
+            a clear, fast website is what turns that search into a phone call or a booking.{' '}
+            <span className="font-semibold text-gray-700">That&apos;s what every plan here is built to do.</span>
           </p>
         </motion.div>
 
@@ -428,7 +433,7 @@ export default function Pricing() {
           className="mb-16"
         >
           <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-gray-900 mb-2">We handle everything — end to end</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">We handle everything — end to end</h2>
             <p className="text-base text-gray-500">No hunting for vendors, no surprise bills. Here&apos;s what&apos;s covered in your build.</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -456,9 +461,10 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-2xl lg:text-3xl font-black text-gray-900 mb-2">Choose your plan</h2>
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Choose your plan</h2>
           <p className="text-gray-500 text-sm max-w-lg mx-auto">
-            One build price, then a low monthly rate. All three include a 14-day money-back guarantee.
+            Starter is a flat one-time price. Growing and Scale add a low monthly rate for hosting
+            and support. All three include a 14-day money-back guarantee.
           </p>
         </motion.div>
 
@@ -492,16 +498,22 @@ export default function Pricing() {
             {/* Selected plan summary */}
             <div className={cn('px-4 py-4 border-b border-gray-100', selectedTier.bg)}>
               {selectedTier.badge && (
-                <span className={cn('text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide inline-block mb-2', selectedTier.badgeColor)}>
+                <span className={cn('text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide inline-block mb-2', selectedTier.badgeColor)}>
                   {selectedTier.badge}
                 </span>
               )}
               <div className="flex items-baseline gap-2 flex-wrap">
-                <span className="text-3xl font-black text-gray-900">${selectedTier.price}</span>
-                <span className="text-gray-400 text-sm">build</span>
+                <span className="text-3xl font-bold text-gray-900">${selectedTier.price}</span>
+                <span className="text-gray-400 text-sm">{selectedTier.oneTime ? 'one-time' : 'build'}</span>
                 <span className="text-gray-300">·</span>
-                <span className="font-bold text-gray-700">${selectedTier.hasPhase3 ? selectedTier.monthly : selectedTier.phase2}/mo</span>
-                <span className="text-gray-400 text-xs">after launch</span>
+                {selectedTier.oneTime ? (
+                  <span className="font-semibold text-emerald-700">no monthly fee</span>
+                ) : (
+                  <>
+                    <span className="font-semibold text-gray-700">${selectedTier.hasPhase3 ? selectedTier.monthly : selectedTier.phase2}/mo</span>
+                    <span className="text-gray-400 text-xs">after launch</span>
+                  </>
+                )}
               </div>
               <p className="text-xs text-gray-500 mt-1">{selectedTier.delivery} · {selectedTier.visits} visits/mo</p>
             </div>
@@ -510,7 +522,7 @@ export default function Pricing() {
             {comparisonSections.map((section) => (
               <div key={section.category}>
                 <div className="bg-gray-900 px-4 py-1.5">
-                  <span className="text-xs font-black uppercase tracking-widest text-gray-400">{section.category}</span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{section.category}</span>
                 </div>
                 {section.rows.map((row, ri) => {
                   const val = row.values[activeTier]
@@ -542,8 +554,8 @@ export default function Pricing() {
             {/* Mobile payment journey */}
             <div className="border-t-2 border-gray-100">
               <div className="bg-gray-900 px-4 py-2.5 flex items-center gap-3">
-                <span className="text-xs font-black uppercase tracking-widest text-gray-400">Payment journey</span>
-                <span className={cn('text-xs font-black px-2 py-0.5 rounded-full text-white bg-gradient-to-r', selectedTier.color)}>
+                <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Payment journey</span>
+                <span className={cn('text-xs font-bold px-2 py-0.5 rounded-full text-white bg-gradient-to-r', selectedTier.color)}>
                   {selectedTier.name}
                 </span>
               </div>
@@ -568,7 +580,7 @@ export default function Pricing() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-black text-gray-900 text-lg">
+                          <p className="font-bold text-gray-900 text-lg">
                             {phase.num === 1 ? `$${selectedTier.price}` : phase.num === 2 ? `$${selectedTier.phase2}` : `$${selectedTier.monthly}`}
                           </p>
                           <p className="text-[10px] text-gray-400">
@@ -613,15 +625,15 @@ export default function Pricing() {
                       )}
                     >
                       {t.badge && (
-                        <span className={cn('text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide block mb-2 w-fit mx-auto', t.badgeColor)}>
+                        <span className={cn('text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide block mb-2 w-fit mx-auto', t.badgeColor)}>
                           {t.badge}
                         </span>
                       )}
-                      <p className="font-black text-gray-900 text-sm mb-1">{t.name}</p>
-                      <p className="text-2xl font-black text-gray-900">${t.price}</p>
-                      <p className="text-xs text-gray-400">build · ${t.hasPhase3 ? t.monthly : t.phase2}/mo after</p>
+                      <p className="font-bold text-gray-900 text-sm mb-1">{t.name}</p>
+                      <p className="text-2xl font-bold text-gray-900">${t.price}</p>
+                      <p className="text-xs text-gray-400">{t.oneTime ? 'one-time · no monthly' : `build · $${t.hasPhase3 ? t.monthly : t.phase2}/mo after`}</p>
                       {isSelected && (
-                        <span className={cn('mt-2 inline-block text-[10px] font-black uppercase tracking-wide text-white px-2 py-0.5 rounded-full bg-gradient-to-r', t.color)}>
+                        <span className={cn('mt-2 inline-block text-[10px] font-bold uppercase tracking-wide text-white px-2 py-0.5 rounded-full bg-gradient-to-r', t.color)}>
                           Selected ✓
                         </span>
                       )}
@@ -635,7 +647,7 @@ export default function Pricing() {
                 <div key={section.category}>
                   <div className="grid grid-cols-[2fr_1fr_1fr_1fr] bg-gray-900">
                     <div className="col-span-4 px-5 py-2">
-                      <span className="text-xs font-black uppercase tracking-widest text-gray-400">{section.category}</span>
+                      <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{section.category}</span>
                     </div>
                   </div>
                   {section.rows.map((row, ri) => (
@@ -667,8 +679,8 @@ export default function Pricing() {
               {/* Payment journey */}
               <div className="border-t-2 border-gray-100">
                 <div className="bg-gray-900 px-5 py-2.5 flex items-center gap-3">
-                  <span className="text-xs font-black uppercase tracking-widest text-gray-400">Payment journey</span>
-                  <span className={cn('text-xs font-black px-2.5 py-0.5 rounded-full text-white bg-gradient-to-r', selectedTier.color)}>
+                  <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Payment journey</span>
+                  <span className={cn('text-xs font-bold px-2.5 py-0.5 rounded-full text-white bg-gradient-to-r', selectedTier.color)}>
                     {selectedTier.name}
                   </span>
                 </div>
@@ -690,11 +702,11 @@ export default function Pricing() {
                         </div>
                         <div className="mb-1">
                           {phase.num === 1 ? (
-                            <><span className="text-2xl font-black text-gray-900">${selectedTier.price}</span><span className="text-gray-400 text-xs"> one time</span></>
+                            <><span className="text-2xl font-bold text-gray-900">${selectedTier.price}</span><span className="text-gray-400 text-xs"> one time</span></>
                           ) : phase.num === 2 ? (
-                            <><span className="text-2xl font-black text-gray-900">${selectedTier.phase2}</span><span className="text-gray-400 text-xs">{selectedTier.hasPhase3 ? '/mo × 2' : '/mo forever'}</span></>
+                            <><span className="text-2xl font-bold text-gray-900">${selectedTier.phase2}</span><span className="text-gray-400 text-xs">{selectedTier.hasPhase3 ? '/mo × 2' : '/mo forever'}</span></>
                           ) : (
-                            <><span className="text-2xl font-black text-gray-900">${selectedTier.monthly}</span><span className="text-gray-400 text-xs">/mo forever</span></>
+                            <><span className="text-2xl font-bold text-gray-900">${selectedTier.monthly}</span><span className="text-gray-400 text-xs">/mo forever</span></>
                           )}
                         </div>
                         <p className="font-bold text-gray-900 text-sm mb-0.5">{phase.label}</p>
@@ -722,8 +734,12 @@ export default function Pricing() {
           {/* Selected plan CTA — shared */}
           <div className="px-6 py-5 bg-gray-50 border-t-2 border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <p className="font-black text-gray-900">{selectedTier.name}</p>
-              <p className="text-sm text-gray-500">${selectedTier.price} build · ${selectedTier.monthly}/mo after launch · {selectedTier.delivery}</p>
+              <p className="font-bold text-gray-900">{selectedTier.name}</p>
+              <p className="text-sm text-gray-500">
+                {selectedTier.oneTime
+                  ? `$${selectedTier.price} one-time · no monthly fee · ${selectedTier.delivery}`
+                  : `$${selectedTier.price} build · $${selectedTier.monthly}/mo after launch · ${selectedTier.delivery}`}
+              </p>
             </div>
             <a
               href={`/contact?plan=${encodeURIComponent(selectedTier.name)}`}
@@ -745,13 +761,13 @@ export default function Pricing() {
           transition={{ delay: 0.1 }}
           className="max-w-2xl mx-auto mb-14"
         >
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-5 text-white text-center shadow-xl">
-            <Heart className="w-6 h-6 mx-auto mb-2 fill-red-300 text-red-300" />
-            <p className="font-bold leading-snug mb-1">
-              &ldquo;By month 4, most clients have already made their money back 10× over.&rdquo;
+          <div className="bg-blue-600 rounded-2xl p-6 text-white text-center shadow-sm">
+            <p className="font-semibold leading-snug mb-1 text-lg">
+              For most local businesses, a customer or two from the site covers what it cost.
             </p>
             <p className="text-blue-100 text-sm">
-              One new customer through your website = months of hosting paid for. We priced this so <em>every</em> local business can afford to start.
+              That&apos;s the whole idea. We kept the price low so getting online is an easy yes,
+              not a big decision you have to sleep on.
             </p>
           </div>
         </motion.div>
@@ -764,9 +780,10 @@ export default function Pricing() {
           className="mb-12"
         >
           <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-gray-900 mb-2">Where Mylobstr wins — outright</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Why owners choose us</h2>
             <p className="text-gray-500 text-sm max-w-lg mx-auto">
-              Not just cheaper. Faster, more personal, and built to actually get you customers.
+              It&apos;s not only the price. It&apos;s the speed, the personal support, and a site
+              that&apos;s actually built to bring you customers.
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -800,7 +817,7 @@ export default function Pricing() {
               <ShieldCheck className="w-7 h-7 text-white" />
             </div>
             <div>
-              <h3 className="font-black text-gray-900 text-lg mb-1">Try it. Love it, or your money back.</h3>
+              <h3 className="font-bold text-gray-900 text-lg mb-1">Try it. Love it, or your money back.</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 If you don&apos;t love your new site within 14 days, we refund every cent — and you keep the design files.
                 No contracts, cancel anytime, and you always own your website.
@@ -847,7 +864,7 @@ export default function Pricing() {
           className="max-w-3xl mx-auto"
         >
           <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-gray-900 mb-2">Why so affordable? (and other honest questions)</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Why so affordable? (and other honest questions)</h2>
             <p className="text-gray-500 text-sm">The stuff every smart business owner asks before saying yes.</p>
           </div>
           <div className="space-y-3">

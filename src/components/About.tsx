@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { Users, Wallet, MessageSquare, Heart } from 'lucide-react'
 
 const values = [
-  { emoji: '🤝', title: 'We\'re your neighbors', desc: 'We shop at the same Albany spots, eat at the same restaurants, and genuinely want them to thrive.' },
-  { emoji: '💸', title: 'Fair pricing always', desc: 'Small business owners shouldn\'t have to choose between a website and keeping the lights on. We priced it that way.' },
-  { emoji: '📞', title: '24/7 real humans', desc: 'No bots, no call centers. If you text us at midnight because the site looks weird — yes, someone actually reads that.' },
-  { emoji: '❤️', title: 'Emotionally invested', desc: 'When your bookings drop, we lose sleep. When you land your biggest client yet, we celebrate. It\'s personal.' },
+  { icon: Users, title: 'We\'re your neighbors', desc: 'We shop at the same Albany spots and eat at the same restaurants. When local businesses do well, so does our town.' },
+  { icon: Wallet, title: 'Fair pricing, always', desc: 'A good website shouldn\'t mean choosing between getting online and keeping the lights on. We priced it so it doesn\'t.' },
+  { icon: MessageSquare, title: 'Real people answer', desc: 'No bots, no call centers. If you message us because something looks off, a real person reads it and gets back to you.' },
+  { icon: Heart, title: 'We actually care how it goes', desc: 'We follow how your site does after launch and tune it. Your wins feel like our wins — that part is genuine.' },
 ]
 
 export default function About() {
@@ -35,18 +36,15 @@ export default function About() {
               <strong className="text-gray-800"> For the community, by the community.</strong>
             </p>
 
-            {/* Origin story — most humanizing thing on the page */}
-            <div className="flex items-start gap-4 p-5 bg-gray-950 rounded-2xl text-white">
-              <span className="text-3xl shrink-0">🐾</span>
-              <div>
-                <p className="font-bold text-sm mb-1">How Mylobstr actually started:</p>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                  2am. Newborn in one arm. Laptop in the other. Luna asleep on Likki's feet.
-                  The Wi-Fi was slow. The idea was fast. She thought — <em>"if I can build something
-                  beautiful under these conditions, I can build it for anyone."</em>
-                  That's still the standard.
-                </p>
-              </div>
+            {/* Origin story — the most humanizing thing on the page */}
+            <div className="p-5 bg-gray-950 rounded-2xl text-white">
+              <p className="font-bold text-sm mb-1">How Mylobstr actually started</p>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                It began at 2am — newborn in one arm, laptop in the other, the dog asleep on
+                Likki&apos;s feet. The Wi-Fi was slow; the idea wasn&apos;t. If you can build
+                something good under those conditions, you can build it for anyone. That&apos;s
+                still the bar we hold ourselves to.
+              </p>
             </div>
           </motion.div>
 
@@ -74,8 +72,8 @@ export default function About() {
 
             {/* Floating card */}
             <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
-              <p className="text-2xl font-black text-gray-900">Making</p>
-              <p className="text-xs text-gray-500 font-medium">Albany businesses<br />with a web presence</p>
+              <p className="text-2xl font-bold text-gray-900">Local</p>
+              <p className="text-xs text-gray-500 font-medium">Albany born &amp;<br />Albany based</p>
             </div>
           </motion.div>
         </div>
@@ -88,9 +86,9 @@ export default function About() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h3 className="text-3xl font-black mb-2">What We Actually Care About</h3>
+            <h3 className="text-3xl font-bold mb-2">What we actually care about</h3>
             <p className="text-gray-400">
-              (Besides really good coffee and not terrible code reviews)
+              The few things that guide how we work — besides good coffee and clean code.
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-6">
@@ -103,7 +101,9 @@ export default function About() {
                 transition={{ delay: i * 0.1 }}
                 className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
               >
-                <span className="text-2xl shrink-0">{v.emoji}</span>
+                <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center shrink-0">
+                  <v.icon className="w-5 h-5" />
+                </div>
                 <div>
                   <h4 className="font-bold text-white mb-1">{v.title}</h4>
                   <p className="text-sm text-gray-400 leading-relaxed">{v.desc}</p>

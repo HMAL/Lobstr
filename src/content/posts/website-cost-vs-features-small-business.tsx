@@ -88,9 +88,10 @@ export default function Post() {
       <h2>How we price it</h2>
       <p>
         We publish our <Link href="/pricing">pricing</Link> instead of hiding it behind a sales call.
-        Builds run from $100 to $250 depending on pages and features, and a flat monthly rate from
-        $25 covers hosting, SSL, security, and real support — the things others bill separately. The
-        honest fine print lives on our <Link href="/faq">FAQ page</Link>.
+        Starter is a flat one-time $300 with no monthly fee. Growing Business ($150 build + $30/mo)
+        and Scale ($250 build + $50/mo) add a low monthly that covers hosting, SSL, security, and
+        real support — the things others bill separately. The honest fine print lives on our{' '}
+        <Link href="/faq">FAQ page</Link>.
       </p>
 
       <h2>The bottom line</h2>

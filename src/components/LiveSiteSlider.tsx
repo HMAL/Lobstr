@@ -77,7 +77,7 @@ function SiteSlider({ site }: { site: (typeof sites)[0] }) {
           <span className="text-2xl">{site.emoji}</span>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-black text-white text-lg leading-none">{site.name}</h3>
+              <h3 className="font-bold text-white text-lg leading-none">{site.name}</h3>
               <span className={`text-[10px] font-bold text-white bg-green-500/80 px-2 py-0.5 rounded-full flex items-center gap-1`}>
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Live
               </span>

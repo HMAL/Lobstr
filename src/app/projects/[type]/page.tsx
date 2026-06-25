@@ -32,7 +32,7 @@ const PROJECTS: Record<ProjectType, ProjectInfo> = {
   restaurant: {
     title: 'Restaurant Website Design Example — Trattoria Albany Demo',
     description:
-      'See what a custom restaurant website from Mylobstr looks like — online menu, reservations, photo gallery, and Google Maps. A demo site for Albany NY restaurants. Yours starts at $100.',
+      'See what a custom restaurant website from Mylobstr looks like — online menu, reservations, photo gallery, and Google Maps. A demo site for Albany NY restaurants. Yours starts at $300.',
     keywords: [
       'restaurant website design Albany NY',
       'restaurant website example',
@@ -45,7 +45,7 @@ const PROJECTS: Record<ProjectType, ProjectInfo> = {
   salon: {
     title: 'Hair Salon Website Design Example — The Cut Collective Demo',
     description:
-      'See what a custom salon website from Mylobstr looks like — services with prices, stylist profiles, online booking, and gallery. A demo site for Albany & Troy NY salons. Yours starts at $100.',
+      'See what a custom salon website from Mylobstr looks like — services with prices, stylist profiles, online booking, and gallery. A demo site for Albany & Troy NY salons. Yours starts at $300.',
     keywords: [
       'salon website design Albany NY',
       'hair salon website example',
@@ -58,7 +58,7 @@ const PROJECTS: Record<ProjectType, ProjectInfo> = {
   barbershop: {
     title: 'Barbershop Website Design Example — Capital Cuts Demo',
     description:
-      'See what a custom barbershop website from Mylobstr looks like — book-a-cut button, barber profiles, pricing, and gallery. A demo site for Albany & Schenectady NY barbershops. Yours starts at $100.',
+      'See what a custom barbershop website from Mylobstr looks like — book-a-cut button, barber profiles, pricing, and gallery. A demo site for Albany & Schenectady NY barbershops. Yours starts at $300.',
     keywords: [
       'barbershop website design Albany NY',
       'barber shop website example',
@@ -71,7 +71,7 @@ const PROJECTS: Record<ProjectType, ProjectInfo> = {
   fitness: {
     title: 'Gym & Fitness Website Design Example — Albany Iron Fitness Demo',
     description:
-      'See what a custom gym website from Mylobstr looks like — class schedule, trainer bios, membership signup, and gallery. A demo site for Albany NY gyms and studios. Yours starts at $100.',
+      'See what a custom gym website from Mylobstr looks like — class schedule, trainer bios, membership signup, and gallery. A demo site for Albany NY gyms and studios. Yours starts at $300.',
     keywords: [
       'gym website design Albany NY',
       'fitness studio website example',
@@ -84,7 +84,7 @@ const PROJECTS: Record<ProjectType, ProjectInfo> = {
   pet: {
     title: 'Veterinary & Pet Business Website Design Example — Happy Paws Demo',
     description:
-      'See what a custom vet clinic and pet grooming website from Mylobstr looks like — online appointments, services, and team profiles. A demo site for Albany NY pet businesses. Yours starts at $100.',
+      'See what a custom vet clinic and pet grooming website from Mylobstr looks like — online appointments, services, and team profiles. A demo site for Albany NY pet businesses. Yours starts at $300.',
     keywords: [
       'veterinary website design Albany NY',
       'pet grooming website example',
@@ -97,7 +97,7 @@ const PROJECTS: Record<ProjectType, ProjectInfo> = {
   plumbing: {
     title: 'Plumber Website Design Example — Albany Pro Plumbing Demo',
     description:
-      'See what a custom plumbing company website from Mylobstr looks like — emergency call button, services, service area, and free estimate form. A demo site for Albany NY contractors. Yours starts at $100.',
+      'See what a custom plumbing company website from Mylobstr looks like — emergency call button, services, service area, and free estimate form. A demo site for Albany NY contractors. Yours starts at $300.',
     keywords: [
       'plumber website design Albany NY',
       'plumbing company website example',
@@ -110,7 +110,7 @@ const PROJECTS: Record<ProjectType, ProjectInfo> = {
   tutoring: {
     title: 'Tutoring & School Website Design Example — Bright Minds Demo',
     description:
-      'See what a custom tutoring center website from Mylobstr looks like — programs, tutor profiles, free assessment booking, and parent reviews. A demo site for Albany NY tutors and schools. Yours starts at $100.',
+      'See what a custom tutoring center website from Mylobstr looks like — programs, tutor profiles, free assessment booking, and parent reviews. A demo site for Albany NY tutors and schools. Yours starts at $300.',
     keywords: [
       'tutoring website design Albany NY',
       'tutor website example',

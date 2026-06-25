@@ -15,9 +15,9 @@ export default function PrivacyPage() {
 
       {/* Hero */}
       <section className="bg-gray-950 pt-32 pb-14 text-center">
-        <p className="text-blue-400 text-sm font-bold tracking-widest uppercase mb-3">Legal</p>
-        <h1 className="text-4xl lg:text-5xl font-black text-white mb-3">Privacy Policy</h1>
-        <p className="text-white/40 text-sm">Last updated: June 5, 2026</p>
+        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
+        <h1 className="text-4xl lg:text-5xl font-bold text-white mb-3">Privacy Policy</h1>
+        <p className="text-white/40 text-sm">Last updated: June 25, 2026</p>
       </section>
 
       {/* Content */}
@@ -63,9 +63,9 @@ export default function PrivacyPage() {
         <h2>4. Third-Party Services</h2>
         <p>We use the following third-party services to operate our business:</p>
         <ul>
-          <li><strong>Google Analytics</strong> — website traffic analysis. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Google's Privacy Policy</a></li>
-          <li><strong>Resend</strong> — email delivery for contact form submissions. <a href="https://resend.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Resend's Privacy Policy</a></li>
-          <li><strong>Vercel</strong> — website hosting and infrastructure. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Vercel's Privacy Policy</a></li>
+          <li><strong>Google Analytics</strong> — website traffic analysis. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Google&apos;s Privacy Policy</a></li>
+          <li><strong>Resend</strong> — email delivery for contact form submissions. <a href="https://resend.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Resend&apos;s Privacy Policy</a></li>
+          <li><strong>Cloudflare</strong> — website hosting, CDN, and bot protection (Turnstile) on our contact form. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-600">Cloudflare&apos;s Privacy Policy</a></li>
           <li><strong>Stripe / Square</strong> — payment processing (if applicable). Data is handled directly by these processors under their own privacy policies.</li>
         </ul>
 

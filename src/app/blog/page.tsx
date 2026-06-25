@@ -32,12 +32,13 @@ export default function BlogPage() {
 
       {/* Hero */}
       <section className="bg-gray-950 pt-32 pb-16 text-center">
-        <p className="text-blue-400 text-sm font-bold tracking-widest uppercase mb-3">Blog</p>
-        <h1 className="text-4xl lg:text-5xl font-black text-white mb-4">
-          Practical tips for local business owners.
+        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Blog</p>
+        <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          Practical tips for local business owners
         </h1>
         <p className="text-white/50 text-lg max-w-xl mx-auto px-4">
-          No fluff. No jargon. Just honest advice on growing your business online — written by the people who build your website.
+          Plain-English advice on websites and getting found on Google, written by the same people
+          who build them. Read what&apos;s useful, skip the rest.
         </p>
       </section>
 
@@ -59,25 +60,25 @@ export default function BlogPage() {
                 <p className="text-xs font-semibold text-gray-400 mb-2">
                   {published} · {post.readingMinutes} min read
                 </p>
-                <h2 className="font-black text-gray-900 text-xl mb-2 leading-snug">{post.title}</h2>
+                <h2 className="font-bold text-gray-900 text-xl mb-2 leading-snug">{post.title}</h2>
                 <p className="text-sm text-gray-500 leading-relaxed mb-4">{post.description}</p>
-                <span className="mt-auto text-sm font-bold text-blue-600">Read the guide →</span>
+                <span className="mt-auto text-sm font-semibold text-blue-600">Read the guide →</span>
               </Link>
             )
           })}
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center p-10 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-          <h2 className="text-2xl font-black mb-2">Rather just have it handled?</h2>
-          <p className="text-white/70 mb-6 text-sm">
-            We build custom websites for Albany small businesses — SEO, hosting, and Google Business Profile included. From $100.
+        <div className="mt-16 text-center p-10 rounded-3xl bg-blue-600 text-white">
+          <h2 className="text-2xl font-bold mb-2">Rather just have it handled?</h2>
+          <p className="text-white/80 mb-6 text-sm">
+            We build custom websites for Albany small businesses — SEO, hosting, and Google Business Profile included. Starter is a flat $300, no monthly fee.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-black rounded-2xl hover:bg-blue-50 transition-all hover:scale-105 text-sm"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-semibold rounded-2xl hover:bg-blue-50 transition-colors text-sm"
           >
-            Free consultation →
+            Get a free quote →
           </Link>
         </div>
       </section>

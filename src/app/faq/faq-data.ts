@@ -35,17 +35,17 @@ export const faqCategories: FaqCategory[] = [
     faqs: [
       {
         q: 'How much does a website cost?',
-        a: 'Three plans, all transparent: Starter at $100 (5-page website for new businesses), Growing Business at $150 (10 pages with logo design and full SEO), and Scale at $250 (20 pages with an admin panel). After launch, a flat monthly rate — $25/mo for Starter, $30/mo for Growing Business, $50/mo for Scale — covers hosting, support, and updates. No surprise invoices, no hidden fees.',
+        a: 'Three plans, all transparent. Starter is a flat one-time $300 (a 5-page website for new businesses) with no monthly fee at all. Growing Business is $150 to build plus $30/mo (10 pages with logo design and full SEO). Scale is $250 to build plus $50/mo (20 pages with an admin panel). On Growing and Scale, the monthly covers hosting, support, and updates. No surprise invoices, no hidden fees.',
         featured: true,
       },
       {
         q: 'Are there any hidden fees I should know about?',
-        a: 'None from us. The only outside cost is a domain name (~$12/year through a registrar like Namecheap), and on Growing Business and Scale plans we register it for you if it\'s under $20/year. Hosting, SSL, updates, and support are all included in your monthly fee.',
+        a: 'None from us. The only outside cost is a domain name (~$12/year through a registrar like Namecheap), and on Growing Business and Scale plans we register it for you if it\'s under $20/year. Hosting, SSL, updates, and support are all included — in the one-time price on Starter, and in the monthly fee on Growing Business and Scale.',
         featured: true,
       },
       {
         q: 'Is there a long-term contract?',
-        a: 'No contracts, no lock-in. Cancel any time with 30 days notice. We believe in earning your business every month — not trapping you.',
+        a: 'No contracts and no lock-in. On Growing Business and Scale you can cancel the monthly any time — we\'d rather earn your business each month than trap you. Starter is a one-time price, so there\'s nothing to cancel.',
         featured: true,
       },
       {
@@ -129,7 +129,7 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'Will my website work on phones and tablets?',
-        a: '100%. Every site is mobile-first by design — built for phones before anything else. Over 70% of local business traffic comes from mobile, so this isn\'t optional for us.',
+        a: 'Always. Every site is mobile-first by design — built for phones before anything else. Most people will find you on their phone, so we treat that as the main view, not an afterthought.',
       },
       {
         q: 'Can I take payments on my website?',

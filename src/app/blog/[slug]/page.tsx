@@ -77,7 +77,7 @@ export default async function BlogPostPage({
             <span className="mx-2">/</span>
             <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
           </nav>
-          <h1 className="text-3xl lg:text-5xl font-black text-white leading-tight mb-5">
+          <h1 className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-5">
             {post.title}
           </h1>
           <p className="text-white/50 text-sm font-medium">
@@ -93,16 +93,16 @@ export default async function BlogPostPage({
         </article>
 
         {/* CTA */}
-        <div className="mt-16 text-center p-10 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-          <h2 className="text-2xl font-black mb-2">Want a website that shows up on Google?</h2>
-          <p className="text-white/70 mb-6 text-sm">
-            Custom sites for Albany small businesses from $100, live in about a week. SEO included.
+        <div className="mt-16 text-center p-10 rounded-3xl bg-blue-600 text-white">
+          <h2 className="text-2xl font-bold mb-2">Want a website that shows up on Google?</h2>
+          <p className="text-white/80 mb-6 text-sm">
+            Custom sites for Albany small businesses from a flat $300, live in about a week. SEO included.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-black rounded-2xl hover:bg-blue-50 transition-all hover:scale-105 text-sm"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-semibold rounded-2xl hover:bg-blue-50 transition-colors text-sm"
           >
-            Free consultation →
+            Get a free quote →
           </Link>
         </div>
 

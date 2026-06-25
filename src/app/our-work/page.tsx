@@ -18,18 +18,15 @@ export default function OurWorkPage() {
 
       {/* Hero */}
       <section className="pt-32 pb-16 text-center px-4">
-        <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">
-          Our Work
+        <span className="inline-block text-xs font-semibold uppercase tracking-widest text-blue-400 mb-3">
+          Our work
         </span>
-        <h1 className="text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
-          Live sites. Real results.
-          <br />
-          <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-            See what we build.
-          </span>
+        <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+          Live sites and full demo builds
         </h1>
         <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-          Live platforms already serving real users, plus full demo builds across Albany's most common business types. Click any to explore.
+          Real platforms already serving customers, plus complete demo builds across the business
+          types we see most around Albany. Click any one to explore it.
         </p>
       </section>
 

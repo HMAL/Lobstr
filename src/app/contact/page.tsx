@@ -16,18 +16,15 @@ export default function ContactPage() {
       <Navbar />
 
       <section className="bg-gray-950 pt-32 pb-16 text-center px-4">
-        <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">
-          Let's Talk
+        <span className="inline-block text-xs font-semibold uppercase tracking-widest text-blue-400 mb-3">
+          Let&apos;s talk
         </span>
-        <h1 className="text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
-          Ready to put your business
-          <br />
-          <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-            on the map?
-          </span>
+        <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+          Tell us about your business
         </h1>
         <p className="text-gray-400 max-w-xl mx-auto text-lg">
-          Tell us about your Albany business and we'll have a free proposal in your inbox within 24 hours.
+          Share a few details and we&apos;ll send back a free quote and a short plan — usually
+          within about a day. No obligation, no hard sell.
         </p>
       </section>
 

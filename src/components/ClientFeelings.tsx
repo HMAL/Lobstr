@@ -16,29 +16,30 @@ const feelings = [
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
 const item = {
-  hidden: { opacity: 0, y: 24, filter: 'blur(4px)' },
-  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 }
 
 export default function ClientFeelings() {
   return (
-    <section className="py-24 lg:py-32 bg-white bg-dot-grid relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-gray-50 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="text-center mb-16 max-w-2xl mx-auto"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
-            The feeling after
+          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
+            What clients say
           </span>
-          <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-4 leading-tight">
-            What clients feel when the work is done
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            How it feels to work with us
           </h2>
           <p className="text-lg text-gray-500">
-            Real trust sounds calm. It sounds clear. It sounds like the weight got a little lighter.
+            Most of our work comes from neighbors telling neighbors. Here&apos;s what some of
+            them have said.
           </p>
         </motion.div>
 
@@ -53,7 +54,7 @@ export default function ClientFeelings() {
             <motion.figure
               key={f.name}
               variants={item}
-              className="break-inside-avoid mb-6 rounded-3xl border-2 border-gray-100 bg-white p-6 hover:border-gray-200 hover:shadow-lg transition-all duration-300"
+              className="break-inside-avoid mb-6 rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-md transition-shadow duration-300"
             >
               <blockquote className="text-base text-gray-700 leading-relaxed">&ldquo;{f.text}&rdquo;</blockquote>
               <figcaption className="mt-4">

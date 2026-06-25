@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, Star, Scissors, Sparkles } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Star, Scissors } from 'lucide-react'
 import BookingCalendar from '@/components/BookingCalendar'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -45,8 +45,7 @@ const bounceIn = { hidden: { opacity: 0, scale: 0.75 }, show: { opacity: 1, scal
 // ── Inline components ─────────────────────────────────────────────────────────
 function GlowBtn({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
   return (
-    <a href={href} className={`relative group inline-flex items-center gap-2 ${className}`}>
-      <span className="absolute -inset-1 -z-10 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md glow-hue-bg" />
+    <a href={href} className={`inline-flex items-center gap-2 ${className}`}>
       {children}
     </a>
   )
@@ -75,35 +74,9 @@ function SpotlightCard({ children, accent, bg, className = '' }: { children: Rea
   )
 }
 
-function CustomCursor({ icon: Icon, color }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number; style?: React.CSSProperties }>, color: string }) {
-  const [pos, setPos] = useState({ x: -200, y: -200 })
-  useEffect(() => {
-    const style = document.createElement('style')
-    style.textContent = '* { cursor: none !important; }'
-    document.head.appendChild(style)
-    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY })
-    window.addEventListener('mousemove', move)
-    return () => {
-      document.head.removeChild(style)
-      window.removeEventListener('mousemove', move)
-    }
-  }, [])
-  return (
-    <div className="fixed pointer-events-none z-[9999]" style={{ left: pos.x, top: pos.y, transform: 'translate(-50%, -50%)' }}>
-      <Icon className="w-7 h-7 drop-shadow-lg" style={{ color }} strokeWidth={1.8} />
-    </div>
-  )
-}
 
-function HeroBlobs() {
-  return (
-    <>
-      <div className="demo-blob w-72 h-72 rounded-full bg-rose-400/20 top-[8%] right-[6%]" />
-      <div className="demo-blob w-56 h-56 rounded-full bg-pink-300/15 bottom-[12%] right-[18%]" style={{ animationDelay: '3s, 2.5s' }} />
-      <div className="demo-blob w-44 h-44 rounded-full bg-fuchsia-400/10 top-[42%] left-[2%]" style={{ animationDelay: '6s, 4s' }} />
-    </>
-  )
-}
+
+
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const tilt = index % 2 === 0 ? '-rotate-[0.5deg]' : 'rotate-[0.5deg]'
@@ -152,7 +125,7 @@ function SalonScrollingReviews() {
           <div className="flex justify-center gap-1 mb-3">
             {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
           </div>
-          <h2 className="text-3xl font-black text-white mb-1">What Clients Say</h2>
+          <h2 className="text-3xl font-bold text-white mb-1">What Clients Say</h2>
           <p className="text-white/40">4.9 / 5 · 280+ reviews</p>
         </div>
         <div className="flex justify-center gap-5 max-h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_85%,transparent_100%)]">
@@ -166,35 +139,7 @@ function SalonScrollingReviews() {
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
-function SalonMascot() {
-  return (
-    <div className="relative w-full h-full flex items-center justify-center select-none">
-      <motion.div className="absolute w-80 h-80 rounded-full bg-rose-400/10 blur-3xl"
-        animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="relative z-10"
-        animate={{ y: [0, -18, 0], rotate: [0, 8, 0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
-        <div className="w-52 h-52 rounded-full bg-gradient-to-br from-rose-500/20 to-rose-700/10 border border-rose-400/30 shadow-[0_0_60px_rgba(244,63,94,0.15)] flex items-center justify-center">
-          <Scissors className="w-24 h-24 text-rose-400" strokeWidth={1.5} />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-72 h-72" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-rose-500/20 border border-rose-400/40 flex items-center justify-center">
-          <Sparkles className="w-5 h-5 text-rose-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-56 h-56" animate={{ rotate: -360 }} transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute top-0 right-0 w-9 h-9 rounded-full bg-rose-500/15 border border-rose-400/30 flex items-center justify-center">
-          <Star className="w-4 h-4 text-rose-400 fill-rose-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-96 h-96" animate={{ rotate: 360 }} transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute bottom-0 left-2 w-8 h-8 rounded-full bg-pink-500/10 border border-pink-400/20 flex items-center justify-center">
-          <Sparkles className="w-4 h-4 text-pink-400/70" />
-        </div>
-      </motion.div>
-    </div>
-  )
-}
+
 
 export default function SalonPage() {
   const [navHidden, setNavHidden] = useState(false)
@@ -211,8 +156,7 @@ export default function SalonPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <div className="min-h-screen bg-white font-sans cursor-none">
-      <CustomCursor icon={Scissors} color="#f43f5e" />
+    <div className="min-h-screen bg-white font-sans">
       {/* Nav */}
       <motion.nav
         initial={{ y: '-100%' }}
@@ -222,7 +166,7 @@ export default function SalonPage() {
       >
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
-            <p className="font-black text-gray-900 text-lg tracking-tight">The Cut Collective</p>
+            <p className="font-bold text-gray-900 text-lg tracking-tight">The Cut Collective</p>
             <p className="text-xs text-rose-500 font-semibold">Troy, NY</p>
           </motion.div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-500">
@@ -237,21 +181,17 @@ export default function SalonPage() {
       {/* Hero */}
       <section className="relative h-[90vh] flex items-center overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1400&q=85" alt="Salon" fill className="object-cover brightness-60" priority sizes="100vw" />
-        <HeroBlobs />
         {/* 3D stylist — replace URL: spline.design → Community → search "hairstylist" or "salon" → Export → Copy public URL */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[45%] h-[80%] hidden lg:block" style={{ zIndex: 5 }}>
-          <SalonMascot />
-        </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-white">
           <p className="demo-fade-up text-rose-300 font-bold tracking-widest text-sm uppercase mb-4">✦ Troy&apos;s Premier Hair Studio ✦</p>
-          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-black leading-[0.9] mb-6">
+          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-bold leading-[0.9] mb-6">
             Your hair.<br /><span className="text-rose-400">Your story.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-white/75 text-lg max-w-md mb-8">
             Expert cuts, color, and care for every hair type. Walk in looking good, walk out feeling unstoppable.
           </p>
           <div className="demo-fade-up demo-fade-up-3">
-            <GlowBtn href="#book" className="inline-flex items-center gap-2 px-7 py-4 bg-rose-500 hover:bg-rose-400 text-white font-black rounded-2xl text-base transition-all hover:scale-105">
+            <GlowBtn href="#book" className="inline-flex items-center gap-2 px-7 py-4 bg-rose-500 hover:bg-rose-400 text-white font-bold rounded-2xl text-base transition-all hover:scale-105">
               <Scissors className="w-4 h-4" /> Book Your Session
             </GlowBtn>
           </div>
@@ -263,7 +203,7 @@ export default function SalonPage() {
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-10">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-rose-400 mb-3">Services &amp; Pricing</span>
-            <h2 className="text-4xl font-black text-white mb-2">No surprises here.</h2>
+            <h2 className="text-4xl font-bold text-white mb-2">No surprises here.</h2>
             <p className="text-white/40">Transparent pricing. Just great hair.</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -273,7 +213,7 @@ export default function SalonPage() {
                   <div className="text-3xl group-hover:scale-110 transition-transform duration-300">{s.emoji}</div>
                   <p className="font-bold text-white flex-1">{s.name}</p>
                   <div className="flex items-center gap-3">
-                    <p className="text-rose-400 font-black">{s.price}</p>
+                    <p className="text-rose-400 font-bold">{s.price}</p>
                     <div className="h-px flex-1 bg-rose-400/20 group-hover:bg-rose-400/50 transition-colors duration-500 rounded-full" />
                   </div>
                 </SpotlightCard>
@@ -286,7 +226,7 @@ export default function SalonPage() {
       {/* Gallery */}
       <section id="gallery" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-black text-center text-gray-900 mb-10">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-bold text-center text-gray-900 mb-10">
             Our Work
           </motion.h2>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -318,7 +258,7 @@ export default function SalonPage() {
       {/* Book CTA */}
       <section id="book" className="py-20 bg-rose-500 text-white">
         <div className="max-w-2xl mx-auto px-4 text-center space-y-6">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-black">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-bold">
             Book Your Appointment
           </motion.h2>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid sm:grid-cols-3 gap-3">
@@ -336,7 +276,7 @@ export default function SalonPage() {
             <Clock className="w-4 h-4" /> Tue–Sat 9am–7pm · Sun 10am–5pm
           </div>
           <div className="flex justify-center">
-            <GlowBtn href="tel:+15188880003" className="px-8 py-4 bg-white text-rose-600 font-black rounded-2xl text-base hover:bg-rose-50 transition-colors">
+            <GlowBtn href="tel:+15188880003" className="px-8 py-4 bg-white text-rose-600 font-bold rounded-2xl text-base hover:bg-rose-50 transition-colors">
               <Phone className="w-4 h-4" /> Call to Book
             </GlowBtn>
           </div>

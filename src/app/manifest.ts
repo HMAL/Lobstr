@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Mylobstr — Website Design Albany NY',
     short_name: 'Mylobstr',
     description:
-      'Custom websites for small businesses in Albany, NY — live in 7 days, starting at $100.',
+      'Custom websites for small businesses in Albany, NY — live in about a week, starting at a flat $300.',
     start_url: '/',
     display: 'standalone',
     background_color: '#030712',

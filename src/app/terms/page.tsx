@@ -15,9 +15,9 @@ export default function TermsPage() {
 
       {/* Hero */}
       <section className="bg-gray-950 pt-32 pb-14 text-center">
-        <p className="text-blue-400 text-sm font-bold tracking-widest uppercase mb-3">Legal</p>
-        <h1 className="text-4xl lg:text-5xl font-black text-white mb-3">Terms of Service</h1>
-        <p className="text-white/40 text-sm">Last updated: June 5, 2026</p>
+        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
+        <h1 className="text-4xl lg:text-5xl font-bold text-white mb-3">Terms of Service</h1>
+        <p className="text-white/40 text-sm">Last updated: June 25, 2026</p>
       </section>
 
       {/* Content */}
@@ -40,11 +40,11 @@ export default function TermsPage() {
         <h2>2. Pricing & Payment</h2>
         <p>Our standard pricing is:</p>
         <ul>
-          <li><strong>Month 1:</strong> one-time build fee of $100 (Starter), $150 (Growing Business), or $250 (Scale) — design + development</li>
-          <li><strong>Month 2 onward:</strong> $25/month (Starter), $30/month (Growing Business), or $50/month (Scale) — hosting, maintenance, and support</li>
+          <li><strong>Starter:</strong> a flat one-time fee of $300 for design and development. There is no monthly fee on this plan.</li>
+          <li><strong>Growing Business &amp; Scale:</strong> a one-time build fee ($150 or $250) plus a monthly fee ($30/month or $50/month) for hosting, maintenance, and support, beginning the month after your site launches.</li>
         </ul>
         <p>
-          Payments are charged monthly via the payment method on file. Invoices are sent 3 days before each billing date. All prices are in USD. We reserve the right to update pricing with 30 days advance written notice.
+          One-time fees are billed at project kickoff. Where a plan includes a monthly fee, it is charged via the payment method on file, with invoices sent 3 days before each billing date. All prices are in USD. We reserve the right to update pricing with 30 days advance written notice.
         </p>
         <p>
           Payments not received within 10 days of the due date may result in suspension of services until the balance is settled.
@@ -76,7 +76,7 @@ export default function TermsPage() {
 
         <h2>5. Cancellation</h2>
         <p>
-          You may cancel your subscription at any time by providing 30 days written notice via email to info@mylobstr.com. Your site will remain live until the end of the 30-day notice period. After cancellation, your site will be taken offline and your content exported and made available for 14 days.
+          On plans with a monthly fee (Growing Business and Scale), you may cancel at any time by providing 30 days written notice via email to info@mylobstr.com. Your site will remain live until the end of the 30-day notice period, after which it is taken offline and your content exported and made available for 14 days. The Starter plan is a one-time purchase with no recurring fee, so there is nothing to cancel.
         </p>
         <p>
           Mylobstr reserves the right to cancel your subscription for non-payment, violation of these Terms, or any activity deemed harmful to our infrastructure or reputation. In such cases, we will provide 7 days notice except in cases of severe abuse.
@@ -84,7 +84,7 @@ export default function TermsPage() {
 
         <h2>6. Satisfaction Guarantee & Refunds</h2>
         <p>
-          We offer a 14-day satisfaction guarantee on all new projects. If you are not satisfied with your website within the first 14 days of launch, contact us and we will issue a full refund of your first month's payment. See our <a href="/refund" className="text-blue-600">Refund Policy</a> for full details.
+          We offer a 14-day satisfaction guarantee on all new projects. If you are not satisfied with your website within the first 14 days of launch, contact us and we will issue a full refund of your build fee (or, on Starter, your one-time payment). See our <a href="/refund" className="text-blue-600">Refund Policy</a> for full details.
         </p>
 
         <h2>7. Uptime & Service Level</h2>

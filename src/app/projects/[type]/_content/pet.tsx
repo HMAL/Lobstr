@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, Star, PawPrint, Heart, Bone } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Star, PawPrint, Heart } from 'lucide-react'
 import BookingCalendar from '@/components/BookingCalendar'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -42,8 +42,7 @@ const bounceIn = { hidden: { opacity: 0, scale: 0.75 }, show: { opacity: 1, scal
 // ── Inline components ─────────────────────────────────────────────────────────
 function GlowBtn({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
   return (
-    <a href={href} className={`relative group inline-flex items-center gap-2 ${className}`}>
-      <span className="absolute -inset-1 -z-10 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md glow-hue-bg" />
+    <a href={href} className={`inline-flex items-center gap-2 ${className}`}>
       {children}
     </a>
   )
@@ -72,35 +71,9 @@ function SpotlightCard({ children, accent, bg, className = '' }: { children: Rea
   )
 }
 
-function CustomCursor({ icon: Icon, color }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number; style?: React.CSSProperties }>, color: string }) {
-  const [pos, setPos] = useState({ x: -200, y: -200 })
-  useEffect(() => {
-    const style = document.createElement('style')
-    style.textContent = '* { cursor: none !important; }'
-    document.head.appendChild(style)
-    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY })
-    window.addEventListener('mousemove', move)
-    return () => {
-      document.head.removeChild(style)
-      window.removeEventListener('mousemove', move)
-    }
-  }, [])
-  return (
-    <div className="fixed pointer-events-none z-[9999]" style={{ left: pos.x, top: pos.y, transform: 'translate(-50%, -50%)' }}>
-      <Icon className="w-7 h-7 drop-shadow-lg" style={{ color }} strokeWidth={1.8} />
-    </div>
-  )
-}
 
-function HeroBlobs() {
-  return (
-    <>
-      <div className="demo-blob w-72 h-72 rounded-full bg-emerald-400/25 top-[5%] right-[8%]" />
-      <div className="demo-blob w-56 h-56 rounded-full bg-teal-300/20 bottom-[10%] right-[20%]" style={{ animationDelay: '3s, 2s' }} />
-      <div className="demo-blob w-40 h-40 rounded-full bg-green-500/15 top-[40%] left-[3%]" style={{ animationDelay: '6s, 4s' }} />
-    </>
-  )
-}
+
+
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const tilt = index % 2 === 0 ? '-rotate-[0.5deg]' : 'rotate-[0.5deg]'
@@ -109,7 +82,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
       <div className="flex gap-0.5 mb-3">
         {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
       </div>
-      <p className="text-sm leading-relaxed text-gray-600 mb-4">"{review.text}"</p>
+      <p className="text-sm leading-relaxed text-gray-600 mb-4">&ldquo;{review.text}&rdquo;</p>
       <div className="flex items-center gap-2.5">
         <img src={review.img} alt={review.name} className="w-9 h-9 rounded-full object-cover" />
         <div>
@@ -149,7 +122,7 @@ function PetScrollingReviews() {
           <div className="flex justify-center gap-1 mb-3">
             {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
           </div>
-          <h2 className="text-3xl font-black text-gray-900 mb-1">What Pet Parents Say</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-1">What Pet Parents Say</h2>
           <p className="text-gray-400">4.9 / 5 · 340+ reviews</p>
         </div>
         <div className="flex justify-center gap-5 max-h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_85%,transparent_100%)]">
@@ -163,35 +136,7 @@ function PetScrollingReviews() {
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
-function PetMascot() {
-  return (
-    <div className="relative w-full h-full flex items-center justify-center select-none">
-      <motion.div className="absolute w-80 h-80 rounded-full bg-emerald-400/10 blur-3xl"
-        animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="relative z-10"
-        animate={{ y: [0, -20, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
-        <div className="w-52 h-52 rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-700/10 border border-emerald-400/30 shadow-[0_0_60px_rgba(52,211,153,0.15)] flex items-center justify-center">
-          <PawPrint className="w-24 h-24 text-emerald-400" strokeWidth={1.5} />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-72 h-72" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center">
-          <Heart className="w-5 h-5 text-emerald-400 fill-emerald-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-56 h-56" animate={{ rotate: -360 }} transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute top-0 right-0 w-9 h-9 rounded-full bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center">
-          <Star className="w-4 h-4 text-emerald-400 fill-emerald-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-96 h-96" animate={{ rotate: 360 }} transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute bottom-0 left-0 w-8 h-8 rounded-full bg-teal-500/10 border border-teal-400/20 flex items-center justify-center">
-          <Heart className="w-4 h-4 text-teal-400/60 fill-teal-400/40" />
-        </div>
-      </motion.div>
-    </div>
-  )
-}
+
 
 export default function PetPage() {
   const [navHidden, setNavHidden] = useState(false)
@@ -208,8 +153,7 @@ export default function PetPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <div className="min-h-screen bg-white font-sans cursor-none">
-      <CustomCursor icon={Bone} color="#10b981" />
+    <div className="min-h-screen bg-white font-sans">
       {/* Nav */}
       <motion.nav
         initial={{ y: '-100%' }}
@@ -223,7 +167,7 @@ export default function PetPage() {
               <PawPrint className="w-5 h-5 text-white" />
             </div>
             <div>
-              <p className="font-black text-gray-900 text-sm leading-none">Happy Paws</p>
+              <p className="font-bold text-gray-900 text-sm leading-none">Happy Paws</p>
               <p className="text-xs text-emerald-600 font-medium">Vet & Grooming</p>
             </div>
           </motion.div>
@@ -239,16 +183,12 @@ export default function PetPage() {
       {/* Hero */}
       <section className="relative h-[85vh] flex items-center overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1400&q=85" alt="Vet clinic" fill className="object-cover brightness-50" priority sizes="100vw" />
-        <HeroBlobs />
         {/* 3D dog — replace URL: spline.design → Community → search "dog" or "pet" → Export → Copy public URL */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[45%] h-[80%] hidden lg:block" style={{ zIndex: 5 }}>
-          <PetMascot />
-        </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-white space-y-6">
           <div className="demo-fade-up inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/30 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-200 text-sm font-medium">
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" /> Albany, NY · Open Now
           </div>
-          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-4xl lg:text-7xl font-black leading-[1.05]">
+          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-4xl lg:text-7xl font-bold leading-[1.05]">
             Your Pet&apos;s<br /><span className="text-emerald-400">Second Home.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-lg text-white/80 max-w-xl">
@@ -270,7 +210,7 @@ export default function PetPage() {
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 text-center">
           {[['2,500+', 'Pets Cared For'], ['12yr', 'In Business'], ['4.9★', 'Google Rating'], ['Same-Day', 'Urgent Appts']].map(([val, label]) => (
             <motion.div key={label} variants={fadeUp}>
-              <p className="text-2xl font-black">{val}</p>
+              <p className="text-2xl font-bold">{val}</p>
               <p className="text-emerald-100 text-sm">{label}</p>
             </motion.div>
           ))}
@@ -282,7 +222,7 @@ export default function PetPage() {
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-12">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">Our Services</span>
-            <h2 className="text-4xl font-black text-white mb-2">Everything Your Pet Needs</h2>
+            <h2 className="text-4xl font-bold text-white mb-2">Everything Your Pet Needs</h2>
             <p className="text-white/40">Comprehensive care under one roof.</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid md:grid-cols-3 gap-4">
@@ -304,7 +244,7 @@ export default function PetPage() {
       <section id="our-team" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl font-black text-gray-900 mb-2">Meet the Team</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">Meet the Team</h2>
             <p className="text-gray-500">People who genuinely love animals. No, really.</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid md:grid-cols-3 gap-8">
@@ -341,7 +281,7 @@ export default function PetPage() {
       {/* Contact */}
       <section id="contact" className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-8">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-black text-gray-900">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-bold text-gray-900">
             Get in Touch
           </motion.h2>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid sm:grid-cols-3 gap-4">

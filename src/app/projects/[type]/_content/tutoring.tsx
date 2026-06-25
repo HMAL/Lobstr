@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, Star, GraduationCap, BookOpen, Sparkles, TrendingUp, Users, Award } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Star, GraduationCap, TrendingUp, Users, Award } from 'lucide-react'
 import BookingCalendar from '@/components/BookingCalendar'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -48,8 +48,7 @@ const bounceIn = { hidden: { opacity: 0, scale: 0.75 }, show: { opacity: 1, scal
 // ── Inline components ─────────────────────────────────────────────────────────
 function GlowBtn({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
   return (
-    <a href={href} className={`relative group inline-flex items-center gap-2 ${className}`}>
-      <span className="absolute -inset-1 -z-10 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md glow-hue-bg" />
+    <a href={href} className={`inline-flex items-center gap-2 ${className}`}>
       {children}
     </a>
   )
@@ -78,35 +77,9 @@ function SpotlightCard({ children, accent, bg, className = '' }: { children: Rea
   )
 }
 
-function CustomCursor({ icon: Icon, color }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number; style?: React.CSSProperties }>, color: string }) {
-  const [pos, setPos] = useState({ x: -200, y: -200 })
-  useEffect(() => {
-    const style = document.createElement('style')
-    style.textContent = '* { cursor: none !important; }'
-    document.head.appendChild(style)
-    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY })
-    window.addEventListener('mousemove', move)
-    return () => {
-      document.head.removeChild(style)
-      window.removeEventListener('mousemove', move)
-    }
-  }, [])
-  return (
-    <div className="fixed pointer-events-none z-[9999]" style={{ left: pos.x, top: pos.y, transform: 'translate(-50%, -50%)' }}>
-      <Icon className="w-7 h-7 drop-shadow-lg" style={{ color }} strokeWidth={1.8} />
-    </div>
-  )
-}
 
-function HeroBlobs() {
-  return (
-    <>
-      <div className="demo-blob w-72 h-72 rounded-full bg-indigo-400/20 top-[8%] right-[6%]" />
-      <div className="demo-blob w-56 h-56 rounded-full bg-blue-300/15 bottom-[12%] right-[18%]" style={{ animationDelay: '3s, 2.5s' }} />
-      <div className="demo-blob w-44 h-44 rounded-full bg-violet-400/10 top-[42%] left-[2%]" style={{ animationDelay: '6s, 4s' }} />
-    </>
-  )
-}
+
+
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const tilt = index % 2 === 0 ? '-rotate-[0.5deg]' : 'rotate-[0.5deg]'
@@ -155,7 +128,7 @@ function ScrollingReviews() {
           <div className="flex justify-center gap-1 mb-3">
             {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
           </div>
-          <h2 className="text-3xl font-black text-white mb-1">What Parents Say</h2>
+          <h2 className="text-3xl font-bold text-white mb-1">What Parents Say</h2>
           <p className="text-white/40">4.9 / 5 · 190+ reviews</p>
         </div>
         <div className="flex justify-center gap-5 max-h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_85%,transparent_100%)]">
@@ -165,37 +138,6 @@ function ScrollingReviews() {
         </div>
       </div>
     </section>
-  )
-}
-
-// ── Mascot ────────────────────────────────────────────────────────────────────
-function TutorMascot() {
-  return (
-    <div className="relative w-full h-full flex items-center justify-center select-none">
-      <motion.div className="absolute w-80 h-80 rounded-full bg-indigo-400/10 blur-3xl"
-        animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="relative z-10"
-        animate={{ y: [0, -18, 0], rotate: [0, 8, 0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
-        <div className="w-52 h-52 rounded-full bg-gradient-to-br from-indigo-500/20 to-indigo-700/10 border border-indigo-400/30 shadow-[0_0_60px_rgba(99,102,241,0.15)] flex items-center justify-center">
-          <GraduationCap className="w-24 h-24 text-indigo-400" strokeWidth={1.5} />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-72 h-72" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center">
-          <BookOpen className="w-5 h-5 text-indigo-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-56 h-56" animate={{ rotate: -360 }} transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute top-0 right-0 w-9 h-9 rounded-full bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center">
-          <Star className="w-4 h-4 text-indigo-400 fill-indigo-400" />
-        </div>
-      </motion.div>
-      <motion.div className="absolute w-96 h-96" animate={{ rotate: 360 }} transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}>
-        <div className="absolute bottom-0 left-2 w-8 h-8 rounded-full bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
-          <Sparkles className="w-4 h-4 text-blue-400/70" />
-        </div>
-      </motion.div>
-    </div>
   )
 }
 
@@ -215,8 +157,7 @@ export default function TutoringPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <div className="min-h-screen bg-white font-sans cursor-none">
-      <CustomCursor icon={GraduationCap} color="#6366f1" />
+    <div className="min-h-screen bg-white font-sans">
       {/* Nav */}
       <motion.nav
         initial={{ y: '-100%' }}
@@ -226,7 +167,7 @@ export default function TutoringPage() {
       >
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
-            <p className="font-black text-gray-900 text-lg tracking-tight">Bright Minds Tutoring</p>
+            <p className="font-bold text-gray-900 text-lg tracking-tight">Bright Minds Tutoring</p>
             <p className="text-xs text-indigo-500 font-semibold">Albany, NY</p>
           </motion.div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-500">
@@ -241,20 +182,16 @@ export default function TutoringPage() {
       {/* Hero */}
       <section className="relative h-[90vh] flex items-center overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&q=85" alt="Students learning together" fill className="object-cover brightness-50" priority sizes="100vw" />
-        <HeroBlobs />
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[45%] h-[80%] hidden lg:block" style={{ zIndex: 5 }}>
-          <TutorMascot />
-        </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-white">
           <p className="demo-fade-up text-indigo-300 font-bold tracking-widest text-sm uppercase mb-4">✦ Albany&apos;s Trusted Tutoring Center ✦</p>
-          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-black leading-[0.9] mb-6">
+          <h1 className="demo-fade-up demo-fade-up-1 text-3xl sm:text-5xl lg:text-8xl font-bold leading-[0.9] mb-6">
             Confidence,<br /><span className="text-indigo-400">one lesson at a time.</span>
           </h1>
           <p className="demo-fade-up demo-fade-up-2 text-white/75 text-lg max-w-md mb-8">
             One-on-one tutoring for K–12 and test prep — matched to your child, backed by real results.
           </p>
           <div className="demo-fade-up demo-fade-up-3">
-            <GlowBtn href="#book" className="inline-flex items-center gap-2 px-7 py-4 bg-indigo-500 hover:bg-indigo-400 text-white font-black rounded-2xl text-base transition-all hover:scale-105">
+            <GlowBtn href="#book" className="inline-flex items-center gap-2 px-7 py-4 bg-indigo-500 hover:bg-indigo-400 text-white font-bold rounded-2xl text-base transition-all hover:scale-105">
               <GraduationCap className="w-4 h-4" /> Book a Free Assessment
             </GlowBtn>
           </div>
@@ -266,7 +203,7 @@ export default function TutoringPage() {
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-10">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">Programs &amp; Pricing</span>
-            <h2 className="text-4xl font-black text-white mb-2">Every subject. Every grade.</h2>
+            <h2 className="text-4xl font-bold text-white mb-2">Every subject. Every grade.</h2>
             <p className="text-white/40">Transparent hourly rates. No long-term contracts.</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -277,7 +214,7 @@ export default function TutoringPage() {
                   <p className="font-bold text-white">{p.name}</p>
                   <p className="text-sm text-white/50 flex-1">{p.desc}</p>
                   <div className="flex items-center gap-3">
-                    <p className="text-indigo-400 font-black">{p.price}</p>
+                    <p className="text-indigo-400 font-bold">{p.price}</p>
                     <div className="h-px flex-1 bg-indigo-400/20 group-hover:bg-indigo-400/50 transition-colors duration-500 rounded-full" />
                   </div>
                 </SpotlightCard>
@@ -292,14 +229,14 @@ export default function TutoringPage() {
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-10">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-indigo-500 mb-3">Meet the Tutors</span>
-            <h2 className="text-4xl font-black text-gray-900 mb-2">Real educators. Not gig workers.</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">Real educators. Not gig workers.</h2>
             <p className="text-gray-400">Certified teachers and subject specialists, background-checked and parent-approved.</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {tutors.map(t => (
               <motion.div key={t.name} variants={fadeUp} whileHover={{ y: -6 }} className="text-center p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors">
                 <img src={t.img} alt={t.name} className="w-20 h-20 rounded-full object-cover mx-auto mb-4 ring-4 ring-white shadow" />
-                <p className="font-black text-gray-900 text-sm mb-0.5">{t.name}</p>
+                <p className="font-bold text-gray-900 text-sm mb-0.5">{t.name}</p>
                 <p className="text-xs font-bold text-indigo-500 mb-1">{t.subject}</p>
                 <p className="text-xs text-gray-400">{t.cred}</p>
               </motion.div>
@@ -315,7 +252,7 @@ export default function TutoringPage() {
             {stats.map(({ icon: Icon, val, label }) => (
               <motion.div key={label} variants={bounceIn}>
                 <Icon className="w-6 h-6 mx-auto mb-2 text-indigo-200" />
-                <p className="text-3xl font-black mb-1">{val}</p>
+                <p className="text-3xl font-bold mb-1">{val}</p>
                 <p className="text-xs text-indigo-200 font-semibold">{label}</p>
               </motion.div>
             ))}
@@ -342,7 +279,7 @@ export default function TutoringPage() {
       {/* Contact CTA */}
       <section id="book" className="py-20 bg-indigo-600 text-white">
         <div className="max-w-2xl mx-auto px-4 text-center space-y-6">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-black">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-bold">
             Give Them the Head Start
           </motion.h2>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid sm:grid-cols-3 gap-3">
@@ -360,7 +297,7 @@ export default function TutoringPage() {
             <Clock className="w-4 h-4" /> Mon–Fri 3pm–8pm · Sat 9am–2pm
           </div>
           <div className="flex justify-center">
-            <GlowBtn href="tel:+15188880007" className="px-8 py-4 bg-white text-indigo-600 font-black rounded-2xl text-base hover:bg-indigo-50 transition-colors">
+            <GlowBtn href="tel:+15188880007" className="px-8 py-4 bg-white text-indigo-600 font-bold rounded-2xl text-base hover:bg-indigo-50 transition-colors">
               <Phone className="w-4 h-4" /> Call to Enroll
             </GlowBtn>
           </div>

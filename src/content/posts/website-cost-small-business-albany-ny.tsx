@@ -42,8 +42,8 @@ export default function Post() {
           </tr>
           <tr>
             <td><strong>Mylobstr</strong> (local Albany)</td>
-            <td>$100–$250</td>
-            <td>From $25/mo, all-in</td>
+            <td>$150–$300</td>
+            <td>$0/mo on Starter; $30–$50/mo on Growing &amp; Scale, all-in</td>
             <td>A 10-minute brief — we do the rest</td>
           </tr>
         </tbody>
@@ -80,13 +80,14 @@ export default function Post() {
         hiding it behind a sales call:
       </p>
       <ul>
-        <li><strong>Starter — $100:</strong> a 5-page custom site with mobile-first design, SSL, basic SEO, a contact form, analytics, and your Google Business Profile set up.</li>
-        <li><strong>Growing Business — $150:</strong> 10 pages, logo, domain included, full SEO, online booking, and listings on Google, Yelp, Bing, and Apple Maps.</li>
-        <li><strong>Scale — $250:</strong> 20 pages with an admin panel, multi-location support, and a dedicated support line.</li>
+        <li><strong>Starter — $300, one-time:</strong> a 5-page custom site with mobile-first design, SSL, basic SEO, a contact form, analytics, and your Google Business Profile set up — with no monthly fee at all.</li>
+        <li><strong>Growing Business — $150 build + $30/mo:</strong> 10 pages, logo, domain included, full SEO, online booking, and listings on Google, Yelp, Bing, and Apple Maps.</li>
+        <li><strong>Scale — $250 build + $50/mo:</strong> 20 pages with an admin panel, multi-location support, and a dedicated support line.</li>
       </ul>
       <p>
-        After launch, a flat rate from $25/month covers hosting, SSL, security updates, and real support.
-        The honest fine print is on our <Link href="/faq">FAQ page</Link>.
+        On Growing Business and Scale, that flat monthly ($30–$50) covers hosting, SSL, security updates,
+        and real support. Starter skips the monthly entirely. The honest fine print is on our{' '}
+        <Link href="/faq">FAQ page</Link>.
       </p>
 
       <h2>Hidden costs to ask about (whoever you hire)</h2>

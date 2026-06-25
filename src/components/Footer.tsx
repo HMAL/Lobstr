@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 
 const links: Record<string, { label: string; href: string; newTab?: boolean }[]> = {
@@ -43,28 +43,24 @@ const links: Record<string, { label: string; href: string; newTab?: boolean }[]>
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-gray-950 text-white">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-600/5 rounded-full blur-3xl pointer-events-none" />
-
       {/* Top CTA strip */}
       <div className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
-              <h3 className="text-2xl font-black mb-1">
-                Let's build something great together.{' '}
-                <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Right here in Albany.</span>
+              <h3 className="text-2xl font-bold mb-1">
+                Let&apos;s build something good together — right here in Albany.
               </h3>
               <p className="text-white/50 text-sm">
-                No fancy agency. Just neighbors who know how to build a great website.
+                No big-agency runaround. Just neighbors who know how to build a solid website.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 justify-center shrink-0">
               <a
-                href="/pricing"
-                className="px-6 py-3 bg-white text-gray-900 font-bold rounded-xl text-sm hover:bg-gray-100 transition-colors hover:scale-105 transform"
+                href="/contact"
+                className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl text-sm hover:bg-blue-700 transition-colors"
               >
-                Free consultation →
+                Get a free quote →
               </a>
               <a
                 href="mailto:info@mylobstr.com"
@@ -100,12 +96,12 @@ export default function Footer() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="font-black text-base text-white">
+              <span className="font-bold text-base text-white">
                 mylobstr<span className="text-blue-400">.</span>com
               </span>
             </a>
             <p className="text-sm text-white/50 leading-relaxed">
-              Albany Metro's neighborhood web studio. For the community, by the community.
+              A small web studio for Albany small businesses. Local, hands-on, and easy to reach.
             </p>
             <div className="flex items-center gap-2 text-xs font-medium text-white/40">
               <MapPin className="w-3.5 h-3.5 text-blue-400" />
@@ -118,16 +114,12 @@ export default function Footer() {
               <Phone className="w-3.5 h-3.5 text-blue-400" />
               (518) 677-6688
             </a>
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
-              <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-              Always here — 24/7
-            </div>
           </div>
 
           {/* Links */}
           {Object.entries(links).map(([category, items]) => (
             <div key={category} className="space-y-3">
-              <h4 className="text-xs font-black text-white/70 uppercase tracking-wider">{category}</h4>
+              <h4 className="text-xs font-bold text-white/70 uppercase tracking-wider">{category}</h4>
               <ul className="space-y-2">
                 {items.map((item) => (
                   <li key={item.label}>
@@ -148,15 +140,14 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/30">
-            © 2025 Mylobstr.com · Made with{' '}
-            <Heart className="w-3 h-3 inline fill-blue-400 text-blue-400" /> in Albany, NY
+            © {new Date().getFullYear()} Mylobstr.com · Built in Albany, NY
           </p>
           <div className="flex items-center gap-3 text-xs text-white/30">
-            <span>🏙️ Albany, NY</span>
+            <span>Albany, NY</span>
             <span>·</span>
-            <span>🔒 SSL Secured</span>
+            <span>SSL secured</span>
             <span>·</span>
-            <span>⚡ Fast Delivery</span>
+            <span>Live in about a week</span>
           </div>
         </div>
       </div>

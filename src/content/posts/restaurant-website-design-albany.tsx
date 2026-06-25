@@ -54,8 +54,9 @@ export default function Post() {
       <h2>What it costs in Albany</h2>
       <p>
         A professional restaurant website in the Capital Region doesn&apos;t need to cost thousands. Our{' '}
-        <Link href="/pricing">plans</Link> start at $100 to build, with a flat monthly rate from $25 that
-        covers hosting, SSL, and support. For a fuller breakdown of website pricing, see{' '}
+        <Link href="/pricing">plans</Link> start at a flat one-time $300, and the Growing and Scale plans
+        add a low monthly rate ($30–$50) that covers hosting, SSL, and support. For a fuller breakdown of
+        website pricing, see{' '}
         <Link href="/blog/website-cost-small-business-albany-ny">what a website costs in Albany</Link>.
       </p>
 
