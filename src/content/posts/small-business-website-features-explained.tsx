@@ -85,7 +85,7 @@ export default function Post() {
       <h2>The bottom line</h2>
       <p>
         You don&apos;t need every feature under the sun — you need the handful that actually move your
-        business. Every Mylobstr <Link href="/pricing">plan</Link> includes these fundamentals by
+        business. Every MyLobstr Designs <Link href="/pricing">plan</Link> includes these fundamentals by
         default. Want us to map the right set to your specific business?{' '}
         <Link href="/contact">Tell us what you do</Link> and we&apos;ll lay it out, or see how the big
         brands apply the same fundamentals in{' '}

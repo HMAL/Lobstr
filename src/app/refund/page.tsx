@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Refund Policy',
-  description: "Mylobstr's 14-day satisfaction guarantee and refund process.",
+  description: "MyLobstr Designs's 14-day satisfaction guarantee and refund process.",
   alternates: { canonical: 'https://mylobstr.com/refund' },
 }
 

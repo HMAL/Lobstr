@@ -32,7 +32,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       url: `https://mylobstr.com/blog/${post.slug}`,
-      siteName: 'Mylobstr',
+      siteName: 'MyLobstr Designs',
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified,
       images: ['https://mylobstr.com/opengraph-image.png'],
@@ -81,7 +81,7 @@ export default async function BlogPostPage({
             {post.title}
           </h1>
           <p className="text-white/50 text-sm font-medium">
-            {published} · {post.readingMinutes} min read · by the Mylobstr team, Albany NY
+            {published} · {post.readingMinutes} min read · by the MyLobstr Designs team, Albany NY
           </p>
         </div>
       </section>

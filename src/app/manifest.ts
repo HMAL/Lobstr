@@ -5,8 +5,8 @@ export const dynamic = 'force-static'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Mylobstr — Website Design Albany NY',
-    short_name: 'Mylobstr',
+    name: 'MyLobstr Designs — Website Design Albany NY',
+    short_name: 'MyLobstr',
     description:
       'Custom websites for small businesses in Albany, NY — live in about a week, starting at a flat $300.',
     start_url: '/',

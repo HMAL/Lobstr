@@ -7,7 +7,7 @@ const feelings = [
   { text: 'Our site loads in half the time it used to. People notice.', name: 'Robin P.', role: 'Salon owner, Troy' },
   { text: "I feel like I'm in good hands. That's worth a lot to me.", name: 'Josie M.', role: 'Bakery owner, Albany' },
   { text: 'Easy to work with and quick to reply every single time.', name: 'Amanda B.', role: 'Fitness coach, Schenectady' },
-  { text: 'Trust matters with my website, and Mylobstr has mine.', name: 'Rachel E.', role: 'Boutique owner, Saratoga' },
+  { text: 'Trust matters with my website, and MyLobstr Designs has mine.', name: 'Rachel E.', role: 'Boutique owner, Saratoga' },
   { text: 'Courteous, knowledgeable, and dependable. No runaround.', name: 'Mel D.', role: 'Plumber, Albany' },
   { text: 'Professional, with a personal touch. Hard to find these days.', name: 'Kyle E.', role: 'Barbershop owner, Troy' },
   { text: 'They listen, they explain, and they were patient with me.', name: 'Necole S.', role: 'Tutor, Capital Region' },

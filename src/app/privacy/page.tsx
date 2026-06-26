@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'How Mylobstr collects, uses, and protects your personal information.',
+  description: 'How MyLobstr Designs collects, uses, and protects your personal information.',
   alternates: { canonical: 'https://mylobstr.com/privacy' },
 }
 
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
       {/* Content */}
       <main className="max-w-3xl mx-auto px-4 py-16 legal-prose">
         <p className="lead text-gray-600">
-          Mylobstr.com ("we," "us," or "our") operates the website at mylobstr.com. This Privacy Policy explains what information we collect, how we use it, and the choices you have. By using our site or services, you agree to the practices described here.
+          MyLobstr Designs ("we," "us," or "our") operates the website at mylobstr.com. This Privacy Policy explains what information we collect, how we use it, and the choices you have. By using our site or services, you agree to the practices described here.
         </p>
 
         <h2>1. Information We Collect</h2>
@@ -102,7 +102,7 @@ export default function PrivacyPage() {
         <h2>10. Contact Us</h2>
         <p>
           Questions about this Privacy Policy? Reach us at:<br />
-          <strong>Mylobstr.com</strong><br />
+          <strong>MyLobstr Designs</strong><br />
           Albany, NY Metro Area<br />
           Email: <a href="mailto:info@mylobstr.com" className="text-blue-600">info@mylobstr.com</a>
         </p>

@@ -9,7 +9,7 @@ import { posts } from '@/lib/posts'
 export const metadata: Metadata = {
   title: 'Blog — Website & SEO Tips for Albany NY Small Businesses',
   description:
-    'Practical guides on websites, local SEO, and getting found on Google — written for Albany, Troy, and Schenectady small business owners by the Mylobstr team.',
+    'Practical guides on websites, local SEO, and getting found on Google — written for Albany, Troy, and Schenectady small business owners by the MyLobstr Designs team.',
   keywords: [
     'small business website tips Albany',
     'local SEO tips Albany NY',

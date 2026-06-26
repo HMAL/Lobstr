@@ -20,7 +20,7 @@ export const faqCategories: FaqCategory[] = [
     faqs: [
       {
         q: 'Do you build websites for small businesses in Albany NY?',
-        a: 'Yes — Mylobstr is based in Albany, NY and specializes in website design for local small businesses across Albany, Troy, Schenectady, Saratoga Springs, and the Capital Region. You work with a real local team, not an offshore agency.',
+        a: 'Yes — MyLobstr Designs is based in Albany, NY and specializes in website design for local small businesses across Albany, Troy, Schenectady, Saratoga Springs, and the Capital Region. You work with a real local team, not an offshore agency.',
         featured: true,
       },
       {

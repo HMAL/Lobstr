@@ -13,6 +13,37 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   }
 }
 
+// Areas MyLobstr Designs serves — shared by the entity graph and per-service nodes.
+const AREA_SERVED = [
+  { '@type': 'City', name: 'Albany, NY' },
+  { '@type': 'City', name: 'Troy, NY' },
+  { '@type': 'City', name: 'Schenectady, NY' },
+  { '@type': 'City', name: 'Saratoga Springs, NY' },
+  { '@type': 'AdministrativeArea', name: 'Capital Region, NY' },
+]
+
+// A real service MyLobstr Designs offers (e.g. "Restaurant Website Design"), linked to the
+// Organization entity declared in layout.tsx by @id so crawlers and LLMs resolve a
+// single provider. Used on the industry demo pages under /projects/[type].
+export function serviceSchema(s: { name: string; description: string; path: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: s.name,
+    serviceType: s.name,
+    description: s.description,
+    url: `${BASE}${s.path}`,
+    provider: { '@id': `${BASE}/#organization` },
+    areaServed: AREA_SERVED,
+    offers: {
+      '@type': 'Offer',
+      price: '300',
+      priceCurrency: 'USD',
+      description: 'Custom-built and live in about a week. Starter plan is a flat one-time $300, no monthly fee.',
+    },
+  }
+}
+
 export function articleSchema(post: {
   slug: string
   title: string
@@ -31,12 +62,12 @@ export function articleSchema(post: {
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${post.slug}` },
     author: {
       '@type': 'Organization',
-      name: 'Mylobstr',
+      name: 'MyLobstr Designs',
       url: BASE,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Mylobstr',
+      name: 'MyLobstr Designs',
       url: BASE,
       logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` },
     },

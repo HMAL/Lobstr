@@ -109,7 +109,7 @@ export const posts: Post[] = [
     slug: 'real-support-vs-ticket-queue-website',
     title: 'Real 24/7 Support vs. a Ticket Queue: Why Website Support Matters',
     description:
-      'When your website breaks on a Saturday night, support is the only feature that matters. Why ongoing, real-human support is part of the product — and how Mylobstr does it differently for Albany small businesses.',
+      'When your website breaks on a Saturday night, support is the only feature that matters. Why ongoing, real-human support is part of the product — and how MyLobstr Designs does it differently for Albany small businesses.',
     datePublished: '2026-05-29',
     dateModified: '2026-05-29',
     keywords: [

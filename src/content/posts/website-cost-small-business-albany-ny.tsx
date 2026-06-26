@@ -41,7 +41,7 @@ export default function Post() {
             <td>Weeks of meetings and revisions</td>
           </tr>
           <tr>
-            <td><strong>Mylobstr</strong> (local Albany)</td>
+            <td><strong>MyLobstr Designs</strong> (local Albany)</td>
             <td>$150–$300</td>
             <td>$0/mo on Starter; $30–$50/mo on Growing &amp; Scale, all-in</td>
             <td>A 10-minute brief — we do the rest</td>
@@ -74,7 +74,7 @@ export default function Post() {
         <Link href="/blog/website-cost-vs-features-small-business">cost vs. features breakdown</Link>.
       </p>
 
-      <h2>What Mylobstr charges (no &quot;contact us for pricing&quot;)</h2>
+      <h2>What MyLobstr Designs charges (no &quot;contact us for pricing&quot;)</h2>
       <p>
         We&apos;re a lean Albany team, so we publish our <Link href="/pricing">pricing</Link> instead of
         hiding it behind a sales call:

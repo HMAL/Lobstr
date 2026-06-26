@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
-  title: 'Website Design Albany NY | Small Business Web Designer | Mylobstr',
-  description: 'Mylobstr builds custom websites for small businesses in Albany, NY, starting at a flat $300 with no monthly fee. Professional website design, SEO, and hosting. Live in about a week. Serving Albany, Troy, Schenectady & the Capital Region.',
+  title: 'Website Design Albany NY | Small Business Web Designer | MyLobstr Designs',
+  description: 'MyLobstr Designs builds custom websites for small businesses in Albany, NY, starting at a flat $300 with no monthly fee. Professional website design, SEO, and hosting. Live in about a week. Serving Albany, Troy, Schenectady & the Capital Region.',
   alternates: { canonical: 'https://mylobstr.com' },
 }
 import Hero from '@/components/Hero'

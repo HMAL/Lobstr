@@ -94,14 +94,14 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden shrink-0">
                 <Image
                   src="/logo-icon.png"
-                  alt="Mylobstr"
+                  alt="MyLobstr Designs"
                   width={40}
                   height={40}
                   className="w-full h-full object-contain"
                 />
               </div>
               <span className="font-bold text-base text-white">
-                mylobstr<span className="text-blue-400">.</span>com
+                MyLobstr<span className="text-blue-400"> Designs</span>
               </span>
             </a>
             <p className="text-sm text-white/50 leading-relaxed">
@@ -145,7 +145,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} Mylobstr.com · Built in Albany, NY
+            © {new Date().getFullYear()} MyLobstr Designs · Built in Albany, NY
           </p>
           <div className="flex items-center gap-3 text-xs text-white/30">
             <span>Albany, NY</span>

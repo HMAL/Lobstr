@@ -26,7 +26,7 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg text-gray-500 leading-relaxed">
-              Mylobstr is family — a developer, a mom, and a small business believer — who got tired
+              MyLobstr Designs is family — a developer, a mom, and a small business believer — who got tired
               of watching great Albany businesses lose customers to competitors with better-looking
               websites. A brilliant local restaurant shouldn't lose a booking because their site
               looks like 2008.
@@ -38,7 +38,7 @@ export default function About() {
 
             {/* Origin story — the most humanizing thing on the page */}
             <div className="p-5 bg-gray-950 rounded-2xl text-white">
-              <p className="font-bold text-sm mb-1">How Mylobstr actually started</p>
+              <p className="font-bold text-sm mb-1">How MyLobstr Designs actually started</p>
               <p className="text-sm text-gray-400 leading-relaxed">
                 It began at 2am — newborn in one arm, laptop in the other, the dog asleep on
                 Likki&apos;s feet. The Wi-Fi was slow; the idea wasn&apos;t. If you can build

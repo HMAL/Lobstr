@@ -19,7 +19,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           <Globe className="w-[18px] h-[18px] text-white" />
         </div>
         <span className="font-bold text-base text-white">
-          mylobstr<span className="text-blue-400">.</span>com
+          MyLobstr<span className="text-blue-400"> Designs</span>
         </span>
       </Link>
 

@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     shortcut: '/favicon.png',
   },
   title: {
-    default: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
-    template: "%s | Mylobstr",
+    default: "Website Design Albany NY | Small Business Web Designer | MyLobstr Designs",
+    template: "%s | MyLobstr Designs",
   },
   description:
-    "Mylobstr builds custom websites for small businesses in Albany, NY — starting at $300. Professional website design, web development, SEO, and hosting. Live in 7 days. Serving Albany, Troy, Schenectady, and the Capital Region.",
+    "MyLobstr Designs builds custom websites for small businesses in Albany, NY — starting at $300. Professional website design, web development, SEO, and hosting. Live in 7 days. Serving Albany, Troy, Schenectady, and the Capital Region.",
   keywords: [
     "website design Albany NY",
     "web designer Albany NY",
@@ -60,24 +60,24 @@ export const metadata: Metadata = {
     "affordable web design New York",
   ],
   openGraph: {
-    title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
+    title: "Website Design Albany NY | Small Business Web Designer | MyLobstr Designs",
     description:
       "Custom websites for Albany NY small businesses — restaurants, salons, barbershops, contractors, gyms. Starting at $300. Live in about a week.",
     type: "website",
     url: "https://mylobstr.com",
-    siteName: "Mylobstr",
+    siteName: "MyLobstr Designs",
     images: [
       {
         url: "https://mylobstr.com/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Mylobstr — Website Design for Albany NY Small Businesses",
+        alt: "MyLobstr Designs — Website Design for Albany NY Small Businesses",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Design Albany NY | Small Business Web Designer | Mylobstr",
+    title: "Website Design Albany NY | Small Business Web Designer | MyLobstr Designs",
     description:
       "Custom websites for Albany NY small businesses starting at $300. Live in 7 days.",
     images: ["https://mylobstr.com/opengraph-image.png"],
@@ -108,7 +108,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? 'G-FC1Y3Z3VDH';
 const SITE_URL = 'https://mylobstr.com';
 
 // Official profiles for brand-entity recognition (schema.org sameAs). This is the
-// signal that tells Google "Mylobstr" is a real brand, not a typo for "lobster".
+// signal that tells Google "MyLobstr Designs" is a real brand, not a typo for "lobster".
 // Add Instagram / Facebook / LinkedIn / X URLs here as they go live.
 const SAME_AS = [
   'https://maps.app.goo.gl/VSpNFM1BWebdBLvH7', // Google Business Profile
@@ -123,8 +123,8 @@ const structuredData = {
     {
       '@type': 'Organization',
       '@id': `${SITE_URL}/#organization`,
-      name: 'Mylobstr',
-      alternateName: 'MyLobstr Web Design',
+      name: 'MyLobstr Designs',
+      alternateName: ['Mylobstr', 'MyLobstr Web Design'],
       url: SITE_URL,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
       image: `${SITE_URL}/opengraph-image.png`,
@@ -146,15 +146,15 @@ const structuredData = {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: 'Mylobstr',
+      name: 'MyLobstr Designs',
       description: 'Website design and web development for small businesses in Albany, NY',
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
     {
       '@type': 'ProfessionalService',
       '@id': `${SITE_URL}/#business`,
-      name: 'Mylobstr',
-      alternateName: 'MyLobstr Web Design',
+      name: 'MyLobstr Designs',
+      alternateName: ['Mylobstr', 'MyLobstr Web Design'],
       parentOrganization: { '@id': `${SITE_URL}/#organization` },
       url: SITE_URL,
       email: 'info@mylobstr.com',

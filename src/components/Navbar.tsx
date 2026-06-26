@@ -73,16 +73,15 @@ export default function Navbar() {
           >
             <Image
               src="/logo-icon.png"
-              alt="Mylobstr"
+              alt="MyLobstr Designs"
               width={40}
               height={40}
               className="h-10 w-10 object-contain"
               priority
             />
             <div className="leading-none">
-              <span className="text-[1rem] font-bold tracking-tight text-gray-900">mylobstr</span>
-              <span className="text-[1rem] font-bold tracking-tight text-blue-600">.</span>
-              <span className="text-[1rem] font-bold tracking-tight text-gray-900">com</span>
+              <span className="text-[1rem] font-bold tracking-tight text-gray-900">MyLobstr</span>
+              <span className="text-[1rem] font-bold tracking-tight text-blue-600"> Designs</span>
             </div>
           </a>
 

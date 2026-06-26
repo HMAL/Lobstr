@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'The terms governing your use of Mylobstr website design and hosting services.',
+  description: 'The terms governing your use of MyLobstr Designs website design and hosting services.',
   alternates: { canonical: 'https://mylobstr.com/terms' },
 }
 
@@ -23,11 +23,11 @@ export default function TermsPage() {
       {/* Content */}
       <main className="max-w-3xl mx-auto px-4 py-16 legal-prose">
         <p className="lead text-gray-600">
-          These Terms of Service ("Terms") govern your use of Mylobstr.com services. By engaging us to design, build, or host your website, you agree to these Terms. Please read them carefully.
+          These Terms of Service ("Terms") govern your use of MyLobstr Designs services. By engaging us to design, build, or host your website, you agree to these Terms. Please read them carefully.
         </p>
 
         <h2>1. Services</h2>
-        <p>Mylobstr provides website design, development, hosting, and maintenance services for local businesses. The specific deliverables for each project are agreed upon before work begins and may include:</p>
+        <p>MyLobstr Designs provides website design, development, hosting, and maintenance services for local businesses. The specific deliverables for each project are agreed upon before work begins and may include:</p>
         <ul>
           <li>Custom website design and development</li>
           <li>Online booking system integration</li>
@@ -58,20 +58,20 @@ export default function TermsPage() {
           <li>Ensure any content provided (photos, text, logos) does not infringe on third-party intellectual property rights</li>
           <li>Maintain payment of the monthly subscription fee to keep your site live</li>
         </ul>
-        <p>Delays caused by lack of client response may extend the delivery timeline. Mylobstr is not responsible for delays caused by client inaction.</p>
+        <p>Delays caused by lack of client response may extend the delivery timeline. MyLobstr Designs is not responsible for delays caused by client inaction.</p>
 
         <h2>4. Intellectual Property</h2>
         <p>
-          <strong>Your content:</strong> You own all content you provide — logos, photos, text, and business information. You grant Mylobstr a license to use this content solely to build and operate your website.
+          <strong>Your content:</strong> You own all content you provide — logos, photos, text, and business information. You grant MyLobstr Designs a license to use this content solely to build and operate your website.
         </p>
         <p>
           <strong>Your domain:</strong> Domain names registered by or transferred to you remain your property at all times.
         </p>
         <p>
-          <strong>Website code:</strong> The website code, design system, and infrastructure built by Mylobstr remain the intellectual property of Mylobstr and are licensed to you for use during your active subscription. Upon cancellation, we will provide an export of all your content in a portable format.
+          <strong>Website code:</strong> The website code, design system, and infrastructure built by MyLobstr Designs remain the intellectual property of MyLobstr Designs and are licensed to you for use during your active subscription. Upon cancellation, we will provide an export of all your content in a portable format.
         </p>
         <p>
-          <strong>Portfolio use:</strong> By using our services, you grant Mylobstr the right to display your completed website in our portfolio and marketing materials, unless you request otherwise in writing.
+          <strong>Portfolio use:</strong> By using our services, you grant MyLobstr Designs the right to display your completed website in our portfolio and marketing materials, unless you request otherwise in writing.
         </p>
 
         <h2>5. Cancellation</h2>
@@ -79,7 +79,7 @@ export default function TermsPage() {
           On plans with a monthly fee (Growing Business and Scale), you may cancel at any time by providing 30 days written notice via email to info@mylobstr.com. Your site will remain live until the end of the 30-day notice period, after which it is taken offline and your content exported and made available for 14 days. The Starter plan is a one-time purchase with no recurring fee, so there is nothing to cancel.
         </p>
         <p>
-          Mylobstr reserves the right to cancel your subscription for non-payment, violation of these Terms, or any activity deemed harmful to our infrastructure or reputation. In such cases, we will provide 7 days notice except in cases of severe abuse.
+          MyLobstr Designs reserves the right to cancel your subscription for non-payment, violation of these Terms, or any activity deemed harmful to our infrastructure or reputation. In such cases, we will provide 7 days notice except in cases of severe abuse.
         </p>
 
         <h2>6. Satisfaction Guarantee & Refunds</h2>
@@ -89,12 +89,12 @@ export default function TermsPage() {
 
         <h2>7. Uptime & Service Level</h2>
         <p>
-          We target 99.9% uptime for hosted websites. In the event of an outage caused by Mylobstr infrastructure for more than 4 continuous hours, we will issue a credit equal to one month's subscription fee. This does not apply to outages caused by third-party providers, client-caused issues, or scheduled maintenance.
+          We target 99.9% uptime for hosted websites. In the event of an outage caused by MyLobstr Designs infrastructure for more than 4 continuous hours, we will issue a credit equal to one month's subscription fee. This does not apply to outages caused by third-party providers, client-caused issues, or scheduled maintenance.
         </p>
 
         <h2>8. Limitation of Liability</h2>
         <p>
-          Mylobstr is not liable for indirect, incidental, or consequential damages including lost revenue, lost data, or business interruption. Our total liability to you for any claim arising from our services is limited to the fees paid by you in the 3 months preceding the claim.
+          MyLobstr Designs is not liable for indirect, incidental, or consequential damages including lost revenue, lost data, or business interruption. Our total liability to you for any claim arising from our services is limited to the fees paid by you in the 3 months preceding the claim.
         </p>
 
         <h2>9. Disclaimer of Warranties</h2>
@@ -115,7 +115,7 @@ export default function TermsPage() {
         <h2>12. Contact Us</h2>
         <p>
           Questions about these Terms?<br />
-          <strong>Mylobstr.com</strong><br />
+          <strong>MyLobstr Designs</strong><br />
           Albany, NY Metro Area<br />
           Email: <a href="mailto:info@mylobstr.com" className="text-blue-600">info@mylobstr.com</a>
         </p>
