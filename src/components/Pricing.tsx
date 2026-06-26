@@ -9,6 +9,7 @@ import {
   Code2, PenLine, Cloud, Lock, Smartphone, Mail, RotateCcw, MapPin,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { track, AnalyticsEvent } from '@/lib/analytics'
 
 
 // ── Rotating service word ──────────────────────────────────────────────────────
@@ -743,6 +744,7 @@ export default function Pricing() {
             </div>
             <a
               href={`/contact?plan=${encodeURIComponent(selectedTier.name)}`}
+              onClick={() => track(AnalyticsEvent.CtaClick, { location: 'pricing', label: 'Send message', plan: selectedTier.name, destination: '/contact' })}
               className={cn(
                 'flex items-center gap-2 px-7 py-3 rounded-2xl font-bold text-sm text-white bg-gradient-to-r shrink-0 hover:opacity-90 transition-opacity w-full sm:w-auto justify-center',
                 selectedTier.color

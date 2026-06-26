@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
+import { track, AnalyticsEvent } from '@/lib/analytics'
 
 const links: Record<string, { label: string; href: string; newTab?: boolean }[]> = {
   'Demo Sites': [
@@ -58,12 +59,14 @@ export default function Footer() {
             <div className="flex flex-wrap gap-3 justify-center shrink-0">
               <a
                 href="/contact"
+                onClick={() => track(AnalyticsEvent.CtaClick, { location: 'footer', label: 'Get a free quote', destination: '/contact' })}
                 className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl text-sm hover:bg-blue-700 transition-colors"
               >
                 Get a free quote →
               </a>
               <a
                 href="mailto:info@mylobstr.com"
+                onClick={() => track(AnalyticsEvent.ContactChannelClick, { channel: 'email', location: 'footer' })}
                 className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-sm transition-colors flex items-center gap-2"
               >
                 <Mail className="w-4 h-4" />
@@ -71,6 +74,7 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+15186776688"
+                onClick={() => track(AnalyticsEvent.ContactChannelClick, { channel: 'phone', location: 'footer' })}
                 className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-sm transition-colors flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
@@ -109,6 +113,7 @@ export default function Footer() {
             </div>
             <a
               href="tel:+15186776688"
+              onClick={() => track(AnalyticsEvent.ContactChannelClick, { channel: 'phone', location: 'footer_brand' })}
               className="flex items-center gap-2 text-xs font-medium text-white/40 hover:text-white transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-blue-400" />

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { track, AnalyticsEvent } from '@/lib/analytics'
 
 export default function ReadyWhenYouAre() {
   return (
@@ -38,6 +39,7 @@ export default function ReadyWhenYouAre() {
         >
           <a
             href="/contact"
+            onClick={() => track(AnalyticsEvent.CtaClick, { location: 'ready_when_you_are', label: 'Submit an inquiry', destination: '/contact' })}
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl text-sm hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
           >
             Submit an inquiry <ArrowRight className="w-4 h-4" />

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
+import { track, AnalyticsEvent } from '@/lib/analytics'
 
 const links = [
   { label: 'Our Work', href: '/our-work' },
@@ -102,6 +103,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
               href="/contact"
+              onClick={() => track(AnalyticsEvent.CtaClick, { location: 'navbar', label: 'Get a free quote', destination: '/contact' })}
               className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-full transition-colors shadow-sm"
             >
               Get a free quote
@@ -150,7 +152,10 @@ export default function Navbar() {
               <div className="mt-2 pt-2 border-t border-gray-100">
                 <a
                   href="/contact"
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    track(AnalyticsEvent.CtaClick, { location: 'navbar_mobile', label: 'Get a free quote', destination: '/contact' })
+                    setOpen(false)
+                  }}
                   className="flex items-center justify-center px-4 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl"
                 >
                   Get a free quote

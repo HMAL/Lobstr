@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { ArrowRight, MapPin } from 'lucide-react'
+import { track, AnalyticsEvent } from '@/lib/analytics'
 
 const ComputerScene3D = dynamic(() => import('@/components/ComputerScene3D'), {
   ssr: false,
@@ -74,12 +75,14 @@ export default function Hero() {
           >
             <a
               href="/contact"
+              onClick={() => track(AnalyticsEvent.CtaClick, { location: 'hero', label: 'Get a free quote', destination: '/contact' })}
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 text-white font-semibold rounded-xl text-sm hover:bg-blue-700 transition-colors shadow-sm"
             >
               Get a free quote <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="/our-work"
+              onClick={() => track(AnalyticsEvent.CtaClick, { location: 'hero', label: "See work we've done", destination: '/our-work' })}
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl text-sm hover:border-gray-300 hover:bg-gray-50 transition-colors"
             >
               See work we&apos;ve done

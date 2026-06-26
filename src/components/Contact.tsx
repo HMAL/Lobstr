@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import Script from 'next/script'
 import { motion } from 'framer-motion'
 import { Mail, Clock, Send, CheckCircle2, MapPin, Tag } from 'lucide-react'
+import { track, AnalyticsEvent } from '@/lib/analytics'
 
 // Turnstile site keys are public (rendered in the browser). Hardcoded fallback so
 // the widget works even when NEXT_PUBLIC_TURNSTILE_SITE_KEY isn't set in the build
@@ -92,6 +93,13 @@ function ContactForm() {
   const [token, setToken] = useState('')
   const widgetRef = useRef<HTMLDivElement>(null)
   const widgetIdRef = useRef<string>('')
+  // Fire form_start once, on the first interaction with any field.
+  const startedRef = useRef(false)
+  const handleFormStart = () => {
+    if (startedRef.current) return
+    startedRef.current = true
+    track(AnalyticsEvent.FormStart, { plan: planParam || 'none' })
+  }
 
   // Render the Turnstile widget once its script has loaded (only if configured).
   const renderTurnstile = () => {
@@ -132,8 +140,15 @@ function ContactForm() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Send failed')
       setSubmitted(true)
+      // The conversion. Mark generate_lead as a Key Event in GA4.
+      track(AnalyticsEvent.GenerateLead, {
+        plan: form.plan || 'none',
+        business_type: form.type || 'unknown',
+        ...(planInfo ? { value: planInfo.price, currency: 'USD' } : {}),
+      })
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error'
+      track(AnalyticsEvent.FormError, { plan: form.plan || 'none', message: msg })
       setError(`${msg} — or email us at info@mylobstr.com`)
       // Tokens are single-use; reset so the user can retry.
       setToken('')
@@ -163,11 +178,15 @@ function ContactForm() {
           </p>
           <p className="text-sm text-gray-400">
             Questions? Email us directly at{' '}
-            <a href="mailto:info@mylobstr.com" className="text-blue-600 font-semibold">info@mylobstr.com</a>
+            <a
+              href="mailto:info@mylobstr.com"
+              onClick={() => track(AnalyticsEvent.ContactChannelClick, { channel: 'email', location: 'contact_success' })}
+              className="text-blue-600 font-semibold"
+            >info@mylobstr.com</a>
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="p-8 space-y-5">
+        <form onSubmit={handleSubmit} onFocus={handleFormStart} className="p-8 space-y-5">
 
           {/* Honeypot — hidden from real users, bots fill it. Not type="hidden" so
               browser autofill leaves it alone. */}

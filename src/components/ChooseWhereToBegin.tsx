@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Layout, Workflow, MapPin } from 'lucide-react'
+import { track, AnalyticsEvent } from '@/lib/analytics'
 
 const paths = [
   {
@@ -85,6 +86,7 @@ export default function ChooseWhereToBegin() {
 
                 <a
                   href={path.href}
+                  onClick={() => track(AnalyticsEvent.CtaClick, { location: 'choose_where_to_begin', label: path.cta, destination: path.href })}
                   className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                 >
                   {path.cta} <ArrowRight className="w-4 h-4" />
