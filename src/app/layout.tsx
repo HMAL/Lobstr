@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import AnalyticsPageView from "@/components/AnalyticsPageView";
+import { ratingNodes } from "@/lib/schema";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -96,10 +97,21 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // Google Search Console ownership verification. Set the token in .env.local
-  // (and the Cloudflare env) as GOOGLE_SITE_VERIFICATION to emit the meta tag.
-  ...(process.env.GOOGLE_SITE_VERIFICATION
-    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+  // Search-engine ownership verification. Set the tokens in .env.local (and the
+  // Cloudflare env): GOOGLE_SITE_VERIFICATION for Google Search Console and
+  // BING_SITE_VERIFICATION (the msvalidate.01 value) for Bing Webmaster Tools.
+  // Bing matters double here: it also powers ChatGPT Search and Copilot.
+  ...((process.env.GOOGLE_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION)
+    ? {
+        verification: {
+          ...(process.env.GOOGLE_SITE_VERIFICATION
+            ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+            : {}),
+          ...(process.env.BING_SITE_VERIFICATION
+            ? { other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } }
+            : {}),
+        },
+      }
     : {}),
 };
 
@@ -212,6 +224,8 @@ const structuredData = {
       sameAs: SAME_AS,
       priceRange: '$',
       openingHours: 'Mo-Su 00:00-23:59',
+      // Real reviews only — stays absent until src/lib/reviews.ts has entries.
+      ...(ratingNodes() ?? {}),
     },
   ],
 };

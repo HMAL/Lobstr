@@ -24,6 +24,12 @@ const links: Record<string, { label: string; href: string; newTab?: boolean }[]>
     { label: 'Blog', href: '/blog' },
     { label: 'Careers', href: '/careers' },
   ],
+  'Service Areas': [
+    { label: 'Web Design Albany NY', href: '/' },
+    { label: 'Web Design Troy NY', href: '/web-design/troy-ny' },
+    { label: 'Web Design Schenectady NY', href: '/web-design/schenectady-ny' },
+    { label: 'Web Design Saratoga Springs NY', href: '/web-design/saratoga-springs-ny' },
+  ],
   'From the Blog': [
     { label: 'Learn from Big-Brand Websites', href: '/blog/what-small-businesses-learn-from-big-corporation-websites' },
     { label: 'Website Cost vs. Features', href: '/blog/website-cost-vs-features-small-business' },
@@ -87,7 +93,7 @@ export default function Footer() {
 
       {/* Main */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1 space-y-4">
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">

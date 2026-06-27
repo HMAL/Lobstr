@@ -1,4 +1,36 @@
+import { reviews } from './reviews'
+
 const BASE = 'https://mylobstr.com'
+
+// aggregateRating + review nodes for the Organization/ProfessionalService entity.
+// Returns `null` when there are no real reviews yet, so nothing is emitted until
+// genuine ratings exist (see src/lib/reviews.ts). Spread the result into the
+// business node only when non-null.
+export function ratingNodes() {
+  if (reviews.length === 0) return null
+  const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+  return {
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: avg.toFixed(1),
+      reviewCount: reviews.length,
+      bestRating: '5',
+      worstRating: '1',
+    },
+    review: reviews.map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.author },
+      datePublished: r.date,
+      reviewBody: r.body,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: String(r.rating),
+        bestRating: '5',
+        worstRating: '1',
+      },
+    })),
+  }
+}
 
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
@@ -41,6 +73,48 @@ export function serviceSchema(s: { name: string; description: string; path: stri
       priceCurrency: 'USD',
       description: 'Custom-built and live in about a week. Starter plan is a flat one-time $300, no monthly fee.',
     },
+  }
+}
+
+// A local landing page for one Capital Region city (e.g. /web-design/troy-ny).
+// Modeled as a Service tied to the Organization entity by @id, with areaServed
+// pinned to the specific city so crawlers and LLMs read "web design IN <city>".
+export function cityServiceSchema(c: {
+  name: string
+  nameState: string
+  slug: string
+  description: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `Website Design in ${c.nameState}`,
+    serviceType: 'Website Design',
+    description: c.description,
+    url: `${BASE}/web-design/${c.slug}`,
+    provider: { '@id': `${BASE}/#organization` },
+    areaServed: { '@type': 'City', name: c.nameState },
+    offers: {
+      '@type': 'Offer',
+      price: '300',
+      priceCurrency: 'USD',
+      description: `Custom website design for ${c.name} small businesses — flat one-time $300 Starter plan, no monthly fee, live in about a week.`,
+    },
+  }
+}
+
+// FAQPage schema. Google (and AI answer engines) require the questions/answers
+// here to match what is visible on the page, so always build it from the same
+// data the page renders.
+export function faqPageSchema(faqs: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   }
 }
 

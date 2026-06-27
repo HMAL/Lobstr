@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { posts } from '@/lib/posts'
+import { cities } from '@/lib/locations'
 
 // Required for `output: export` — emit this as a static file at build time.
 export const dynamic = 'force-static'
@@ -28,6 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(post.dateModified),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+    })),
+
+    // City landing pages — target "web design <city>" local searches
+    ...cities.map((c) => ({
+      url: `${BASE}/web-design/${c.slug}`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
     })),
 
     // Demo portfolio pages — target industry-specific searches

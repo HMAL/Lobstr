@@ -64,7 +64,7 @@ export default function PrivacyPage() {
         <p>We use the following third-party services to operate our business:</p>
         <ul>
           <li><strong>Google Analytics</strong> — website traffic analysis. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Google&apos;s Privacy Policy</a></li>
-          <li><strong>Resend</strong> — email delivery for contact form submissions. <a href="https://resend.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Resend&apos;s Privacy Policy</a></li>
+          <li><strong>Resend</strong> — email delivery for contact form submissions. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Resend&apos;s Privacy Policy</a></li>
           <li><strong>Cloudflare</strong> — website hosting, CDN, and bot protection (Turnstile) on our contact form. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-600">Cloudflare&apos;s Privacy Policy</a></li>
           <li><strong>Stripe / Square</strong> — payment processing (if applicable). Data is handled directly by these processors under their own privacy policies.</li>
         </ul>
