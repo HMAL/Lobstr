@@ -1,0 +1,104 @@
+{
+  "summary": {
+    "health_score": 75,
+    "business_type": "Agency + Local Service hybrid (service-area business, Capital Region NY)",
+    "top_findings": [
+      "Title tags duplicate '| MyLobstr Designs' twice on 6 pages (layout template + hardcoded page suffix)",
+      "Cloudflare robots.txt blocks GPTBot/ClaudeBot/CCBot/Google-Extended while site publishes llms.txt aimed at AI systems",
+      "www.mylobstr.com serves 200 instead of 301-redirecting to apex",
+      "Local review/citation engine not started despite existing GBP — main map-pack lever",
+      "Meta descriptions 200-250 chars on money pages; truncation risks hiding the '$300 flat' hook"
+    ],
+    "quick_wins": [
+      "Remove hardcoded '| MyLobstr Designs' from 6 page titles",
+      "Add Sitemap: directive to robots.txt",
+      "Cloudflare redirect rule: www -> apex 301",
+      "Add og:image to /about and /web-design/[city] pages",
+      "Set up Google Search Console + Bing Webmaster Tools and submit sitemap"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 82,
+      "what_works": ["HTTPS + HSTS preload", "Valid sitemap.xml with plausible lastmod", "Self-referencing canonicals sitewide", "Correct 404 handling", "Security headers (XCTO, XFO, Referrer-Policy, Permissions-Policy)", "TTFB 19-103ms on Cloudflare Pages"],
+      "findings": [
+        {"title": "www subdomain serves 200 (duplicate host)", "severity": "High", "description": "https://www.mylobstr.com returns 200 with full site; canonicals mitigate but 301 is correct.", "recommendation": "Cloudflare Redirect Rule www.mylobstr.com/* -> https://mylobstr.com/$1 (301)."},
+        {"title": "robots.txt missing Sitemap: directive", "severity": "Medium", "description": "Cloudflare-managed robots.txt never declares the sitemap.", "recommendation": "Append Sitemap: https://mylobstr.com/sitemap.xml."},
+        {"title": "No Content-Security-Policy header", "severity": "Medium", "description": "All other hardening headers present.", "recommendation": "Add a CSP appropriate for the static site."},
+        {"title": "No IndexNow", "severity": "Low", "description": "New blog posts wait on crawl schedules for Bing/Copilot.", "recommendation": "Enable Cloudflare Crawler Hints."}
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 78,
+      "what_works": ["Transparent flat pricing as trust asset", "8 intent-matched blog posts, actively published", "Real-people about page", "City pages genuinely localized (not doorways), only 3 of them", "Real portfolio with 13 sites"],
+      "findings": [
+        {"title": "Cost-guide post thin vs competitors", "severity": "Medium", "description": "~970 words targeting the most valuable informational query; competitors run 1,500-2,500.", "recommendation": "Expand with price comparison table, FAQs, worked example."},
+        {"title": "No visible author bylines (verify)", "severity": "Medium", "description": "Article schema present but E-E-A-T wants named authors.", "recommendation": "Add bylines linked to /about; mirror in Article.author."},
+        {"title": "Homepage 791 words", "severity": "Low", "description": "Lean for head term.", "recommendation": "Expand with process section + FAQ excerpt."}
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 65,
+      "what_works": ["One descriptive H1 per page with local differentiation", "100% alt-text coverage", "Canonicals + index,follow everywhere"],
+      "findings": [
+        {"title": "Brand suffix duplicated in 6 titles", "severity": "High", "description": "layout.tsx template %s | MyLobstr Designs + hardcoded suffix on /pricing /faq /contact /our-work and city template renders '... | MyLobstr Designs | MyLobstr Designs' (86-100 chars).", "recommendation": "Remove hardcoded suffix from page titles; copy /about pattern."},
+        {"title": "Titles exceed 60 chars after de-dup", "severity": "Medium", "description": "FAQ and city pages still 60-75 chars.", "recommendation": "Trim middle clauses; keep city + service + brand."},
+        {"title": "Meta descriptions 197-249 chars", "severity": "Medium", "description": "Homepage 249, city pages 209-220; target ~155.", "recommendation": "Rewrite with $300-flat hook in first 150 chars."},
+        {"title": "og:image missing on /about and city pages", "severity": "Medium", "description": "City pages are the most-shared in local groups.", "recommendation": "Add openGraph.images to city template and about."}
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 92,
+      "what_works": ["Sitewide @graph: Organization + WebSite + ProfessionalService correctly entity-linked", "SAB-correct NAP: locality address, geo, phone, areaServed cities", "sameAs -> Google Business Profile", "Service + FAQPage + BreadcrumbList on city pages; Article + BreadcrumbList on posts", "All JSON-LD parses cleanly"],
+      "findings": [
+        {"title": "contactPoint.areaServed = 'US'", "severity": "Medium", "description": "Inconsistent with Capital Region areaServed on the business entity.", "recommendation": "Align to city list or remove."},
+        {"title": "Verify logo.png exists at >=112px", "severity": "Low", "description": "Organization.logo references /logo.png.", "recommendation": "Confirm file and dimensions."},
+        {"title": "FAQPage has no SERP feature since May 2026", "severity": "Info", "description": "Google retired FAQ rich results for all sites.", "recommendation": "Keep for AI extraction; don't add more expecting SERP benefit."}
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 80,
+      "what_works": ["CLS 0 on every run", "TTFB 19-103ms", "CSS inlined, no render-blocking stylesheets", "WebP images"],
+      "findings": [
+        {"title": "LCP (hero H1) gated on webfonts", "severity": "Medium", "description": "Cold desktop lab LCP 4,952ms; H1 waits on ~92KB across 3 font families.", "recommendation": "font-display swap, subset fonts, preload only above-fold faces."},
+        {"title": "/our-work ships 1.6MB images to mobile", "severity": "Medium", "description": "13 portfolio screenshots without responsive sizes.", "recommendation": "Generate 2 widths with sharp; add srcset/sizes."},
+        {"title": "No field data", "severity": "Info", "description": "No CrUX/GSC configured; INP unmeasured.", "recommendation": "Set up GSC; re-run /seo google when credentials exist."}
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 55,
+      "what_works": ["Excellent llms.txt with citable pricing facts and page summaries", "OAI-SearchBot + PerplexityBot + Googlebot (AI Overviews) still allowed", "Clean entity data for AI parsers"],
+      "findings": [
+        {"title": "AI training crawlers blocked while llms.txt invites them", "severity": "High", "description": "Cloudflare-managed robots.txt disallows GPTBot, ClaudeBot, CCBot, Google-Extended, Amazonbot, Applebot-Extended, meta-externalagent + Content-Signal ai-train=no.", "recommendation": "Deliberately choose: disable Cloudflare AI-bot block (recommended for a marketing site) or stop investing in llms.txt."},
+        {"title": "llms-full.txt sync risk", "severity": "Medium", "description": "Linked from llms.txt; wrong/stale pricing there propagates into AI answers.", "recommendation": "Add to deploy checklist."},
+        {"title": "Money pages lack question-shaped headings", "severity": "Low", "description": "Blog does this well; /pricing doesn't.", "recommendation": "Add answerable H2 + one-sentence answer paragraph."}
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 75,
+      "what_works": ["100% alt coverage", "WebP format adopted"],
+      "findings": [
+        {"title": "Unresponsive portfolio images", "severity": "Medium", "description": "Same 1.6MB set served to mobile on /our-work.", "recommendation": "srcset with pre-generated widths."}
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes", "timeframe": "Week 1", "items": ["De-duplicate title suffixes (6 pages) + trim titles/descriptions", "Decide AI-crawler policy (recommend: unblock)", "301 www -> apex", "Sitemap: directive in robots.txt", "Set up GSC + Bing WMT, submit sitemap"]},
+      {"name": "Phase 2: High-Impact Improvements", "timeframe": "Weeks 2-3", "items": ["Start Google review engine (target 10 text reviews)", "og:image on about + city pages", "Tier-1 citations (Bing Places, Apple, Yelp, Nextdoor, Alignable, Clutch)", "Font/LCP tune + responsive portfolio images", "Fix contactPoint.areaServed"]},
+      {"name": "Phase 3: Content & Authority", "timeframe": "Month 2", "items": ["Expand cost-guide to 1,800+ words", "Author bylines + Article.author", "Local proof on city pages; verify saratoga-springs-ny live", "Offer schema with price 300 on /pricing"]},
+      {"name": "Phase 4: Monitoring & Iteration", "timeframe": "Ongoing", "items": ["Monthly GBP review count + map-pack spot-check", "Monthly ChatGPT/Perplexity brand-mention spot-check", "Capture drift baseline once Phase 1 ships", "Keep llms.txt in sync each deploy"]}
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

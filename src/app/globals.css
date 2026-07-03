@@ -5,10 +5,25 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ───────────────────────────────────────────────────────────────────────────
-   Design tokens. One accent (blue), neutral slate ink, warm-white paper.
-   No gradient text, no aurora/grain/glow utilities — hierarchy comes from
-   size, weight, and spacing instead of effects.
+   Design tokens — "Your storefront, online."
+   Dominant ink navy (Harbor Ink), warm Paper ground, ONE hot accent (Claw
+   coral) reserved for action + the maker's mark. Marigold is a micro-accent
+   only. Hierarchy comes from size, weight, and spacing — no gradient text,
+   no aurora/grain/glow. The signature is the awning + lobster mark, nothing else.
    ─────────────────────────────────────────────────────────────────────────── */
+
+/* Named brand colors → generate utilities: bg-ink, text-coral, border-paper-2, … */
+@theme {
+  --color-ink: #122436;        /* Harbor Ink — dominant brand, dark grounds, headlines */
+  --color-ink-2: #1b3450;      /* raised panel on dark */
+  --color-ink-wash: #26415a;   /* hairlines / borders on dark grounds */
+  --color-paper: #f7f3ec;      /* warm paper — light ground */
+  --color-paper-2: #efe9db;    /* deeper paper — alternating band / card fill */
+  --color-coral: #c8442c;      /* Claw — the one action accent (button bg, mark) */
+  --color-coral-ink: #a9371f;  /* coral text on light grounds / hover */
+  --color-marigold: #e7a427;   /* micro-accent only (the "open" dot, one flourish) */
+  --color-steam: #566572;      /* warm-slate secondary text on paper */
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -56,45 +71,46 @@
 }
 
 :root {
-  /* Neutral slate ink on a barely-warm white. */
-  --background: oklch(0.99 0.003 250);
-  --foreground: oklch(0.21 0.02 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.02 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.02 260);
+  /* Harbor Ink on warm Paper. Semantic tokens track the brand palette so the
+     shadcn primitives (Button, Card) inherit it without per-component overrides. */
+  --background: #f7f3ec;       /* Paper */
+  --foreground: #122436;       /* Harbor Ink */
+  --card: #ffffff;
+  --card-foreground: #122436;
+  --popover: #ffffff;
+  --popover-foreground: #122436;
 
-  /* Single brand accent: blue-600. */
-  --primary: oklch(0.55 0.21 263);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.97 0.01 255);
-  --secondary-foreground: oklch(0.21 0.02 260);
-  --muted: oklch(0.97 0.01 255);
-  --muted-foreground: oklch(0.50 0.02 260);
-  --accent: oklch(0.97 0.01 255);
-  --accent-foreground: oklch(0.21 0.02 260);
+  /* Single brand accent: Claw coral (deep enough for AA white-on-coral). */
+  --primary: #c8442c;
+  --primary-foreground: #ffffff;
+  --secondary: #efe9db;        /* Paper-2 */
+  --secondary-foreground: #122436;
+  --muted: #efe9db;
+  --muted-foreground: #566572; /* Steam */
+  --accent: #efe9db;
+  --accent-foreground: #122436;
   --destructive: oklch(0.58 0.22 27);
 
-  --border: oklch(0.92 0.01 255);
-  --input: oklch(0.92 0.01 255);
-  --ring: oklch(0.55 0.21 263);
+  --border: #e4decf;           /* warm hairline on paper */
+  --input: #e4decf;
+  --ring: #c8442c;
 
-  --chart-1: oklch(0.55 0.21 263);
-  --chart-2: oklch(0.62 0.17 250);
-  --chart-3: oklch(0.70 0.13 240);
-  --chart-4: oklch(0.76 0.10 235);
-  --chart-5: oklch(0.82 0.07 230);
+  --chart-1: #c8442c;
+  --chart-2: #e7a427;
+  --chart-3: #26415a;
+  --chart-4: #566572;
+  --chart-5: #a9371f;
 
   --radius: 0.875rem;
 
-  --sidebar: oklch(0.99 0.003 250);
-  --sidebar-foreground: oklch(0.21 0.02 260);
-  --sidebar-primary: oklch(0.55 0.21 263);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.97 0.01 255);
-  --sidebar-accent-foreground: oklch(0.21 0.02 260);
-  --sidebar-border: oklch(0.92 0.01 255);
-  --sidebar-ring: oklch(0.55 0.21 263);
+  --sidebar: #f7f3ec;
+  --sidebar-foreground: #122436;
+  --sidebar-primary: #c8442c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #efe9db;
+  --sidebar-accent-foreground: #122436;
+  --sidebar-border: #e4decf;
+  --sidebar-ring: #c8442c;
 }
 
 .dark {
@@ -104,8 +120,8 @@
   --card-foreground: oklch(0.97 0.005 255);
   --popover: oklch(0.20 0.02 260);
   --popover-foreground: oklch(0.97 0.005 255);
-  --primary: oklch(0.62 0.20 263);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: #d2482e;
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.26 0.02 260);
   --secondary-foreground: oklch(0.97 0.005 255);
   --muted: oklch(0.24 0.02 260);
@@ -129,6 +145,7 @@
   --sidebar-accent-foreground: oklch(0.97 0.005 255);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.62 0.20 263);
+  --ring: #d2482e;
 }
 
 @layer base {
@@ -175,6 +192,22 @@
 .demo-fade-up-3 { animation: demo-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 0.3s both; }
 .demo-fade-up-4 { animation: demo-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 0.4s both; }
 
+/* ── Hero "storefront street" marquee ──
+   The track holds two copies of the tile list, so translating by exactly -50%
+   lands the second copy where the first started — a seamless loop. Pausing freezes
+   in place (no jump) whenever a pointer or keyboard focus lands on the street. */
+@keyframes hero-street-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.hero-street-track {
+  animation: hero-street-drift 42s linear infinite;
+}
+.hero-street:hover .hero-street-track,
+.hero-street:focus-within .hero-street-track {
+  animation-play-state: paused;
+}
+
 /* Legal / long-form content typography */
 .legal-prose {
   font-size: 1rem;
@@ -216,12 +249,12 @@
   color: #111827;
 }
 .legal-prose a {
-  color: #2563eb;
+  color: #c8442c;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .legal-prose a:hover {
-  color: #1d4ed8;
+  color: #a9371f;
 }
 
 /* Blog post typography */
@@ -274,12 +307,12 @@
   color: #111827;
 }
 .post-prose a {
-  color: #2563eb;
+  color: #c8442c;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .post-prose a:hover {
-  color: #1d4ed8;
+  color: #a9371f;
 }
 .post-prose table {
   width: 100%;
@@ -301,11 +334,11 @@
   vertical-align: top;
 }
 .post-prose blockquote {
-  border-left: 3px solid #2563eb;
-  background: #eff6ff;
+  border-left: 3px solid #c8442c;
+  background: #fbeee9;
   padding: 1rem 1.25rem;
   border-radius: 0 0.75rem 0.75rem 0;
   margin: 1.5rem 0;
-  color: #1e3a8a;
+  color: #122436;
   font-weight: 500;
 }

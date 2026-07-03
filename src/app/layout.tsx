@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Bricolage_Grotesque, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
+import { Fraunces, Hanken_Grotesk, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import AnalyticsPageView from "@/components/AnalyticsPageView";
 import { ratingNodes } from "@/lib/schema";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+// Display — Fraunces: a soft, slightly wonky serif that carries the
+// hand-painted-sign personality. Variable, so no fixed weights.
+const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const sans = Plus_Jakarta_Sans({
+// Body — Hanken Grotesk: sturdy, warm-neutral, invisible. Variable.
+const sans = Hanken_Grotesk({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 

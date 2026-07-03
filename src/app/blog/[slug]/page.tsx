@@ -70,7 +70,7 @@ export default async function BlogPostPage({
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-gray-950 pt-32 pb-14">
+      <section className="bg-ink pt-32 pb-14">
         <div className="max-w-3xl mx-auto px-4">
           <nav aria-label="Breadcrumb" className="text-sm text-white/40 mb-5">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -93,14 +93,14 @@ export default async function BlogPostPage({
         </article>
 
         {/* CTA */}
-        <div className="mt-16 text-center p-10 rounded-3xl bg-blue-600 text-white">
+        <div className="mt-16 text-center p-10 rounded-3xl bg-coral text-white">
           <h2 className="text-2xl font-bold mb-2">Want a website that shows up on Google?</h2>
           <p className="text-white/80 mb-6 text-sm">
             Custom sites for Albany small businesses from a flat $300, live in about a week. SEO included.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-semibold rounded-2xl hover:bg-blue-50 transition-colors text-sm"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-coral-ink font-semibold rounded-2xl hover:bg-coral/10 transition-colors text-sm"
           >
             Get a free quote →
           </Link>
@@ -115,7 +115,7 @@ export default async function BlogPostPage({
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="block p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50/30 transition-all"
+                  className="block p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:border-coral/30 hover:bg-coral/10 transition-all"
                 >
                   <h3 className="font-bold text-gray-900 text-base mb-1">{p.title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed">{p.description}</p>

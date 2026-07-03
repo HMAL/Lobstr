@@ -14,8 +14,8 @@ export default function PrivacyPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-gray-950 pt-32 pb-14 text-center">
-        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
+      <section className="bg-ink pt-32 pb-14 text-center">
+        <p className="text-marigold text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
         <h1 className="text-4xl lg:text-5xl font-bold text-white mb-3">Privacy Policy</h1>
         <p className="text-white/40 text-sm">Last updated: June 25, 2026</p>
       </section>
@@ -63,9 +63,9 @@ export default function PrivacyPage() {
         <h2>4. Third-Party Services</h2>
         <p>We use the following third-party services to operate our business:</p>
         <ul>
-          <li><strong>Google Analytics</strong> — website traffic analysis. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Google&apos;s Privacy Policy</a></li>
-          <li><strong>Resend</strong> — email delivery for contact form submissions. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Resend&apos;s Privacy Policy</a></li>
-          <li><strong>Cloudflare</strong> — website hosting, CDN, and bot protection (Turnstile) on our contact form. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-600">Cloudflare&apos;s Privacy Policy</a></li>
+          <li><strong>Google Analytics</strong> — website traffic analysis. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-coral-ink">Google&apos;s Privacy Policy</a></li>
+          <li><strong>Resend</strong> — email delivery for contact form submissions. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-coral-ink">Resend&apos;s Privacy Policy</a></li>
+          <li><strong>Cloudflare</strong> — website hosting, CDN, and bot protection (Turnstile) on our contact form. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-coral-ink">Cloudflare&apos;s Privacy Policy</a></li>
           <li><strong>Stripe / Square</strong> — payment processing (if applicable). Data is handled directly by these processors under their own privacy policies.</li>
         </ul>
 
@@ -87,7 +87,7 @@ export default function PrivacyPage() {
           <li>Request deletion of your data</li>
           <li>Opt out of marketing communications at any time</li>
         </ul>
-        <p>To exercise any of these rights, email us at <a href="mailto:info@mylobstr.com" className="text-blue-600">info@mylobstr.com</a>.</p>
+        <p>To exercise any of these rights, email us at <a href="mailto:info@mylobstr.com" className="text-coral-ink">info@mylobstr.com</a>.</p>
 
         <h2>8. Children's Privacy</h2>
         <p>
@@ -104,7 +104,7 @@ export default function PrivacyPage() {
           Questions about this Privacy Policy? Reach us at:<br />
           <strong>MyLobstr Designs</strong><br />
           Albany, NY Metro Area<br />
-          Email: <a href="mailto:info@mylobstr.com" className="text-blue-600">info@mylobstr.com</a>
+          Email: <a href="mailto:info@mylobstr.com" className="text-coral-ink">info@mylobstr.com</a>
         </p>
       </main>
 

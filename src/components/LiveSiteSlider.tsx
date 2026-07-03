@@ -17,9 +17,9 @@ const sites = [
     label: 'text-amber-400',
     dot: 'bg-amber-400',
     slides: [
-      { src: '/screenshots/cc-1.png', caption: 'Homepage — deal discovery feed' },
-      { src: '/screenshots/cc-2.png', caption: 'Submit a Deal & Earn Commissions' },
-      { src: '/screenshots/cc-3.png', caption: 'Contact page' },
+      { src: '/screenshots/cc-1.webp', caption: 'Homepage — deal discovery feed' },
+      { src: '/screenshots/cc-2.webp', caption: 'Submit a Deal & Earn Commissions' },
+      { src: '/screenshots/cc-3.webp', caption: 'Contact page' },
     ],
   },
   {
@@ -33,9 +33,9 @@ const sites = [
     label: 'text-sky-400',
     dot: 'bg-sky-400',
     slides: [
-      { src: '/screenshots/hhh-1.png', caption: 'Landing — your property, simplified' },
-      { src: '/screenshots/hhh-2.png', caption: 'Landlord dashboard — properties, rent & repairs' },
-      { src: '/screenshots/hhh-3.png', caption: 'Built for everyone — landlords, tenants & handymen' },
+      { src: '/screenshots/hhh-1.webp', caption: 'Landing — your property, simplified' },
+      { src: '/screenshots/hhh-2.webp', caption: 'Landlord dashboard — properties, rent & repairs' },
+      { src: '/screenshots/hhh-3.webp', caption: 'Built for everyone — landlords, tenants & handymen' },
     ],
   },
 ]

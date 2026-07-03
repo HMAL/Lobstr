@@ -14,8 +14,8 @@ export default function TermsPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-gray-950 pt-32 pb-14 text-center">
-        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
+      <section className="bg-ink pt-32 pb-14 text-center">
+        <p className="text-marigold text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
         <h1 className="text-4xl lg:text-5xl font-bold text-white mb-3">Terms of Service</h1>
         <p className="text-white/40 text-sm">Last updated: June 25, 2026</p>
       </section>
@@ -84,7 +84,7 @@ export default function TermsPage() {
 
         <h2>6. Satisfaction Guarantee & Refunds</h2>
         <p>
-          We offer a 14-day satisfaction guarantee on all new projects. If you are not satisfied with your website within the first 14 days of launch, contact us and we will issue a full refund of your build fee (or, on Starter, your one-time payment). See our <a href="/refund" className="text-blue-600">Refund Policy</a> for full details.
+          We offer a 14-day satisfaction guarantee on all new projects. If you are not satisfied with your website within the first 14 days of launch, contact us and we will issue a full refund of your build fee (or, on Starter, your one-time payment). See our <a href="/refund" className="text-coral-ink">Refund Policy</a> for full details.
         </p>
 
         <h2>7. Uptime & Service Level</h2>
@@ -117,7 +117,7 @@ export default function TermsPage() {
           Questions about these Terms?<br />
           <strong>MyLobstr Designs</strong><br />
           Albany, NY Metro Area<br />
-          Email: <a href="mailto:info@mylobstr.com" className="text-blue-600">info@mylobstr.com</a>
+          Email: <a href="mailto:info@mylobstr.com" className="text-coral-ink">info@mylobstr.com</a>
         </p>
       </main>
 

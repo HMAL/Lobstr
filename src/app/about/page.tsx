@@ -19,14 +19,14 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="bg-gray-950 pt-32 pb-16 text-center px-4">
-        <span className="inline-block text-xs font-semibold uppercase tracking-widest text-blue-400 mb-3">
+      <section className="bg-ink pt-32 pb-16 text-center px-4">
+        <span className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] text-marigold mb-3">
           Who we are
         </span>
         <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
           Not a big agency — a local team
           <br />
-          <span className="text-blue-400">that actually cares how it goes.</span>
+          <span className="text-[#ef7d5a]">that actually cares how it goes.</span>
         </h1>
         <p className="text-gray-400 max-w-xl mx-auto text-lg">
           Built in Albany, for Albany — by a developer, a mom, and a small-business believer.

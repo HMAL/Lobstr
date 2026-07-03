@@ -80,8 +80,8 @@ export default function Navbar() {
               priority
             />
             <div className="leading-none">
-              <span className="text-[1rem] font-bold tracking-tight text-gray-900">MyLobstr</span>
-              <span className="text-[1rem] font-bold tracking-tight text-blue-600"> Designs</span>
+              <span className="text-[1rem] font-bold tracking-tight text-ink">MyLobstr</span>
+              <span className="text-[1rem] font-bold tracking-tight text-coral"> Designs</span>
             </div>
           </a>
 
@@ -103,7 +103,7 @@ export default function Navbar() {
             <a
               href="/contact"
               onClick={() => track(AnalyticsEvent.CtaClick, { location: 'navbar', label: 'Get a free quote', destination: '/contact' })}
-              className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-full transition-colors shadow-sm"
+              className="inline-flex items-center px-4 py-2 bg-coral hover:bg-coral-ink text-white text-sm font-semibold rounded-full transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2"
             >
               Get a free quote
             </a>
@@ -155,7 +155,7 @@ export default function Navbar() {
                     track(AnalyticsEvent.CtaClick, { location: 'navbar_mobile', label: 'Get a free quote', destination: '/contact' })
                     setOpen(false)
                   }}
-                  className="flex items-center justify-center px-4 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl"
+                  className="flex items-center justify-center px-4 py-2.5 bg-coral hover:bg-coral-ink text-white text-sm font-semibold rounded-xl"
                 >
                   Get a free quote
                 </a>

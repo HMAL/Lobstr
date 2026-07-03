@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -14,7 +14,7 @@ interface Category { icon: React.ReactNode; color: string; bg: string; title: st
 
 // Presentation only — Q&A content lives in faq-data.ts (shared with the FAQPage schema)
 // One accent across all categories — the icon distinguishes them, not a rainbow of colors.
-const BLUE = { color: 'text-blue-600', bg: 'bg-blue-50 border-blue-200' }
+const BLUE = { color: 'text-coral-ink', bg: 'bg-coral/10 border-coral/30' }
 const styles: Record<string, { icon: React.ReactNode; color: string; bg: string }> = {
   'Who We Work With': { icon: <MapPin className="w-5 h-5" />, ...BLUE },
   'Cost & Pricing': { icon: <DollarSign className="w-5 h-5" />, ...BLUE },
@@ -34,12 +34,12 @@ const categories: Category[] = faqCategories.map((cat) => ({
 
 function AccordionItem({ faq, id, open, onToggle }: { faq: FAQ; id: string; open: boolean; onToggle: () => void }) {
   return (
-    <div className={`border rounded-2xl overflow-hidden transition-all duration-200 ${open ? 'border-blue-200 shadow-sm shadow-blue-100' : 'border-gray-100 hover:border-gray-200 bg-white'}`}>
+    <div className={`border rounded-2xl overflow-hidden transition-all duration-200 ${open ? 'border-coral/30 shadow-sm shadow-coral/10' : 'border-gray-100 hover:border-gray-200 bg-white'}`}>
       <button
         onClick={onToggle}
         className="w-full text-left px-6 py-5 flex items-start justify-between gap-4 cursor-pointer"
       >
-        <span className={`font-semibold text-base leading-snug transition-colors ${open ? 'text-blue-700' : 'text-gray-900'}`}>
+        <span className={`font-semibold text-base leading-snug transition-colors ${open ? 'text-coral-ink' : 'text-gray-900'}`}>
           {faq.q}
         </span>
         <motion.div
@@ -47,7 +47,7 @@ function AccordionItem({ faq, id, open, onToggle }: { faq: FAQ; id: string; open
           transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="shrink-0 mt-0.5"
         >
-          <ChevronDown className={`w-5 h-5 transition-colors ${open ? 'text-blue-500' : 'text-gray-400'}`} />
+          <ChevronDown className={`w-5 h-5 transition-colors ${open ? 'text-coral-ink' : 'text-gray-400'}`} />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -94,13 +94,13 @@ export default function FAQPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gray-950 pt-32 pb-20">
+      <section className="relative overflow-hidden bg-ink pt-32 pb-20">
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/15 border border-blue-400/30 rounded-full text-blue-300 text-sm font-semibold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-coral/15 border border-coral/30 rounded-full text-marigold text-sm font-semibold mb-6"
           >
             <MessageCircle className="w-3.5 h-3.5" />
             Frequently asked questions
@@ -112,7 +112,7 @@ export default function FAQPage() {
             className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-5"
           >
             The questions owners ask<br />
-            <span className="text-blue-400">before getting a website</span>
+            <span className="text-[#ef7d5a]">before getting a website</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -147,7 +147,7 @@ export default function FAQPage() {
           {categories.reduce((acc, c) => acc + c.faqs.length, 0)} questions across {categories.length} topics
         </p>
         <div className="flex gap-3">
-          <button onClick={expandAll} className="text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+          <button onClick={expandAll} className="text-xs font-semibold text-coral-ink hover:text-coral-ink transition-colors">
             Expand all
           </button>
           <span className="text-gray-200">·</span>
@@ -203,7 +203,7 @@ export default function FAQPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-blue-600 p-10 text-center text-white"
+          className="rounded-3xl bg-coral p-10 text-center text-white"
         >
           <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
             <Globe className="w-7 h-7 text-white" />
@@ -215,7 +215,7 @@ export default function FAQPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-semibold rounded-2xl hover:bg-blue-50 transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-coral-ink font-semibold rounded-2xl hover:bg-coral/10 transition-colors"
             >
               Send us a message <ArrowRight className="w-4 h-4" />
             </a>

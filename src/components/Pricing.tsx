@@ -1,198 +1,71 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
+import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import {
-  Check, Heart, Zap, ArrowRight, Hammer, TrendingUp, Anchor, Sparkles,
-  ShieldCheck, HelpCircle, Plus, Minus, ExternalLink,
-  Globe, BarChart2, Search, Headphones, Layers,
-  Code2, PenLine, Cloud, Lock, Smartphone, Mail, RotateCcw, MapPin,
+  Check, Zap, Heart, Sparkles, Headphones, ShieldCheck, Plus, Minus,
+  ExternalLink, ArrowRight, Hammer, TrendingUp, Anchor,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { track, AnalyticsEvent } from '@/lib/analytics'
-
-
-// ── Rotating service word ──────────────────────────────────────────────────────
-const ROTATING_SERVICES = [
-  'plumbers', 'vet', 'restaurants', 'cafes', 'tutors', 'salons', 'hair cut', 'ortho clinic',
-]
-
-function RotatingService() {
-  const [index, setIndex] = useState(0)
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % ROTATING_SERVICES.length)
-    }, 2000)
-    return () => clearInterval(id)
-  }, [])
-
-  return (
-    <span className="relative inline-grid">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={index}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.3 }}
-          className="font-semibold text-blue-600"
-        >
-          {ROTATING_SERVICES[index]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  )
-}
+import ShelfLabel from '@/components/ShelfLabel'
 
 // ── 3-tier pricing ─────────────────────────────────────────────────────────────
 const tiers = [
   {
     name: 'Starter',
-    tagline: 'New businesses',
     price: 300,
     phase2: 0,
     monthly: 0,
     hasPhase3: false,
     oneTime: true,
-    rushAddon: true,
     visits: '10,000',
-    pages: 5,
     delivery: '7 business days',
-    desc: "Your first professional presence online — one flat price, no monthly bill. Everything a new business needs to get found.",
-    badge: 'One-time price' as string | null,
-    badgeColor: 'bg-emerald-600',
-    icon: Anchor,
-    color: 'from-slate-500 to-gray-600',
-    border: 'border-gray-200',
-    bg: 'bg-white',
-    ring: '',
-    features: [
-      '5-page custom website',
-      'Mobile-first responsive design',
-      'SSL certificate',
-      'Basic SEO (meta tags, sitemap)',
-      'Contact form',
-      'Google Analytics',
-      'Google Search Console setup',
-      'Google Merchant Center setup',
-      'Social media links',
-      'Click-to-call button',
-      'Google Business Profile — claimed & set up',
-      '1 domain (no additional custom domains)',
-    ],
+    badge: 'One-time price',
+    featured: false,
   },
   {
     name: 'Growing Business',
-    tagline: 'Growing businesses',
     price: 150,
     phase2: 30,
     monthly: 30,
     hasPhase3: false,
     oneTime: false,
-    rushAddon: true,
     visits: '30,000',
-    pages: 10,
     delivery: '7 business days',
-    desc: 'The full package for an existing business ready to dominate Google Maps, local search, and convert more leads.',
-    badge: 'Most Popular' as string | null,
-    badgeColor: 'bg-blue-600',
-    icon: TrendingUp,
-    color: 'from-blue-500 to-indigo-600',
-    border: 'border-blue-400',
-    bg: 'bg-blue-50/40',
-    ring: 'ring-2 ring-blue-400 ring-offset-2',
-    features: [
-      '10-page custom website',
-      'Logo design included',
-      'Domain name (if under $20/yr)',
-      'Google Business Profile — fully built (photos, services, categories, Q&A)',
-      'Listed on Google, Yelp, Bing & Apple Maps',
-      'Full SEO suite',
-      'Photo gallery',
-      'Blog & news section',
-      'Google Maps + click-to-call',
-      'Online booking widget',
-      'Newsletter signup',
-      'WhatsApp chat button',
-      '2 custom domains included',
-    ],
+    badge: 'Most popular',
+    featured: true,
   },
   {
     name: 'Scale',
-    tagline: 'Multi-level businesses',
     price: 250,
     phase2: 50,
     monthly: 50,
     hasPhase3: true,
     oneTime: false,
-    rushAddon: false,
     visits: '50,000',
-    pages: 20,
     delivery: '7 business days',
-    desc: 'A full business platform — multiple locations, departments, and an admin panel you control.',
-    badge: 'Enterprise' as string | null,
-    badgeColor: 'bg-violet-600',
-    icon: Layers,
-    color: 'from-violet-500 to-purple-600',
-    border: 'border-violet-300',
-    bg: 'bg-violet-50/30',
-    ring: '',
-    features: [
-      '20-page custom website',
-      'Everything in Growing Business',
-      'Multi-location Google Business Profiles',
-      'Admin panel -  track and manage your content, customers, and inquiries without needing to call us',
-      'Multi-location pages',
-      'Team directory & staff profiles',
-      'Service / product catalog',
-      'Custom quote request forms',
-      'Testimonials manager',
-      'Blog publisher (from admin)',
-      'Job postings section',
-      'Announcement banner control',
-      'Dedicated support line',
-      '10 custom domains included',
-    ],
+    badge: 'Enterprise',
+    featured: false,
   },
 ]
 
-// ── Where mylobstr wins — no competitor names, just our advantages ─────────────
+// ── Why owners choose us — the four that matter ────────────────────────────────
 const wins = [
   {
     icon: Zap,
-    title: 'Live in 7 days — not weeks',
+    title: 'Live in about a week',
     desc: 'You do nothing. We design, build, and launch your site while you run your business.',
   },
   {
     icon: Heart,
     title: 'Starter has no monthly fee',
-    desc: "Starter is a flat $300, one time. Growing and Scale add a simple monthly ($30 / $50) for hosting and support — far less than the $27–$119/mo most builders charge.",
+    desc: 'A flat $300, one time. Growing and Scale add $30 or $50 a month for hosting and support.',
   },
   {
     icon: Sparkles,
-    title: 'Custom — not a template',
-    desc: 'Every site is designed from scratch around your brand. No drag-and-drop starter themes.',
-  },
-  {
-    icon: Globe,
-    title: 'Domain handled',
-    desc: "We register your domain if it's under $20/yr — one less thing to figure out.",
-  },
-  {
-    icon: BarChart2,
-    title: 'Analytics from day one',
-    desc: 'Google Analytics and Search Console wired up on launch — you see traffic immediately.',
-  },
-  {
-    icon: MapPin,
-    title: 'Google Business Profile',
-    desc: 'We build out your entire GBP — categories, photos, services, Q&A. You show up on Google Maps from day one.',
-  },
-  {
-    icon: ShieldCheck,
-    title: '14-day guarantee',
-    desc: "Don't love it? Full refund and you keep the design files. Zero risk, ever.",
+    title: 'Custom, not a template',
+    desc: 'Every site is designed from scratch around your business. No drag-and-drop starter themes.',
   },
   {
     icon: Headphones,
@@ -205,62 +78,50 @@ const wins = [
 const phases = [
   {
     num: 1,
-    label: 'We Build It',
+    label: 'The build',
     duration: 'Month 1',
-    color: 'from-violet-500 to-indigo-600',
-    textColor: 'text-violet-600',
-    bgColor: 'bg-violet-50',
-    borderColor: 'border-violet-200',
     icon: Hammer,
     tagline: 'Your full website, designed and live.',
     bullets: [
       'Custom design tailored to your brand',
-      'Built & launched per your tier timeline',
-      'Hosting, SSL, domain setup',
+      'Built and launched within your tier timeline',
+      'Hosting, SSL, and domain setup',
       'Mobile-optimized from day one',
     ],
-    sub: 'Not a fee — this is the cost of us building your site. A freelancer charges $1,500+ for design alone.',
+    sub: 'This is the cost of building your site — a freelancer typically charges $1,500+ for design alone.',
   },
   {
     num: 2,
-    label: 'Watch It Work',
+    label: 'After launch',
     duration: 'Months 2–3',
-    color: 'from-blue-500 to-cyan-500',
-    textColor: 'text-blue-600',
-    bgColor: 'bg-blue-50',
-    borderColor: 'border-blue-200',
     icon: TrendingUp,
-    tagline: 'Your site is live. Leads are coming in.',
+    tagline: 'Your site is live and working.',
     bullets: [
       'Unlimited content edits',
       'Performance monitoring',
       'SEO tuning as rankings improve',
-      'We stay on-call for anything',
+      'We stay on call for anything',
     ],
-    sub: 'By month 2, most clients have already recouped this cost from one new customer.',
+    sub: 'Most clients cover this from a single new customer.',
   },
   {
     num: 3,
-    label: 'Cruise Mode',
+    label: 'Ongoing',
     duration: 'Month 4 onward',
-    color: 'from-emerald-500 to-teal-500',
-    textColor: 'text-emerald-600',
-    bgColor: 'bg-emerald-50',
-    borderColor: 'border-emerald-200',
     icon: Anchor,
-    tagline: 'Runs itself. You just collect leads.',
+    tagline: 'The same rate, for as long as you want us.',
     bullets: [
-      'Full hosting & uptime monitoring',
+      'Full hosting and uptime monitoring',
       'Security updates included',
       'Cancel anytime — no contracts',
     ],
-    sub: '$50/month. Forever. No surprises.',
+    sub: 'The monthly never changes without a heads-up from us.',
   },
 ]
 
 const realBuilds = [
-  { name: 'Coupon Companions', href: 'https://couponcompanions.com', desc: 'Live e-commerce platform', emoji: '🏷️' },
-  { name: 'Happy Homes Hub', href: 'https://happyhomeshub.com', desc: 'Multi-role web app, live users', emoji: '🏠' },
+  { name: 'Coupon Companions', href: 'https://couponcompanions.com', desc: 'Live e-commerce platform' },
+  { name: 'Happy Homes Hub', href: 'https://happyhomeshub.com', desc: 'Multi-role web app, live users' },
 ]
 
 const faqs = [
@@ -294,19 +155,20 @@ const faqs = [
   },
 ]
 
+// ── Everything covered — one honest checklist, not a wall of icon cards ────────
 const includedItems = [
-  { icon: Code2,      title: 'Custom Development',   desc: 'Built from scratch — no templates, no drag-and-drop' },
-  { icon: MapPin,     title: 'Google Business Profile', desc: 'Claimed, verified & fully built — you show up on Google Maps from day one' },
-  { icon: PenLine,    title: 'Logo Design',           desc: 'A clean, professional logo at no extra cost' },
-  { icon: Cloud,      title: 'Cloudflare Hosting',    desc: 'Global CDN — handles up to 50,000 visits/day free' },
-  { icon: Lock,       title: 'SSL Certificate',       desc: 'https:// security on day one, always included' },
-  { icon: Smartphone, title: 'Mobile-First Design',   desc: 'Looks perfect on every phone, tablet, and desktop' },
-  { icon: Mail,       title: 'Contact Form',          desc: 'Customers reach you directly — no third-party fees' },
-  { icon: Search,     title: 'SEO Setup',             desc: 'Google-ready from launch — sitemap, meta tags, Search Console' },
-  { icon: BarChart2,  title: 'Analytics',             desc: 'Google Analytics wired up so you see who\'s visiting' },
-  { icon: ShieldCheck,title: 'Security Updates',      desc: 'We keep everything patched and maintained' },
-  { icon: Headphones, title: 'Real Human Support',    desc: 'A real person answers every message — no bots' },
-  { icon: RotateCcw,  title: '14-Day Guarantee',      desc: 'Don\'t love it? Full refund, you keep the design files' },
+  { title: 'Custom development',      desc: 'Built from scratch — no templates, no drag-and-drop' },
+  { title: 'Google Business Profile', desc: 'Claimed, verified, and built out — you show up on Google Maps' },
+  { title: 'Logo design',             desc: 'A clean, professional logo at no extra cost (Growing & Scale)' },
+  { title: 'Cloudflare hosting',      desc: 'Global CDN with room to grow' },
+  { title: 'SSL certificate',         desc: 'https:// security on day one, always included' },
+  { title: 'Mobile-first design',     desc: 'Looks right on every phone, tablet, and desktop' },
+  { title: 'Contact form',            desc: 'Customers reach you directly — no third-party fees' },
+  { title: 'SEO setup',               desc: 'Sitemap, meta tags, and Search Console from launch' },
+  { title: 'Analytics',               desc: "Google Analytics wired up so you see who's visiting" },
+  { title: 'Security updates',        desc: 'We keep everything patched and maintained' },
+  { title: 'Real human support',      desc: 'A real person answers every message' },
+  { title: '14-day guarantee',        desc: "Don't love it? Full refund, and you keep the design files" },
 ]
 
 const comparisonSections: Array<{ category: string; rows: Array<{ label: string; values: (string | boolean)[] }> }> = [
@@ -375,10 +237,27 @@ const comparisonSections: Array<{ category: string; rows: Array<{ label: string;
   },
 ]
 
+// Shared cell content for a comparison value.
+function CellValue({ val }: { val: string | boolean }) {
+  if (typeof val === 'boolean') {
+    return val ? (
+      <Check className="h-4 w-4 text-coral-ink" strokeWidth={2.5} />
+    ) : (
+      <Minus className="h-4 w-4 text-border" />
+    )
+  }
+  return <span className="text-xs font-semibold text-ink text-center leading-tight">{val}</span>
+}
+
 export default function Pricing() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const [activeTier, setActiveTier] = useState(1)
-  const [rushDelivery, setRushDelivery] = useState(false)
+  const reduce = useReducedMotion()
+
+  const reveal: Variants = {
+    hidden: { opacity: 0, y: reduce ? 0 : 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  }
 
   const selectedTier = tiers[activeTier]
   const journeyPhases = selectedTier.oneTime
@@ -391,104 +270,55 @@ export default function Pricing() {
       : selectedTier.price + selectedTier.phase2 * 11
 
   return (
-    <section id="pricing" className="py-24 lg:py-32 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="bg-paper py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
 
-        {/* Year total anchor */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.12 }}
-          className="flex justify-center mb-10"
-        >
-          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 bg-gray-900 text-white rounded-2xl px-6 py-3 shadow-sm">
-            <span className="text-gray-400 text-sm">{selectedTier.name} — {selectedTier.oneTime ? 'one-time total' : 'first year, all in'}:</span>
-            <span className="text-2xl font-bold text-white">${tierYearTotal}</span>
-            <span className="text-gray-400 text-sm">where an agency often starts around $5,000</span>
+        {/* ── THE PLANS ── */}
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }} variants={reveal}>
+          <ShelfLabel className="mb-8">The plans</ShelfLabel>
+          <div className="grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-end">
+            <h2 className="max-w-xl font-display text-3xl leading-[1.1] font-semibold tracking-[-0.02em] text-ink lg:text-[2.75rem]">
+              Choose your plan
+            </h2>
+            <p className="text-lg leading-relaxed text-steam">
+              Starter is a flat one-time price. Growing and Scale add a low monthly rate for
+              hosting and support. All three include the 14-day money-back guarantee.
+            </p>
           </div>
-        </motion.div>
 
-        {/* Loss-aversion */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.14 }}
-          className="flex justify-center mb-14"
-        >
-          <p className="max-w-2xl text-center text-sm text-gray-500 leading-relaxed">
-            When someone nearby searches{' '}
-            <span className="font-semibold text-gray-700">&ldquo;<RotatingService /> near me&rdquo;</span> in Albany,
-            a clear, fast website is what turns that search into a phone call or a booking.{' '}
-            <span className="font-semibold text-gray-700">That&apos;s what every plan here is built to do.</span>
-          </p>
-        </motion.div>
-
-        {/* ── EVERYTHING INCLUDED ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">We handle everything — end to end</h2>
-            <p className="text-base text-gray-500">No hunting for vendors, no surprise bills. Here&apos;s what&apos;s covered in your build.</p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {includedItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <div key={item.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm flex flex-col gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
-                    <Icon className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-base text-gray-900">{item.title}</p>
-                    <p className="text-sm text-gray-500 mt-1 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              )
-            })}
+          {/* Year-total anchor */}
+          <div className="mt-10 flex">
+            <div className="inline-flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-2xl bg-ink px-6 py-3 text-paper">
+              <span className="text-sm text-paper/60">
+                {selectedTier.name} — {selectedTier.oneTime ? 'one-time total' : 'first year, all in'}:
+              </span>
+              <span className="text-2xl font-bold">${tierYearTotal}</span>
+              <span className="text-sm text-paper/60">where an agency often starts around $5,000</span>
+            </div>
           </div>
         </motion.div>
 
         {/* ── PLAN COMPARISON GRID ── */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-8"
-        >
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Choose your plan</h2>
-          <p className="text-gray-500 text-sm max-w-lg mx-auto">
-            Starter is a flat one-time price. Growing and Scale add a low monthly rate for hosting
-            and support. All three include a 14-day money-back guarantee.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="mb-16 rounded-3xl border border-gray-100 overflow-hidden shadow-sm"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={reveal}
+          className="mt-8 mb-16 overflow-hidden rounded-2xl border border-border bg-white"
         >
 
           {/* ── MOBILE VIEW ── */}
           <div className="md:hidden">
 
             {/* Plan tabs */}
-            <div className="flex gap-2 p-3 bg-gray-50 border-b border-gray-100">
+            <div className="flex gap-2 border-b border-border bg-paper-2 p-3">
               {tiers.map((t, i) => (
                 <button
                   key={t.name}
                   onClick={() => setActiveTier(i)}
                   className={cn(
-                    'flex-1 py-2.5 px-1 rounded-xl text-xs font-bold transition-all leading-tight',
-                    activeTier === i ? `text-white bg-gradient-to-r ${t.color} shadow-sm` : 'bg-white text-gray-500 border border-gray-200'
+                    'flex-1 rounded-xl px-1 py-2.5 text-xs font-semibold leading-tight transition-colors',
+                    activeTier === i ? 'bg-ink text-paper' : 'border border-border bg-white text-steam'
                   )}
                 >
                   {t.name}
@@ -497,108 +327,89 @@ export default function Pricing() {
             </div>
 
             {/* Selected plan summary */}
-            <div className={cn('px-4 py-4 border-b border-gray-100', selectedTier.bg)}>
-              {selectedTier.badge && (
-                <span className={cn('text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide inline-block mb-2', selectedTier.badgeColor)}>
-                  {selectedTier.badge}
-                </span>
-              )}
-              <div className="flex items-baseline gap-2 flex-wrap">
-                <span className="text-3xl font-bold text-gray-900">${selectedTier.price}</span>
-                <span className="text-gray-400 text-sm">{selectedTier.oneTime ? 'one-time' : 'build'}</span>
-                <span className="text-gray-300">·</span>
+            <div className={cn('border-b border-border px-4 py-4', selectedTier.featured ? 'bg-coral/5' : 'bg-white')}>
+              <span className={cn(
+                'mb-2 inline-block rounded-full px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-white',
+                selectedTier.featured ? 'bg-coral' : 'bg-ink'
+              )}>
+                {selectedTier.badge}
+              </span>
+              <div className="flex flex-wrap items-baseline gap-2">
+                <span className="text-3xl font-bold text-ink">${selectedTier.price}</span>
+                <span className="text-sm text-steam">{selectedTier.oneTime ? 'one-time' : 'build'}</span>
+                <span className="text-border">·</span>
                 {selectedTier.oneTime ? (
-                  <span className="font-semibold text-emerald-700">no monthly fee</span>
+                  <span className="font-semibold text-coral-ink">no monthly fee</span>
                 ) : (
                   <>
-                    <span className="font-semibold text-gray-700">${selectedTier.hasPhase3 ? selectedTier.monthly : selectedTier.phase2}/mo</span>
-                    <span className="text-gray-400 text-xs">after launch</span>
+                    <span className="font-semibold text-ink">${selectedTier.hasPhase3 ? selectedTier.monthly : selectedTier.phase2}/mo</span>
+                    <span className="text-xs text-steam">after launch</span>
                   </>
                 )}
               </div>
-              <p className="text-xs text-gray-500 mt-1">{selectedTier.delivery} · {selectedTier.visits} visits/mo</p>
+              <p className="mt-1 text-xs text-steam">{selectedTier.delivery} · {selectedTier.visits} visits/mo</p>
             </div>
 
             {/* Feature list for selected plan */}
             {comparisonSections.map((section) => (
               <div key={section.category}>
-                <div className="bg-gray-900 px-4 py-1.5">
-                  <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{section.category}</span>
+                <div className="bg-ink px-4 py-1.5">
+                  <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-paper/60">{section.category}</span>
                 </div>
-                {section.rows.map((row, ri) => {
-                  const val = row.values[activeTier]
-                  return (
-                    <div
-                      key={row.label}
-                      className={cn('flex items-center justify-between px-4 py-3 gap-3 border-t border-gray-100', ri % 2 === 0 ? 'bg-white' : 'bg-gray-50/50')}
-                    >
-                      <span className="text-sm text-gray-700 font-medium">{row.label}</span>
-                      <span className="shrink-0">
-                        {typeof val === 'boolean' ? (
-                          val ? (
-                            <div className={cn('w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-br text-white', selectedTier.color)}>
-                              <Check className="w-3.5 h-3.5" />
-                            </div>
-                          ) : (
-                            <Minus className="w-5 h-5 text-gray-200" />
-                          )
-                        ) : (
-                          <span className="text-xs font-semibold text-gray-700 text-right">{val}</span>
-                        )}
-                      </span>
-                    </div>
-                  )
-                })}
+                {section.rows.map((row, ri) => (
+                  <div
+                    key={row.label}
+                    className={cn('flex items-center justify-between gap-3 border-t border-border px-4 py-3', ri % 2 === 0 ? 'bg-white' : 'bg-paper/60')}
+                  >
+                    <span className="text-sm font-medium text-ink">{row.label}</span>
+                    <span className="flex shrink-0 justify-end">
+                      <CellValue val={row.values[activeTier]} />
+                    </span>
+                  </div>
+                ))}
               </div>
             ))}
 
             {/* Mobile payment journey */}
-            <div className="border-t-2 border-gray-100">
-              <div className="bg-gray-900 px-4 py-2.5 flex items-center gap-3">
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Payment journey</span>
-                <span className={cn('text-xs font-bold px-2 py-0.5 rounded-full text-white bg-gradient-to-r', selectedTier.color)}>
+            <div className="border-t border-border">
+              <div className="flex items-center gap-3 bg-ink px-4 py-2.5">
+                <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-paper/60">Payment journey</span>
+                <span className="rounded-full bg-coral px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-white">
                   {selectedTier.name}
                 </span>
               </div>
-              <div className="divide-y divide-gray-100">
+              <div className="divide-y divide-border">
                 {journeyPhases.map((phase) => {
                   const Icon = phase.icon
                   return (
-                    <div
-                      key={phase.num}
-                      className={cn('w-full px-4 py-4 text-left', phase.bgColor)}
-                    >
+                    <div key={phase.num} className="w-full px-4 py-4 text-left">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className={cn('w-8 h-8 rounded-xl flex items-center justify-center bg-gradient-to-br text-white shrink-0', phase.color)}>
-                            <Icon className="w-4 h-4" />
-                          </div>
+                          <Icon className="h-5 w-5 shrink-0 text-coral-ink" strokeWidth={1.75} />
                           <div>
-                            <p className="font-bold text-sm text-gray-900">{phase.label}</p>
-                            <p className="text-xs text-gray-400">
+                            <p className="text-sm font-semibold text-ink">{phase.label}</p>
+                            <p className="text-xs text-steam">
                               {phase.num === 2 && !selectedTier.hasPhase3 ? 'Month 2 onward' : phase.duration}
                             </p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold text-gray-900 text-lg">
+                          <p className="text-lg font-bold text-ink">
                             {phase.num === 1 ? `$${selectedTier.price}` : phase.num === 2 ? `$${selectedTier.phase2}` : `$${selectedTier.monthly}`}
                           </p>
-                          <p className="text-[10px] text-gray-400">
-                            {phase.num === 1 ? 'one time' : phase.num === 2 ? (selectedTier.hasPhase3 ? '/mo × 2' : '/mo forever') : '/mo forever'}
+                          <p className="text-[10px] text-steam">
+                            {phase.num === 1 ? 'one time' : phase.num === 2 ? (selectedTier.hasPhase3 ? '/mo × 2' : '/mo ongoing') : '/mo ongoing'}
                           </p>
                         </div>
                       </div>
-                      <div className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
+                      <div className="mt-3 space-y-1.5 border-t border-border pt-3">
                         {phase.bullets.map((b) => (
-                          <div key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
-                            <div className={cn('w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-gradient-to-br text-white', phase.color)}>
-                              <Check className="w-2 h-2" />
-                            </div>
+                          <div key={b} className="flex items-start gap-1.5 text-xs text-steam">
+                            <Check className="mt-0.5 h-3 w-3 shrink-0 text-coral-ink" strokeWidth={2.5} />
                             {b}
                           </div>
                         ))}
-                        <p className="text-[11px] text-gray-400 italic pt-1.5 border-t border-gray-100">{phase.sub}</p>
+                        <p className="border-t border-border pt-1.5 text-[11px] italic text-steam/80">{phase.sub}</p>
                       </div>
                     </div>
                   )
@@ -608,12 +419,12 @@ export default function Pricing() {
           </div>
 
           {/* ── DESKTOP VIEW ── */}
-          <div className="hidden md:block overflow-x-auto">
+          <div className="hidden overflow-x-auto md:block">
             <div className="min-w-[600px]">
 
               {/* Plan header row */}
-              <div className="grid grid-cols-[2fr_1fr_1fr_1fr] bg-gray-50 border-b-2 border-gray-100">
-                <div className="px-5 py-5 text-xs font-bold uppercase tracking-widest text-gray-400 flex items-end">Features</div>
+              <div className="grid grid-cols-[2fr_1fr_1fr_1fr] border-b border-border bg-paper-2">
+                <div className="flex items-end px-5 py-5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-steam">Features</div>
                 {tiers.map((t, i) => {
                   const isSelected = activeTier === i
                   return (
@@ -621,21 +432,22 @@ export default function Pricing() {
                       key={t.name}
                       onClick={() => setActiveTier(i)}
                       className={cn(
-                        'px-4 py-5 text-center border-l border-gray-100 transition-all duration-200 cursor-pointer',
-                        isSelected ? `${t.bg} border-t-4 ${t.border}` : 'hover:bg-white'
+                        'cursor-pointer border-l border-border px-4 py-5 text-center transition-colors duration-200',
+                        isSelected ? 'border-t-4 border-t-coral bg-white' : 'hover:bg-white/60'
                       )}
                     >
-                      {t.badge && (
-                        <span className={cn('text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide block mb-2 w-fit mx-auto', t.badgeColor)}>
-                          {t.badge}
-                        </span>
-                      )}
-                      <p className="font-bold text-gray-900 text-sm mb-1">{t.name}</p>
-                      <p className="text-2xl font-bold text-gray-900">${t.price}</p>
-                      <p className="text-xs text-gray-400">{t.oneTime ? 'one-time · no monthly' : `build · $${t.hasPhase3 ? t.monthly : t.phase2}/mo after`}</p>
+                      <span className={cn(
+                        'mx-auto mb-2 block w-fit rounded-full px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-white',
+                        t.featured ? 'bg-coral' : 'bg-ink'
+                      )}>
+                        {t.badge}
+                      </span>
+                      <p className="mb-1 text-sm font-semibold text-ink">{t.name}</p>
+                      <p className="text-2xl font-bold text-ink">${t.price}</p>
+                      <p className="text-xs text-steam">{t.oneTime ? 'one-time · no monthly' : `build · $${t.hasPhase3 ? t.monthly : t.phase2}/mo after`}</p>
                       {isSelected && (
-                        <span className={cn('mt-2 inline-block text-[10px] font-bold uppercase tracking-wide text-white px-2 py-0.5 rounded-full bg-gradient-to-r', t.color)}>
-                          Selected ✓
+                        <span className="mt-2 inline-block font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-coral-ink">
+                          Selected
                         </span>
                       )}
                     </button>
@@ -646,30 +458,25 @@ export default function Pricing() {
               {/* Feature rows grouped by category */}
               {comparisonSections.map((section) => (
                 <div key={section.category}>
-                  <div className="grid grid-cols-[2fr_1fr_1fr_1fr] bg-gray-900">
-                    <div className="col-span-4 px-5 py-2">
-                      <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{section.category}</span>
-                    </div>
+                  <div className="bg-ink px-5 py-2">
+                    <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-paper/60">{section.category}</span>
                   </div>
                   {section.rows.map((row, ri) => (
                     <div
                       key={row.label}
-                      className={cn('grid grid-cols-[2fr_1fr_1fr_1fr] border-t border-gray-100', ri % 2 === 0 ? 'bg-white' : 'bg-gray-50/50')}
+                      className={cn('grid grid-cols-[2fr_1fr_1fr_1fr] border-t border-border', ri % 2 === 0 ? 'bg-white' : 'bg-paper/60')}
                     >
-                      <div className="px-5 py-3.5 text-sm text-gray-700 font-medium flex items-center">{row.label}</div>
+                      <div className="flex items-center px-5 py-3.5 text-sm font-medium text-ink">{row.label}</div>
                       {row.values.map((val, vi) => (
-                        <div key={vi} onClick={() => setActiveTier(vi)} className={cn('px-3 py-3.5 border-l border-gray-100 flex items-center justify-center cursor-pointer transition-colors', activeTier === vi ? 'bg-blue-50/40' : 'hover:bg-gray-50')}>
-                          {typeof val === 'boolean' ? (
-                            val ? (
-                              <div className={cn('w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-br text-white shrink-0', tiers[vi].color)}>
-                                <Check className="w-3.5 h-3.5" />
-                              </div>
-                            ) : (
-                              <Minus className="w-5 h-5 text-gray-200" />
-                            )
-                          ) : (
-                            <span className="text-xs font-semibold text-gray-700 text-center leading-tight">{val}</span>
+                        <div
+                          key={vi}
+                          onClick={() => setActiveTier(vi)}
+                          className={cn(
+                            'flex cursor-pointer items-center justify-center border-l border-border px-3 py-3.5 transition-colors',
+                            activeTier === vi ? 'bg-coral/5' : 'hover:bg-paper-2/60'
                           )}
+                        >
+                          <CellValue val={val} />
                         </div>
                       ))}
                     </div>
@@ -678,50 +485,43 @@ export default function Pricing() {
               ))}
 
               {/* Payment journey */}
-              <div className="border-t-2 border-gray-100">
-                <div className="bg-gray-900 px-5 py-2.5 flex items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Payment journey</span>
-                  <span className={cn('text-xs font-bold px-2.5 py-0.5 rounded-full text-white bg-gradient-to-r', selectedTier.color)}>
+              <div className="border-t border-border">
+                <div className="flex items-center gap-3 bg-ink px-5 py-2.5">
+                  <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-paper/60">Payment journey</span>
+                  <span className="rounded-full bg-coral px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-white">
                     {selectedTier.name}
                   </span>
                 </div>
-                <div className={cn('grid divide-x divide-gray-100', selectedTier.hasPhase3 ? 'grid-cols-3' : 'grid-cols-2')}>
+                <div className={cn('grid divide-x divide-border', selectedTier.hasPhase3 ? 'grid-cols-3' : 'grid-cols-2')}>
                   {journeyPhases.map((phase) => {
                     const Icon = phase.icon
                     return (
-                      <div
-                        key={phase.num}
-                        className={cn('p-5 text-left w-full h-full', phase.bgColor)}
-                      >
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className={cn('w-7 h-7 rounded-lg flex items-center justify-center bg-gradient-to-br text-white shrink-0', phase.color)}>
-                            <Icon className="w-3.5 h-3.5" />
-                          </div>
-                          <span className={cn('text-xs font-bold uppercase tracking-wider', phase.textColor)}>
+                      <div key={phase.num} className="h-full w-full p-5 text-left">
+                        <div className="mb-2 flex items-center gap-2">
+                          <Icon className="h-5 w-5 shrink-0 text-coral-ink" strokeWidth={1.75} />
+                          <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-steam">
                             Phase {phase.num} · {phase.num === 2 && !selectedTier.hasPhase3 ? 'Month 2 onward' : phase.duration}
                           </span>
                         </div>
                         <div className="mb-1">
                           {phase.num === 1 ? (
-                            <><span className="text-2xl font-bold text-gray-900">${selectedTier.price}</span><span className="text-gray-400 text-xs"> one time</span></>
+                            <><span className="text-2xl font-bold text-ink">${selectedTier.price}</span><span className="text-xs text-steam"> one time</span></>
                           ) : phase.num === 2 ? (
-                            <><span className="text-2xl font-bold text-gray-900">${selectedTier.phase2}</span><span className="text-gray-400 text-xs">{selectedTier.hasPhase3 ? '/mo × 2' : '/mo forever'}</span></>
+                            <><span className="text-2xl font-bold text-ink">${selectedTier.phase2}</span><span className="text-xs text-steam">{selectedTier.hasPhase3 ? '/mo × 2' : '/mo ongoing'}</span></>
                           ) : (
-                            <><span className="text-2xl font-bold text-gray-900">${selectedTier.monthly}</span><span className="text-gray-400 text-xs">/mo forever</span></>
+                            <><span className="text-2xl font-bold text-ink">${selectedTier.monthly}</span><span className="text-xs text-steam">/mo ongoing</span></>
                           )}
                         </div>
-                        <p className="font-bold text-gray-900 text-sm mb-0.5">{phase.label}</p>
-                        <p className="text-xs text-gray-500">{phase.tagline}</p>
-                        <div className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
+                        <p className="mb-0.5 text-sm font-semibold text-ink">{phase.label}</p>
+                        <p className="text-xs text-steam">{phase.tagline}</p>
+                        <div className="mt-3 space-y-1.5 border-t border-border pt-3">
                           {phase.bullets.map((b) => (
-                            <div key={b} className="flex items-start gap-1.5 text-xs text-gray-600">
-                              <div className={cn('w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-gradient-to-br text-white', phase.color)}>
-                                <Check className="w-2 h-2" />
-                              </div>
+                            <div key={b} className="flex items-start gap-1.5 text-xs text-steam">
+                              <Check className="mt-0.5 h-3 w-3 shrink-0 text-coral-ink" strokeWidth={2.5} />
                               {b}
                             </div>
                           ))}
-                          <p className="text-[11px] text-gray-400 italic pt-1.5 border-t border-gray-100">{phase.sub}</p>
+                          <p className="border-t border-border pt-1.5 text-[11px] italic text-steam/80">{phase.sub}</p>
                         </div>
                       </div>
                     )
@@ -733,10 +533,10 @@ export default function Pricing() {
           </div>
 
           {/* Selected plan CTA — shared */}
-          <div className="px-6 py-5 bg-gray-50 border-t-2 border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col items-center justify-between gap-4 border-t border-border bg-paper-2 px-6 py-5 sm:flex-row">
             <div>
-              <p className="font-bold text-gray-900">{selectedTier.name}</p>
-              <p className="text-sm text-gray-500">
+              <p className="font-semibold text-ink">{selectedTier.name}</p>
+              <p className="text-sm text-steam">
                 {selectedTier.oneTime
                   ? `$${selectedTier.price} one-time · no monthly fee · ${selectedTier.delivery}`
                   : `$${selectedTier.price} build · $${selectedTier.monthly}/mo after launch · ${selectedTier.delivery}`}
@@ -745,62 +545,78 @@ export default function Pricing() {
             <a
               href={`/contact?plan=${encodeURIComponent(selectedTier.name)}`}
               onClick={() => track(AnalyticsEvent.CtaClick, { location: 'pricing', label: 'Send message', plan: selectedTier.name, destination: '/contact' })}
-              className={cn(
-                'flex items-center gap-2 px-7 py-3 rounded-2xl font-bold text-sm text-white bg-gradient-to-r shrink-0 hover:opacity-90 transition-opacity w-full sm:w-auto justify-center',
-                selectedTier.color
-              )}
+              className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-coral px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-coral-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper-2 sm:w-auto"
             >
-              Send message <ArrowRight className="w-4 h-4" />
+              Send message <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </motion.div>
 
-        {/* Emotional note */}
+        {/* The honest aside */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="max-w-2xl mx-auto mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={reveal}
+          className="mx-auto mb-20 max-w-2xl border-l-2 border-coral pl-6"
         >
-          <div className="bg-blue-600 rounded-2xl p-6 text-white text-center shadow-sm">
-            <p className="font-semibold leading-snug mb-1 text-lg">
-              For most local businesses, a customer or two from the site covers what it cost.
+          <p className="font-display text-xl font-semibold leading-snug text-ink">
+            For most local businesses, a customer or two from the site covers what it cost.
+          </p>
+          <p className="mt-2 text-base leading-relaxed text-steam">
+            That&apos;s the whole idea. We kept the price low so getting online is an easy yes,
+            not a big decision you have to sleep on.
+          </p>
+        </motion.div>
+
+        {/* ── EVERYTHING COVERED ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={reveal}
+          className="mb-20"
+        >
+          <ShelfLabel className="mb-8">What&apos;s covered</ShelfLabel>
+          <div className="grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-end">
+            <h2 className="max-w-xl font-display text-3xl leading-[1.1] font-semibold tracking-[-0.02em] text-ink">
+              We handle everything, end to end
+            </h2>
+            <p className="text-lg leading-relaxed text-steam">
+              No hunting for vendors, no surprise bills. Here&apos;s what&apos;s part of every build.
             </p>
-            <p className="text-blue-100 text-sm">
-              That&apos;s the whole idea. We kept the price low so getting online is an easy yes,
-              not a big decision you have to sleep on.
-            </p>
+          </div>
+          <div className="mt-10 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+            {includedItems.map((item) => (
+              <div key={item.title} className="flex items-start gap-3">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-coral-ink" strokeWidth={2.5} />
+                <div>
+                  <p className="text-sm font-semibold text-ink">{item.title}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-steam">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
-        {/* ── WHERE MYLOBSTR WINS ── */}
+        {/* ── WHY OWNERS CHOOSE US ── */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={reveal}
+          className="mb-16"
         >
-          <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Why owners choose us</h2>
-            <p className="text-gray-500 text-sm max-w-lg mx-auto">
-              It&apos;s not only the price. It&apos;s the speed, the personal support, and a site
-              that&apos;s actually built to bring you customers.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <ShelfLabel className="mb-8">Why owners choose us</ShelfLabel>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {wins.map((w) => {
               const Icon = w.icon
               return (
-                <div
-                  key={w.title}
-                  className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="w-9 h-9 rounded-xl bg-gray-900 flex items-center justify-center mb-3">
-                    <Icon className="w-4 h-4 text-white" />
-                  </div>
-                  <h3 className="font-bold text-sm text-gray-900 mb-1">{w.title}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{w.desc}</p>
+                <div key={w.title} className="rounded-2xl border border-border bg-white p-6">
+                  <Icon className="h-6 w-6 text-coral-ink" strokeWidth={1.75} />
+                  <span className="mt-3 block h-0.5 w-8 rounded-full bg-marigold/70" aria-hidden="true" />
+                  <h3 className="mt-4 font-display text-base font-semibold text-ink">{w.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-steam">{w.desc}</p>
                 </div>
               )
             })}
@@ -809,18 +625,19 @@ export default function Pricing() {
 
         {/* Risk reversal */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 max-w-3xl mx-auto"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={reveal}
+          className="mx-auto mb-16 max-w-3xl"
         >
-          <div className="rounded-3xl border-2 border-emerald-200 bg-emerald-50/50 p-7 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-7 h-7 text-white" />
+          <div className="flex flex-col items-center gap-5 rounded-2xl border border-border bg-paper-2 p-7 text-center sm:flex-row sm:text-left">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-coral">
+              <ShieldCheck className="h-7 w-7 text-white" strokeWidth={1.75} />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 text-lg mb-1">Try it. Love it, or your money back.</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <h3 className="mb-1 font-display text-lg font-semibold text-ink">Try it. Love it, or your money back.</h3>
+              <p className="text-sm leading-relaxed text-steam">
                 If you don&apos;t love your new site within 14 days, we refund every cent — and you keep the design files.
                 No contracts, cancel anytime, and you always own your website.
               </p>
@@ -830,28 +647,28 @@ export default function Pricing() {
 
         {/* Real proof */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20 text-center"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={reveal}
+          className="mb-24"
         >
-          <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Real sites we&apos;ve shipped</p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <ShelfLabel className="mb-6">Real sites we&apos;ve shipped</ShelfLabel>
+          <div className="flex flex-wrap gap-4">
             {realBuilds.map((b) => (
               <a
                 key={b.name}
                 href={b.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 px-5 py-3 rounded-2xl border-2 border-gray-100 bg-white hover:border-blue-200 hover:shadow-md transition-all"
+                className="group flex items-center gap-3 rounded-2xl border border-border bg-white px-5 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-coral/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
               >
-                <span className="text-2xl">{b.emoji}</span>
                 <div className="text-left">
-                  <p className="font-bold text-gray-900 text-sm flex items-center gap-1">
+                  <p className="flex items-center gap-1.5 text-sm font-semibold text-ink">
                     {b.name}
-                    <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-blue-500" />
+                    <ExternalLink className="h-3 w-3 text-steam transition-colors group-hover:text-coral-ink" />
                   </p>
-                  <p className="text-xs text-gray-500">{b.desc}</p>
+                  <p className="text-xs text-steam">{b.desc}</p>
                 </div>
               </a>
             ))}
@@ -860,40 +677,39 @@ export default function Pricing() {
 
         {/* FAQ */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={reveal}
+          className="mx-auto max-w-3xl"
         >
-          <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Why so affordable? (and other honest questions)</h2>
-            <p className="text-gray-500 text-sm">The stuff every smart business owner asks before saying yes.</p>
-          </div>
+          <ShelfLabel className="mb-8">Questions</ShelfLabel>
+          <h2 className="mb-2 font-display text-3xl leading-[1.1] font-semibold tracking-[-0.02em] text-ink">
+            Why so affordable? (and other honest questions)
+          </h2>
+          <p className="mb-8 text-lg leading-relaxed text-steam">The stuff every smart business owner asks before saying yes.</p>
           <div className="space-y-3">
             {faqs.map((faq, i) => {
               const open = openFaq === i
               return (
-                <div key={faq.q} className="rounded-2xl border-2 border-gray-100 bg-white overflow-hidden">
+                <div key={faq.q} className="overflow-hidden rounded-2xl border border-border bg-white">
                   <button
                     onClick={() => setOpenFaq(open ? null : i)}
-                    className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left cursor-pointer"
+                    className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-inset"
                   >
-                    <span className="font-bold text-gray-900 text-sm flex items-center gap-2">
-                      <HelpCircle className="w-4 h-4 text-blue-500 shrink-0" />
-                      {faq.q}
-                    </span>
+                    <span className="text-sm font-semibold text-ink">{faq.q}</span>
                     {open ? (
-                      <Minus className="w-4 h-4 text-gray-400 shrink-0" />
+                      <Minus className="h-4 w-4 shrink-0 text-steam" />
                     ) : (
-                      <Plus className="w-4 h-4 text-gray-400 shrink-0" />
+                      <Plus className="h-4 w-4 shrink-0 text-steam" />
                     )}
                   </button>
                   {open && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      transition={{ duration: 0.2 }}
-                      className="px-5 pb-4 pl-11 text-sm text-gray-600 leading-relaxed"
+                      transition={{ duration: reduce ? 0 : 0.2 }}
+                      className="px-5 pb-4 text-sm leading-relaxed text-steam"
                     >
                       {faq.a}
                     </motion.div>
@@ -905,17 +721,12 @@ export default function Pricing() {
         </motion.div>
 
         {/* Footer guarantee */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-sm text-gray-400 mt-12"
-        >
-          🔒 14-day money-back guarantee · No contracts · Cancel anytime ·{' '}
-          <a href="mailto:info@mylobstr.com" className="text-blue-600 font-semibold hover:underline">
+        <p className="mt-12 text-center text-sm text-steam">
+          14-day money-back guarantee · No contracts · Cancel anytime ·{' '}
+          <a href="mailto:info@mylobstr.com" className="font-semibold text-coral-ink hover:underline">
             info@mylobstr.com
           </a>
-        </motion.p>
+        </p>
       </div>
     </section>
   )

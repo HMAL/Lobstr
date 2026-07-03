@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper-2">
       <Navbar />
 
-      <section className="bg-gray-950 pt-32 pb-16 text-center px-4">
-        <span className="inline-block text-xs font-semibold uppercase tracking-widest text-blue-400 mb-3">
+      <section className="bg-ink pt-32 pb-16 text-center px-4">
+        <span className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] text-marigold mb-3">
           Let&apos;s talk
         </span>
         <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">

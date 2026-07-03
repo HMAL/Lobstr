@@ -37,7 +37,7 @@ export default function About() {
             </p>
 
             {/* Origin story — the most humanizing thing on the page */}
-            <div className="p-5 bg-gray-950 rounded-2xl text-white">
+            <div className="p-5 bg-ink rounded-2xl text-white">
               <p className="font-bold text-sm mb-1">How MyLobstr Designs actually started</p>
               <p className="text-sm text-gray-400 leading-relaxed">
                 It began at 2am — newborn in one arm, laptop in the other, the dog asleep on
@@ -79,7 +79,7 @@ export default function About() {
         </div>
 
         {/* Values */}
-        <div className="rounded-3xl bg-gray-950 text-white p-8 lg:p-12">
+        <div className="rounded-3xl bg-ink text-white p-8 lg:p-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export default function About() {
                 transition={{ delay: i * 0.1 }}
                 className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-coral/15 text-[#ef7d5a] flex items-center justify-center shrink-0">
                   <v.icon className="w-5 h-5" />
                 </div>
                 <div>

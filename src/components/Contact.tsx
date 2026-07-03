@@ -6,6 +6,7 @@ import Script from 'next/script'
 import { motion } from 'framer-motion'
 import { Mail, Clock, Send, CheckCircle2, MapPin, Tag } from 'lucide-react'
 import { track, AnalyticsEvent } from '@/lib/analytics'
+import { cn } from '@/lib/utils'
 
 // Turnstile site keys are public (rendered in the browser). Hardcoded fallback so
 // the widget works even when NEXT_PUBLIC_TURNSTILE_SITE_KEY isn't set in the build
@@ -36,25 +37,25 @@ const contactCards = [
     icon: Clock,
     title: 'Real support, any time',
     desc: 'A real person answers every message — not a bot or a ticket queue. We aim to reply within a day.',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
-    border: 'border-blue-100',
+    color: 'text-coral-ink',
+    bg: 'bg-coral/10',
+    border: 'border-coral/20',
   },
   {
     icon: Mail,
     title: 'Email us',
     desc: 'info@mylobstr.com — good for detailed questions or sending over what you already have.',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
-    border: 'border-blue-100',
+    color: 'text-coral-ink',
+    bg: 'bg-coral/10',
+    border: 'border-coral/20',
   },
   {
     icon: MapPin,
     title: 'Albany-based',
     desc: "We're local, so if it's easier to talk it through over coffee, we're glad to.",
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
-    border: 'border-blue-100',
+    color: 'text-coral-ink',
+    bg: 'bg-coral/10',
+    border: 'border-coral/20',
   },
 ]
 
@@ -72,7 +73,7 @@ function formatPhone(value: string) {
   return `(${d.slice(0, 3)})${d.slice(3, 6)}-${d.slice(6)}`
 }
 
-function ContactForm() {
+export function ContactForm({ compact = false }: { compact?: boolean } = {}) {
   const searchParams = useSearchParams()
   const planParam = searchParams.get('plan') ?? ''
   const planInfo = planData[planParam] ?? null
@@ -161,12 +162,12 @@ function ContactForm() {
   return (
     <div className="bg-white rounded-3xl border-2 border-gray-100 shadow-xl overflow-hidden">
       {submitted ? (
-        <div className="p-12 text-center space-y-4">
+        <div className={cn('text-center space-y-4', compact ? 'p-8' : 'p-12')}>
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-            className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto"
+            className="w-20 h-20 bg-coral rounded-full flex items-center justify-center mx-auto"
           >
             <CheckCircle2 className="w-10 h-10 text-white" />
           </motion.div>
@@ -181,12 +182,12 @@ function ContactForm() {
             <a
               href="mailto:info@mylobstr.com"
               onClick={() => track(AnalyticsEvent.ContactChannelClick, { channel: 'email', location: 'contact_success' })}
-              className="text-blue-600 font-semibold"
+              className="text-coral-ink font-semibold"
             >info@mylobstr.com</a>
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} onFocus={handleFormStart} className="p-8 space-y-5">
+        <form onSubmit={handleSubmit} onFocus={handleFormStart} className={cn(compact ? 'p-6 space-y-4' : 'p-8 space-y-5')}>
 
           {/* Honeypot — hidden from real users, bots fill it. Not type="hidden" so
               browser autofill leaves it alone. */}
@@ -205,34 +206,34 @@ function ContactForm() {
 
           {/* Selected plan quote */}
           {planInfo && yearTotal !== null && (
-            <div className="rounded-2xl bg-blue-50 border-2 border-blue-200 p-4">
+            <div className="rounded-2xl bg-coral/10 border-2 border-coral/30 p-4">
               <div className="flex items-center gap-2 mb-3">
-                <Tag className="w-4 h-4 text-blue-600" />
-                <p className="text-xs font-bold uppercase tracking-widest text-blue-600">Your selected plan</p>
+                <Tag className="w-4 h-4 text-coral-ink" />
+                <p className="text-xs font-bold uppercase tracking-widest text-coral-ink">Your selected plan</p>
               </div>
               <p className="font-bold text-gray-900 text-lg leading-none">{planParam}</p>
               <p className="text-xs text-gray-500 mb-3">{planInfo.tagline}</p>
               {planInfo.oneTime ? (
-                <div className="bg-white rounded-xl p-4 border border-blue-100 text-center">
+                <div className="bg-white rounded-xl p-4 border border-coral/20 text-center">
                   <p className="text-2xl font-bold text-gray-900">${planInfo.price}</p>
                   <p className="text-xs text-gray-500 mt-1">One-time price · no monthly fee</p>
                 </div>
               ) : (
                 <>
                   <div className="grid grid-cols-2 gap-2 text-center">
-                    <div className="bg-white rounded-xl p-2.5 border border-blue-100">
+                    <div className="bg-white rounded-xl p-2.5 border border-coral/20">
                       <p className="text-base font-bold text-gray-900">${planInfo.price}</p>
                       <p className="text-[10px] text-gray-400 leading-tight">Build<br />(Month 1)</p>
                     </div>
-                    <div className="bg-white rounded-xl p-2.5 border border-blue-100">
+                    <div className="bg-white rounded-xl p-2.5 border border-coral/20">
                       <p className="text-base font-bold text-gray-900">
                         ${planInfo.monthly}<span className="text-xs font-semibold text-gray-400">/mo</span>
                       </p>
                       <p className="text-[10px] text-gray-400 leading-tight">Hosting &amp; support<br />(Month 2+)</p>
                     </div>
                   </div>
-                  <div className="mt-3 pt-3 border-t border-blue-200 flex items-center justify-between">
-                    <span className="text-xs font-semibold text-blue-700">Estimated Year 1 Total</span>
+                  <div className="mt-3 pt-3 border-t border-coral/30 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-coral-ink">Estimated Year 1 Total</span>
                     <span className="text-xl font-bold text-gray-900">${yearTotal}</span>
                   </div>
                 </>
@@ -249,7 +250,7 @@ function ContactForm() {
                 placeholder="Maria Johnson"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50"
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-coral focus:outline-none transition-colors text-sm bg-gray-50"
               />
             </div>
             <div className="space-y-1.5">
@@ -259,7 +260,7 @@ function ContactForm() {
                 placeholder="(518) 555-0123"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50"
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-coral focus:outline-none transition-colors text-sm bg-gray-50"
               />
             </div>
           </div>
@@ -272,7 +273,7 @@ function ContactForm() {
               placeholder="you@yourbusiness.com"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50"
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-coral focus:outline-none transition-colors text-sm bg-gray-50"
             />
           </div>
 
@@ -284,41 +285,48 @@ function ContactForm() {
               placeholder="Capital Cuts Barbershop"
               value={form.business}
               onChange={(e) => setForm({ ...form, business: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50"
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-coral focus:outline-none transition-colors text-sm bg-gray-50"
             />
           </div>
 
-          <div className="space-y-1.5">
-            <label className="text-sm font-semibold text-gray-700">Business Address</label>
-            <input
-              type="text"
-              placeholder="123 Main St, Albany, NY 12203"
-              value={form.address}
-              onChange={(e) => setForm({ ...form, address: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50"
-            />
-          </div>
+          {!compact && (
+            <div className="space-y-1.5">
+              <label className="text-sm font-semibold text-gray-700">Business Address</label>
+              <input
+                type="text"
+                placeholder="123 Main St, Albany, NY 12203"
+                value={form.address}
+                onChange={(e) => setForm({ ...form, address: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-coral focus:outline-none transition-colors text-sm bg-gray-50"
+              />
+            </div>
+          )}
+
+          {!compact && (
+            <div className="space-y-1.5">
+              <label className="text-sm font-semibold text-gray-700">Type of Business *</label>
+              <input
+                type="text"
+                required
+                placeholder="e.g. Restaurant, Barbershop, Plumber..."
+                value={form.type}
+                onChange={(e) => setForm({ ...form, type: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-coral focus:outline-none transition-colors text-sm bg-gray-50"
+              />
+            </div>
+          )}
 
           <div className="space-y-1.5">
-            <label className="text-sm font-semibold text-gray-700">Type of Business *</label>
-            <input
-              type="text"
-              required
-              placeholder="e.g. Restaurant, Barbershop, Plumber..."
-              value={form.type}
-              onChange={(e) => setForm({ ...form, type: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <label className="text-sm font-semibold text-gray-700">Tell Us About Your Business</label>
+            <label className="text-sm font-semibold text-gray-700">
+              {compact ? 'What do you need? *' : 'Tell Us About Your Business'}
+            </label>
             <textarea
-              rows={4}
+              rows={compact ? 3 : 4}
+              required={compact}
               placeholder="What does your business do? Do you have an existing website? What's your biggest challenge getting clients online? No wrong answers — we love details."
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:outline-none transition-colors text-sm bg-gray-50 resize-none"
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-coral focus:outline-none transition-colors text-sm bg-gray-50 resize-none"
             />
           </div>
 
@@ -343,7 +351,7 @@ function ContactForm() {
           <button
             type="submit"
             disabled={loading || (turnstileRequired && !token)}
-            className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-2xl py-4 text-sm shadow-sm transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-2 bg-coral hover:bg-coral-ink text-white font-semibold rounded-2xl py-4 text-sm shadow-sm transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -362,7 +370,7 @@ function ContactForm() {
             Albany-based · We never share your details · We reply within about a day
           </p>
 
-          {turnstileRequired && (
+          {turnstileRequired && !compact && (
             <p className="text-center text-[10px] text-gray-300 leading-relaxed">
               Protected by Cloudflare Turnstile · its{' '}
               <a
@@ -393,7 +401,7 @@ function ContactForm() {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-gray-50">
+    <section id="contact" className="py-24 lg:py-32 bg-paper-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-5 gap-10 items-start">
           {/* Left */}
@@ -422,7 +430,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="rounded-2xl bg-blue-600 p-5 text-white"
+              className="rounded-2xl bg-coral p-5 text-white"
             >
               <p className="text-sm font-medium leading-relaxed">
                 <strong>No pressure, no sales pitch.</strong> If your project isn&apos;t the right fit

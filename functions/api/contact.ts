@@ -41,10 +41,11 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 // Accept posts only from our own site (any subdomain) or local dev.
 const ALLOWED_ORIGIN_RE = /^https?:\/\/(localhost(:\d+)?|127\.0\.0\.1(:\d+)?|([a-z0-9-]+\.)*mylobstr\.com)$/i
 
-const planData: Record<string, { price: number; phase2: number; monthly: number }> = {
-  'Starter':          { price: 75,  phase2: 30, monthly: 10 },
-  'Growing Business': { price: 150, phase2: 40, monthly: 15 },
-  'Scale':            { price: 250, phase2: 50, monthly: 20 },
+// Must match src/components/Pricing.tsx (the pricing source of truth).
+const planData: Record<string, { price: number; monthly: number; oneTime?: boolean }> = {
+  'Starter':          { price: 300, monthly: 0, oneTime: true },
+  'Growing Business': { price: 150, monthly: 30 },
+  'Scale':            { price: 250, monthly: 50 },
 }
 
 const str = (v: unknown) => (typeof v === 'string' ? v.trim() : '')
@@ -160,16 +161,21 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
 
     // 6. Build email — every user value is HTML-escaped.
     const planInfo = planKey ? planData[planKey] : null
-    const yearTotal = planInfo ? planInfo.price + planInfo.phase2 * 2 + planInfo.monthly * 9 : null
+    const yearTotal = planInfo
+      ? planInfo.oneTime
+        ? planInfo.price
+        : planInfo.price + planInfo.monthly * 11
+      : null
 
     const planSection = planInfo && yearTotal !== null ? `
       <div style="margin-top:20px;padding:16px;background:#eff6ff;border-radius:8px;border:2px solid #bfdbfe;">
         <p style="margin:0 0 4px 0;font-size:11px;font-weight:700;color:#1d4ed8;text-transform:uppercase;letter-spacing:.05em;">Selected Plan</p>
         <p style="margin:0 0 12px 0;font-size:20px;font-weight:900;color:#111827;">${escapeHtml(planKey)}</p>
         <table style="width:100%;border-collapse:collapse;">
-          <tr><td style="padding:4px 8px 4px 0;font-size:13px;color:#6b7280;">Build (Month 1)</td><td style="font-size:13px;font-weight:700;color:#111827;">$${planInfo.price} one time</td></tr>
-          <tr><td style="padding:4px 8px 4px 0;font-size:13px;color:#6b7280;">Optimize (Months 2–3)</td><td style="font-size:13px;font-weight:700;color:#111827;">$${planInfo.phase2}/mo × 2 = $${planInfo.phase2 * 2}</td></tr>
-          <tr><td style="padding:4px 8px 4px 0;font-size:13px;color:#6b7280;">Hosting (Month 4+)</td><td style="font-size:13px;font-weight:700;color:#111827;">$${planInfo.monthly}/mo forever</td></tr>
+          ${planInfo.oneTime
+            ? `<tr><td style="padding:4px 8px 4px 0;font-size:13px;color:#6b7280;">One-time price</td><td style="font-size:13px;font-weight:700;color:#111827;">$${planInfo.price} &mdash; no monthly fee</td></tr>`
+            : `<tr><td style="padding:4px 8px 4px 0;font-size:13px;color:#6b7280;">Build (Month 1)</td><td style="font-size:13px;font-weight:700;color:#111827;">$${planInfo.price} one time</td></tr>
+          <tr><td style="padding:4px 8px 4px 0;font-size:13px;color:#6b7280;">Hosting &amp; support (Month 2+)</td><td style="font-size:13px;font-weight:700;color:#111827;">$${planInfo.monthly}/mo</td></tr>`}
         </table>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid #bfdbfe;">
           <span style="font-size:13px;font-weight:600;color:#1d4ed8;">Estimated Year 1 Total: </span>

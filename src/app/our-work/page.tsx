@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 
 export default function OurWorkPage() {
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-ink">
       <Navbar />
 
       {/* Hero */}
       <section className="pt-32 pb-16 text-center px-4">
-        <span className="inline-block text-xs font-semibold uppercase tracking-widest text-blue-400 mb-3">
+        <span className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] text-marigold mb-3">
           Our work
         </span>
         <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">

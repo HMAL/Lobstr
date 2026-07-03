@@ -1,132 +1,146 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ArrowRight, MapPin } from 'lucide-react'
 import { track, AnalyticsEvent } from '@/lib/analytics'
+import Awning from '@/components/Awning'
+import BuildWeekWindow from '@/components/BuildWeekWindow'
+import StorefrontStreet from '@/components/StorefrontStreet'
 
-const ComputerScene3D = dynamic(() => import('@/components/ComputerScene3D'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center bg-white">
-      <div className="w-10 h-10 rounded-full border-2 border-gray-200 border-t-gray-800 animate-spin" />
-    </div>
-  ),
-})
+const specimen = [
+  { k: 'Sites launched', v: '30+' },
+  { k: 'Kickoff → live', v: '~1 wk' },
+  { k: 'Flat to start', v: '$300' },
+]
 
 export default function Hero() {
+  const reduce = useReducedMotion()
+
+  // One orchestrated page-load sequence — the sign "turns on" in order.
+  const container: Variants = {
+    hidden: {},
+    show: { transition: { staggerChildren: reduce ? 0 : 0.09, delayChildren: 0.05 } },
+  }
+  const item: Variants = {
+    hidden: { opacity: 0, y: reduce ? 0 : 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  }
+
   return (
-    <div className="relative w-full min-h-screen bg-white overflow-hidden">
-      <div className="flex min-h-screen">
-        {/* ── Left: text ── */}
-        <div className="flex flex-col justify-center px-5 sm:px-8 md:px-14 lg:px-20 relative z-10 w-full md:w-1/2 py-24 md:py-28">
-
-          {/* Location pill */}
+    <section className="relative w-full overflow-hidden bg-ink text-paper">
+      {/* ── The sign: copy block ── */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="mx-auto max-w-7xl px-5 pt-28 pb-12 sm:px-8 md:px-12 md:pt-32 md:pb-14 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-16 lg:px-16"
+      >
+        <div className="max-w-2xl">
+          {/* Open sign */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-gray-600 text-xs font-semibold mb-4 w-fit"
+            variants={item}
+            className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-3 py-1.5 text-xs font-semibold text-paper"
           >
-            <MapPin className="w-3 h-3" /> Albany, NY · Built for local businesses
-          </motion.div>
-
-          {/* Availability badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 text-white text-xs font-semibold mb-6 w-fit"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-marigold" />
             Taking on new projects this month
           </motion.div>
 
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] text-gray-900 mb-6"
+          {/* Location — set as a small stamp */}
+          <motion.p
+            variants={item}
+            className="mb-6 inline-flex items-center gap-1.5 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-paper/65"
           >
-            A website your<br />
-            business will be<br />
-            glad to share.
+            <MapPin className="h-3 w-3" /> Albany, NY · built for local businesses
+          </motion.p>
+
+          {/* Headline — Fraunces, one accented flourish */}
+          <motion.h1
+            variants={item}
+            className="mb-6 font-display text-[2.6rem] leading-[1.02] font-semibold tracking-[-0.02em] text-paper sm:text-6xl lg:text-[4.4rem]"
+          >
+            A website your business will be{' '}
+            <span className="italic font-medium text-[#ef7d5a]">glad to share.</span>
           </motion.h1>
 
-          {/* Subtext */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-gray-600 text-lg leading-relaxed mb-6 max-w-md"
-          >
+          <motion.p variants={item} className="mb-7 max-w-md text-lg leading-relaxed text-paper/70">
             We design and build the whole thing for you — pages, photos, contact form,
-            Google setup — so the people who look you up find a business that looks
-            the part. Most sites go live in about a week.
+            Google setup — so the people who look you up find a business that looks the
+            part. Most sites go live in about a week.
           </motion.p>
 
           {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-3 mb-4"
-          >
+          <motion.div variants={item} className="mb-4 flex flex-col gap-3 sm:flex-row">
             <a
               href="/contact"
               onClick={() => track(AnalyticsEvent.CtaClick, { location: 'hero', label: 'Get a free quote', destination: '/contact' })}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 text-white font-semibold rounded-xl text-sm hover:bg-blue-700 transition-colors shadow-sm"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-coral px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-coral-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-marigold focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
-              Get a free quote <ArrowRight className="w-4 h-4" />
+              Get a free quote <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="/our-work"
               onClick={() => track(AnalyticsEvent.CtaClick, { location: 'hero', label: "See work we've done", destination: '/our-work' })}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl text-sm hover:border-gray-300 hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:border-white/40 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-marigold focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               See work we&apos;ve done
             </a>
           </motion.div>
 
-          {/* Reassurance line */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.55 }}
-            className="text-xs text-gray-500 mb-10"
-          >
+          <motion.p variants={item} className="mb-9 text-xs text-paper/65">
             We&apos;ll show you a free mockup first — no payment, no obligation. You decide once you see it.
           </motion.p>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.65 }}
-            className="flex gap-6 md:gap-8 pb-10 border-b border-gray-100"
+          {/* Specimen strip — honest catalog spec, not a big-number flex */}
+          <motion.dl
+            variants={item}
+            className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink-wash pt-6 font-mono text-xs"
           >
-            {[
-              { val: '30+', label: 'Sites launched', sub: 'for local businesses' },
-              { val: '~1 week', label: 'Kickoff to live', sub: 'not months of waiting' },
-              { val: '$300', label: 'Flat to start', sub: 'no monthly on Starter' },
-            ].map(({ val, label, sub }) => (
-              <div key={label}>
-                <div className="text-2xl font-bold text-gray-900">{val}</div>
-                <div className="text-xs text-gray-700 font-semibold mt-0.5">{label}</div>
-                <div className="text-xs text-gray-400">{sub}</div>
+            {specimen.map(({ k, v }, i) => (
+              <div key={k} className="flex items-center gap-2">
+                {i > 0 && <span className="mr-4 text-coral" aria-hidden="true">·</span>}
+                <dt className="uppercase tracking-[0.16em] text-paper/60">{k}</dt>
+                <dd className="font-semibold text-paper">{v}</dd>
               </div>
             ))}
-          </motion.div>
+          </motion.dl>
         </div>
 
-        {/* ── Right: 3D Computer ── */}
-        <div className="hidden md:flex w-1/2 relative items-center justify-center">
-          <ComputerScene3D />
+        {/* The build week — a shop window assembling itself, then getting found */}
+        <div className="hidden lg:block">
+          <BuildWeekWindow />
         </div>
+      </motion.div>
+
+      {/* ── The proof: a street of storefronts drifting under the awning canopy ── */}
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 md:px-12 lg:px-16">
+        <motion.p
+          initial={{ opacity: reduce ? 1 : 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: reduce ? 0 : 0.8, duration: 0.5 }}
+          className="mb-4 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-paper/60"
+        >
+          Our work · live client sites &amp; demo builds
+        </motion.p>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-100 pointer-events-none" />
-    </div>
+      {/* Awning canopy — unrolls once, then the street runs beneath it */}
+      <motion.div
+        initial={reduce ? { opacity: 1 } : { scaleY: 0, opacity: 0 }}
+        animate={{ scaleY: 1, opacity: 1 }}
+        transition={{ delay: reduce ? 0 : 0.9, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        style={{ originY: 0 }}
+      >
+        <Awning />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: reduce ? 0 : 1.05, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="pt-8 pb-20 md:pt-10 md:pb-24"
+      >
+        <StorefrontStreet />
+      </motion.div>
+    </section>
   )
 }

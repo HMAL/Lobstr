@@ -31,8 +31,8 @@ export default function BlogPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-gray-950 pt-32 pb-16 text-center">
-        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Blog</p>
+      <section className="bg-ink pt-32 pb-16 text-center">
+        <p className="text-marigold text-sm font-semibold tracking-widest uppercase mb-3">Blog</p>
         <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
           Practical tips for local business owners
         </h1>
@@ -55,28 +55,28 @@ export default function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="flex h-full flex-col p-7 rounded-2xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50/30 transition-all"
+                className="flex h-full flex-col p-7 rounded-2xl border border-gray-100 bg-gray-50 hover:border-coral/30 hover:bg-coral/10 transition-all"
               >
                 <p className="text-xs font-semibold text-gray-400 mb-2">
                   {published} · {post.readingMinutes} min read
                 </p>
                 <h2 className="font-bold text-gray-900 text-xl mb-2 leading-snug">{post.title}</h2>
                 <p className="text-sm text-gray-500 leading-relaxed mb-4">{post.description}</p>
-                <span className="mt-auto text-sm font-semibold text-blue-600">Read the guide →</span>
+                <span className="mt-auto text-sm font-semibold text-coral-ink">Read the guide →</span>
               </Link>
             )
           })}
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center p-10 rounded-3xl bg-blue-600 text-white">
+        <div className="mt-16 text-center p-10 rounded-3xl bg-coral text-white">
           <h2 className="text-2xl font-bold mb-2">Rather just have it handled?</h2>
           <p className="text-white/80 mb-6 text-sm">
             We build custom websites for Albany small businesses — SEO, hosting, and Google Business Profile included. Starter is a flat $300, no monthly fee.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-blue-700 font-semibold rounded-2xl hover:bg-blue-50 transition-colors text-sm"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-coral-ink font-semibold rounded-2xl hover:bg-coral/10 transition-colors text-sm"
           >
             Get a free quote →
           </Link>

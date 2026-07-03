@@ -14,8 +14,8 @@ export default function RefundPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-gray-950 pt-32 pb-14 text-center">
-        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
+      <section className="bg-ink pt-32 pb-14 text-center">
+        <p className="text-marigold text-sm font-semibold tracking-widest uppercase mb-3">Legal</p>
         <h1 className="text-4xl lg:text-5xl font-bold text-white mb-3">Refund Policy</h1>
         <p className="text-white/40 text-sm">Last updated: June 25, 2026</p>
       </section>
@@ -49,7 +49,7 @@ export default function RefundPage() {
         </ul>
 
         <h2>How to Request a Refund</h2>
-        <p>To request a refund, email us at <a href="mailto:info@mylobstr.com" className="text-blue-600">info@mylobstr.com</a> with:</p>
+        <p>To request a refund, email us at <a href="mailto:info@mylobstr.com" className="text-coral-ink">info@mylobstr.com</a> with:</p>
         <ul>
           <li>Your name and business name</li>
           <li>The reason for your refund request</li>
@@ -70,7 +70,7 @@ export default function RefundPage() {
         <h2>Questions?</h2>
         <p>
           We want every client to be happy. If something isn't right, reach out before requesting a refund — most issues can be resolved quickly.<br /><br />
-          Email: <a href="mailto:info@mylobstr.com" className="text-blue-600">info@mylobstr.com</a><br />
+          Email: <a href="mailto:info@mylobstr.com" className="text-coral-ink">info@mylobstr.com</a><br />
           Albany, NY Metro Area
         </p>
       </main>

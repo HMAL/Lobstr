@@ -3,18 +3,18 @@ import { ArrowLeft, Globe } from 'lucide-react'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center px-4 text-center relative overflow-hidden">
+    <div className="min-h-screen bg-ink flex flex-col items-center justify-center px-4 text-center relative overflow-hidden">
       {/* Background blobs */}
-      <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-coral/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
 
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 mb-12">
-        <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center">
+        <div className="w-9 h-9 rounded-xl bg-coral flex items-center justify-center">
           <Globe className="w-[18px] h-[18px] text-white" />
         </div>
         <span className="font-bold text-base text-white">
-          MyLobstr<span className="text-blue-400"> Designs</span>
+          MyLobstr<span className="text-[#ef7d5a]"> Designs</span>
         </span>
       </Link>
 

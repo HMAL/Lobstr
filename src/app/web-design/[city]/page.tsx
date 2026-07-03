@@ -64,21 +64,21 @@ export default async function CityPage({
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-gray-950 pt-32 pb-16 px-4">
+      <section className="bg-ink pt-32 pb-16 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-3">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-marigold mb-3">
             <MapPin className="w-3.5 h-3.5" /> {c.nameState} · Capital Region
           </span>
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
             Website design in {c.name},
             <br />
-            <span className="text-blue-400">{c.heroLine}</span>
+            <span className="text-[#ef7d5a]">{c.heroLine}</span>
           </h1>
           <p className="text-gray-400 max-w-xl mx-auto text-lg mb-8">{c.intro}</p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-coral hover:bg-coral-ink text-white font-semibold rounded-full transition-colors"
             >
               Get a free quote <ArrowRight className="w-4 h-4" />
             </a>
@@ -102,7 +102,7 @@ export default async function CityPage({
           <ul className="grid sm:grid-cols-2 gap-3">
             {c.businessTypes.map((b) => (
               <li key={b} className="flex items-start gap-2.5 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
-                <Check className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                <Check className="w-5 h-5 text-coral-ink shrink-0 mt-0.5" />
                 <span className="text-gray-800 font-medium">{b}</span>
               </li>
             ))}
@@ -123,14 +123,14 @@ export default async function CityPage({
           <div className="grid sm:grid-cols-3 gap-4">
             {PLANS.map((p) => (
               <div key={p.name} className="rounded-2xl bg-white border border-gray-200 p-5 shadow-sm">
-                <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">{p.name}</p>
+                <p className="text-sm font-semibold uppercase tracking-wide text-coral-ink">{p.name}</p>
                 <p className="mt-1 text-2xl font-bold text-gray-900">{p.price}</p>
                 <p className="text-xs text-gray-500 mb-3">{p.sub}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
-          <a href="/pricing" className="inline-flex items-center gap-1.5 mt-6 text-blue-600 font-semibold hover:text-blue-700">
+          <a href="/pricing" className="inline-flex items-center gap-1.5 mt-6 text-coral-ink font-semibold hover:text-coral-ink">
             See full pricing details <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -154,7 +154,7 @@ export default async function CityPage({
       </section>
 
       {/* CTA */}
-      <section className="bg-gray-950 py-16 px-4 text-center">
+      <section className="bg-ink py-16 px-4 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3">
             Ready for a website that works as hard as you do?
@@ -164,7 +164,7 @@ export default async function CityPage({
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-coral hover:bg-coral-ink text-white font-semibold rounded-full transition-colors"
           >
             Get a free quote <ArrowRight className="w-4 h-4" />
           </a>
