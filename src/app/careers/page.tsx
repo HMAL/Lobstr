@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Careers — Join the MyLobstr Designs Team',
+  title: { absolute: 'Careers — Join the MyLobstr Designs Team' },
   description: 'We\'re a small, growing web design studio in Albany, NY. If you love building things for local businesses, let\'s talk.',
   alternates: { canonical: 'https://mylobstr.com/careers' },
 }

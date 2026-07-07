@@ -5,7 +5,7 @@ import { faqCategories } from './faq-data'
 import Content from './content'
 
 export const metadata: Metadata = {
-  title: 'Website Design FAQ Albany NY | Small Business Web Questions | MyLobstr Designs',
+  title: { absolute: 'Website Design FAQ Albany NY | Small Business Web Questions | MyLobstr Designs' },
   description: 'Common questions Albany small business owners ask about website design — cost, timeline, hosting, SEO, and support. Answered honestly by MyLobstr Designs.',
   keywords: ['website design faq', 'how much does a website cost small business', 'website design questions Albany NY', 'small business website help'],
   alternates: { canonical: 'https://mylobstr.com/faq' },

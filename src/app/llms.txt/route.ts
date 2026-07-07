@@ -1,4 +1,6 @@
 import { posts } from '@/lib/posts'
+import { cities } from '@/lib/locations'
+import { industries } from '@/lib/industries'
 
 // Served at /llms.txt — a curated, LLM-friendly map of the site.
 // Prerendered at build time (static), and reuses the same posts source as the sitemap.
@@ -15,11 +17,17 @@ const keyFacts: ReadonlyArray<string> = [
   'Every plan includes SEO, fast Cloudflare hosting with SSL, and real human support from a local Albany team.',
 ]
 
-const locationPages: ReadonlyArray<[name: string, path: string]> = [
-  ['Web Design Troy, NY', '/web-design/troy-ny'],
-  ['Web Design Schenectady, NY', '/web-design/schenectady-ny'],
-  ['Web Design Saratoga Springs, NY', '/web-design/saratoga-springs-ny'],
-]
+// Derived from the same data sources as the sitemap/city+industry routes, so
+// this list can never drift out of sync with what's actually live.
+const locationPages: ReadonlyArray<[name: string, path: string]> = cities.map((c) => [
+  `Web Design ${c.nameState}`,
+  `/web-design/${c.slug}`,
+])
+
+const industryPages: ReadonlyArray<[name: string, path: string]> = industries.map((i) => [
+  `Website Design for ${i.name}`,
+  `/industries/${i.slug}`,
+])
 
 const corePages: ReadonlyArray<[name: string, path: string, desc: string]> = [
   ['Home', '/', 'Custom websites for Albany NY small businesses, starting at a flat one-time $300, live in about a week.'],
@@ -43,6 +51,9 @@ ${corePages.map(([name, path, desc]) => `- [${name}](${BASE}${path}): ${desc}`).
 
 ## Service areas (city pages)
 ${locationPages.map(([name, path]) => `- [${name}](${BASE}${path})`).join('\n')}
+
+## Industries served
+${industryPages.map(([name, path]) => `- [${name}](${BASE}${path})`).join('\n')}
 
 ## Blog
 ${posts.map((post) => `- [${post.title}](${BASE}/blog/${post.slug}): ${post.description}`).join('\n')}

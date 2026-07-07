@@ -1,6 +1,7 @@
 import { posts } from '@/lib/posts'
 import { faqCategories } from '@/app/faq/faq-data'
 import { cities } from '@/lib/locations'
+import { industries } from '@/lib/industries'
 
 // Served at /llms-full.txt — the long companion to /llms.txt. Inlines full pricing,
 // services, every FAQ, and the content map so an LLM gets everything in one fetch.
@@ -64,6 +65,9 @@ Albany, NY (home base) and the wider Capital Region — Troy, Schenectady, Sarat
 
 ## City service pages
 ${cities.map((c) => `- [Web Design ${c.nameState}](${BASE}/web-design/${c.slug}): ${c.intro}`).join('\n')}
+
+## Industry landing pages
+${industries.map((i) => `- [Website Design for ${i.name}](${BASE}/industries/${i.slug}): ${i.description}`).join('\n')}
 
 ## Industry examples (live demo sites)
 ${demos.map(([name, path]) => `- [${name}](${BASE}${path})`).join('\n')}

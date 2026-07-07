@@ -5,7 +5,7 @@ import LiveSiteSlider from '@/components/LiveSiteSlider'
 import OurWorkGrid from './OurWorkGrid'
 
 export const metadata: Metadata = {
-  title: 'Website Design Portfolio Albany NY | Web Design Examples | MyLobstr Designs',
+  title: { absolute: 'Website Design Portfolio Albany NY | Web Design Examples | MyLobstr Designs' },
   description: "See MyLobstr Designs's website design work for Albany NY small businesses — live sites and demos for restaurants, salons, barbershops, contractors, gyms, and more.",
   keywords: ['website design portfolio Albany NY', 'web design examples Albany', 'small business website examples', 'website designer portfolio New York'],
   alternates: { canonical: 'https://mylobstr.com/our-work' },

@@ -5,7 +5,7 @@ import Pricing from '@/components/Pricing'
 import Awning from '@/components/Awning'
 
 export const metadata: Metadata = {
-  title: 'Website Design Pricing Albany NY | Plans from $300 | MyLobstr Designs',
+  title: { absolute: 'Website Design Pricing Albany NY | Plans from $300 | MyLobstr Designs' },
   description: 'Straightforward website pricing for Albany NY small businesses. Starter is a flat one-time $300 with no monthly fee. Growing Business $150 + $30/mo, Scale $250 + $50/mo. No contracts, no surprises.',
   keywords: ['affordable website design Albany NY', 'website design cost small business', 'how much does a website cost', 'website design packages Albany', 'small business website pricing'],
   alternates: { canonical: 'https://mylobstr.com/pricing' },

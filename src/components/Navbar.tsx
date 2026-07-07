@@ -8,6 +8,7 @@ import { track, AnalyticsEvent } from '@/lib/analytics'
 
 const links = [
   { label: 'Our Work', href: '/our-work' },
+  { label: 'Industries', href: '/industries' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },

@@ -23,7 +23,7 @@ export async function generateMetadata({
   const c = getCity(city)
   if (!c) return {}
   return {
-    title: c.title,
+    title: { absolute: c.title },
     description: c.description,
     keywords: c.keywords,
     alternates: { canonical: `https://mylobstr.com/web-design/${c.slug}` },
@@ -31,6 +31,15 @@ export async function generateMetadata({
       title: c.title,
       description: c.description,
       url: `https://mylobstr.com/web-design/${c.slug}`,
+      siteName: 'MyLobstr Designs',
+      images: [
+        {
+          url: 'https://mylobstr.com/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'MyLobstr Designs — Website Design for Albany NY Small Businesses',
+        },
+      ],
     },
   }
 }

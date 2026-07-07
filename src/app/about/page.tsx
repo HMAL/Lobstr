@@ -4,13 +4,23 @@ import Footer from '@/components/Footer'
 import About from '@/components/About'
 
 export const metadata: Metadata = {
-  title: 'About — The People Behind MyLobstr Designs',
+  title: { absolute: 'About — The People Behind MyLobstr Designs' },
   description: 'MyLobstr Designs is a family — a developer, a mom, and a small business believer building affordable websites for Albany, NY businesses.',
   keywords: ['web design team Albany NY', 'local web designer Albany', 'about MyLobstr Designs', 'Albany web design studio'],
   alternates: { canonical: 'https://mylobstr.com/about' },
   openGraph: {
     title: 'About MyLobstr Designs — Albany NY Web Design Studio',
     description: 'A local Albany team building affordable custom websites for small businesses across the Capital Region.',
+    url: 'https://mylobstr.com/about',
+    siteName: 'MyLobstr Designs',
+    images: [
+      {
+        url: 'https://mylobstr.com/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'MyLobstr Designs — Website Design for Albany NY Small Businesses',
+      },
+    ],
   },
 }
 

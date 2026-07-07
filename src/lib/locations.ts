@@ -38,6 +38,50 @@ export interface City {
 
 export const cities: City[] = [
   {
+    slug: 'albany-ny',
+    name: 'Albany',
+    nameState: 'Albany, NY',
+    proximity: "the studio's home base",
+    title: 'Web Design Albany NY | Affordable Small Business Websites | MyLobstr Designs',
+    description:
+      'Affordable, custom website design for Albany, NY small businesses — starting at a flat one-time $300. MyLobstr Designs is based right here in Albany, serving downtown, Lark Street, Delaware Avenue, and Pine Hills. Live in about a week.',
+    keywords: [
+      'web design Albany NY',
+      'website designer Albany NY',
+      'affordable website design Albany NY',
+      'small business website Albany NY',
+      'web developer Albany New York',
+      'cheap website design Albany NY',
+    ],
+    heroLine: 'built right here at home.',
+    intro:
+      'MyLobstr Designs is based in Albany, NY — this is where we live, work, and build. The Starter plan is a flat one-time $300 with no monthly fee, every site is hand-coded (no WordPress themes or page builders), and it goes live in about a week. Being local means a real person down the street, not a ticket queue.',
+    landscape:
+      "Albany's small-business scene spans downtown's offices and government-adjacent firms, the restaurants and bars along Lark Street and Delaware Avenue, the shops and cafés of Pine Hills and Center Square, and the trades and home-service businesses that serve the whole metro from here. Whatever corner of Albany a business calls home, it needs a site that loads fast, shows up on Google, and doesn't cost agency money — and since we're an Albany studio ourselves, that's exactly what we build for our own neighbors first.",
+    anchors: ['downtown Albany', 'Lark Street', 'Delaware Avenue', 'Pine Hills', 'Center Square'],
+    businessTypes: [
+      'Restaurants, bars & cafés',
+      'Lark Street & Delaware Ave shops',
+      'Salons, barbershops & spas',
+      'Contractors, plumbers & HVAC companies',
+      'Medical, dental & professional offices',
+    ],
+    faqs: [
+      {
+        q: 'Do you design websites for businesses in Albany, NY?',
+        a: 'Yes — Albany is our home base. MyLobstr Designs is based right here, so an Albany client isn\'t just another market for us; you\'re working with the studio\'s home team, in person if you want it.',
+      },
+      {
+        q: 'How much does a website cost for an Albany small business?',
+        a: 'The same transparent pricing everywhere: Starter is a flat one-time $300 with no monthly fee, Growing Business is $150 to build plus $30/month, and Scale is $250 to build plus $50/month. No Albany premium — the price you see is the price you pay.',
+      },
+      {
+        q: 'Can we meet in person since you\'re based in Albany?',
+        a: 'Yes, more easily than anywhere else we serve — we\'re local. Most clients still prefer phone, text, or email for speed, but an in-person meeting in Albany is always on the table.',
+      },
+    ],
+  },
+  {
     slug: 'troy-ny',
     name: 'Troy',
     nameState: 'Troy, NY',
